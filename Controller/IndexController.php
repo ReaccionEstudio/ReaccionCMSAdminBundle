@@ -9,6 +9,6 @@
 	{
 		public function index()
 		{
-			return $this->render("@ReaccionCMSAdminBundle/login.html.twig");
+			return $this->render("@ReaccionCMSAdminBundle/dashboard/dashboard.html.twig");
 		}
 	}
