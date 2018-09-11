@@ -1,0 +1,3 @@
+reaccion_cms_admin_index:
+    path: /
+    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\IndexController::index
