@@ -1,16 +1,28 @@
-<html>
+<html lang="en">
 
 	<head>
 
+		<!-- header -->
 		{% embed '@ReaccionCMSAdminBundle/layout/header.html.twig' %}{% endembed %}
 
 	</head>
 
 	<body>
 
-		{% block reaccion_cms_admin_body %}{% endblock %}
+		<div class="page-main">
 
-		{% embed '@ReaccionCMSAdminBundle/layout/footer.html.twig' %}{% endembed %}
+	        <!-- navigation -->
+			{% embed '@ReaccionCMSAdminBundle/layout/navigation.html.twig' %}{% endembed %}
+
+			<!-- body -->
+			{% block reaccion_cms_admin_body %}{% endblock %}
+
+			<!-- footer -->
+			{% embed '@ReaccionCMSAdminBundle/layout/footer.html.twig' %}{% endembed %}
+
+		</div>
+
+		<script type="text/javascript" src="{{ asset('build/app.js') }}"></script>
 
 	</body>
 
