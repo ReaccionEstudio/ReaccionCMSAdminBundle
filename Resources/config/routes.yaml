@@ -1,3 +1,8 @@
 reaccion_cms_admin_index:
     path: /
     controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\IndexController::index
+
+# Pages
+reaccion_cms_admin_pages_index:
+    path: /pages
+    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\PageListController::index
