@@ -2,7 +2,6 @@
 
 	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller;
 
-	use Symfony\Component\HttpFoundation\JsonResponse;
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 	class IndexController extends Controller
