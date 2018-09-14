@@ -1,0 +1,21 @@
+{% extends '@ReaccionCMSAdminBundle/base.html.twig' %}
+
+{% block reaccion_cms_admin_body %}
+
+<div class="my-3 my-md-5">
+
+  	<div class="container">
+
+		{{ form_start(form) }}
+		    
+		    {{ form_widget(form) }}
+
+		    <input type="submit" />
+
+		{{ form_end(form) }}
+
+	</div>
+
+</div>
+
+{% endblock %}
