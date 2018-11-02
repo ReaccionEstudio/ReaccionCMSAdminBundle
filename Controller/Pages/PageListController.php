@@ -12,13 +12,16 @@
 		public function index(Request $request)
 		{
 			$em = $this->getDoctrine()->getManager();
-			$pages = $em->getRepository(Page::class)->findAll();
+			$pages = $em->getRepository(Page::class)->findBy(
+						array(),
+						array('id' => 'DESC')
+					 );
 
 			// pagination
 			$paginator = $this->get('knp_paginator');
 		    $pages = $paginator->paginate(
 		        $pages,
-		        $request->query->get("page"),
+		        $request->query->getInt('page', 1),
 		        $this->getParameter("pagination_page_limit")
 		    );
 
