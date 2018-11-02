@@ -10,3 +10,7 @@ reaccion_cms_admin_pages_index:
 reaccion_cms_admin_pages_create:
     path: /pages/create
     controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\CreatePageController::index
+
+reaccion_cms_admin_pages_detail:
+    path: /pages/{page}
+    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\PageDetailController::index

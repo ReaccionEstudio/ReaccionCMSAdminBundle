@@ -46,11 +46,13 @@
 		                        <tr>
 		                          
 		                          <td>
-		                          	<span class="text-muted">{{ page.id }}</span>
+		                          	<a href="{{ url('reaccion_cms_admin_pages_detail', { 'page' : page.id }) }}" title="{{ page.id }}" class="text-inherit">
+		                          		<span class="text-muted">{{ page.id }}</span>
+		                          	</a>
 		                          </td>
 		                          
 		                          <td width="40%">
-		                          	<a href="invoice.html" class="text-inherit">{{ page.name }}</a>
+		                          	<a href="{{ url('reaccion_cms_admin_pages_detail', { 'page' : page.id }) }}" title="{{ page.name }}" class="text-inherit">{{ page.name }}</a>
 		                          </td>
 		                          
 		                          <td>
@@ -74,7 +76,7 @@
 		                          </td>
 
 		                          <td class="text-right">
-		                            <a class="icon" href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Edit">
+		                            <a class="icon" href="{{ url('reaccion_cms_admin_pages_detail', { 'page' : page.id }) }}" title="{{ page.id }}" data-toggle="tooltip" data-placement="top" title="Edit">
 		                              <i class="fe fe-edit"></i>
 		                            </a>
 		                            &nbsp;
