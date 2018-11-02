@@ -6,13 +6,26 @@
 
   	<div class="container">
 
-		{{ form_start(form) }}
-		    
-		    {{ form_widget(form) }}
+  		{{ form_start(form, { 'attr': { 'class' : 'card' } }) }}
 
-		    <input type="submit" />
+  			<div class="card-header">
+  				<h3 class="card-title">Create new page</h3>
+  			</div>
 
-		{{ form_end(form) }}
+  			<div class="card-body col-8 align-self-center">
+			
+				{{ form_widget(form) }}
+
+			</div>
+
+			<div class="card-footer text-right">
+              <div class="d-flex">
+                <a href="javascript:void(0)" class="btn btn-link">Cancel</a>
+                <button type="submit" class="btn btn-primary ml-auto">Send data</button>
+              </div>
+            </div>
+
+        {{ form_end(form) }}
 
 	</div>
 
