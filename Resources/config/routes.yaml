@@ -14,3 +14,8 @@ reaccion_cms_admin_pages_create:
 reaccion_cms_admin_pages_detail:
     path: /pages/{page}
     controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\PageDetailController::index
+
+# Pages content
+reaccion_cms_admin_create_page_content:
+    path: /pages/{page}/add/content
+    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\Content\CreatePageContentController::index

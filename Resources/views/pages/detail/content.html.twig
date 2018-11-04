@@ -1,13 +1,23 @@
 <div class="card">
 
     <div class="card-header">
-    	<h3 class="card-title">
-    	<i class="fe fe-layout"></i>&nbsp;&nbsp;Content
-    </h3>
+
+    	<div class="col-6">
+	    	<h3 class="card-title">
+				<i class="fe fe-layout"></i>&nbsp;&nbsp;Content
+			</h3>
+		</div>
+
+    	<div class="col-6 text-right pr-0">
+			<a href="{{ url('reaccion_cms_admin_create_page_content', { 'page' : page.id }) }}" class="btn btn-primary">
+				<i class="fe fe-plus-circle"></i>&nbsp;&nbsp;Add new content
+			</a>
+		</div>
+
     </div>
 
     <div class="card-body">
-    	...
+
     </div>
 
 </div>

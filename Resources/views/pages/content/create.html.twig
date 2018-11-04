@@ -1,0 +1,43 @@
+{% extends '@ReaccionCMSAdminBundle/base.html.twig' %}
+
+{% block reaccion_cms_admin_body %}
+
+<div class="my-3 my-md-5">
+    
+  <div class="container">
+
+    <h3>#{{page.id }} - {{ page.name }}</h3>
+
+    <div class="card">
+
+        <div class="card-header">
+
+    	    <h3 class="card-title">
+    				<i class="fe fe-layout"></i>&nbsp;&nbsp;Add new content
+    			</h3>
+
+        </div>
+
+        {{ form_start(form, { attr : { 'class' : 'mb-0' } }) }}
+
+        <div class="card-body">{{ form_widget(form) }}</div>
+
+        <div class="card-footer text-center">
+      		
+          <button type="submit" class="btn btn-primary">
+            <i class="fe fe-save"></i>&nbsp;&nbsp;Save changes
+          </button>
+          <a href="" class="btn btn-secondary">
+            <i class="fe fe-arrow-left-circle"></i>&nbsp;&nbsp;Go back
+          </a>
+      	</div>
+        
+        {{ form_end(form) }}
+
+    </div>
+
+  </div>
+
+</div>
+
+{% endblock %}
