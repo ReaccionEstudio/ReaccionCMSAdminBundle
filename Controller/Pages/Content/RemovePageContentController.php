@@ -30,7 +30,7 @@
 				$em->remove($content);
 				$em->flush();
 
-				$this->addFlash('success', 'Content ' . $contentName . ' was removed correctly.');
+				$this->addFlash('success', 'Content <strong>' . $contentName . '</strong> was removed correctly.');
 
 				return 	$this->redirectToRoute(
 							'reaccion_cms_admin_pages_detail', 
@@ -39,7 +39,7 @@
 			}
 			catch(\Exception $e)
 			{
-				$this->addFlash('error', 'Error removing ' . $contentName . ' content: ' . $e->getMessage() . '.');
+				$this->addFlash('error', 'Error removing <strong>' . $contentName . '</strong> content: ' . $e->getMessage() . '.');
 
 				return 	$this->redirectToRoute(
 							'reaccion_cms_admin_pages_detail', 

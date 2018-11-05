@@ -27,7 +27,7 @@
 				$em->persist($content);
 				$em->flush();
 
-				$this->addFlash('success', 'Content ' . $content->getName() . ' was updated correctly.');
+				$this->addFlash('success', 'Content <strong>' . $content->getName() . '</strong> was updated correctly.');
 
 				return 	$this->redirectToRoute(
 							'reaccion_cms_admin_pages_detail', 
