@@ -15,7 +15,7 @@
 	{
 		CONST PageContentTypesList = array(
 
-			'Text' => 'text',
+			'Text / HTML' => 'text_html',
 			'Image' => 'img'
 
 		);
