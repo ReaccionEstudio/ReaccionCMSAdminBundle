@@ -18,6 +18,40 @@
 
     <div class="card-body">
 
+    	{% embed '@ReaccionCMSAdminBundle/shared/flash_messages.html.twig' with { 'extraClasses' : 'pl-0 pr-0' } %}{% endembed %}
+
+    	<table class="table mb-0">
+
+    		<tr>
+    			<th>Name</th>
+    			<th>Type</th>
+    			<th>Position</th>
+    			<th>Last update</th>
+    			<th></th>
+    		</tr>
+
+    		{% for content in page.content %}
+    		<tr>
+    			<td>
+    				<a href="{{ url('reaccion_cms_admin_edit_page_content', { 'content' : content.id }) }}" title="{{ content.name }}" title="Edit">{{ content.name }}</a>
+    			</td>
+    			<td>{{ content.type }}</td>
+    			<td>{{ content.position }}</td>
+    			<td>{{ content.updatedAt | date('d/m/Y H:i:s') }}</td>
+    			<td class="text-center">
+    				<a href="{{ url('reaccion_cms_admin_edit_page_content', { 'content' : content.id }) }}" title="{{ content.name }}" data-toggle="tooltip" data-placement="top">
+                      <i class="fe fe-edit"></i>
+                    </a>
+                    &nbsp;
+                    <a href="{{ url('reaccion_cms_admin_remove_page_content', { 'content' : content.id }) }}" data-detele-confirm="true" data-toggle="tooltip" data-placement="top" title="Delete" class="text-danger">
+                      <i class="fe fe-trash"></i>
+                    </a>
+    			</td>
+    		</tr>
+    		{% endfor %}
+
+    	</table>
+
     </div>
 
 </div>

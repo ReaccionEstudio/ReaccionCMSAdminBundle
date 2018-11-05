@@ -23,3 +23,7 @@ reaccion_cms_admin_create_page_content:
 reaccion_cms_admin_edit_page_content:
     path: /pages/content/{content}
     controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\Content\PageContentDetailController::index
+
+reaccion_cms_admin_remove_page_content:
+    path: /pages/content/{content}/remove
+    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\Content\RemovePageContentController::index

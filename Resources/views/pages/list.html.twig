@@ -76,11 +76,11 @@
 		                          </td>
 
 		                          <td class="text-right">
-		                            <a class="icon" href="{{ url('reaccion_cms_admin_pages_detail', { 'page' : page.id }) }}" title="{{ page.id }}" data-toggle="tooltip" data-placement="top" title="Edit">
+		                            <a href="{{ url('reaccion_cms_admin_pages_detail', { 'page' : page.id }) }}" title="{{ page.name }}" data-toggle="tooltip" data-placement="top">
 		                              <i class="fe fe-edit"></i>
 		                            </a>
 		                            &nbsp;
-		                            <a class="icon" href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Delete">
+		                            <a class="text-danger" href="#" data-toggle="tooltip" data-placement="top" title="Delete" data-detele-confirm="true">
 		                              <i class="fe fe-trash"></i>
 		                            </a>
 		                          </td>

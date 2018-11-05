@@ -9,4 +9,19 @@
  {
  	// Bootstrap tooltips events
   	$('[data-toggle="tooltip"]').tooltip();
+
+  	// Remove record confirm
+  	$('[data-detele-confirm]').on('click', function(e)
+  	{
+  		e.preventDefault();
+
+  		if(confirm(lang[currentLang]["remove_item_confirm_message"]))
+  		{
+  			var removeUrl = $(this).attr("href");
+
+  			if( ! removeUrl.length) return;
+
+  			window.location = removeUrl;
+  		}
+  	});
  });
