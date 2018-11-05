@@ -22,20 +22,23 @@
 
 			if ($form->isSubmitted() && $form->isValid()) 
 			{
-				// generate slug
-				/*
-				$slugify = new Slugify();
-				$slug = $slugify->slugify($page->getName());
-				$page->setSlug($slug);
+				// set page for content
+				$pageContent->setPage($page);
+
+				// set content position
+				$nextPosition = $this->get("reaccion_cms_admin.page_content_position")->getNextPosition($page);
+				$pageContent->setPosition($nextPosition);
 
 				// save
-				$em->persist($page);
+				$em->persist($pageContent);
 				$em->flush();
 
-				$this->addFlash('success', 'The page was created correctly.');
+				$this->addFlash('success', 'Content was created correctly.');
 
-				return $this->redirectToRoute('reaccion_cms_admin_pages_index');
-				*/
+				return 	$this->redirectToRoute(
+							'reaccion_cms_admin_pages_detail', 
+							array('page' => $page->getId())
+						);
 			}
 
 			return $this->render("@ReaccionCMSAdminBundle/pages/content/create.html.twig",
