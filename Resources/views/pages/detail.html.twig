@@ -8,6 +8,8 @@
         
         <h3>#{{page.id }} - {{ page.name }}</h3>
 
+        {% embed '@ReaccionCMSAdminBundle/shared/flash_messages.html.twig' with { 'extraClasses' : 'pl-0 pr-0' } %}{% endembed %}
+
         <div class="row">
 
         	<div class="col-lg-4">
