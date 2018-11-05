@@ -38,12 +38,9 @@
 	            	'required' => true,
 	            	'attr' => array('rows' => 8)
 	            ])
-	            ->add('position', IntegerType::class, [
-	            	'label' => 'Position',
-	            	'required' => false
-	            ])
 	            ->add('isEnabled', CheckboxType::class, [
 	            	'label' => 'Is enabled?',
+	            	'attr' => array('checked' => 'checked'),
 	            	'required' => false
 	            ])
 	        ;
