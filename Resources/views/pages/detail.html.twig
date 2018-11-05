@@ -5,8 +5,23 @@
 <div class="my-3 my-md-5">
     
     <div class="container">
-        
-        <h3>#{{page.id }} - {{ page.name }}</h3>
+            
+        <div class="row">
+            <div class="col-6">
+                <h3>#{{page.id }} - {{ page.name }}</h3>
+            </div>
+            <div class="col-6 text-right">
+                
+                <a href="{{ url('reaccion_cms_admin_pages_index') }}" class="btn btn-secondary text-right">
+                    <i class="fe fe-arrow-left"></i>&nbsp;&nbsp;Go back to page list
+                </a>
+
+                <a href="{{ url('reaccion_cms_admin_pages_remove', { 'page' : page.id }) }}" class="btn btn-danger ml-1" data-detele-confirm="true">
+                    <i class="fe fe-trash-2"></i>&nbsp;&nbsp;Remove
+                </a>
+
+            </div>
+        </div>
 
         {% embed '@ReaccionCMSAdminBundle/shared/flash_messages.html.twig' with { 'extraClasses' : 'pl-0 pr-0' } %}{% endembed %}
 

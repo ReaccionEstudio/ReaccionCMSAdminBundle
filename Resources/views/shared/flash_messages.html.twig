@@ -2,19 +2,19 @@
 
 	{% for msg in app.session.flashBag.get('success') %}
 	<div class="alert alert-icon alert-success" role="alert">
-	  <i class="fe fe-check mr-2" aria-hidden="true"></i> {{msg}}
+	  <i class="fe fe-check mr-2" aria-hidden="true"></i> {{ msg | raw }}
 	</div>
 	{% endfor %}
 
 	{% for msg in app.session.flashBag.get('error') %}
 	<div class="alert alert-icon alert-danger" role="alert">
-	  <i class="fe fe-alert-triangle mr-2" aria-hidden="true"></i> {{msg}}
+	  <i class="fe fe-alert-triangle mr-2" aria-hidden="true"></i> {{ msg | raw }}
 	</div>
 	{% endfor %}
 
 	{% for msg in app.session.flashBag.get('info') %}
 	<div class="alert alert-icon alert-primary" role="alert">
-	  <i class="fe fe-bell mr-2" aria-hidden="true"></i> {{msg}}
+	  <i class="fe fe-bell mr-2" aria-hidden="true"></i> {{ msg | raw }}
 	</div>
 	{% endfor %}
 
