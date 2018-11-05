@@ -1,4 +1,4 @@
-<div class="col-11 align-self-center mt-3">
+<div class="col-12 align-self-center mt-3 {% if extraClasses is defined %}{{ extraClasses }}{% endif %}">
 
 	{% for msg in app.session.flashBag.get('success') %}
 	<div class="alert alert-icon alert-success" role="alert">
