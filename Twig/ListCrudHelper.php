@@ -9,7 +9,7 @@ use Knp\Bundle\PaginatorBundle\Pagination\SlidingPagination;
 /**
  * ListCrudHelper class (Twig_Extension)
  *
- * @author Alberto Vian Hernandez - alberto@albertolabs.com
+ * @author Alberto Vian <alberto@reaccionestudio.com>
  */
 class ListCrudHelper extends \Twig_Extension
 {
