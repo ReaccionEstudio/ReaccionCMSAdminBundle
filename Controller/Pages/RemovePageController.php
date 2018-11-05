@@ -9,7 +9,7 @@
 	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\Pages\PageType;
 	use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-	class DeletePageController extends Controller
+	class RemovePageController extends Controller
 	{
 		public function index(Page $page)
 		{

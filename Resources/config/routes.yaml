@@ -17,7 +17,7 @@ reaccion_cms_admin_pages_detail:
 
 reaccion_cms_admin_pages_remove:
     path: /pages/{page}/remove
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\DeletePageController::index
+    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\RemovePageController::index
 
 # Pages content
 reaccion_cms_admin_create_page_content:
