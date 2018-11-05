@@ -17,5 +17,9 @@ reaccion_cms_admin_pages_detail:
 
 # Pages content
 reaccion_cms_admin_create_page_content:
-    path: /pages/{page}/add/content
+    path: /pages/{page}/content/add
     controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\Content\CreatePageContentController::index
+
+reaccion_cms_admin_edit_page_content:
+    path: /pages/content/{content}
+    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\Content\PageContentDetailController::index
