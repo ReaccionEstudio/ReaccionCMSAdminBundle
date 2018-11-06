@@ -43,14 +43,17 @@ class NavigationHelper extends \Twig_Extension
      */
     public function isActive($route, $isPregMatch=false)
     {
-        $route = self::ROUTE_PREFIX . $route;
+        if( ! $isPregMatch)
+        {
+            $route = self::ROUTE_PREFIX . $route;
+        }
+
         $currentRoute = $this->request->attributes->get('_route');
 
         if( ! $isPregMatch && ($route == $currentRoute))
         {
             return 'active';
         }
-        
         if( $isPregMatch && preg_match("/" . $route . "/", $currentRoute))
         {
             return 'active';
