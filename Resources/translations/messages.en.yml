@@ -1,2 +1,35 @@
+# navigation
+home: 
+  title: 'Home'
+  
+pages: 
+  title: 'Pages'
+  list: 'List all pages'
+  create: 'Create new page'  
+
+entries: 
+  title: 'Entries'
+  list: 'List all entries'
+  create: 'Create new entry'
+
+entries_categories: 
+  list: 'List all categories'
+  create: 'Create new category'
+
+plugins: 
+  title: 'Plugins'
+  list: 'List all plugins'
+  add: 'Add new plugin'
+
+users: 
+  title: 'Users'
+  list: 'List all users'
+  add: 'Add new user'
+
+preferences: 
+  title: 'Preferences'
+  list: 'List all users'
+  add: 'Add new user'
+
 # crud
 remove_item_confirm_message: 'Do you want to remove this item?'

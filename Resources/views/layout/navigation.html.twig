@@ -98,51 +98,53 @@
             <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
 
               <li class="nav-item">
-                <a href="{{ url('reaccion_cms_admin_index') }}" class="nav-link active"><i class="fe fe-home"></i>&nbsp;&nbsp;Home</a>
+                <a href="{{ url('reaccion_cms_admin_index') }}" class="nav-link active"><i class="fe fe-home"></i>&nbsp;&nbsp;{{ 'home.title' | trans }}</a>
               </li>
 
               <li class="nav-item">
-                <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-file"></i>&nbsp;&nbsp;Pages</a>
+                <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-file"></i>&nbsp;&nbsp;{{ 'pages.title' | trans }}</a>
                 <div class="dropdown-menu dropdown-menu-arrow">
-                  <a href="{{ url('reaccion_cms_admin_pages_index') }}" class="dropdown-item ">List all pages</a>
-                  <a href="{{ url('reaccion_cms_admin_pages_create') }}" class="dropdown-item ">Create new page</a>
+                  <a href="{{ url('reaccion_cms_admin_pages_index') }}" class="dropdown-item ">{{ 'pages.list' | trans }}</a>
+                  <a href="{{ url('reaccion_cms_admin_pages_create') }}" class="dropdown-item ">{{ 'pages.create' | trans }}</a>
                 </div>
               </li>
 
               <li class="nav-item dropdown">
-                <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-file-text"></i>&nbsp;&nbsp;Entries</a>
+                <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-file-text"></i>&nbsp;&nbsp;{{ 'entries.title' | trans }}</a>
                 <div class="dropdown-menu dropdown-menu-arrow">
-                  <a href="#" class="dropdown-item ">List all entries</a>
-                  <a href="#" class="dropdown-item ">Create new entity</a>
+                  <a href="#" class="dropdown-item ">{{ 'entries.list' | trans }}</a>
+                  <a href="#" class="dropdown-item ">{{ 'entries.create' | trans }}</a>
                   <hr />
-                  <a href="#" class="dropdown-item ">List all categories</a>
-                  <a href="#" class="dropdown-item ">Create new category</a>
+                  <a href="#" class="dropdown-item ">{{ 'entries_categories.list' | trans }}</a>
+                  <a href="#" class="dropdown-item ">{{ 'entries_categories.create' | trans }}</a>
                 </div>
               </li>
 
               <li class="nav-item dropdown">
-                <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-box"></i>&nbsp;&nbsp;Plugins</a>
+                <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-box"></i>&nbsp;&nbsp;{{ 'plugins.title' | trans }}</a>
                 <div class="dropdown-menu dropdown-menu-arrow">
-                  <a href="#" class="dropdown-item ">List all plugins</a>
-                  <a href="#" class="dropdown-item ">Add new plugin</a>
+                  <a href="#" class="dropdown-item ">{{ 'plugins.list' | trans }}</a>
+                  <a href="#" class="dropdown-item ">{{ 'plugins.add' | trans }}</a>
                 </div>
               </li>
 
               <li class="nav-item dropdown">
-                <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-users "></i>&nbsp;&nbsp;Users</a>
+                <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-users "></i>&nbsp;&nbsp;{{ 'users.title' | trans }}</a>
                 <div class="dropdown-menu dropdown-menu-arrow">
-                  <a href="#" class="dropdown-item ">List all users</a>
-                  <a href="#" class="dropdown-item ">Add new user</a>
+                  <a href="#" class="dropdown-item ">{{ 'users.list' | trans }}</a>
+                  <a href="#" class="dropdown-item ">{{ 'users.add' | trans }}</a>
                 </div>
               </li>
 
               <li class="nav-item dropdown">
-                <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-settings"></i>&nbsp;&nbsp;Preferences</a>
+                <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-settings"></i>&nbsp;&nbsp;{{ 'preferences.title' | trans }}</a>
                 <div class="dropdown-menu dropdown-menu-arrow">
+                  <!--
                   <a href="#" class="dropdown-item ">Global settings</a>
                   <a href="#" class="dropdown-item ">Email</a>
                   <a href="#" class="dropdown-item ">Languages</a>
                   <a href="#" class="dropdown-item ">Updates</a>
+                  -->
                 </div>
               </li>
 
