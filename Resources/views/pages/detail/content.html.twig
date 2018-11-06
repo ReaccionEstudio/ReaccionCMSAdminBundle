@@ -33,7 +33,7 @@
     			<td>
     				<a href="{{ url('reaccion_cms_admin_edit_page_content', { 'content' : content.id }) }}" title="{{ content.name }}">{{ content.name }}</a>
     			</td>
-    			<td>{{ content.type }}</td>
+    			<td>{{ ('page_content_types.' ~ content.type) |  trans }}</td>
     			<td>{{ content.position }}</td>
     			<td>{{ content.updatedAt | date('d/m/Y H:i:s') }}</td>
     			<td class="text-center">
