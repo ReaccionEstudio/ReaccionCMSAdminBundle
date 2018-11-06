@@ -26,7 +26,7 @@ class ListCrudHelper extends \Twig_Extension
      * @param   SlidingPagination   $result     SlidingPagination object
      * @return  Integer             $total      Current listing count value
      */
-    public function getCurrentListingCount($result)
+    public function getCurrentListingCount(SlidingPagination $result)
     {
         if($result->getCurrentPageNumber() == 1)
         {

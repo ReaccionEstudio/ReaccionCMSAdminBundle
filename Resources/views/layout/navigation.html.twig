@@ -98,14 +98,14 @@
             <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
 
               <li class="nav-item">
-                <a href="{{ url('reaccion_cms_admin_index') }}" class="nav-link active"><i class="fe fe-home"></i>&nbsp;&nbsp;{{ 'home.title' | trans }}</a>
+                <a href="{{ url('reaccion_cms_admin_index') }}" class="nav-link {{isActive('index')}}"><i class="fe fe-home"></i>&nbsp;&nbsp;{{ 'home.title' | trans }}</a>
               </li>
 
               <li class="nav-item">
-                <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-file"></i>&nbsp;&nbsp;{{ 'pages.title' | trans }}</a>
+                <a href="javascript:void(0)" class="nav-link {{isActive('pages_', true)}}" data-toggle="dropdown"><i class="fe fe-file"></i>&nbsp;&nbsp;{{ 'pages.title' | trans }}</a>
                 <div class="dropdown-menu dropdown-menu-arrow">
-                  <a href="{{ url('reaccion_cms_admin_pages_index') }}" class="dropdown-item ">{{ 'pages.list' | trans }}</a>
-                  <a href="{{ url('reaccion_cms_admin_pages_create') }}" class="dropdown-item ">{{ 'pages.create' | trans }}</a>
+                  <a href="{{ url('reaccion_cms_admin_pages_index') }}" class="dropdown-item {{isActive('pages_index')}}">{{ 'pages.list' | trans }}</a>
+                  <a href="{{ url('reaccion_cms_admin_pages_create') }}" class="dropdown-item {{isActive('pages_create')}}">{{ 'pages.create' | trans }}</a>
                 </div>
               </li>
 
