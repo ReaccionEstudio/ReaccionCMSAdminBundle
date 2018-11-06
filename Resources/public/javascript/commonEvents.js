@@ -1,7 +1,7 @@
 /**
  * App common events.
  *
- * @author 	Alberto Vian - info@reaccionestudio.com
+ * @author 	Alberto Vian - alberto@reaccionestudio.com
  * @website reaccionestudio.com
  */
 
