@@ -13,11 +13,11 @@
             <div class="col-6 text-right">
                 
                 <a href="{{ url('reaccion_cms_admin_pages_index') }}" class="btn btn-secondary text-right">
-                    <i class="fe fe-arrow-left"></i>&nbsp;&nbsp;Go back to page list
+                    <i class="fe fe-arrow-left"></i>&nbsp;&nbsp;{{ 'page_detail.go_back_page_list' | trans }}
                 </a>
 
                 <a href="{{ url('reaccion_cms_admin_pages_remove', { 'page' : page.id }) }}" class="btn btn-danger ml-1" data-detele-confirm="true">
-                    <i class="fe fe-trash-2"></i>&nbsp;&nbsp;Remove
+                    <i class="fe fe-trash-2"></i>&nbsp;&nbsp;{{ 'crud.remove' | trans }}
                 </a>
 
             </div>

@@ -2,20 +2,20 @@
 
 	{{ form_start(seoPageForm, { attr : { 'class' : 'mb-0' } }) }}
 
-  	<div class="card-header">
-        <h3 class="card-title">
-        	<i class="fe fe-award"></i>&nbsp;&nbsp;SEO
-        </h3>
-  	</div>
+	<div class="card-header">
+    	<h3 class="card-title">
+    		<i class="fe fe-award"></i>&nbsp;&nbsp;{{ 'page_detail.seo_title' | trans }}
+    	</h3>
+	</div>
 
-  	<div class="card-body">{{ form_widget(seoPageForm) }}</div>
+	<div class="card-body">{{ form_widget(seoPageForm) }}</div>
 
-  	<div class="card-footer text-center">
-  		<button type="submit" class="btn btn-primary">
-        <i class="fe fe-save"></i>&nbsp;&nbsp;Save changes
-      </button>
-  	</div>
+	<div class="card-footer text-center">
+		<button type="submit" class="btn btn-primary">
+      		<i class="fe fe-save"></i>&nbsp;&nbsp;{{ 'crud.save_changes' | trans }}
+    	</button>
+	</div>
 
-  	{{ form_end(pageForm) }}
+	{{ form_end(pageForm) }}
 
 </div>

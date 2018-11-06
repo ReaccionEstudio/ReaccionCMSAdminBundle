@@ -34,10 +34,11 @@ preferences:
 # crud
 crud:
   edit: 'Edit'
-  delete: 'Delete'
+  remove: 'Remove'
   listing_x_of_y: 'Listing %current% of %total%'
   cancel: 'Cancel'
   send_data: 'Send data'
+  save_changes: 'Save changes'
 
 # common messages
 remove_item_confirm_message: 'Do you want to remove this item?'
@@ -74,3 +75,16 @@ page_content_form:
   type: 'Type'
   value: 'Value'
   is_enabled: 'Is enabled?'
+
+page_detail:
+  go_back_page_list: 'Go back to page list'
+  title: 'Content'
+  general_info_title: 'General info'
+  seo_title: 'SEO'
+  new_content_btn: 'Add new content'
+
+page_detail_table:
+  name: 'Name'
+  type: 'Type'
+  position: 'Position'
+  last_update: 'Last update'

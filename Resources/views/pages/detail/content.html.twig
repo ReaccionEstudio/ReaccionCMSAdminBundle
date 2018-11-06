@@ -4,13 +4,13 @@
 
     	<div class="col-6">
 	    	<h3 class="card-title">
-				<i class="fe fe-layout"></i>&nbsp;&nbsp;Content
+				<i class="fe fe-layout"></i>&nbsp;&nbsp;{{ 'page_detail.title' | trans }}
 			</h3>
 		</div>
 
     	<div class="col-6 text-right pr-0">
 			<a href="{{ url('reaccion_cms_admin_create_page_content', { 'page' : page.id }) }}" class="btn btn-primary">
-				<i class="fe fe-plus-circle"></i>&nbsp;&nbsp;Add new content
+				<i class="fe fe-plus-circle"></i>&nbsp;&nbsp;{{ 'page_detail.new_content_btn' | trans }}
 			</a>
 		</div>
 
@@ -21,27 +21,27 @@
     	<table class="table mb-0">
 
     		<tr>
-    			<th>Name</th>
-    			<th>Type</th>
-    			<th>Position</th>
-    			<th>Last update</th>
+                <th>{{ 'page_detail_table.name' | trans }}</th>
+                <th>{{ 'page_detail_table.type' | trans }}</th>
+                <th>{{ 'page_detail_table.position' | trans }}</th>
+    			<th>{{ 'page_detail_table.last_update' | trans }}</th>
     			<th></th>
     		</tr>
 
     		{% for content in page.content %}
     		<tr>
     			<td>
-    				<a href="{{ url('reaccion_cms_admin_edit_page_content', { 'content' : content.id }) }}" title="{{ content.name }}" title="Edit">{{ content.name }}</a>
+    				<a href="{{ url('reaccion_cms_admin_edit_page_content', { 'content' : content.id }) }}" title="{{ content.name }}">{{ content.name }}</a>
     			</td>
     			<td>{{ content.type }}</td>
     			<td>{{ content.position }}</td>
     			<td>{{ content.updatedAt | date('d/m/Y H:i:s') }}</td>
     			<td class="text-center">
-    				<a href="{{ url('reaccion_cms_admin_edit_page_content', { 'content' : content.id }) }}" title="{{ content.name }}" data-toggle="tooltip" data-placement="top">
+    				<a href="{{ url('reaccion_cms_admin_edit_page_content', { 'content' : content.id }) }}" title="{{ 'crud.edit' | trans }}" data-toggle="tooltip" data-placement="top">
                       <i class="fe fe-edit"></i>
                     </a>
                     &nbsp;
-                    <a href="{{ url('reaccion_cms_admin_remove_page_content', { 'content' : content.id }) }}" data-detele-confirm="true" data-toggle="tooltip" data-placement="top" title="Delete" class="text-danger">
+                    <a href="{{ url('reaccion_cms_admin_remove_page_content', { 'content' : content.id }) }}" data-detele-confirm="true" data-toggle="tooltip" data-placement="top" title="{{ 'crud.remove' | trans }}" class="text-danger">
                       <i class="fe fe-trash"></i>
                     </a>
     			</td>
