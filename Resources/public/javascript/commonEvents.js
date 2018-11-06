@@ -7,7 +7,7 @@
 
  $(document).ready(function()
  {
- 	// Bootstrap tooltips events
+ 	  // Bootstrap tooltips events
   	$('[data-toggle="tooltip"]').tooltip();
 
   	// Remove record confirm

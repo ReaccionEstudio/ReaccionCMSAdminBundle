@@ -32,4 +32,24 @@ preferences:
   add: 'Add new user'
 
 # crud
+crud:
+  edit: 'Edit'
+  delete: 'Delete'
+  listing_x_of_y: 'Listing %current% of %total%'
+
+# common messages
 remove_item_confirm_message: 'Do you want to remove this item?'
+
+# pages
+pages_list:
+  title: 'Pages list'
+  create_new_page_btn: 'Create new page'
+
+pages_list_table:
+  id: 'Id'
+  name: 'Name'
+  is_enabled: 'Is enabled'
+  enabled: 'Enabled'
+  disabled: 'Disabled'
+  created_at: 'Created at'
+  updated_at: 'Updated at'

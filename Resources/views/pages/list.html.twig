@@ -7,11 +7,11 @@
 
   		<div class="page-header">
     		<div class="col pl-0">
-	    		<h1 class="page-title">Pages list</h1>
+	    		<h1 class="page-title">{{ 'pages_list.title' | trans }}</h1>
 	    	</div>
     		<div class="col col-lg-2 row justify-content-end">
     			<a href="{{ url('reaccion_cms_admin_pages_create') }}" class="btn btn-primary">
-    				<i class="fe fe-plus"></i>&nbsp;&nbsp;Create new page
+    				<i class="fe fe-plus"></i>&nbsp;&nbsp;{{ 'pages_list.create_new_page_btn' | trans }}
     			</a>
     		</div>
 	    </div>
@@ -31,11 +31,11 @@
 
 	                    	<thead>
 	                        	<tr>
-		                          	<th class="w-1">Id</th>
-		                          	<th>Name</th>
-		                          	<th>Is enabled</th>
-		                          	<th>Created at</th>
-		                          	<th>Updated at</th>
+		                          	<th class="w-1">{{ 'pages_list_table.id' | trans }}</th>
+		                          	<th>{{ 'pages_list_table.name' | trans }}</th>
+		                          	<th>{{ 'pages_list_table.is_enabled' | trans }}</th>
+		                          	<th>{{ 'pages_list_table.created_at' | trans }}</th>
+		                          	<th>{{ 'pages_list_table.updated_at' | trans }}</th>
 		                          	<th></th>
 	                        	</tr>
 	                      	</thead>
@@ -57,9 +57,9 @@
 		                          
 		                          <td>
 		                            {% if page.isEnabled %}
-		                          	<span class="status-icon bg-success"></span> Enabled
+		                          	<span class="status-icon bg-success"></span> {{ 'pages_list_table.enabled' | trans }}
 		                          	{% else %}
-		                          	<span class="status-icon bg-danger"></span> Disabled
+		                          	<span class="status-icon bg-danger"></span> {{ 'pages_list_table.disabled' | trans }}
 		                          	{% endif %}
 		                          </td>
 		                          
@@ -76,11 +76,11 @@
 		                          </td>
 
 		                          <td class="text-right">
-		                            <a href="{{ url('reaccion_cms_admin_pages_detail', { 'page' : page.id }) }}" title="{{ page.name }}" data-toggle="tooltip" data-placement="top">
+		                            <a href="{{ url('reaccion_cms_admin_pages_detail', { 'page' : page.id }) }}" title="{{ 'crud.edit' | trans }}" data-toggle="tooltip" data-placement="top">
 		                              <i class="fe fe-edit"></i>
 		                            </a>
 		                            &nbsp;
-		                            <a class="text-danger" href="{{ url('reaccion_cms_admin_pages_remove', { 'page' : page.id }) }}" data-toggle="tooltip" data-placement="top" title="Delete" data-detele-confirm="true">
+		                            <a class="text-danger" href="{{ url('reaccion_cms_admin_pages_remove', { 'page' : page.id }) }}" data-toggle="tooltip" data-placement="top" title="{{ 'crud.delete' | trans }}" data-detele-confirm="true">
 		                              <i class="fe fe-trash"></i>
 		                            </a>
 		                          </td>
