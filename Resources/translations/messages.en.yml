@@ -36,6 +36,8 @@ crud:
   edit: 'Edit'
   delete: 'Delete'
   listing_x_of_y: 'Listing %current% of %total%'
+  cancel: 'Cancel'
+  send_data: 'Send data'
 
 # common messages
 remove_item_confirm_message: 'Do you want to remove this item?'
@@ -53,3 +55,12 @@ pages_list_table:
   disabled: 'Disabled'
   created_at: 'Created at'
   updated_at: 'Updated at'
+
+page_form:
+  title: 'Create new page'
+  name: 'Name'
+  is_enabled: 'Is enabled?'
+  slug: 'Slug / Page url'
+  seo_title: 'Title'
+  seo_description: 'Description'
+  seo_keywords: 'Keywords'

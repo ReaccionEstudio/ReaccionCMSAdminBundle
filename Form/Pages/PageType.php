@@ -14,11 +14,11 @@
 	    {
 	        $builder
 	            ->add('name', TextType::class, [
-	            	'label' => 'page_create.name',
+	            	'label' => 'page_form.name',
 	            	'required' => true
 	            ])
 	            ->add('isEnabled', CheckboxType::class, [
-	            	'label' => 'page_create.is_enabled',
+	            	'label' => 'page_form.is_enabled',
 	            	'required' => false
 	            ])
 	        ;

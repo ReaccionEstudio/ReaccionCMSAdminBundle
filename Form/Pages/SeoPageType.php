@@ -12,19 +12,19 @@
 	    {
 	        $builder
 	            ->add('slug', TextType::class, [
-	            	'label' => 'Slug / Page url',
+	            	'label' => 'page_form.slug',
 	            	'required' => true
 	            ])
 	            ->add('seoTitle', TextType::class, [
-	            	'label' => 'Title',
+	            	'label' => 'page_form.seo_title',
 	            	'required' => false
 	            ])
 	            ->add('seoDescription', TextType::class, [
-	            	'label' => 'Description',
+	            	'label' => 'page_form.seo_description',
 	            	'required' => false
 	            ])
 	            ->add('seoKeywords', TextType::class, [
-	            	'label' => 'Keywords',
+	            	'label' => 'page_form.seo_description',
 	            	'required' => false
 	            ])
 	        ;
