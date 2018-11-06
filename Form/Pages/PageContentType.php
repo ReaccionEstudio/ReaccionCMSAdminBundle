@@ -15,8 +15,8 @@
 	{
 		CONST PageContentTypesList = array(
 
-			'Text / HTML' => 'text_html',
-			'Image' => 'img'
+			'page_content_types.text_html' => 'text_html',
+			'page_content_types.image' => 'img'
 
 		);
 
@@ -24,22 +24,22 @@
 	    {
 	        $builder
 	            ->add('name', TextType::class, [
-	            	'label' => 'Name / Alias',
+	            	'label' => 'page_content_form.name',
 	            	'required' => false
 	            ])
 	            ->add('type', ChoiceType::class, [
-	            	'label' => 'Type',
+	            	'label' => 'page_content_form.type',
 	            	'choices' => self::PageContentTypesList,
 	            	'placeholder' => '',
 	            	'required' => true
 	            ])
 	            ->add('value', TextareaType::class, [
-	            	'label' => 'Value',
+	            	'label' => 'page_content_form.value',
 	            	'required' => true,
 	            	'attr' => array('rows' => 8)
 	            ])
 	            ->add('isEnabled', CheckboxType::class, [
-	            	'label' => 'Is enabled?',
+	            	'label' => 'page_content_form.is_enabled',
 	            	'attr' => array('checked' => 'checked'),
 	            	'required' => false
 	            ])

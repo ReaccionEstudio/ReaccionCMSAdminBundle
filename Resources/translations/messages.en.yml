@@ -64,3 +64,13 @@ page_form:
   seo_title: 'Title'
   seo_description: 'Description'
   seo_keywords: 'Keywords'
+
+page_content_types:
+  text_html: 'Text / HTML'
+  image: 'Image'
+
+page_content_form:
+  name: 'Name / Alias'
+  type: 'Type'
+  value: 'Value'
+  is_enabled: 'Is enabled?'
