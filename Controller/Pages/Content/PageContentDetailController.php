@@ -35,7 +35,7 @@
 						);
 			}
 
-			return $this->render("@ReaccionCMSAdminBundle/pages/content/create.html.twig",
+			return $this->render("@ReaccionCMSAdminBundle/pages/content/detail.html.twig",
 				[
 					'page' => $page,
 					'content' => $content,

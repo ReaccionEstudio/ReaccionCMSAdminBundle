@@ -39,6 +39,7 @@ crud:
   cancel: 'Cancel'
   send_data: 'Send data'
   save_changes: 'Save changes'
+  go_back: 'Go back'
 
 # common messages
 remove_item_confirm_message: 'Do you want to remove this item?'
@@ -75,6 +76,8 @@ page_content_form:
   type: 'Type'
   value: 'Value'
   is_enabled: 'Is enabled?'
+  new_title: 'Add new content'
+  edit_title: 'Edit content'
 
 page_detail:
   go_back_page_list: 'Go back to page list'

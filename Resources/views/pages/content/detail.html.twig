@@ -6,33 +6,34 @@
     
   <div class="container">
 
-    <h3>#{{page.id }} - {{ page.name }} > </h3>
+    <h3>#{{page.id }} - {{ page.name }} / {{ content.name }}</h3>
 
     <div class="card">
 
-        <div class="card-header">
+      <div class="card-header">
 
-    	    <h3 class="card-title">
-    				<i class="fe fe-layout"></i>&nbsp;&nbsp;Edit content
-    			</h3>
+  	    <h3 class="card-title">
+  				<i class="fe fe-layout"></i>&nbsp;&nbsp;{{ 'page_content_form.edit_title' | trans }}
+  			</h3>
 
-        </div>
+      </div>
 
-        {{ form_start(form, { attr : { 'class' : 'mb-0' } }) }}
+      {{ form_start(form, { attr : { 'class' : 'mb-0' } }) }}
 
-        <div class="card-body">{{ form_widget(form) }}</div>
+      <div class="card-body">{{ form_widget(form) }}</div>
 
-        <div class="card-footer text-center">
-      		
-          <button type="submit" class="btn btn-primary">
-            <i class="fe fe-save"></i>&nbsp;&nbsp;Save changes
-          </button>
-          <a href="{{ url('reaccion_cms_admin_pages_detail', { page: page.id }) }}" class="btn btn-secondary">
-            <i class="fe fe-arrow-left-circle"></i>&nbsp;&nbsp;Go back
-          </a>
-      	</div>
-        
-        {{ form_end(form) }}
+      <div class="card-footer text-center">
+    		
+        <button type="submit" class="btn btn-primary">
+          <i class="fe fe-save"></i>&nbsp;&nbsp;{{ 'crud.save_changes' | trans }}
+        </button>
+        <a href="{{ url('reaccion_cms_admin_pages_detail', { page: page.id }) }}" class="btn btn-secondary">
+          <i class="fe fe-arrow-left-circle"></i>&nbsp;&nbsp;{{ 'crud.go_back' | trans }}
+        </a>
+
+    	</div>
+      
+      {{ form_end(form) }}
 
     </div>
 
