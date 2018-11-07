@@ -5,12 +5,13 @@
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+	use Symfony\Component\Translation\TranslatorInterface;
 
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\PageContent;
 
 	class RemovePageContentController extends Controller
 	{
-		public function index(PageContent $content)
+		public function index(PageContent $content, TranslatorInterface $translator)
 		{
 			// check if page content exists
 			if(empty($content))
@@ -30,8 +31,14 @@
 				$em->remove($content);
 				$em->flush();
 
-				$this->addFlash('success', 'Content <strong>' . $contentName . '</strong> was removed correctly.');
+				// flash message
+				$successMessage = $translator->trans(
+									'page_content_form.remove_success_message', 
+									array('%name%' => $content->getName())
+								);
+				$this->addFlash('success', $successMessage);
 
+				// redirection
 				return 	$this->redirectToRoute(
 							'reaccion_cms_admin_pages_detail', 
 							array('page' => $page->getId())
@@ -39,7 +46,14 @@
 			}
 			catch(\Exception $e)
 			{
-				$this->addFlash('error', 'Error removing <strong>' . $contentName . '</strong> content: ' . $e->getMessage() . '.');
+				$errorMessage = $translator->trans(
+									'page_content_form.remove_error_message',
+									array(
+										'%name%' => $content->getName(),
+										'%error%' => $e->getMessage()
+									)
+								);
+				$this->addFlash('error', $errorMessage);
 
 				return 	$this->redirectToRoute(
 							'reaccion_cms_admin_pages_detail', 

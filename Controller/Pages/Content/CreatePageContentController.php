@@ -4,6 +4,7 @@
 
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\HttpFoundation\Request;
+	use Symfony\Component\Translation\TranslatorInterface;
 
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\PageContent;
@@ -11,7 +12,7 @@
 
 	class CreatePageContentController extends Controller
 	{
-		public function index(Page $page, Request $request)
+		public function index(Page $page, Request $request, TranslatorInterface $translator)
 		{
 			$pageContent = new PageContent();
 			$em = $this->getDoctrine()->getManager();
@@ -33,7 +34,9 @@
 				$em->persist($pageContent);
 				$em->flush();
 
-				$this->addFlash('success', 'Content was created correctly.');
+				// flash message
+				$successMessage = $translator->trans('page_content_form.create_success_message');
+				$this->addFlash('success', $successMessage);
 
 				return 	$this->redirectToRoute(
 							'reaccion_cms_admin_pages_detail', 

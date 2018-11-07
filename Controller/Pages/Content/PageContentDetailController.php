@@ -4,6 +4,7 @@
 
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\HttpFoundation\Request;
+	use Symfony\Component\Translation\TranslatorInterface;
 
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\PageContent;
@@ -11,7 +12,7 @@
 
 	class PageContentDetailController extends Controller
 	{
-		public function index(PageContent $content, Request $request)
+		public function index(PageContent $content, Request $request, TranslatorInterface $translator)
 		{
 			$page = $content->getPage();
 
@@ -27,7 +28,12 @@
 				$em->persist($content);
 				$em->flush();
 
-				$this->addFlash('success', 'Content <strong>' . $content->getName() . '</strong> was updated correctly.');
+				// flash message
+				$successMessage = $translator->trans(
+									'page_content_form.update_success_message', 
+									array('%name%' => $content->getName())
+								);
+				$this->addFlash('success', $successMessage);
 
 				return 	$this->redirectToRoute(
 							'reaccion_cms_admin_pages_detail', 

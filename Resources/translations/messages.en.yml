@@ -78,6 +78,10 @@ page_content_form:
   is_enabled: 'Is enabled?'
   new_title: 'Add new content'
   edit_title: 'Edit content'
+  create_success_message: 'Content was created correctly.'
+  update_success_message: 'Content <strong>%name%</strong> was updated correctly.'
+  remove_success_message: 'Content <strong>%name%</strong> was removed correctly.'
+  remove_error_message: 'Error removing <strong>%name%</strong> content: %error%.'
 
 page_detail:
   go_back_page_list: 'Go back to page list'
