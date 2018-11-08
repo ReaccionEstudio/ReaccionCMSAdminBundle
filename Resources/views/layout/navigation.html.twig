@@ -137,14 +137,9 @@
               </li>
 
               <li class="nav-item dropdown">
-                <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-settings"></i>&nbsp;&nbsp;{{ 'preferences.title' | trans }}</a>
+                <a href="#" class="nav-link {{isActive('preferences', true)}}" data-toggle="dropdown"><i class="fe fe-settings"></i>&nbsp;&nbsp;{{ 'preferences.title' | trans }}</a>
                 <div class="dropdown-menu dropdown-menu-arrow">
-                  <!--
-                  <a href="#" class="dropdown-item ">Global settings</a>
-                  <a href="#" class="dropdown-item ">Email</a>
-                  <a href="#" class="dropdown-item ">Languages</a>
-                  <a href="#" class="dropdown-item ">Updates</a>
-                  -->
+                  <a href="{{ url('reaccion_cms_admin_preferences_configuration') }}" class="dropdown-item {{isActive('preferences_configuration')}}">{{ 'preferences.config' | trans }}</a>
                 </div>
               </li>
 

@@ -28,8 +28,7 @@ users:
 
 preferences: 
   title: 'Preferences'
-  list: 'List all users'
-  add: 'Add new user'
+  config: 'Configuration'
 
 # crud
 crud:
@@ -95,3 +94,10 @@ page_detail_table:
   type: 'Type'
   position: 'Position'
   last_update: 'Last update'
+
+# configuration
+config_list:
+  title: 'Configuration'
+  create_new_value: 'Create new config'
+  name: 'Name'
+  value: 'Value'
