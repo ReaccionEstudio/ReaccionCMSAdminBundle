@@ -21,13 +21,20 @@
 
 			if ($form->isSubmitted() && $form->isValid()) 
 			{
-				// save
-				$em->persist($config);
-				$em->flush();
+				try
+				{
+					// save
+					$em->persist($config);
+					$em->flush();
 
-				$this->addFlash('success', $translator->trans('config_form.success_form') );
+					$this->addFlash('success', $translator->trans('config_form.success_form') );
 
-				return $this->redirectToRoute('reaccion_cms_admin_preferences_configuration');
+					return $this->redirectToRoute('reaccion_cms_admin_preferences_configuration');
+				}
+				catch(\Exception $e)
+				{
+					$this->addFlash('error', $translator->trans('config_form.error_form', array('%error%' => $e->getMessage())));
+				}
 			}
 
 			return $this->render("@ReaccionCMSAdminBundle/configuration/form.html.twig",

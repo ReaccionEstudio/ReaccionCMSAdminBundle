@@ -111,3 +111,4 @@ config_form:
   name: 'Name'
   value: 'Value'
   success_form: 'Config was created correctly.'
+  error_form: 'Error creating config: %error%'
