@@ -108,6 +108,7 @@ config_list:
   value: 'Value'
 
 config_form:
+  title: 'Create new configuration'
   name: 'Name'
   value: 'Value'
   success_form: 'Config was created correctly.'
