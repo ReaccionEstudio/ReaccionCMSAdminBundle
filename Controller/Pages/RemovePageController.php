@@ -4,6 +4,7 @@
 
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\HttpFoundation\Request;
+	use Symfony\Component\Translation\TranslatorInterface;
 
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
 	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\Pages\PageType;
@@ -11,7 +12,7 @@
 
 	class RemovePageController extends Controller
 	{
-		public function index(Page $page)
+		public function index(Page $page, TranslatorInterface $translator)
 		{
 			$em = $this->getDoctrine()->getManager();
 
@@ -28,13 +29,14 @@
 				$em->remove($page);
 				$em->flush();
 
-				$this->addFlash('success', 'Page <strong>' . $pageName . '</strong> was removed correctly.');
+				$this->addFlash('success', $translator->trans('page_form.remove_success_message', array('%name%' => $pageName)) );
 
 				return $this->redirectToRoute('reaccion_cms_admin_pages_index');
 			}
 			catch(\Exception $e)
 			{
-				$this->addFlash('error', 'Error removing <strong>' . $pageName . '</strong> content: ' . $e->getMessage() . '.');
+				$errorMssg = $translator->trans('page_form.remove_error_message', array('%name%' => $pageName, '%error%' => $e->getMessage()));
+				$this->addFlash('error', $errorMssg);
 
 				return 	$this->redirectToRoute(
 							'reaccion_cms_admin_pages_detail', 

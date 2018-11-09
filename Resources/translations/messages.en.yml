@@ -66,6 +66,8 @@ page_form:
   seo_description: 'Description'
   seo_keywords: 'Keywords'
   create_success_message: 'The page was created correctly.'
+  remove_success_message: 'Page <strong>%name%</strong> was removed correctly.'
+  remove_error_message: 'Error removing <strong>%name%</strong> content: %error%'
 
 page_content_types:
   text_html: 'Text / HTML'
