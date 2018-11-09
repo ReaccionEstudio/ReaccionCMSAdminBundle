@@ -40,3 +40,7 @@ reaccion_cms_admin_preferences_configuration:
 reaccion_cms_admin_preferences_create_configuration:
     path: /preferences/configuration/create
     controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\CreateConfigurationController::index
+
+reaccion_cms_admin_preferences_update_configuration:
+    path: /preferences/configuration/{config}/update/
+    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\UpdateConfigurationController::index

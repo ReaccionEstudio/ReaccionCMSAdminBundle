@@ -48,7 +48,7 @@
 		                    		<td>{{ row.value }}</td>
 		                    		<td class="text-right">
 			                    		
-			                    		<a href="#" title="{{ 'crud.edit' | trans }}" data-toggle="tooltip" data-placement="top">
+			                    		<a href="{{ url('reaccion_cms_admin_preferences_update_configuration', { 'config' : row.id }) }}" title="{{ 'crud.edit' | trans }}" data-toggle="tooltip" data-placement="top">
 			                              <i class="fe fe-edit"></i>
 			                            </a>
 			                            &nbsp;
