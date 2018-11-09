@@ -101,3 +101,8 @@ config_list:
   create_new_value: 'Create new config'
   name: 'Name'
   value: 'Value'
+
+config_form:
+  name: 'Name'
+  value: 'Value'
+  success_form: 'Config was created correctly.'

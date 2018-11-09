@@ -36,3 +36,7 @@ reaccion_cms_admin_remove_page_content:
 reaccion_cms_admin_preferences_configuration:
     path: /preferences/configuration
     controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\ConfigurationListController::index
+
+reaccion_cms_admin_preferences_create_configuration:
+    path: /preferences/configuration/create
+    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\CreateConfigurationController::index
