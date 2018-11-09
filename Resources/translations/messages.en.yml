@@ -12,6 +12,9 @@ entries:
   list: 'List all entries'
   create: 'Create new entry'
 
+media: 
+  title: 'Media'
+
 entries_categories: 
   list: 'List all categories'
   create: 'Create new category'
