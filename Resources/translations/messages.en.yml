@@ -65,6 +65,7 @@ page_form:
   seo_title: 'Title'
   seo_description: 'Description'
   seo_keywords: 'Keywords'
+  create_success_message: 'The page was created correctly.'
 
 page_content_types:
   text_html: 'Text / HTML'

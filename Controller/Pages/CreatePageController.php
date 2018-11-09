@@ -4,6 +4,7 @@
 
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\HttpFoundation\Request;
+	use Symfony\Component\Translation\TranslatorInterface;
 
 	use Cocur\Slugify\Slugify;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
@@ -11,7 +12,7 @@
 
 	class CreatePageController extends Controller
 	{
-		public function index(Request $request)
+		public function index(Request $request, TranslatorInterface $translator)
 		{
 			$page = new Page();
 			$em = $this->getDoctrine()->getManager();
@@ -31,7 +32,7 @@
 				$em->persist($page);
 				$em->flush();
 
-				$this->addFlash('success', 'The page was created correctly.');
+				$this->addFlash('success', $translator->trans('page_form.create_success_message') );
 
 				return $this->redirectToRoute('reaccion_cms_admin_pages_index');
 			}
