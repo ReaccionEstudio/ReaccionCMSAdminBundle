@@ -68,6 +68,8 @@ page_form:
   create_success_message: 'The page was created correctly.'
   remove_success_message: 'Page <strong>%name%</strong> was removed correctly.'
   remove_error_message: 'Error removing <strong>%name%</strong> content: %error%'
+  update_success_message: 'Page has been updated correctly.'
+  update_error_message: 'Error updating page: %error%'
 
 page_content_types:
   text_html: 'Text / HTML'
