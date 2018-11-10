@@ -118,3 +118,8 @@ config_form:
   error_form: 'Error creating config: %error%'
   update_success_form: 'Config was updated correctly.'
   update_error_form: 'Error updating config: %error%'
+
+# media
+media_list:
+  title: 'Media'
+  add_new: 'Add new media'

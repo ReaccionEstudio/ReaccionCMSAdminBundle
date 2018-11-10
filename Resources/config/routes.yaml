@@ -44,3 +44,8 @@ reaccion_cms_admin_preferences_create_configuration:
 reaccion_cms_admin_preferences_update_configuration:
     path: /preferences/configuration/{config}/update/
     controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\UpdateConfigurationController::index
+
+# Media
+reaccion_cms_admin_media_index:
+    path: /media
+    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media\MediaListController::index
