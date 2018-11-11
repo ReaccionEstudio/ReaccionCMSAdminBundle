@@ -2,11 +2,13 @@
 
 	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Media;
 
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
-	use Symfony\Component\HttpFoundation\File\UploadedFile;
 	use Doctrine\ORM\EntityManager;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Media;
+	use Symfony\Component\HttpFoundation\File\UploadedFile;
 	use Symfony\Component\Translation\TranslatorInterface;
+
+	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
+	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Media;
+	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Media\ResizeImageService;
 
 	/**
 	 * Service for managing media file uploads.
@@ -30,6 +32,13 @@
 		private $translator;
 
 		/**
+		 * @var ResizeImageService
+		 *
+		 * Resize image service
+		 */
+		private $resizeImageService;
+
+		/**
 		 * Full path for the uploaded file
 		 * @var String
 		 */
@@ -50,10 +59,11 @@
 		/**
 		 * Constructor
 		 */
-		public function __construct(EntityManager $em, TranslatorInterface $translator,String $uploadPath, Array $allowedMimeTypes)
+		public function __construct(EntityManager $em, TranslatorInterface $translator, ResizeImageService $resizeImageService, String $uploadPath, Array $allowedMimeTypes)
 		{
 			$this->em = $em;
 			$this->translator = $translator;
+			$this->resizeImageService = $resizeImageService;
 			$this->uploadPath = $uploadPath;
 			$this->allowedMimeTypes = $allowedMimeTypes;
 			$this->createUploadFolder();
@@ -91,15 +101,17 @@
 
 			try
 			{
+				// full filepath
+				$filepath = $this->uploadPath . "/" . $filename;
+
 				// move file to folder
 				$this->file->move($this->uploadPath, $filename);
 
 				// resize image
-
+				$resizedImages = $this->resizeImageService->resize($filepath);
 
 				// create media entity
-				$filepath = $this->uploadPath . "/" . $filename;
-				$this->createMediaEntity($originalFilename, $filepath, $mimeType, $size);
+				$this->createMediaEntity($originalFilename, $filepath, $mimeType, $size, $resizedImages);
 			}
 			catch(\Exception $e)
 			{
@@ -115,9 +127,10 @@
 		 * @param 	String 		$filepath 				Uploadad file full path
 		 * @param 	String 		$mimeType 				File mimeType
 		 * @param 	Float 		$size 					File size in bytes
+		 * @param 	Array 		$$resizedImages 		Resized images info
 		 * @return 	void 		
 		 */
-		private function createMediaEntity(String $originalFilename, String $filepath, String $mimeType, Float $size) : void
+		private function createMediaEntity(String $originalFilename, String $filepath, String $mimeType, Float $size, Array $resizedImages) : void
 		{
 			$filepathArray = explode("uploads/", $filepath);
 			$filepath = $filepathArray[1];
@@ -129,6 +142,24 @@
 				$media->setName($originalFilename);
 				$media->setPath($filepath);
 				$media->setMimetype($mimeType);
+
+				if( ! empty($resizedImages['l']['path']))
+				{
+					$media->setLargePath($resizedImages['l']['path']);
+					$media->setLargeSize($resizedImages['l']['size']);
+				}
+
+				if( ! empty($resizedImages['m']['path']))
+				{
+					$media->setMediumPath($resizedImages['m']['path']);
+					$media->setMediumSize($resizedImages['m']['size']);
+				}
+
+				if( ! empty($resizedImages['s']['path']))
+				{
+					$media->setSmallPath($resizedImages['s']['path']);
+					$media->setSmallSize($resizedImages['s']['size']);
+				}
 
 				$this->em->persist($media);
 				$this->em->flush();
