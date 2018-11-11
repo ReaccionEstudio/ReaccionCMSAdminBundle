@@ -29,7 +29,9 @@
 
     	<service id="reaccion_cms_admin.media_upload" class="%reaccion_cms_admin.media_upload.class%" public="true">
             <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="translator" />
             <argument>%reaccion_cms_admin.upload_dir%</argument>
+            <argument>%reaccion_cms_admin.allowed_upload_mimetypes%</argument>
         </service>
 
     </services>

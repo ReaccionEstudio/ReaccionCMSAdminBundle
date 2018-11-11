@@ -6,6 +6,7 @@
 	use Symfony\Component\HttpFoundation\File\UploadedFile;
 	use Doctrine\ORM\EntityManager;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Media;
+	use Symfony\Component\Translation\TranslatorInterface;
 
 	/**
 	 * Service for managing media file uploads.
@@ -22,10 +23,23 @@
 		private $em;
 
 		/**
+		 * @var TranslatorInterface
+		 *
+		 * Translator
+		 */
+		private $translator;
+
+		/**
 		 * Full path for the uploaded file
 		 * @var String
 		 */
 		private $uploadPath;
+
+		/**
+		 * Collection with allowed file mimeTypes
+		 * @var Array
+		 */
+		private $allowedMimeTypes;
 
 		/**
 		 * File to upload
@@ -36,10 +50,12 @@
 		/**
 		 * Constructor
 		 */
-		public function __construct(EntityManager $em, String $uploadPath)
+		public function __construct(EntityManager $em, TranslatorInterface $translator,String $uploadPath, Array $allowedMimeTypes)
 		{
 			$this->em = $em;
+			$this->translator = $translator;
 			$this->uploadPath = $uploadPath;
+			$this->allowedMimeTypes = $allowedMimeTypes;
 			$this->createUploadFolder();
 		}
 
@@ -59,12 +75,27 @@
 			$filename = md5(uniqid()) . "." . $extension;
 			$size = $this->file->getSize();
 
-			// TODO: check mimetype
+			// check if file has valid mimeType
+			if( ! in_array($mimeType, $this->allowedMimeTypes))
+			{
+				$invalidMssg =  $this->translator->trans(
+									'media_create.invalid_mimetype', 
+									array(
+										'%filename%' => $originalFilename, 
+										'%mimeType%' => $mimeType, 
+										'%validTypes%' => implode(", ", $this->allowedMimeTypes)
+									)
+								);
+				throw new \Exception($invalidMssg);
+			}
 
 			try
 			{
 				// move file to folder
 				$this->file->move($this->uploadPath, $filename);
+
+				// resize image
+
 
 				// create media entity
 				$filepath = $this->uploadPath . "/" . $filename;
