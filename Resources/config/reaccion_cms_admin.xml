@@ -12,6 +12,13 @@
 
         <parameter key="reaccion_cms_admin.upload_dir">%kernel.project_dir%/public/uploads/</parameter>
 
+        <parameter type="collection" key="reaccion_cms_admin.allowed_upload_mimetypes">
+            <parameter>image/png</parameter>
+            <parameter>image/jpeg</parameter>
+            <parameter>image/gif</parameter>
+            <parameter>video/mp4</parameter>
+        </parameter>
+
     </parameters>
 
     <services>
