@@ -24,10 +24,12 @@
 				{
 					$originalFilename = $file->getClientOriginalName();
 
-					$uploadService = new UploadService($file, $this->getParameter("reaccion_cms_admin.upload_dir"));
-					$uploadService->upload();
+					// upload process
+					$mediaUploadService = $this->get("reaccion_cms_admin.media_upload");
+					$mediaUploadService->upload($file);
 
-					$successMessage = $translator->trans('media_create.media_upload_success', array('%filename%' => $originalFilename));
+					// success message
+					$successMessage = $translator->trans('media_create.media_upload_success', array('%filename%' => $originalFilename) );
 					$this->addFlash('success', $successMessage);
 
 					return $this->redirectToRoute('reaccion_cms_admin_media_index');
