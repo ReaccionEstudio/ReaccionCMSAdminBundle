@@ -12,7 +12,6 @@
 		public function index(Request $request)
 		{
 			$em = $this->getDoctrine()->getManager();
-
 			$media = $em->getRepository(Media::class)->findAll();
 
 			return $this->render("@ReaccionCMSAdminBundle/media/list.html.twig",

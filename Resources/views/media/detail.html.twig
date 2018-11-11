@@ -1,0 +1,230 @@
+{% extends '@ReaccionCMSAdminBundle/base.html.twig' %}
+
+{% block reaccion_cms_admin_body %}
+
+<div class="my-3 my-md-5">
+
+  	<div class="container">
+
+  		<div class="mb-4 row">
+  			<div class="col-6">
+	  			<a href="{{ url('reaccion_cms_admin_media_index') }}" class="btn btn-secondary">
+	  				<i class="fe fe-arrow-left"></i>&nbsp;&nbsp;{{ 'media_detail.go_to_media_list' | trans }}
+	  			</a>
+	  		</div>
+  			<div class="col-6 text-right">
+	  			<a href="#" class="btn btn-danger">
+	  				<i class="fe fe-trash-2"></i>&nbsp;&nbsp;{{ 'crud.remove' | trans }}
+	  			</a>
+	  		</div>
+  		</div>
+
+		<!-- original image -->
+		<div class="card card-aside">
+
+			{% set original_image_url = app.request.getSchemeAndHttpHost() ~ asset('/uploads/' ~ media.path) %}
+
+		  	<a href="{{ original_image_url }}" target="_blank" class="card-aside-column">
+		  		<span class="tag tag-primary media-type-tag">
+				  {{ media.mimeType }}
+				</span>
+		  		<img src="{{ asset('uploads/' ~ media.path) }}" />
+		  	</a>
+		  	<div class="card-body d-flex flex-column">
+			    <h4>
+		    		<a href="{{ original_image_url }}">{{ media.name }}</a>
+		    	</h4>
+		    	<div class="mb-3">
+		    		
+		    		<span class="tag">
+					  {{ 'media_detail.image_type' | trans }}
+					  <span class="tag-addon tag-success">{{ 'media_detail.original' | trans }}</span>
+					</span>
+
+		    		<span class="tag ml-2">
+					  {{ 'media_detail.resolution' | trans }}
+					  <span class="tag-addon tag-orange">{{ getImageResolution(media.path) }}</span>
+					</span>
+
+		    		<span class="tag ml-2">
+		    			{{ 'media_detail.file_size' | trans }}
+					  	<span class="tag-addon tag-dark">{{ convertBytesToKb(media.size) }} Kb</span>
+					</span>
+
+		    	</div>
+		    	<div class="mt-1">
+		    		<strong>{{ 'media_detail.file_url' | trans }}:</strong><br />
+		    		<input type="text" value="{{ original_image_url }}" style="width:80%" />
+		    		<button type="button" class="btn btn-primary btn-sm ml-1">
+		    			<i class="fe fe-copy"></i>&nbsp;&nbsp;{{ 'crud.copy' | trans }}
+		    		</button>
+		    	</div>
+		    	<div class="mt-3 text-muted">
+		    		{{ 'crud.created_at' | trans }} {{ media.createdAt | date('d/m/Y H:i:s') }}
+		    	</div>
+		  	</div>
+		</div>
+
+		<!-- large image -->
+		{% if media.largePath is defined %}
+		<div class="card card-aside">
+
+			{% set large_image_url = app.request.getSchemeAndHttpHost() ~ asset('/uploads/' ~ media.largePath) %}
+
+		  	<a href="{{ large_image_url }}" target="_blank" class="card-aside-column">
+		  		<span class="tag tag-primary media-type-tag">
+				  {{ media.mimeType }}
+				</span>
+		  		<img src="{{ asset('uploads/' ~ media.largePath) }}" />
+		  	</a>
+		  	<div class="card-body d-flex flex-column">
+			    <h4>
+		    		<a href="{{ large_image_url }}">l_{{ media.name }}</a>
+		    	</h4>
+		    	<div class="mb-3">
+		    		
+		    		<span class="tag">
+					  {{ 'media_detail.image_type' | trans }}
+					  <span class="tag-addon tag-success">{{ 'media_detail.large' | trans }}</span>
+					</span>
+
+		    		<span class="tag ml-2">
+					  {{ 'media_detail.resolution' | trans }}
+					  <span class="tag-addon tag-orange">{{ getImageResolution(media.largePath) }}</span>
+					</span>
+
+		    		<span class="tag ml-2">
+					  {{ 'media_detail.file_size' | trans }}
+					  <span class="tag-addon tag-dark">{{ convertBytesToKb(media.largeSize) }} Kb</span>
+					</span>
+
+		    	</div>
+		    	<div class="mt-1">
+		    		<strong>{{ 'media_detail.file_url' | trans }}:</strong><br />
+		    		<input type="text" value="{{ large_image_url }}" style="width:80%" />
+		    		<button type="button" class="btn btn-primary btn-sm ml-1">
+		    			<i class="fe fe-copy"></i>&nbsp;&nbsp;{{ 'crud.copy' | trans }}
+		    		</button>
+		    	</div>
+		    	<div class="mt-3 text-muted">
+		    		{{ 'crud.created_at' | trans }} {{ media.createdAt | date('d/m/Y H:i:s') }}
+		    	</div>
+		  	</div>
+		</div>
+		{% endif %}
+
+		<!-- medium image -->
+		{% if media.mediumPath is defined %}
+		<div class="card card-aside">
+
+			{% set medium_image_url = app.request.getSchemeAndHttpHost() ~ asset('/uploads/' ~ media.mediumPath) %}
+
+		  	<a href="{{ medium_image_url }}" target="_blank" class="card-aside-column">
+		  		<span class="tag tag-primary media-type-tag">
+				  {{ media.mimeType }}
+				</span>
+		  		<img src="{{ asset('uploads/' ~ media.mediumPath) }}" />
+		  	</a>
+		  	<div class="card-body d-flex flex-column">
+			    <h4>
+		    		<a href="{{ medium_image_url }}">m_{{ media.name }}</a>
+		    	</h4>
+		    	<div class="mb-3">
+		    		
+		    		<span class="tag">
+					  {{ 'media_detail.image_type' | trans }}
+					  <span class="tag-addon tag-success">{{ 'media_detail.medium' | trans }}</span>
+					</span>
+
+		    		<span class="tag ml-2">
+					  {{ 'media_detail.resolution' | trans }}
+					  <span class="tag-addon tag-orange">{{ getImageResolution(media.mediumPath) }}</span>
+					</span>
+
+		    		<span class="tag ml-2">
+					  {{ 'media_detail.file_size' | trans }}
+					  <span class="tag-addon tag-dark">{{ convertBytesToKb(media.largeSize) }} Kb</span>
+					</span>
+
+		    	</div>
+		    	<div class="mt-1">
+		    		<strong>{{ 'media_detail.file_url' | trans }}:</strong><br />
+		    		<input type="text" value="{{ medium_image_url }}" style="width:80%" />
+		    		<button type="button" class="btn btn-primary btn-sm ml-1">
+		    			<i class="fe fe-copy"></i>&nbsp;&nbsp;{{ 'crud.copy' | trans }}
+		    		</button>
+		    	</div>
+		    	<div class="mt-3 text-muted">
+		    		{{ 'crud.created_at' | trans }} {{ media.createdAt | date('d/m/Y H:i:s') }}
+		    	</div>
+		  	</div>
+		</div>
+		{% endif %}
+
+		<!-- small image -->
+		{% if media.smallPath is defined %}
+		<div class="card card-aside">
+
+			{% set small_image_url = app.request.getSchemeAndHttpHost() ~ asset('/uploads/' ~ media.smallPath) %}
+
+		  	<a href="{{ small_image_url }}" target="_blank" class="card-aside-column">
+		  		<span class="tag tag-primary media-type-tag">
+				  {{ media.mimeType }}
+				</span>
+		  		<img src="{{ asset('uploads/' ~ media.smallPath) }}" />
+		  	</a>
+		  	<div class="card-body d-flex flex-column">
+			    <h4>
+		    		<a href="{{ small_image_url }}">s_{{ media.name }}</a>
+		    	</h4>
+		    	<div class="mb-3">
+		    		
+		    		<span class="tag">
+					  {{ 'media_detail.image_type' | trans }}
+					  <span class="tag-addon tag-success">{{ 'media_detail.small' | trans }}</span>
+					</span>
+
+		    		<span class="tag ml-2">
+					  {{ 'media_detail.resolution' | trans }}
+					  <span class="tag-addon tag-orange">{{ getImageResolution(media.smallPath) }}</span>
+					</span>
+
+		    		<span class="tag ml-2">
+					  {{ 'media_detail.file_size' | trans }}
+					  <span class="tag-addon tag-dark">{{ convertBytesToKb(media.smallSize) }} Kb</span>
+					</span>
+
+		    	</div>
+		    	<div class="mt-1">
+		    		<strong>{{ 'media_detail.file_url' | trans }}:</strong><br />
+		    		<input type="text" value="{{ small_image_url }}" style="width:80%" />
+		    		<button type="button" class="btn btn-primary btn-sm ml-1">
+		    			<i class="fe fe-copy"></i>&nbsp;&nbsp;{{ 'crud.copy' | trans }}
+		    		</button>
+		    	</div>
+		    	<div class="mt-3 text-muted">
+		    		{{ 'crud.created_at' | trans }} {{ media.createdAt | date('d/m/Y H:i:s') }}
+		    	</div>
+		  	</div>
+		</div>
+		{% endif %}
+
+		<div class="mt-4 row">
+  			<div class="col-6">
+	  			<a href="{{ url('reaccion_cms_admin_media_index') }}" class="btn btn-secondary">
+	  				<i class="fe fe-arrow-left"></i>&nbsp;&nbsp;{{ 'media_detail.go_to_media_list' | trans }}
+	  			</a>
+	  		</div>
+  			<div class="col-6 text-right">
+	  			<a href="#" class="btn btn-danger">
+	  				<i class="fe fe-trash-2"></i>&nbsp;&nbsp;{{ 'crud.remove' | trans }}
+	  			</a>
+	  		</div>
+  		</div>
+
+	</div>
+
+
+</div>
+
+{% endblock %}

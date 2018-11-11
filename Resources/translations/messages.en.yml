@@ -35,6 +35,7 @@ preferences:
 
 # crud
 crud:
+  show: 'Show'
   edit: 'Edit'
   remove: 'Remove'
   listing_x_of_y: 'Listing %current% of %total%'
@@ -131,3 +132,14 @@ media_create:
   file: 'Media file'
   media_upload_success: 'File <strong>%filename%</strong> has been uploaded correctly.'
   invalid_mimetype: 'File <strong>%filename%</strong> is not valid: %mimeType%. <br />Valid types are: <strong>%validTypes%</strong>'
+
+media_detail:
+  image_type: 'Image type'
+  resolution: 'Resolution'
+  file_size: 'File size'
+  file_url: 'File url'
+  original: 'Original'
+  large: 'Large'
+  medium: 'Medium'
+  small: 'Small'
+  go_to_media_list: 'Go back to media list'

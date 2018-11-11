@@ -1,3 +1,15 @@
+/**
+ * Media list
+ */
 div#media_card_columns{
 	column-count: 4;
 }
+
+/**
+ * Media detail
+ */
+ span.media-type-tag{
+ 	position:absolute;
+ 	top:13;
+ 	left:10;
+ }
