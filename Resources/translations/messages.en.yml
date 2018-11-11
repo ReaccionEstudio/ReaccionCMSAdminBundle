@@ -42,6 +42,8 @@ crud:
   send_data: 'Send data'
   save_changes: 'Save changes'
   go_back: 'Go back'
+  copy: 'Copy'
+  created_at: 'Created at'
 
 # common messages
 remove_item_confirm_message: 'Do you want to remove this item?'
@@ -127,4 +129,5 @@ media_list:
 media_create:
   title: 'Add media'
   file: 'Media file'
-  media_upload_success: 'File %filename% has been uploaded correctly.'
+  media_upload_success: 'File <strong>%filename%</strong> has been uploaded correctly.'
+  invalid_mimetype: 'File <strong>%filename%</strong> is not valid: %mimeType%. <br />Valid types are: <strong>%validTypes%</strong>'
