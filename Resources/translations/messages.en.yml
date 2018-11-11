@@ -123,3 +123,8 @@ config_form:
 media_list:
   title: 'Media'
   add_new: 'Add new media'
+
+media_create:
+  title: 'Add media'
+  file: 'Media file'
+  media_upload_success: 'File %filename% has been uploaded correctly.'

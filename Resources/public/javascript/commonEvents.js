@@ -24,4 +24,16 @@
   			window.location = removeUrl;
   		}
   	});
+
+    // Set filename value in the input label for the selected file
+    $("input.custom-file-input").on("change", function()
+    {
+      var files = $("input.custom-file-input")[0].files;
+      
+      if(files[0].name)
+      {
+        var filename = files[0].name;
+        $("label.custom-file-label").html(filename);
+      }
+    });
  });

@@ -6,6 +6,7 @@
 
     <parameters>
     	<parameter key="reaccion_cms_admin.page_content.position.class">App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\PageContent\PageContentPosition</parameter>
+        <parameter key="reaccion_cms_admin.upload_dir">%kernel.project_dir%/public/uploads/</parameter>
     </parameters>
 
     <services>
