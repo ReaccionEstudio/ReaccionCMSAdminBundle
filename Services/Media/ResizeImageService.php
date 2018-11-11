@@ -109,8 +109,11 @@
 					$image->resizeToWidth($configSizeValue['width']);
 					$image->save($newImagePath);
 
+					$relativeNewImagePath = explode("uploads/", $newImagePath);
+					$relativeNewImagePath = $relativeNewImagePath[1];
+					
 					$this->resizedImages[$imageTypePrefix] = array(
-																'path' => $newImagePath,
+																'path' => $relativeNewImagePath,
 																'size' => filesize($newImagePath)
 															);
 				}
