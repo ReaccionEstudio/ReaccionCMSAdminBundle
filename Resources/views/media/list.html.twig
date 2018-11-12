@@ -19,6 +19,17 @@
 
     {% embed '@ReaccionCMSAdminBundle/shared/flash_messages.html.twig' with {'extraClasses' : 'pl-0 pr-0'} %}{% endembed %}
 
+    <!-- pagination -->
+    <div class="mb-4 row">
+      <div class="col-6">
+        {% embed '@ReaccionCMSAdminBundle/shared/crud/listingCount.html.twig' with { 'result' : media } %}{% endembed %}
+      </div>
+      <div class="col-6 embed-pagination">
+        {{ knp_pagination_render(media) }}
+      </div>
+    </div><!-- end pagination -->
+
+    <!-- media list -->
     <div id="media_card_columns" class="card-columns">
 
       {% for item in media %}
@@ -40,7 +51,17 @@
       </div>
       {% endfor %}
 
-    </div>
+    </div><!-- end media list -->
+
+    <!-- pagination -->
+    <div class="mb-4 row">
+      <div class="col-6">
+        {% embed '@ReaccionCMSAdminBundle/shared/crud/listingCount.html.twig' with { 'result' : media } %}{% endembed %}
+      </div>
+      <div class="col-6 embed-pagination">
+        {{ knp_pagination_render(media) }}
+      </div>
+    </div><!-- end pagination -->
 
   </div>
 
