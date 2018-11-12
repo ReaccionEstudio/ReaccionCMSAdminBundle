@@ -1,7 +1,7 @@
 <div class="card-footer footer-pagination">
 	<div class="row">
   		<div class="col-4 pl-0">
-  			<h3 class="card-title">{{ 'crud.listing_x_of_y' | trans({ '%current%' : getCurrentListingCount(result), '%total%' : result.getTotalItemCount }) }}</h3>
+  			<h3 class="card-title">{% embed '@ReaccionCMSAdminBundle/shared/crud/listingCount.html.twig' %}{% endembed %}</h3>
     	</div>
   		<div class="col-8 embed-pagination p-0">
     		{{ knp_pagination_render(result) }}
