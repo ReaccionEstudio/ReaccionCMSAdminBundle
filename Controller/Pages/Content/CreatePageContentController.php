@@ -23,25 +23,39 @@
 
 			if ($form->isSubmitted() && $form->isValid()) 
 			{
-				// set page for content
-				$pageContent->setPage($page);
+				try
+				{
+					// set page for content
+					$pageContent->setPage($page);
 
-				// set content position
-				$nextPosition = $this->get("reaccion_cms_admin.page_content_position")->getNextPosition($page);
-				$pageContent->setPosition($nextPosition);
+					// set content position
+					$nextPosition = $this->get("reaccion_cms_admin.page_content_position")->getNextPosition($page);
+					$pageContent->setPosition($nextPosition);
 
-				// save
-				$em->persist($pageContent);
-				$em->flush();
+					// save
+					$em->persist($pageContent2);
+					$em->flush();
 
-				// flash message
-				$successMessage = $translator->trans('page_content_form.create_success_message');
-				$this->addFlash('success', $successMessage);
+					// flash message
+					$successMessage = $translator->trans('page_content_form.create_success_message');
+					$this->addFlash('success', $successMessage);
 
-				return 	$this->redirectToRoute(
+					return 	$this->redirectToRoute(
 							'reaccion_cms_admin_pages_detail', 
 							array('page' => $page->getId())
 						);
+				}
+				catch(\Exception $e)
+				{
+					$errorMssg = $translator->trans(
+												'page_content_form.create_error_message', 
+												[ 
+													'%name%' => $pageContent->getName(),
+													'%error%' => $e->getMessage() 
+												]
+											);
+					$this->addFlash('error', $errorMssg);
+				}
 			}
 
 			return $this->render("@ReaccionCMSAdminBundle/pages/content/create.html.twig",

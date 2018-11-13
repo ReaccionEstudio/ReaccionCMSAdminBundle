@@ -1,0 +1,13 @@
+{% embed '@ReaccionCMSAdminBundle/shared/flash_messages.html.twig' with {'extraClasses' : 'pl-0 pr-0'} %}{% endembed %}
+
+{{ form_errors(form) }}
+
+{{ form_row(form.name) }}
+
+{{ form_row(form.type) }}
+
+{{ form_row(form.value) }}
+
+{% embed '@ReaccionCMSAdminBundle/pages/content/types/image.html.twig' %}{% endembed %}
+
+{{ form_row(form.isEnabled) }}

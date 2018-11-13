@@ -20,7 +20,11 @@
 
       {{ form_start(form, { attr : { 'class' : 'mb-0' } }) }}
 
-      <div class="card-body">{{ form_widget(form) }}</div>
+      <div class="card-body">
+
+        {% embed '@ReaccionCMSAdminBundle/pages/content/form.html.twig' %}{% endembed %}
+
+      </div>
 
       <div class="card-footer text-center">
     		
