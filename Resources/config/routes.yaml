@@ -57,3 +57,7 @@ reaccion_cms_admin_create_media:
 reaccion_cms_admin_media_detail:
     path: /media/{media}
     controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media\MediaDetailController::index
+
+reaccion_cms_admin_remove_media:
+    path: /media/{media}/remove
+    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media\RemoveMediaController::index

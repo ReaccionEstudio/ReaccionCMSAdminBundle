@@ -143,3 +143,5 @@ media_detail:
   medium: 'Medium'
   small: 'Small'
   go_to_media_list: 'Go back to media list'
+  removed_media_successful: 'Media was removed correctly'
+  removed_media_error: 'Error removing media <strong>%name%</strong>: %error%'

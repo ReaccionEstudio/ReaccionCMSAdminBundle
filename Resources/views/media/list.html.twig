@@ -43,7 +43,7 @@
             <a href="{{ url('reaccion_cms_admin_media_detail', { 'media' : item.id }) }}" class="text-primary mr-3">
               <i class="fe fe-zoom-in"></i>&nbsp;&nbsp;{{ 'crud.show' | trans}}
             </a>
-            <a href="#" class="text-danger">
+            <a href="{{ url('reaccion_cms_admin_remove_media', { 'media' : item.id }) }}" class="text-danger" data-detele-confirm="true">
               <i class="fe fe-trash-2"></i>&nbsp;&nbsp;{{ 'crud.remove' | trans}}
             </a>
           </div>
