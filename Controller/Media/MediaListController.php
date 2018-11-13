@@ -12,13 +12,16 @@
 		public function index(Request $request)
 		{
 			$em = $this->getDoctrine()->getManager();
-			$media = $em->getRepository(Media::class)->findAll();
+			$media = $em->getRepository(Media::class)->findBy(
+						array(),
+						array('id' => 'DESC')
+					 );
 
 			// pagination
 			$paginator = $this->get('knp_paginator');
 		    $media = $paginator->paginate(
 		        $media,
-		        $request->query->getInt('media', 1),
+		        $request->query->getInt('page', 1),
 		        $this->getParameter("pagination_page_limit")
 		    );
 
