@@ -15,6 +15,7 @@ class Media
 			{
 				submitted = true;
 
+				$(this).html('<div class="fe fe-refresh-cw spin"></div>');
 				$(this).attr("disabled", "disabled");
 			}
 		});
