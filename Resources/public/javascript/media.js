@@ -1,3 +1,10 @@
+/**
+ * Media class
+ *
+ * @author 	Alberto Vian - alberto@reaccionestudio.com
+ * @website reaccionestudio.com
+ */
+
 class Media
 {
 	constructor(){ }
