@@ -14,6 +14,14 @@
 			$em = $this->getDoctrine()->getManager();
 			$media = $em->getRepository(Media::class)->findAll();
 
+			// pagination
+			$paginator = $this->get('knp_paginator');
+		    $media = $paginator->paginate(
+		        $media,
+		        $request->query->getInt('media', 1),
+		        $this->getParameter("pagination_page_limit")
+		    );
+
 			return $this->render("@ReaccionCMSAdminBundle/media/list.html.twig",
 				[
 					'media' => $media
