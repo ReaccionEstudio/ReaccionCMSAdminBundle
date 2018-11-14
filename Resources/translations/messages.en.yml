@@ -150,3 +150,7 @@ media_detail:
 
 media_common:
   open_gallery: 'Open gallery'
+  original: 'Original'
+  large: 'Large'
+  medium: 'Medium'
+  small: 'Small'
