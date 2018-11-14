@@ -7,11 +7,17 @@
 
 class Media
 {
+	/**
+	 * Constructor
+	 */
 	constructor()
 	{
-		
+		this.selectedMedia = {};
 	}
 
+	/**
+	 * Media form events
+	 */
 	formEvents()
 	{
 		var submitted = false;
@@ -43,24 +49,68 @@ class Media
 	    });
 	}
 
+	/**
+	 * Show media gallery
+	 */
 	_showMediaGallery()
 	{
 		var mediaListRoute = Routing.generate('reaccion_cms_admin_media_index');
-		mediaListRoute = mediaListRoute + '?modal=1'
+		mediaListRoute = mediaListRoute + '?modal=1';
 
-		$("div#modal div.modal-body").load(mediaListRoute, function(result)
+		$("div#modal").modal("show");
+		$("div#modal div.modal-body div.dimmer-content").load(mediaListRoute, function(result)
 		{
-			$("div#modal").modal("show");
+			$("div#modal div.modal-body .dimmer").removeClass("active");
 		});
 	}
 
+	/**
+	 * Media gallery events
+	 */
 	mediaGalleryEvents()
+	{
+		this._navigateThroughtMediaGalleryEvent();
+		this._selectMediaItemFromGalleryEvent();
+	}
+
+	/**
+	 * Handles navigation event for media gallery
+	 */
+	_navigateThroughtMediaGalleryEvent()
 	{
 		$("body").on("click", "div#modal div.modal-body ul.pagination a.page-link", function(e)
 		{
 			e.preventDefault();
 			
+			$("div#modal div.modal-body .dimmer").addClass("active");
 			$("div#modal div.modal-body").load($(this).attr("href"));
+		});
+	}
+
+	/**
+	 * Select media item from gallery
+	 */
+	_selectMediaItemFromGalleryEvent()
+	{
+		$("body").on("click", "div#modal div.card a[data-media-path]", function(e)
+		{
+			e.preventDefault();
+
+			let path = $(this).attr("data-media-path");
+			let largePath = $(this).attr("data-media-large-path");
+			let mediumPath = $(this).attr("data-media-medium-path");
+			let smallPath = $(this).attr("data-media-small-path");
+
+			this.selectedMedia = {
+				"path" : path,
+				"largePath" : largePath,
+				"mediumPath" : mediumPath,
+				"smallPath" : smallPath
+			};
+
+			// create and dispatch event
+			var event = new CustomEvent('selectedItemFromMediaGallery', { 'detail' : this.selectedMedia });
+			document.dispatchEvent(event);
 		});
 	}
 }

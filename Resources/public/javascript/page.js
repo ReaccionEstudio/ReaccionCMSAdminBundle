@@ -9,11 +9,17 @@ import ImageContentType from "./page/imageContentType.js";
 
 class Page
 {
+	/**
+	 * Constructor
+	 */
 	constructor()
 	{
 
 	}
 
+	/**
+	 * Page form events
+	 */
 	formEvents()
 	{
 		var imageContentType = new ImageContentType();

@@ -9,15 +9,24 @@ import Media from '../media.js';
 
 class ImageContentType
 {
+	/** 
+	 * Constructor
+	 */
 	constructor()
 	{
+		this.selectedMedia = {};
 		this.mediaObj = new Media();
 		this.galleryComponent = "div#image_gallery_component";
+		this.formSelector = 'form[name="page_content"]';
 	}
 
+	/**
+	 * Image content type form events
+	 */
 	events()
 	{
 		this._toggleGalleryEvent();
+		this._handleSelectedItemFromMediaGalleryEvent();
 		this.mediaObj.mediaGalleryEvents()
 
 		let _self = this;
@@ -33,6 +42,9 @@ class ImageContentType
 		});
 	}
 
+	/**
+	 * Toggle gallery in page content form
+	 */
 	_toggleGalleryEvent()
 	{
 		let selectedValue = $("select#page_content_type").val();
@@ -47,21 +59,53 @@ class ImageContentType
 		}
 	}
 
+	/**
+	 * Hide gallery
+	 */
 	_hideGallery()
 	{
 		$(this.galleryComponent).addClass("d-none");
 		$("textarea#page_content_value").parent().removeClass("d-none");
 	}
 
+	/**
+	 * Show gallery
+	 */
 	_showGallery()
 	{
 		$(this.galleryComponent).removeClass("d-none");
 		$("textarea#page_content_value").parent().addClass("d-none");
 	}
 
+	/**
+	 * Open gallery
+	 */
 	_openMediaGallery()
 	{
 		this.mediaObj._showMediaGallery();
+	}
+
+	/**
+	 * Listen to selectedItemFromMediaGallery event
+	 */
+	_handleSelectedItemFromMediaGalleryEvent()
+	{
+		document.addEventListener('selectedItemFromMediaGallery', function(e)
+		{
+			this.selectedMedia = e.detail;
+			$("div#modal").modal("hide");
+		}, 
+		false);
+	}
+
+	/**
+	 * Generate image preview for selected gallery image
+	 */
+	_previewSelectedImage()
+	{
+		$(this.formSelector).find('[data-media-value="true"]').val(this.selectedMedia.path);
+
+		// TODO ...
 	}
 
 }
