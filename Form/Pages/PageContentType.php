@@ -4,12 +4,12 @@
 
 	use Symfony\Component\Form\AbstractType;
 	use Symfony\Component\Form\FormBuilderInterface;
-	use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 	use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 	use Symfony\Component\Form\Extension\Core\Type\TextType;
 	use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 	use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 	use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+	use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 	class PageContentType extends AbstractType
 	{
@@ -37,6 +37,11 @@
 	            	'label' => 'page_content_form.value',
 	            	'required' => true,
 	            	'attr' => array('rows' => 8)
+	            ])
+	            ->add('mediaValue', HiddenType::class, [
+	            	'required' => false,
+	            	'mapped' => false,
+	            	'attr' => ['data-media-value' => 'true']
 	            ])
 	            ->add('isEnabled', CheckboxType::class, [
 	            	'label' => 'page_content_form.is_enabled',
