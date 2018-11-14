@@ -8,8 +8,21 @@ div#media_card_columns{
 /**
  * Media detail
  */
- span.media-type-tag{
+span.media-type-tag{
  	position:absolute;
  	top:13;
- 	left:10;
- }
+	left:10;
+}
+
+/**
+ * Media Gallery in Modal
+ */
+div#modal div.modal-body div#media_card_columns div.card:hover{
+	box-shadow: 0 0 10px #467fcf;
+  	border: 1px solid #467fcf;
+}
+
+div#modal div.modal-body div#media_card_columns div.card:hover a img{
+  	border-top-left-radius: 0;
+  	border-top-right-radius: 0;
+}

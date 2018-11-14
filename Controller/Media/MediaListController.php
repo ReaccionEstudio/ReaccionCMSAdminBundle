@@ -25,9 +25,16 @@
 		        $this->getParameter("pagination_page_limit")
 		    );
 
-			return $this->render("@ReaccionCMSAdminBundle/media/list.html.twig",
+		    $template = "@ReaccionCMSAdminBundle/media/list.html.twig";
+
+		    if($request->query->get('modal'))
+		    {
+		    	$template = "@ReaccionCMSAdminBundle/media/modal_list.html.twig";
+		    }
+
+			return $this->render($template,
 				[
-					'media' => $media
+					'media' => $media,
 				]
 			);
 		}

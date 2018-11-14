@@ -1,0 +1,62 @@
+{% extends '@ReaccionCMSAdminBundle/base_modal.html.twig' %}
+
+{% block reaccion_cms_admin_body_min %}
+
+<div class="my-3 my-md-5">
+
+	<div class="container">
+  
+		<div class="page-header">
+  		<div class="col pl-0">
+    		<h1 class="page-title">{{ 'media_list.title' | trans }}</h1>
+    	</div>
+  		<div class="col col-lg-6 row justify-content-end">
+  			<a href="{{ url('reaccion_cms_admin_create_media') }}" class="btn btn-primary">
+  				<i class="fe fe-plus"></i>&nbsp;&nbsp;{{ 'media_list.add_new' | trans }}
+  			</a>
+  		</div>
+    </div>
+
+    {% embed '@ReaccionCMSAdminBundle/shared/flash_messages.html.twig' with {'extraClasses' : 'pl-0 pr-0'} %}{% endembed %}
+
+    <!-- pagination -->
+    <div class="mb-4 row">
+      <div class="col-6">
+        {% embed '@ReaccionCMSAdminBundle/shared/crud/listingCount.html.twig' with { 'result' : media } %}{% endembed %}
+      </div>
+      <div class="col-6 embed-pagination">
+        {{ knp_pagination_render(media) }}
+      </div>
+    </div><!-- end pagination -->
+
+    <!-- media list -->
+    <div id="media_card_columns" class="card-columns">
+
+      {% for item in media %}
+      <div class="card">
+        <a href="#" data-media-id="{{ item.id }}">
+          <img class="card-img-top" src="{{ asset('uploads/' ~ item.path) }}" alt="Card image cap">
+        </a>
+        <div class="card-body">
+          <h5 class="card-title">{{ item.name }}</h5>
+        </div>
+      </div>
+      {% endfor %}
+
+    </div><!-- end media list -->
+
+    <!-- pagination -->
+    <div class="mb-4 row">
+      <div class="col-6">
+        {% embed '@ReaccionCMSAdminBundle/shared/crud/listingCount.html.twig' with { 'result' : media } %}{% endembed %}
+      </div>
+      <div class="col-6 embed-pagination">
+        {{ knp_pagination_render(media) }}
+      </div>
+    </div><!-- end pagination -->
+
+  </div>
+
+</div>
+
+{% endblock %}

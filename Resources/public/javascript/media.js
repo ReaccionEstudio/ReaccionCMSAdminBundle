@@ -7,7 +7,10 @@
 
 class Media
 {
-	constructor(){ }
+	constructor()
+	{
+		
+	}
 
 	formEvents()
 	{
@@ -38,6 +41,27 @@ class Media
 	        $("label.custom-file-label").html(filename);
 	      }
 	    });
+	}
+
+	_showMediaGallery()
+	{
+		var mediaListRoute = Routing.generate('reaccion_cms_admin_media_index');
+		mediaListRoute = mediaListRoute + '?modal=1'
+
+		$("div#modal div.modal-body").load(mediaListRoute, function(result)
+		{
+			$("div#modal").modal("show");
+		});
+	}
+
+	mediaGalleryEvents()
+	{
+		$("body").on("click", "div#modal div.modal-body ul.pagination a.page-link", function(e)
+		{
+			e.preventDefault();
+			
+			$("div#modal div.modal-body").load($(this).attr("href"));
+		});
 	}
 }
 

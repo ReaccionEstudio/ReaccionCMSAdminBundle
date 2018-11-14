@@ -49,6 +49,8 @@ reaccion_cms_admin_preferences_update_configuration:
 reaccion_cms_admin_media_index:
     path: /media
     controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media\MediaListController::index
+    options:
+        expose: true
 
 reaccion_cms_admin_create_media:
     path: /media/add

@@ -35,6 +35,7 @@ preferences:
 
 # crud
 crud:
+  close: 'Close'
   show: 'Show'
   edit: 'Edit'
   remove: 'Remove'

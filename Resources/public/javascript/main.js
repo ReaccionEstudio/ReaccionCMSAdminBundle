@@ -5,7 +5,6 @@
  * @website reaccionestudio.com
  */
 
-
 require('./commonEvents.js');
 
 import Media from './media.js';
