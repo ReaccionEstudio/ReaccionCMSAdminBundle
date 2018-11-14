@@ -101,6 +101,7 @@ class Media
 			let mediumPath = $(this).attr("data-media-medium-path");
 			let smallPath = $(this).attr("data-media-small-path");
 
+			// TODO: ADD IMAGE SIZE
 			this.selectedMedia = {
 				"path" : path,
 				"largePath" : largePath,

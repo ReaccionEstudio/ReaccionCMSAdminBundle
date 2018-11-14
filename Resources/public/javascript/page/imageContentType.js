@@ -90,9 +90,16 @@ class ImageContentType
 	 */
 	_handleSelectedItemFromMediaGalleryEvent()
 	{
+		var _self = this;
+
 		document.addEventListener('selectedItemFromMediaGallery', function(e)
 		{
-			this.selectedMedia = e.detail;
+			_self.selectedMedia = e.detail;
+
+			// Generate image preview
+			_self._previewSelectedImage();
+
+			// Close modal
 			$("div#modal").modal("hide");
 		}, 
 		false);
@@ -105,7 +112,49 @@ class ImageContentType
 	{
 		$(this.formSelector).find('[data-media-value="true"]').val(this.selectedMedia.path);
 
-		// TODO ...
+		let selectedImagePreviewSelector = "div#selected_image_preview";
+		let previewImagePath = this.selectedMedia.path;
+		let imagePrefix = appUrl + '/uploads/';
+
+		if(this.selectedMedia.mediumPath)
+		{
+			previewImagePath = this.selectedMedia.mediumPath;
+		}
+		else if(this.selectedMedia.largePath)
+		{
+			previewImagePath = this.selectedMedia.largePath;
+		}
+
+		// add image prefix
+		previewImagePath = imagePrefix + previewImagePath;
+		this.selectedMedia.path = imagePrefix + this.selectedMedia.path;
+
+		console.log(this.selectedMedia);
+		console.log(previewImagePath);
+
+		// set original image
+		$(selectedImagePreviewSelector + " a.card-aside-column").css('background-image', 'url(' + previewImagePath + ')' );
+		$(selectedImagePreviewSelector + " div#image_quality_original_option div.image-quality-option img").attr("src", this.selectedMedia.path);
+
+		if(this.selectedMedia.largePath)
+		{
+			this.selectedMedia.largePath = imagePrefix + this.selectedMedia.largePath;
+			$(selectedImagePreviewSelector + " div#image_quality_large_option div.image-quality-option img").attr("src", this.selectedMedia.largePath);
+		}
+
+		if(this.selectedMedia.mediumPath)
+		{
+			this.selectedMedia.mediumPath = imagePrefix + this.selectedMedia.mediumPath;
+			$(selectedImagePreviewSelector + " div#image_quality_medium_option div.image-quality-option img").attr("src", this.selectedMedia.mediumPath);
+		}
+
+		if(this.selectedMedia.smallPath)
+		{
+			this.selectedMedia.smallPath = imagePrefix + this.selectedMedia.smallPath;
+			$(selectedImagePreviewSelector + " div#image_quality_small_option div.image-quality-option img").attr("src", this.selectedMedia.smallPath);
+		}
+
+		$("div#selected_image_preview").removeClass("d-none");
 	}
 
 }
