@@ -35,7 +35,7 @@
       {% for item in media %}
       <div class="card">
         <a href="{{ url('reaccion_cms_admin_media_detail', { 'media' : item.id }) }}">
-          <img class="card-img-top" src="{{ asset('uploads/' ~ item.path) }}" alt="Card image cap">
+          <img class="card-img-top" src="{{ asset('uploads/' ~ getSmallestImageFromMedia(item)) }}" alt="Card image cap">
         </a>
         <div class="card-body">
           <h5 class="card-title">{{ item.name }}</h5>
