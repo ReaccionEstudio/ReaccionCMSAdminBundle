@@ -80,7 +80,7 @@ page_form:
 
 page_content_types:
   text_html: 'Text / HTML'
-  image: 'Image'
+  img: 'Image'
 
 page_content_form:
   name: 'Name / Alias'
