@@ -34,7 +34,7 @@
 
       {% for item in media %}
       <div class="card">
-        <a href="#" data-media-path="{{ item.path }}" {% if item.largePath is not empty %}data-media-large-path="{{ item.largePath }}"{% endif %} {% if item.mediumPath is not empty %}data-media-medium-path="{{ item.mediumPath }}"{% endif %} {% if item.smallPath is not empty %}data-media-small-path="{{ item.smallPath }}"{% endif %}>
+        <a href="#" data-media-id="{{ item.id }}">
           <img class="card-img-top" src="{{ asset('uploads/' ~ getSmallestImageFromMedia(item)) }}" alt="Card image cap">
         </a>
         <div class="card-body">

@@ -129,32 +129,48 @@ class ImageContentType
 		previewImagePath = imagePrefix + previewImagePath;
 		this.selectedMedia.path = imagePrefix + this.selectedMedia.path;
 
-		console.log(this.selectedMedia);
-		console.log(previewImagePath);
+		// convert bytes to kb
+		this.selectedMedia['size'] = this._convertBytesToKilobytes(this.selectedMedia['size']) + ' Kb';
+		this.selectedMedia.largeSize = this._convertBytesToKilobytes(this.selectedMedia.largeSize) + ' Kb';
+		this.selectedMedia.mediumSize = this._convertBytesToKilobytes(this.selectedMedia.mediumSize) + ' Kb';
+		this.selectedMedia.smallSize = this._convertBytesToKilobytes(this.selectedMedia.smallSize) + ' Kb';
 
 		// set original image
 		$(selectedImagePreviewSelector + " a.card-aside-column").css('background-image', 'url(' + previewImagePath + ')' );
 		$(selectedImagePreviewSelector + " div#image_quality_original_option div.image-quality-option img").attr("src", this.selectedMedia.path);
+		$(selectedImagePreviewSelector + " div#image_quality_original_option small.media-size").html('(' + this.selectedMedia['size'] + ')');
 
 		if(this.selectedMedia.largePath)
 		{
 			this.selectedMedia.largePath = imagePrefix + this.selectedMedia.largePath;
 			$(selectedImagePreviewSelector + " div#image_quality_large_option div.image-quality-option img").attr("src", this.selectedMedia.largePath);
+			$(selectedImagePreviewSelector + " div#image_quality_large_option small.media-size").html('(' + this.selectedMedia.largeSize + ')');
 		}
 
 		if(this.selectedMedia.mediumPath)
 		{
 			this.selectedMedia.mediumPath = imagePrefix + this.selectedMedia.mediumPath;
 			$(selectedImagePreviewSelector + " div#image_quality_medium_option div.image-quality-option img").attr("src", this.selectedMedia.mediumPath);
+			$(selectedImagePreviewSelector + " div#image_quality_medium_option small.media-size").html('(' + this.selectedMedia.mediumSize + ')');
 		}
 
 		if(this.selectedMedia.smallPath)
 		{
 			this.selectedMedia.smallPath = imagePrefix + this.selectedMedia.smallPath;
 			$(selectedImagePreviewSelector + " div#image_quality_small_option div.image-quality-option img").attr("src", this.selectedMedia.smallPath);
+			$(selectedImagePreviewSelector + " div#image_quality_small_option small.media-size").html('(' + this.selectedMedia.smallSize + ')');
 		}
 
 		$("div#selected_image_preview").removeClass("d-none");
+	}
+
+	/**
+	 * Converts bytes to kilobytes
+	 */
+	_convertBytesToKilobytes(bytes)
+	{
+		if( isNaN(bytes) || ! bytes ) return '';
+		return Math.round(bytes / 1024);
 	}
 
 }

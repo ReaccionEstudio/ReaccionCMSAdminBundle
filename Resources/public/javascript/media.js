@@ -92,26 +92,24 @@ class Media
 	 */
 	_selectMediaItemFromGalleryEvent()
 	{
-		$("body").on("click", "div#modal div.card a[data-media-path]", function(e)
+		$("body").on("click", "div#modal div.card a[data-media-id]", function(e)
 		{
 			e.preventDefault();
 
-			let path = $(this).attr("data-media-path");
-			let largePath = $(this).attr("data-media-large-path");
-			let mediumPath = $(this).attr("data-media-medium-path");
-			let smallPath = $(this).attr("data-media-small-path");
+			let mediaId = $(this).attr("data-media-id");
 
-			// TODO: ADD IMAGE SIZE
-			this.selectedMedia = {
-				"path" : path,
-				"largePath" : largePath,
-				"mediumPath" : mediumPath,
-				"smallPath" : smallPath
-			};
+			// Get image details
+			let detailMediaRoute = Routing.generate('reaccion_cms_admin_media_detail', { 'media' : mediaId });
 
-			// create and dispatch event
-			var event = new CustomEvent('selectedItemFromMediaGallery', { 'detail' : this.selectedMedia });
-			document.dispatchEvent(event);
+			$.get(detailMediaRoute + '?json=1', function(result)
+			{
+				this.selectedMedia = result;
+				
+				// create and dispatch event
+				var event = new CustomEvent('selectedItemFromMediaGallery', { 'detail' : this.selectedMedia });
+				document.dispatchEvent(event);
+			});
+
 		});
 	}
 }
