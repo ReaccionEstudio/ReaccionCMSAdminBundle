@@ -48,7 +48,7 @@ class ImageContentType
 	_toggleGalleryEvent()
 	{
 		let selectedValue = $("select#page_content_type").val();
-			
+		
 		if(selectedValue == "img")
 		{
 			this._showGallery();
@@ -64,8 +64,9 @@ class ImageContentType
 	 */
 	_hideGallery()
 	{
-		$(this.galleryComponent).addClass("d-none");
+		$(this.galleryComponent + ", div#selected_image_preview").addClass("d-none");
 		$("textarea#page_content_value").parent().removeClass("d-none");
+		$("input#page_content_mediaValue").val('');
 	}
 
 	/**
@@ -137,13 +138,16 @@ class ImageContentType
 
 		// set original image
 		$(selectedImagePreviewSelector + " a.card-aside-column").css('background-image', 'url(' + previewImagePath + ')' );
+		$(selectedImagePreviewSelector + " a.card-aside-column").attr('href', this.selectedMedia.path);
 		$(selectedImagePreviewSelector + " div#image_quality_original_option div.image-quality-option img").attr("src", this.selectedMedia.path);
+		$(selectedImagePreviewSelector + " div#image_quality_original_option div.image-quality-option a").attr("href", this.selectedMedia.path);
 		$(selectedImagePreviewSelector + " div#image_quality_original_option small.media-size").html('(' + this.selectedMedia['size'] + ')');
 
 		if(this.selectedMedia.largePath)
 		{
 			this.selectedMedia.largePath = imagePrefix + this.selectedMedia.largePath;
 			$(selectedImagePreviewSelector + " div#image_quality_large_option div.image-quality-option img").attr("src", this.selectedMedia.largePath);
+			$(selectedImagePreviewSelector + " div#image_quality_large_option div.image-quality-option a").attr("href", this.selectedMedia.largePath);
 			$(selectedImagePreviewSelector + " div#image_quality_large_option small.media-size").html('(' + this.selectedMedia.largeSize + ')');
 		}
 
@@ -151,6 +155,7 @@ class ImageContentType
 		{
 			this.selectedMedia.mediumPath = imagePrefix + this.selectedMedia.mediumPath;
 			$(selectedImagePreviewSelector + " div#image_quality_medium_option div.image-quality-option img").attr("src", this.selectedMedia.mediumPath);
+			$(selectedImagePreviewSelector + " div#image_quality_medium_option div.image-quality-option a").attr("href", this.selectedMedia.mediumPath);
 			$(selectedImagePreviewSelector + " div#image_quality_medium_option small.media-size").html('(' + this.selectedMedia.mediumSize + ')');
 		}
 
@@ -158,6 +163,7 @@ class ImageContentType
 		{
 			this.selectedMedia.smallPath = imagePrefix + this.selectedMedia.smallPath;
 			$(selectedImagePreviewSelector + " div#image_quality_small_option div.image-quality-option img").attr("src", this.selectedMedia.smallPath);
+			$(selectedImagePreviewSelector + " div#image_quality_small_option div.image-quality-option a").attr("href", this.selectedMedia.smallPath);
 			$(selectedImagePreviewSelector + " div#image_quality_small_option small.media-size").html('(' + this.selectedMedia.smallSize + ')');
 		}
 
