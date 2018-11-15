@@ -38,11 +38,6 @@
 	            	'required' => true,
 	            	'attr' => array('rows' => 8)
 	            ])
-	            ->add('mediaValue', HiddenType::class, [
-	            	'required' => false,
-	            	'mapped' => false,
-	            	'attr' => ['data-media-value' => 'true']
-	            ])
 	            ->add('isEnabled', CheckboxType::class, [
 	            	'label' => 'page_content_form.is_enabled',
 	            	'attr' => array('checked' => 'checked'),
