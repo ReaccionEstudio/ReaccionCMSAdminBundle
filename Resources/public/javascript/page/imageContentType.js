@@ -26,6 +26,7 @@ class ImageContentType
 	events()
 	{
 		this._toggleGalleryEvent();
+		this._selectImageQualityEvent();
 		this._handleSelectedItemFromMediaGalleryEvent();
 		this.mediaObj.mediaGalleryEvents()
 
@@ -65,8 +66,8 @@ class ImageContentType
 	_hideGallery()
 	{
 		$(this.galleryComponent + ", div#selected_image_preview").addClass("d-none");
-		$("textarea#page_content_value").parent().removeClass("d-none");
-		$("input#page_content_mediaValue").val('');
+		//$("textarea#page_content_value").parent().removeClass("d-none");
+		this._resetImagePreview();
 	}
 
 	/**
@@ -75,7 +76,7 @@ class ImageContentType
 	_showGallery()
 	{
 		$(this.galleryComponent).removeClass("d-none");
-		$("textarea#page_content_value").parent().addClass("d-none");
+		//$("textarea#page_content_value").parent().addClass("d-none");
 	}
 
 	/**
@@ -98,6 +99,7 @@ class ImageContentType
 			_self.selectedMedia = e.detail;
 
 			// Generate image preview
+			_self._resetImagePreview();
 			_self._previewSelectedImage();
 
 			// Close modal
@@ -111,7 +113,8 @@ class ImageContentType
 	 */
 	_previewSelectedImage()
 	{
-		$(this.formSelector).find('[data-media-value="true"]').val(this.selectedMedia.path);
+		// TODO: if option path is empty then hide the option label
+		$(this.formSelector + ' textarea#page_content_value').val(this.selectedMedia.path);
 
 		let selectedImagePreviewSelector = "div#selected_image_preview";
 		let previewImagePath = this.selectedMedia.path;
@@ -171,12 +174,53 @@ class ImageContentType
 	}
 
 	/**
-	 * Converts bytes to kilobytes
+	 * Reset image preview values
+	 */
+	_resetImagePreview()
+	{
+		let selectedImagePreviewSelector = "div#selected_image_preview";
+
+		// reset value
+		$("textarea#page_content_value").val('');
+
+		// original image
+		$(selectedImagePreviewSelector + " a.card-aside-column").css('background-image', 'url()' );
+		$(selectedImagePreviewSelector + " a.card-aside-column").attr('href', '#');
+		$(selectedImagePreviewSelector + " div#image_quality_original_option div.image-quality-option img").attr("src", '');
+		$(selectedImagePreviewSelector + " div#image_quality_original_option div.image-quality-option a").attr("href", '#');
+		$(selectedImagePreviewSelector + " div#image_quality_original_option small.media-size").html('');
+
+		// large image
+		$(selectedImagePreviewSelector + " div#image_quality_large_option div.image-quality-option img").attr("src", '');
+		$(selectedImagePreviewSelector + " div#image_quality_large_option div.image-quality-option a").attr("href", '#');
+		$(selectedImagePreviewSelector + " div#image_quality_large_option small.media-size").html('');
+
+		// medium image
+		$(selectedImagePreviewSelector + " div#image_quality_medium_option div.image-quality-option img").attr("src", '');
+		$(selectedImagePreviewSelector + " div#image_quality_medium_option div.image-quality-option a").attr("href", '#');
+		$(selectedImagePreviewSelector + " div#image_quality_medium_option small.media-size").html('');
+
+		// small image
+		$(selectedImagePreviewSelector + " div#image_quality_small_option div.image-quality-option img").attr("src", '');
+		$(selectedImagePreviewSelector + " div#image_quality_small_option div.image-quality-option a").attr("href", '#');
+		$(selectedImagePreviewSelector + " div#image_quality_small_option small.media-size").html('');
+	}
+
+	/**
+	 * Convert bytes to kilobytes
 	 */
 	_convertBytesToKilobytes(bytes)
 	{
 		if( isNaN(bytes) || ! bytes ) return '';
 		return Math.round(bytes / 1024);
+	}
+
+	/**
+	 * 
+	 */
+	_selectImageQualityEvent()
+	{
+
 	}
 
 }
