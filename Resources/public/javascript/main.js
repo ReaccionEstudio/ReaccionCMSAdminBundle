@@ -14,7 +14,8 @@ const currentRoute 	= window.location.pathname;
 
 $(document).ready(function()
 {
-	let pageContentAddRegex = /admin\/pages\/\d\/content\/add/gi;
+	let pageAddContentRegex = /admin\/pages\/\d\/content\/add/gi;
+	let pageEditContentRegex = /admin\/pages\/content\/\d/gi;
 	
 	if(currentRoute == "/admin/media/add")
 	{
@@ -22,7 +23,7 @@ $(document).ready(function()
 			media.formEvents();
 	}
 
-	if(pageContentAddRegex.test(currentRoute))
+	if(pageAddContentRegex.test(currentRoute) || pageEditContentRegex.test(currentRoute) )
 	{
 		let page = new Page();
 			page.formEvents();

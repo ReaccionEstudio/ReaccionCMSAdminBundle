@@ -28,7 +28,7 @@ class ImageContentType
 		this._toggleGalleryEvent();
 		this._selectImageQualityEvent();
 		this._handleSelectedItemFromMediaGalleryEvent();
-		this.mediaObj.mediaGalleryEvents()
+		this.mediaObj.mediaGalleryEvents();
 
 		let _self = this;
 
@@ -77,6 +77,34 @@ class ImageContentType
 	{
 		$(this.galleryComponent).removeClass("d-none");
 		$("textarea#page_content_value").parent().addClass("d-none");
+
+		if( $("textarea#page_content_value").val().length )
+		{
+			this._previewImageByPath();
+		}
+	}
+
+	/**
+	 * Preview image from saved content image path value.
+	 */
+	_previewImageByPath()
+	{
+		let imagePath = $("textarea#page_content_value").val();
+		let mediaDetailRoute = Routing.generate('reaccion_cms_admin_media_detail_by_path');
+
+		$("div#selected_image_preview").removeClass("d-none");
+
+		// load media data
+		$.post(mediaDetailRoute, { 'path' : imagePath }, function(response)
+		{
+			// create and dispatch event
+			var event = new CustomEvent('selectedItemFromMediaGallery', { 'detail' : response });
+			document.dispatchEvent(event);
+
+			// hide loader
+			$("div#selected_image_preview div.dimmer").removeClass("active");
+		}, 
+		"json");
 	}
 
 	/**
@@ -138,6 +166,10 @@ class ImageContentType
 		this._setValuesForSelectedPreviewImage('div#image_quality_medium_option', 'medium', selectedImagePreviewSelector, imagePrefix);
 		this._setValuesForSelectedPreviewImage('div#image_quality_small_option', 'small', selectedImagePreviewSelector, imagePrefix);
 
+		// hide loader
+		$("div#selected_image_preview div.dimmer").removeClass("active");
+
+		// show preview component
 		$("div#selected_image_preview").removeClass("d-none");
 	}
 
