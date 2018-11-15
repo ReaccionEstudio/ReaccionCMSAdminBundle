@@ -33,7 +33,7 @@
 					$pageContent->setPosition($nextPosition);
 
 					// save
-					$em->persist($pageContent2);
+					$em->persist($pageContent);
 					$em->flush();
 
 					// flash message
