@@ -56,6 +56,12 @@ reaccion_cms_admin_create_media:
     path: /media/add
     controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media\CreateMediaController::index
 
+reaccion_cms_admin_media_detail_by_path:
+    path: /media/path
+    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media\MediaDetailController::findByPath
+    options:
+        expose: true
+
 reaccion_cms_admin_media_detail:
     path: /media/{media}
     controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media\MediaDetailController::index
