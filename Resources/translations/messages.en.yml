@@ -81,6 +81,7 @@ page_form:
 page_content_types:
   text_html: 'Text / HTML'
   img: 'Image'
+  image: 'Image'
 
 page_content_form:
   name: 'Name / Alias'
