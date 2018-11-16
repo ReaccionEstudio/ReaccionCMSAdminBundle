@@ -101,6 +101,15 @@ class ImageContentType
 			var event = new CustomEvent('selectedItemFromMediaGallery', { 'detail' : response });
 			document.dispatchEvent(event);
 
+			// check media option for current image in the image preview component
+			for(var key in response)
+			{
+				if(imagePath == response[key]) 
+				{
+					$('input[data-path-key="' + key + '"]').attr('checked', 'checked');
+				}
+			}
+
 			// hide loader
 			$("div#selected_image_preview div.dimmer").removeClass("active");
 		}, 
