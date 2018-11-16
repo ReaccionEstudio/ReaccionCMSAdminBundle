@@ -1,0 +1,75 @@
+<!doctype html>
+<html dir="ltr">
+    
+    <head>
+        
+        <!-- header -->
+        {% embed '@ReaccionCMSAdminBundle/layout/header.html.twig' %}{% endembed %}
+
+    </head>
+
+    <body>
+
+        <div class="page">
+            <div class="page-single">
+                <div class="container">
+                    <div class="row">
+                        <div class="col col-login mx-auto">
+                            <div class="text-center mb-6">
+                                <!--<img src="" class="h-6" alt="">-->
+                                LOGO
+                            </div>
+                            
+                            <form class="card" action="{{ path("fos_user_security_check") }}" method="post">
+                                
+                                <div class="card-body p-6">
+                                    
+                                    <div class="card-title">Login to your account</div>
+
+                                    {% trans_default_domain 'FOSUserBundle' %}
+
+                                    {% if error %}
+                                        <div class="alert alert-icon alert-danger" role="alert">
+                                            <i class="fe fe-alert-triangle mr-2" aria-hidden="true"></i> {{ error.messageKey|trans(error.messageData, 'security') }}
+                                        </div>
+                                    {% endif %}
+
+                                    {% if csrf_token %}
+                                        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                                    {% endif %}
+
+                                    <div class="form-group">
+                                        <label class="form-label" for="username">{{ 'security.login.username'|trans }}</label>
+                                        <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" class="form-control" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label" for="password">
+                                            {{ 'security.login.password'|trans }}
+                                            <a href="./forgot-password.html" class="float-right small">I forgot password</a>
+                                        </label>
+                                        <input type="password" id="password" name="_password" required="required" class="form-control" autocomplete="current-password" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="remember_me" name="_remember_me" value="on" class="" />
+                                            <span class="custom-control-label">{{ 'security.login.remember_me'|trans }}</span>
+                                        </label>
+                                    </div>
+
+                                    <div class="form-footer">
+                                        <button type="submit" id="_submit" name="_submit" class="btn btn-primary btn-block">{{ 'security.login.submit'|trans }}</button>
+                                    </div>
+
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+
+</html>
