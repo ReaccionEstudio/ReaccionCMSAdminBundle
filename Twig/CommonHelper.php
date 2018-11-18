@@ -3,6 +3,7 @@
 namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Twig;
 
 use Services\Managers\ManagerPermissions;
+use App\ReaccionEstudio\ReaccionCMSAdminBundle\Constants\Languages;
 
 /**
  * CommonHelper class (Twig_Extension)
@@ -36,14 +37,14 @@ class CommonHelper extends \Twig_Extension
      * @param  String   $lang       Language
      * @return String   [type]      Flag icon name
      */
-    public function getFlagIconForLanguage($lang="gb")
+    public function getFlagIconForLanguage($lang)
     {
-        switch($lang)
+        if(isset(Languages::LANGUAGE_ICONS[$lang]))
         {
-            default:
-                return 'gb';
-            break; 
+            return Languages::LANGUAGE_ICONS[$lang];
         }
+        
+        return 'gb';
     }
 
 	public function getName()
