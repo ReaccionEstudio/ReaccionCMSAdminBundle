@@ -5,11 +5,12 @@
  * @website reaccionestudio.com
  */
 
-require('./commonEvents.js');
+require('./CommonEvents.js');
 
 import Media from './media.js';
 import Page from './page.js';
 import User from './User.js';
+import LanguageIcons from './collections/language_icons.json';
 
 const currentRoute 	= window.location.pathname;
 

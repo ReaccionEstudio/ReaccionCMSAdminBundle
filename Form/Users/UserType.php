@@ -11,7 +11,8 @@
 	use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 	use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 	use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-	use Symfony\Component\Form\Extension\Core\Type\LanguageType;
+	use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Constants\Languages;
 
 	class UserType extends AbstractType
 	{
@@ -50,13 +51,22 @@
 				    'first_options'  => array('label' => 'users_form.password'),
 				    'second_options' => array('label' => 'users_form.repeat_password')
 				])
-	            ->add('isEnabled', CheckboxType::class, [
+	            ->add('enabled', CheckboxType::class, [
 	            	'label' => 'users_form.is_enabled',
 	            	'required' => false,
 	            	'attr' => ['checked' => true]
 	            ])
-	            ->add('language', LanguageType::class, [
+	            ->add('language', ChoiceType::class, [
 	            	'label' => 'users_form.language',
+	            	'choices' => Languages::LANGUAGES,
+	            	'choice_label' => function($choiceValue, $key, $value)
+                    {
+                    	return 'languages.' . $value;
+                    },
+	            	'choice_value' => function($value)
+                    {
+                    	return $value;
+                    },
 	            	'required' => false,
 	            	'attr' => ['class' => 'selectize']
 	            ])

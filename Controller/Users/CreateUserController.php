@@ -19,7 +19,8 @@
 			$userRoles = $this->getParameter("reaccion_cms_admin.roles");
 
 			// form
-			$form = $this->createForm(UserType::class, $user, ['roles' => $userRoles]);
+			$form = $this->createForm(UserType::class, $user, [ 'roles' => $userRoles ]);
+
 			$form->handleRequest($request);
 
 			if ($form->isSubmitted() && $form->isValid()) 

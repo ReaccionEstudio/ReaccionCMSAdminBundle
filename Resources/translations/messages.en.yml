@@ -186,3 +186,8 @@ users_form:
   language: 'Language'
   roles: 'Roles'
   role: 'Role'
+
+# languages
+languages:
+  en: 'English'
+  es: 'Spanish'
