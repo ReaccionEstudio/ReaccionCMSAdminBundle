@@ -4,30 +4,30 @@
 
 <div class="my-3 my-md-5">
 
-  <div class="container">
+  	<div class="container">
 
 		{{ form_start(form, { 'attr': { 'class' : 'card' } }) }}
 
-			<div class="card-header">
-				<h3 class="card-title">{{ 'config_form.title' | trans }}</h3>
-			</div>
+		<div class="card-header">
+			<h3 class="card-title">{{ 'config_form.title' | trans }}</h3>
+		</div>
 
-			<div class="card-body col-8 align-self-center">
-		 
-      {% embed '@ReaccionCMSAdminBundle/shared/flash_messages.html.twig' with {'extraClasses' : 'pl-0 pr-0'} %}{% endembed %}
+		<div class="card-body col-8 align-self-center">
+	 
+  			{% embed '@ReaccionCMSAdminBundle/shared/flash_messages.html.twig' with {'extraClasses' : 'pl-0 pr-0'} %}{% endembed %}
 
 			{{ form_widget(form) }}
 
 		</div>
 
 		<div class="card-footer text-right">
-      <div class="d-flex">
-        <a href="{{ url('reaccion_cms_admin_pages_index') }}" class="btn btn-link">{{ 'crud.cancel' | trans }}</a>
-        <button type="submit" class="btn btn-primary ml-auto">{{ 'crud.send_data' | trans }}</button>
-      </div>
-    </div>
+      		<div class="d-flex">
+        		<a href="{{ url('reaccion_cms_admin_preferences_configuration') }}" class="btn btn-link">{{ 'crud.cancel' | trans }}</a>
+        		<button type="submit" class="btn btn-primary ml-auto">{{ 'crud.send_data' | trans }}</button>
+      		</div>
+    	</div>
 
-    {{ form_end(form) }}
+    		{{ form_end(form) }}
 
 	</div>
 
