@@ -33,6 +33,10 @@ preferences:
   title: 'Preferences'
   config: 'Configuration'
 
+user_dropdown:
+  sign_out: 'Sign out'
+  
+
 # crud
 crud:
   close: 'Close'
@@ -193,3 +197,9 @@ users_form:
 languages:
   en: 'English'
   es: 'Spanish'
+
+# roles
+roles:
+  role_admin: 'Administrator'
+  role_editor: 'Editor'
+  role_user: 'User'
