@@ -187,7 +187,6 @@ users_form:
   email: 'Email'
   password: 'Password'
   repeat_password: 'Repeat Password'
-  password_not_matching: 'The password fields must match'
   is_enabled: 'Is enabled'
   language: 'Language'
   roles: 'Roles'

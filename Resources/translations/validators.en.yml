@@ -1,1 +1,4 @@
-Error: __Error
+Error: 'Error'
+
+users_form:
+  password_not_matching: 'The password fields must match'
