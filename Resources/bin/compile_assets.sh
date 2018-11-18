@@ -16,6 +16,4 @@ cp -R ${REACCION_ADMIN_BUNDLES_TEMPLATES_PATH} ${BUNDLES_TEMPLATES_PATH}/bundles
 php bin/console assets:install --symlink 
 
 # Run Webpack encore
-./node_modules/.bin/encore dev # TODO: add request param for selecting an environment 
-
-# TODO: copy all necessary config files
+./node_modules/.bin/encore dev # TODO: add request param for selecting an environment
