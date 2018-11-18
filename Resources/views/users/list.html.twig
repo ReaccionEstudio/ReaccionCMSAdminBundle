@@ -1,0 +1,106 @@
+{% extends '@ReaccionCMSAdminBundle/base.html.twig' %}
+
+{% block reaccion_cms_admin_body %}
+<div class="my-3 my-md-5">
+
+  	<div class="container">
+
+  		<div class="page-header">
+    		<div class="col pl-0">
+	    		<h1 class="page-title">{{ 'users_list.title' | trans }}</h1>
+	    	</div>
+    		<div class="col col-lg-2 row justify-content-end">
+    			<a href="{{ url('reaccion_cms_admin_users_create') }}" class="btn btn-primary">
+    				<i class="fe fe-plus"></i>&nbsp;&nbsp;{{ 'users_list.create_new_user_btn' | trans }}
+    			</a>
+    		</div>
+	    </div>
+
+  		<div class="row row-cards">
+
+  			<div class="col-12">
+                <div class="card">
+
+                	{% embed '@ReaccionCMSAdminBundle/shared/crud/listCardHeader.html.twig' with { 'result' : users } %}{% endembed %}
+
+                  	{% embed '@ReaccionCMSAdminBundle/shared/flash_messages.html.twig' %}{% endembed %}
+
+                  	<div class="table-responsive">
+	                    
+	                    <table class="table card-table table-vcenter text-nowrap">
+
+	                    	<thead>
+	                        	<tr>
+		                          	<th class="w-1">{{ 'users_list.id' | trans }}</th>
+		                          	<th>{{ 'users_list.username' | trans }}</th>
+		                          	<th>{{ 'users_list.email' | trans }}</th>
+		                          	<th>{{ 'users_list.is_enabled' | trans }}</th>
+		                          	<th>{{ 'users_list.roles' | trans }}</th>
+		                          	<th>{{ 'users_list.language' | trans }}</th>
+		                          	<th>{{ 'users_list.last_login' | trans }}</th>
+
+		                          	{% if is_granted('ROLE_ADMIN') %}
+		                          	<th></th>
+		                          	{% endif %}
+	                        	</tr>
+	                      	</thead>
+
+	                      	<tbody>
+
+	                      		{% for user in users %}
+	                      		<tr>
+	                      			<td class="w-1">{{ user.id }}</td>
+	                      			<td>{{ user.username }}</td>
+	                      			<td>{{ user.email }}</td>
+	                      			<td>
+	                      				{% if user.isEnabled %}
+			                          	<span class="status-icon bg-success"></span> {{ 'users_list.enabled' | trans }}
+			                          	{% else %}
+			                          	<span class="status-icon bg-danger"></span> {{ 'users_list.disabled' | trans }}
+			                          	{% endif %}
+	                      			</td>
+	                      			<td>
+	                      				{% if user.roles is not empty %}
+		                      				{% for role in user.roles %}
+		                      				<span class="tag">{{ role }}</span>
+		                      				{% endfor %}
+	                      				{% endif %}
+	                      			</td>
+	                      			<td>
+	                      				{% if user.language is not empty %}
+	                      				<i class="flag flag-{{ getFlagIconForLanguage(user.language) }}" data-toggle="tooltip" data-placement="top" title="{{ user.language }}"></i>
+	                      				{% endif %}
+	                      			</td>
+	                      			<td>
+	                      				{% if user.lastLogin is not empty %}
+	                      					{{ user.lastLogin | date('d/m/Y H:i:s') }}
+	                      				{% endif %}
+	                      			</td>
+
+	                      			{% if is_granted('ROLE_ADMIN') %}
+	                      			<td>
+	                      				<a href="#" title="{{ 'crud.edit' | trans }}" data-toggle="tooltip" data-placement="top">
+			                              <i class="fe fe-edit"></i>
+			                            </a>
+			                            &nbsp;
+			                            <a class="text-danger" href="#" data-toggle="tooltip" data-placement="top" title="{{ 'crud.remove' | trans }}" data-detele-confirm="true">
+			                              <i class="fe fe-trash"></i>
+			                            </a>
+	                      			</td>
+	                      			{% endif %}
+
+	                      		</tr>
+	                      		{% endfor %}
+
+	                      	</tbody>
+
+	                    </table>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}

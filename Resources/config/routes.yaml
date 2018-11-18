@@ -76,3 +76,12 @@ reaccion_cms_admin_media_detail:
 reaccion_cms_admin_remove_media:
     path: /media/{media}/remove
     controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media\RemoveMediaController::index
+
+# Users
+reaccion_cms_admin_users_index:
+    path: /users
+    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Users\UsersListController::index
+
+reaccion_cms_admin_users_create:
+    path: /users/create
+    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Users\CreateUserController::index

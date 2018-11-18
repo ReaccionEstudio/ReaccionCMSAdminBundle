@@ -156,3 +156,31 @@ media_common:
   medium: 'Medium'
   small: 'Small'
   select_image_quality: 'Select image quality'
+
+# pages
+users_list:
+  title: 'Users list'
+  create_new_user_btn: 'Create new user'
+  id: 'Id'
+  username: 'Username'
+  nickname: 'Nickname'
+  email: 'Email'
+  is_enabled: 'Is enabled'
+  last_login: 'Last login'
+  language: 'Language'
+  roles: 'Roles'
+  enabled: 'Enabled'
+  disabled: 'Disabled'
+
+users_form:
+  title: 'Create user'
+  create_success_message: 'User was created correctly'
+  create_error_message: 'Error creating user <strong>%name%</strong>: %error%'
+  username: 'Username'
+  nickname: 'Nickname'
+  email: 'Email'
+  password: 'Password'
+  repeat_password: 'Repeat Password'
+  password_not_matching: 'The password fields must match'
+  is_enabled: 'Is enabled'
+  language: 'Language'
