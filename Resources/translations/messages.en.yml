@@ -35,6 +35,9 @@ preferences:
 
 user_dropdown:
   sign_out: 'Sign out'
+
+navigation:
+  go_to_website: 'Go to website'
   
 
 # crud
