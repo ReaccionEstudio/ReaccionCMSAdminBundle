@@ -8,7 +8,7 @@
 
 {{ form_row(form.value) }}
 
-{% embed '@ReaccionCMSAdminBundle/components/media/image_form_component.html.twig' %}{% endembed %}
+{% embed '@ReaccionCMSAdminBundle/components/media/gallery_form_button_component.html.twig' with { 'form_name' : 'page_content' } %}{% endembed %}
 
 {{ form_row(form.isEnabled) }}
 
