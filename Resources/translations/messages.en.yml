@@ -176,6 +176,8 @@ users_form:
   title: 'Create user'
   create_success_message: 'User was created correctly'
   create_error_message: 'Error creating user <strong>%name%</strong>: %error%'
+  update_success_message: 'User was updated correctly'
+  update_error_message: 'Error updating user <strong>%name%</strong>: %error%'
   username: 'Username'
   nickname: 'Nickname'
   email: 'Email'

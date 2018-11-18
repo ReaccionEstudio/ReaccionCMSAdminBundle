@@ -13,6 +13,9 @@
 		</div>
 
 		<div class="card-body col-8 align-self-center">
+
+			{% embed '@ReaccionCMSAdminBundle/shared/flash_messages.html.twig' with { 'extraClasses' : 'pl-0 pr-0' } %}{% endembed %}
+
 			{{ form_widget(form) }}
 		</div>
 

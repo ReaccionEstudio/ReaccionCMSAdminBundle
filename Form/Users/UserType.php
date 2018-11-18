@@ -18,6 +18,8 @@
 	{
 	    public function buildForm(FormBuilderInterface $builder, array $options)
 	    {
+	    	$passwordAreRequired = ($options['mode'] == "edit") ? false : true;
+
 	        $builder
 	            ->add('username', TextType::class, [
 	            	'label' => 'users_form.username',
@@ -32,7 +34,7 @@
 	                    'required' => true
 	                ]
 	            )
-	            ->add('rolesArray', ChoiceType::class, [
+	            ->add('roles', ChoiceType::class, [
 	            		'label' => 'users_form.role',
 	                    'required' => true,
 	                    'choices' => $options['roles'],
@@ -40,16 +42,17 @@
 	                    {
 	                    	return $value;
 	                    },
-	                    'mapped' => false
+	                    'multiple' => true
 	                ]
 	            )
-	            ->add('password', RepeatedType::class, [
+	            ->add('userPassword', RepeatedType::class, [
 				    'type' => PasswordType::class,
 				    'invalid_message' => 'users_form.password_not_matching',
 				    'options' => array('attr' => array('class' => 'password-field')),
-				    'required' => true,
+				    'required' => $passwordAreRequired,
 				    'first_options'  => array('label' => 'users_form.password'),
-				    'second_options' => array('label' => 'users_form.repeat_password')
+				    'second_options' => array('label' => 'users_form.repeat_password'),
+				    'mapped' => false
 				])
 	            ->add('enabled', CheckboxType::class, [
 	            	'label' => 'users_form.is_enabled',
@@ -77,7 +80,8 @@
 		{
 		    $resolver->setDefaults(array(
 		    	'data_class' => 'App\ReaccionEstudio\ReaccionCMSBundle\Entity\User',
-		        'roles' => []
+		        'roles' => [],
+		        'mode' => 'create'
 		    ));
 		}
 	}

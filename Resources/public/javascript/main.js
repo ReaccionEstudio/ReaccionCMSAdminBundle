@@ -10,7 +10,6 @@ require('./CommonEvents.js');
 import Media from './media.js';
 import Page from './page.js';
 import User from './User.js';
-import LanguageIcons from './collections/language_icons.json';
 
 const currentRoute 	= window.location.pathname;
 
@@ -18,6 +17,7 @@ $(document).ready(function()
 {
 	let pageAddContentRegex = /admin\/pages\/\d\/content\/add/gi;
 	let pageEditContentRegex = /admin\/pages\/content\/\d/gi;
+	let userEditRegex = /admin\/users\/\d\/update/gi;
 	
 	if(currentRoute == "/admin/media/add")
 	{
@@ -31,7 +31,7 @@ $(document).ready(function()
 			page.formEvents();
 	}
 
-	if(currentRoute == "/admin/users/create")
+	if(currentRoute == "/admin/users/create" || userEditRegex.test(currentRoute))
 	{
 		let user = new User();
 			user.formEvents();

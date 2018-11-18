@@ -8,18 +8,17 @@
 	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\Users\UserType;
 	use Symfony\Component\Translation\TranslatorInterface;
 
-	class CreateUserController extends Controller
+	class UserEditController extends Controller
 	{
-		public function index(Request $request, TranslatorInterface $translator)
+		public function index(User $user, Request $request, TranslatorInterface $translator)
 		{
-			$user = new User();
 			$em = $this->getDoctrine()->getManager();
 
 			// form parameters
 			$userRoles = $this->getParameter("reaccion_cms_admin.roles");
 
 			// form
-			$form = $this->createForm(UserType::class, $user, [ 'roles' => $userRoles ]);
+			$form = $this->createForm(UserType::class, $user, [ 'roles' => $userRoles, 'mode' => 'edit' ]);
 
 			$form->handleRequest($request);
 
@@ -27,14 +26,19 @@
 			{
 				try
 				{
-					// set password
-					$user->setPlainPassword($form['userPassword']->getData());
+					// check if password has been modified
+					$password = $form['userPassword']->getData();
+
+					if($password)
+					{
+						$user->setPlainPassword($password);
+					}
 
 					// save
-					$em->persist($user);
-					$em->flush();
+        			$userManager = $this->container->get('fos_user.user_manager');
+        			$userManager->updateUser($user, true);
 
-					$this->addFlash('success', $translator->trans('users_form.create_success_message') );
+					$this->addFlash('success', $translator->trans('users_form.update_success_message') );
 					
 					return $this->redirectToRoute('reaccion_cms_admin_users_index');
 				}
@@ -42,7 +46,7 @@
 				{
 					$this->addFlash(
 						'error', 
-						$translator->trans('users_form.create_error_message', [
+						$translator->trans('users_form.update_error_message', [
 							'%name%' => $form['username']->getData(),
 							'%error%' => $e->getMessage()
 						]) 

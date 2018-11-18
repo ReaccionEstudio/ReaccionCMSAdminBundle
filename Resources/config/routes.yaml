@@ -85,3 +85,7 @@ reaccion_cms_admin_users_index:
 reaccion_cms_admin_users_create:
     path: /users/create
     controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Users\CreateUserController::index
+
+reaccion_cms_admin_users_update:
+    path: /users/{user}/update
+    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Users\UserEditController::index

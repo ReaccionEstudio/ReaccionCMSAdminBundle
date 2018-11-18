@@ -79,7 +79,7 @@
 
 	                      			{% if is_granted('ROLE_ADMIN') %}
 	                      			<td>
-	                      				<a href="#" title="{{ 'crud.edit' | trans }}" data-toggle="tooltip" data-placement="top">
+	                      				<a href="{{ url('reaccion_cms_admin_users_update', { 'user' : user.id }) }}" title="{{ 'crud.edit' | trans }}" data-toggle="tooltip" data-placement="top">
 			                              <i class="fe fe-edit"></i>
 			                            </a>
 			                            &nbsp;
