@@ -68,7 +68,7 @@
 	                      			</td>
 	                      			<td>
 	                      				{% if user.language is not empty %}
-	                      				<i class="flag flag-{{ getFlagIconForLanguage(user.language) }}" data-toggle="tooltip" data-placement="top" title="{{ user.language }}"></i>
+	                      				<i class="flag flag-{{ getFlagIconForLanguage(user.language) }}" data-toggle="tooltip" data-placement="top" title="{{  ('languages.' ~ user.language) | trans }}"></i>
 	                      				{% endif %}
 	                      			</td>
 	                      			<td>
