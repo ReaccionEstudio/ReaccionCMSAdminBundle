@@ -4,11 +4,14 @@
 
 	use Symfony\Component\Form\AbstractType;
 	use Symfony\Component\Form\FormBuilderInterface;
+	use Symfony\Component\OptionsResolver\OptionsResolver;
 	use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 	use Symfony\Component\Form\Extension\Core\Type\TextType;
 	use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 	use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 	use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+	use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+	use Symfony\Component\Form\Extension\Core\Type\LanguageType;
 
 	class UserType extends AbstractType
 	{
@@ -28,6 +31,17 @@
 	                    'required' => true
 	                ]
 	            )
+	            ->add('rolesArray', ChoiceType::class, [
+	            		'label' => 'users_form.role',
+	                    'required' => true,
+	                    'choices' => $options['roles'],
+	                    'choice_label' => function($choiceValue, $key, $value)
+	                    {
+	                    	return $value;
+	                    },
+	                    'mapped' => false
+	                ]
+	            )
 	            ->add('password', RepeatedType::class, [
 				    'type' => PasswordType::class,
 				    'invalid_message' => 'users_form.password_not_matching',
@@ -41,10 +55,19 @@
 	            	'required' => false,
 	            	'attr' => ['checked' => true]
 	            ])
-	            ->add('language', TextType::class, [
+	            ->add('language', LanguageType::class, [
 	            	'label' => 'users_form.language',
-	            	'required' => false
+	            	'required' => false,
+	            	'attr' => ['class' => 'selectize']
 	            ])
 	        ;
 	    }
+
+	    public function configureOptions(OptionsResolver $resolver)
+		{
+		    $resolver->setDefaults(array(
+		    	'data_class' => 'App\ReaccionEstudio\ReaccionCMSBundle\Entity\User',
+		        'roles' => []
+		    ));
+		}
 	}

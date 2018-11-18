@@ -184,3 +184,5 @@ users_form:
   password_not_matching: 'The password fields must match'
   is_enabled: 'Is enabled'
   language: 'Language'
+  roles: 'Roles'
+  role: 'Role'

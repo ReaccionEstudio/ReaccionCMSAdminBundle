@@ -21,6 +21,12 @@
             <parameter>video/mp4</parameter>
         </parameter>
 
+        <parameter type="collection" key="reaccion_cms_admin.roles">
+            <parameter>ROLE_ADMIN</parameter>
+            <parameter>ROLE_EDITOR</parameter>
+            <parameter>ROLE_USER</parameter>
+        </parameter>
+
     </parameters>
 
     <services>
