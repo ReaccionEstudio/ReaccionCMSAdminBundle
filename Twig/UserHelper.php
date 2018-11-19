@@ -28,6 +28,8 @@ class UserHelper extends \Twig_Extension
      */
     public function getUserNickname($user)
     {
+        if($user == null) return '';
+
         if($user->getNickname()) 
         {
             return $user->getNickname();
@@ -44,6 +46,8 @@ class UserHelper extends \Twig_Extension
      */
     public function getUserMainRoleTranslationKey($user)
     {
+        if($user == null) return '';
+        
         $roles = $user->getRoles();
 
         if(empty($roles[0])) return '';
