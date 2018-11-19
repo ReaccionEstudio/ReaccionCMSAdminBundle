@@ -8,6 +8,8 @@
         
         <parameter key="reaccion_cms_admin.page_content.position.class">App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\PageContent\PageContentPosition</parameter>
 
+        <parameter key="reaccion_cms_admin.page.position.class">App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Page\Page</parameter>
+
         <parameter key="reaccion_cms_admin.media_upload.class">App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Media\MediaUploadService</parameter>
 
     	<parameter key="reaccion_cms_admin.resize_image_service.class">App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Media\ResizeImageService</parameter>
@@ -33,6 +35,10 @@
     <services>
 
         <service id="reaccion_cms_admin.page_content_position" class="%reaccion_cms_admin.page_content.position.class%" public="true">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+        </service>
+
+        <service id="reaccion_cms_admin.page" class="%reaccion_cms_admin.page.position.class%" public="true">
             <argument type="service" id="doctrine.orm.entity_manager" />
         </service>
 
