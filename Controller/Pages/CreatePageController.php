@@ -15,7 +15,6 @@
 		public function index(Request $request, TranslatorInterface $translator)
 		{
 			$page = new Page();
-			$em = $this->getDoctrine()->getManager();
 
 			// form
 			$form = $this->createForm(PageType::class, $page);
@@ -23,18 +22,37 @@
 
 			if ($form->isSubmitted() && $form->isValid()) 
 			{
-				// generate slug
-				$slugify = new Slugify();
-				$slug = $slugify->slugify($page->getName());
-				$page->setSlug($slug);
+				try
+				{
+					if($form['mainPage']->getData() == true)
+					{
+						$this->get("reaccion_cms_admin.page")->resetMainPage();
+					}
 
-				// save
-				$em->persist($page);
-				$em->flush();
+					// generate slug
+					$slugify = new Slugify();
+					$slug = $slugify->slugify($page->getName());
+					$page->setSlug($slug);
 
-				$this->addFlash('success', $translator->trans('page_form.create_success_message') );
+					// save
+					$em = $this->getDoctrine()->getManager();
+					$em->persist($page);
+					$em->flush();
 
-				return $this->redirectToRoute('reaccion_cms_admin_pages_index');
+					$this->addFlash('success', $translator->trans('page_form.create_success_message') );
+					return $this->redirectToRoute('reaccion_cms_admin_pages_index');
+				}
+				catch(\Exception $e)
+				{
+					$errMssg =  $translator->trans(
+									"page_form.create_error_message", 
+									array(
+										'%name%' => $form['name']->getData(),
+										'%error%' => $e->getMessage()
+									) 
+								);
+					$this->addFlash('error', $errMssg);
+				}
 			}
 
 			return $this->render("@ReaccionCMSAdminBundle/pages/form.html.twig",

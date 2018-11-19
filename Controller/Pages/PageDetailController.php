@@ -16,8 +16,6 @@
 	{
 		public function index(Page $page, Request $request, TranslatorInterface $translator)
 		{
-			$em = $this->getDoctrine()->getManager();
-
 			// forms
 			$pageForm = $this->createForm(PageType::class, $page);
 			$seoPageForm = $this->createForm(SeoPageType::class, $page);
@@ -34,6 +32,13 @@
 			{
 				try
 				{
+					if($pageForm['mainPage']->getData() == true)
+					{
+						$this->get("reaccion_cms_admin.page")->resetMainPage();
+					}
+
+					// save
+					$em = $this->getDoctrine()->getManager();
 					$em->persist($page);
 					$em->flush();
 

@@ -21,6 +21,10 @@
 	            	'label' => 'page_form.is_enabled',
 	            	'required' => false
 	            ])
+	            ->add('mainPage', CheckboxType::class, [
+	            	'label' => 'page_form.is_main_page',
+	            	'required' => false
+	            ])
 	        ;
 	    }
 	}

@@ -52,7 +52,13 @@
 		                          </td>
 		                          
 		                          <td width="40%">
+		                          	
 		                          	<a href="{{ url('reaccion_cms_admin_pages_detail', { 'page' : page.id }) }}" title="{{ page.name }}" class="text-inherit">{{ page.name }}</a>
+
+		                          	{% if page.mainPage %}
+	                          		<div class="tag tag-danger ml-3">{{ 'page_form.main_page' | trans }}</div>
+		                          	{% endif %}
+
 		                          </td>
 		                          
 		                          <td>
