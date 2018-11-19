@@ -26,6 +26,7 @@
             <parameter>ROLE_EDITOR</parameter>
             <parameter>ROLE_USER</parameter>
         </parameter>
+        <parameter key="reaccion_cms_admin.version">0.1</parameter>
 
     </parameters>
 
