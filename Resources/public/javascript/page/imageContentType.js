@@ -53,7 +53,7 @@ class ImageContentType
 		}
 		else
 		{
-			this.mediaImagePreviewComponent.hideGallery();
+			this.mediaImagePreviewComponent.hideGallery(false);
 		}
 	}
 }

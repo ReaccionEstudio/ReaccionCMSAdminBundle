@@ -23,12 +23,17 @@ class MediaImagePreviewComponent
 
 	/**
 	 * Hide gallery form component
+	 *
+	 * @param Boolean 	resetImagePreview	Indicates if resetImagePreview() method has to be executed
 	 */
-	hideGallery()
+	hideGallery(resetImagePreview)
 	{
+		if(typeof resetImagePreview == "undefined") resetImagePreview = true;
+
 		$(this.galleryComponent + ", div#selected_image_preview").addClass("d-none");
 		$("textarea#page_content_value").parent().removeClass("d-none");
-		this.resetImagePreview();
+
+		if(resetImagePreview) this.resetImagePreview();
 	}
 
 	/**
