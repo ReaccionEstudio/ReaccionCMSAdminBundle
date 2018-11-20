@@ -204,8 +204,6 @@ class MediaImagePreviewComponent
 	 */
 	_previewImageByPath()
 	{
-		console.log("_previewImageByPath");
-
 		let imagePath = $("textarea#page_content_value").val();
 		let mediaDetailRoute = Routing.generate('reaccion_cms_admin_media_detail_by_path');
 
