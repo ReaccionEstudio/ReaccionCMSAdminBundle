@@ -33,6 +33,10 @@ preferences:
   title: 'Preferences'
   config: 'Configuration'
 
+preferences_menu:
+  title: 'Website menu'
+  add_item: 'Add new item'
+
 user_dropdown:
   sign_out: 'Sign out'
 

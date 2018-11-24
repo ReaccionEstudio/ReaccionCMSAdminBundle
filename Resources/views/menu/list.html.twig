@@ -19,13 +19,53 @@
                 
                 <div class="card">
 
-                	{% embed '@ReaccionCMSAdminBundle/shared/flash_messages.html.twig' %}{% endembed %}
+                	<div class="col-6 pb-4 mx-4" id="menu_list">
 
-                	<div class="col-6 pb-4 mx-auto">
+                		<!-- flash messages -->
+                		{% embed '@ReaccionCMSAdminBundle/shared/flash_messages.html.twig' %}{% endembed %}
 
-                		{{ dump(menu) }}
+                		<!-- macro definition -->
+                		{% macro listMenu(menuItem) %}
+                		{% import _self as self %}
 
-                		<button type="button" class="btn btn-block btn-dark">{{ 'preferences_menu.add_item' | trans }}</button>
+					    	<li>
+					    		<a href="#">{{ menuItem.name }}</a>
+					    		<a href="#" class="text-info ml-2" title="{{ 'crud.edit' | trans }}" data-toggle="tooltip" data-placement="top">
+					    			<i class="fe fe-edit"></i>
+					    		</a>
+					    		<a href="#" class="text-red" data-toggle="tooltip" data-placement="top" title="{{ 'crud.remove' | trans }}" data-detele-confirm="true">
+					    			<i class="fe fe-trash-2"></i>
+					    		</a>
+
+				        	{% if menuItem.children is defined and menuItem.children is not empty %}
+								<ul>
+				                {% for child in menuItem.children %}
+				                    {{ self.listMenu(child) }}
+				                {% endfor %}
+				                	<li>
+				                		<a href="#" class="tag tag-gray-dark">{{ 'preferences_menu.add_item' | trans }}</a>
+				                	</li>
+					        	</ul>
+					        {% endif %}
+
+					        </li>
+
+						{% endmacro %}
+
+						<!-- run macro -->
+						{% from _self import listMenu %}
+
+						<ul class="tree">
+					    	
+					    	{% for menu_item in menu %}
+						   		{{ listMenu(menu_item) }}
+					    	{% endfor %}
+
+					    	<li>
+		                		<a href="#" class="tag tag-gray-dark">{{ 'preferences_menu.add_item' | trans }}</a>
+		                	</li>
+
+						</ul>
 
                 	</div>
 

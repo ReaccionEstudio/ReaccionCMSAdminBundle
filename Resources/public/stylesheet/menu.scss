@@ -1,0 +1,87 @@
+/*
+div#menu_list ul.tree, ul.tree ul {
+	list-style: none;
+ 	margin: 0;
+ 	padding: 0;
+} 
+div#menu_list ul.tree ul {
+ 	margin-left: 10px;
+}
+div#menu_list ul.tree li {
+ 	margin: 0;
+ 	padding: 0 7px;
+ 	line-height: 20px;
+ 	color: #369;
+	font-weight: bold;
+ 	border-left:1px solid rgb(100,100,100);
+ 	font-size: 22px;
+}
+div#menu_list ul.tree li:last-child {
+   border-left:none;
+}
+div#menu_list ul.tree li:before {
+	position:relative;
+  	top:-0.3em;
+  	height:1em;
+  	width:12px;
+  	color:white;
+  	border-bottom:1px solid rgb(100,100,100);
+  	content:"";
+  	display:inline-block;
+  	left:-7px;
+}
+div#menu_list ul.tree li:last-child:before {
+  	border-left:1px solid rgb(100,100,100);   
+}
+*/
+
+div#menu_list ul.tree{
+	margin: 20px 0;
+	font-size: 18px;
+}
+
+div#menu_list button.btn-dark{
+	margin: 20px 0;
+}
+
+div#menu_list ul, 
+div#menu_list li
+{
+	position: relative;
+}
+
+div#menu_list ul {
+    list-style: none;
+    padding-left: 32px;
+    padding-top: 0;
+}
+
+div#menu_list li{
+	padding-top: 10px;
+}
+
+div#menu_list li::before, 
+div#menu_list li::after 
+{
+    content: "";
+    position: absolute;
+    left: -12px;
+}
+
+div#menu_list li::before {
+    border-top: 1px solid #000;
+    top: 24px;
+    width: 8px;
+    height: 0;
+}
+
+div#menu_list li::after {
+    border-left: 1px solid #000;
+    height: 100%;
+    width: 0px;
+    top: 16px;
+}
+
+div#menu_list ul > li:last-child::after {
+    height: 8px;
+}
