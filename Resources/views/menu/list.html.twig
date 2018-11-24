@@ -1,0 +1,42 @@
+{% extends '@ReaccionCMSAdminBundle/base.html.twig' %}
+
+{% block reaccion_cms_admin_body %}
+
+<div class="my-3 my-md-5">
+
+	<div class="container">
+
+		<div class="page-header">
+	    	<h1 class="page-title">{{ 'preferences_menu.title' | trans }}</h1>
+	    </div>
+
+	    {% embed '@ReaccionCMSAdminBundle/shared/flash_messages.html.twig' with {'extraClasses' : 'pl-0 pr-0'} %}{% endembed %}
+
+	    <!-- list -->
+	    <div class="row row-cards">
+
+  			<div class="col-12">
+                
+                <div class="card">
+
+                	{% embed '@ReaccionCMSAdminBundle/shared/flash_messages.html.twig' %}{% endembed %}
+
+                	<div class="col-6 pb-4 mx-auto">
+
+                		{{ dump(menu) }}
+
+                		<button type="button" class="btn btn-block btn-dark">{{ 'preferences_menu.add_item' | trans }}</button>
+
+                	</div>
+
+	    		</div>
+
+	    	</div>
+
+	    </div>
+
+	</div>
+
+</div>
+
+{% endblock %}
