@@ -66,7 +66,7 @@
 	            ])
 	            ->add('enabled', CheckboxType::class, [
 	            	'label' => 'menu_form.is_enabled',
-	            	'attr' => array('checked' => 'checked'),
+	            	'attr' => ($options['mode'] == "create") ? ['checked' => 'checked'] : [],
 	            	'required' => false
 	            ])
 	        ;
@@ -77,7 +77,8 @@
 		    $resolver->setDefaults(array(
 		    	'data_class' => 'App\ReaccionEstudio\ReaccionCMSBundle\Entity\Menu',
 		        'pageValue' => '',
-		        'urlValue' => ''
+		        'urlValue' => '',
+		        'mode' => 'create'
 		    ));
 		}
 	}
