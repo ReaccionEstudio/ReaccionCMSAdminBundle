@@ -8,6 +8,12 @@
 	{
 		public function index()
 		{
-			return $this->render("@ReaccionCMSAdminBundle/dashboard/dashboard.html.twig");
+			$widgetStats = $this->get("reaccion_cms_admin.dashboard")->getWidgetsStats();
+
+			return $this->render("@ReaccionCMSAdminBundle/dashboard/dashboard.html.twig",
+				[
+					'widgetStats' => $widgetStats
+				]
+			);
 		}
 	}

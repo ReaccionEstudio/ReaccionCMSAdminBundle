@@ -7,7 +7,7 @@
   <div class="container">
 
     <div class="page-header">
-    	<h1 class="page-title">Dashboard</h1>
+    	<h1 class="page-title">{{ 'dashboard.title' | trans }}</h1>
     </div>
 
     <!-- cards -->
@@ -17,32 +17,24 @@
 	    <div class="col-6 col-sm-4 col-lg-2">
 	        <div class="card">
 	          <div class="card-body p-3 text-center">
-	            <div class="h1 m-0">0</div>
-	            <div class="text-muted mb-4">Pages</div>
+	            <div class="h1 m-0">{{ widgetStats.pages }}</div>
+	            <div class="text-muted mb-4">{{ 'dashboard.pages' | trans }}</div>
 	          </div>
 	        </div>
 	    </div>
 	    <div class="col-6 col-sm-4 col-lg-2">
 	        <div class="card">
 	          <div class="card-body p-3 text-center">
-	            <div class="h1 m-0">0</div>
-	            <div class="text-muted mb-4">Content rows</div>
+	            <div class="h1 m-0">{{ widgetStats.pageContent }}</div>
+	            <div class="text-muted mb-4">{{ 'dashboard.content_rows' | trans }}</div>
 	          </div>
 	        </div>
 	    </div>
 	    <div class="col-6 col-sm-4 col-lg-2">
 	        <div class="card">
 	          <div class="card-body p-3 text-center">
-	          	<div class="h1 m-0">0</div>
-	            <div class="text-muted mb-4">Media content</div>
-	          </div>
-	        </div>
-	    </div>
-	    <div class="col-6 col-sm-4 col-lg-2">
-	        <div class="card">
-	          <div class="card-body p-3 text-center">
-	          	<div class="h1 m-0">0</div>
-	            <div class="text-muted mb-4">Entries</div>
+	          	<div class="h1 m-0">{{ widgetStats.media }}</div>
+	            <div class="text-muted mb-4">{{ 'dashboard.media_content' | trans }}</div>
 	          </div>
 	        </div>
 	    </div>
@@ -50,15 +42,23 @@
 	        <div class="card">
 	          <div class="card-body p-3 text-center">
 	          	<div class="h1 m-0">0</div>
-	            <div class="text-muted mb-4">Comments</div>
+	            <div class="text-muted mb-4">{{ 'dashboard.entries' | trans }}</div>
 	          </div>
 	        </div>
 	    </div>
 	    <div class="col-6 col-sm-4 col-lg-2">
 	        <div class="card">
 	          <div class="card-body p-3 text-center">
-	            <div class="h1 m-0">0</div>
-	            <div class="text-muted mb-4">1 user</div>
+	          	<div class="h1 m-0">0</div>
+              <div class="text-muted mb-4">{{ 'dashboard.comments' | trans }}</div>
+	          </div>
+	        </div>
+	    </div>
+	    <div class="col-6 col-sm-4 col-lg-2">
+	        <div class="card">
+	          <div class="card-body p-3 text-center">
+	            <div class="h1 m-0">{{ widgetStats.users }}</div>
+	            <div class="text-muted mb-4">{{ 'dashboard.users' | trans }}</div>
 	          </div>
 	        </div>
 	    </div>

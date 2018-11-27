@@ -61,6 +61,16 @@ crud:
 # common messages
 remove_item_confirm_message: 'Do you want to remove this item?'
 
+# dashboard
+dashboard:
+  title: 'Dashboard'
+  pages: 'Pages'
+  content_rows: 'Content rows'
+  media_content: 'Media content'
+  entries: 'Entries'
+  comments: 'Comments'
+  users: 'Users'
+
 # pages
 pages_list:
   title: 'Pages list'
