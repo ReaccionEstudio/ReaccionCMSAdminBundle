@@ -50,6 +50,18 @@
 				    'mapped' => false,
 				    'required' => false
 				])
+				->add('target', ChoiceType::class, [
+	            	'label' => 'menu_form.target',
+	            	'required' => true,
+	            	'choices' => [
+	            		'_blank' => '_blank',
+	            		'_self' => '_self',
+	            		'_parent' => '_parent',
+	            		'_top' => '_top'
+	            	],
+	            	'placeholder' => '',
+	            	'required' => true
+	            ])
 	            ->add('enabled', CheckboxType::class, [
 	            	'label' => 'menu_form.is_enabled',
 	            	'attr' => array('checked' => 'checked'),

@@ -212,3 +212,15 @@ roles:
   role_admin: 'Administrator'
   role_editor: 'Editor'
   role_user: 'User'
+
+# menu
+menu_form:
+  title: 'Create menu item'
+  name: 'Name'
+  type: 'Type'
+  url_type: 'Url'
+  page_type: 'Page'
+  is_enabled: 'Is enabled?'
+  url_value: 'Url'
+  page_value: 'Page'
+  target: 'Target'

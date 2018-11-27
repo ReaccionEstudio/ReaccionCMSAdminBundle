@@ -55,6 +55,13 @@ reaccion_cms_admin_preferences_menu:
     path: /preferences/menu
     controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuListController::index
 
+reaccion_cms_admin_preferences_menu_create:
+    path: /preferences/menu/create/{parent}
+    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuCreateController::index
+    defaults:
+        parent: 0
+
+
 # Media
 reaccion_cms_admin_media_index:
     path: /media

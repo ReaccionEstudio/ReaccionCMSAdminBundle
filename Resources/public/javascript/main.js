@@ -10,6 +10,7 @@ require('./CommonEvents.js');
 import Media from './media.js';
 import Page from './page.js';
 import User from './User.js';
+import Menu from './Menu.js';
 
 const currentRoute 	= window.location.pathname;
 
@@ -18,6 +19,7 @@ $(document).ready(function()
 	let pageAddContentRegex = /admin\/pages\/\d\/content\/add/gi;
 	let pageEditContentRegex = /admin\/pages\/content\/\d/gi;
 	let userEditRegex = /admin\/users\/\d\/update/gi;
+	let menuCreateRegex = /admin\/preferences\/menu\/create\/\d/gi;
 	
 	if(currentRoute == "/admin/media/add")
 	{
@@ -35,5 +37,11 @@ $(document).ready(function()
 	{
 		let user = new User();
 			user.formEvents();
+	}
+
+	if(menuCreateRegex.test(currentRoute) || currentRoute == "/admin\/preferences\/menu\/create")
+	{
+		let menu = new Menu();
+			menu.formEvents();
 	}
 });
