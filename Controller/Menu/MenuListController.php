@@ -26,8 +26,7 @@
 			$query = $em->createQuery($dql);
 			$menu = $query->getArrayResult();
 
-			$menuService = new MenuService();
-			$nested = $menuService->buildNestedArray($menu);
+			$nested = $this->get("reaccion_cms_admin.menu")->buildNestedArray($menu);
 
 			return $this->render("@ReaccionCMSAdminBundle/menu/list.html.twig",
 				[
