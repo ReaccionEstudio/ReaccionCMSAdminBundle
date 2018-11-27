@@ -37,12 +37,19 @@
 					    			<i class="fe fe-trash-2"></i>
 					    		</a>
 
+					    		{% set parentId = menuItem.id %}
+
 				        	{% if menuItem.children is defined and menuItem.children is not empty %}
 								<ul>
-								{% set parentId = menuItem.children[0].parent_id %}
-				                {% for child in menuItem.children %}
-				                    {{ self.listMenu(child) }}
-				                {% endfor %}
+				                	{% for child in menuItem.children %}
+				                    	{{ self.listMenu(child) }}
+				                	{% endfor %}
+				                	<li>
+				                		<a href="{{ url('reaccion_cms_admin_preferences_menu_create', { 'parent' : parentId }) }}" class="tag tag-gray-dark">{{ 'preferences_menu.add_item' | trans }}</a>
+				                	</li>
+					        	</ul>
+					        {% else %}
+					        	<ul>
 				                	<li>
 				                		<a href="{{ url('reaccion_cms_admin_preferences_menu_create', { 'parent' : parentId }) }}" class="tag tag-gray-dark">{{ 'preferences_menu.add_item' | trans }}</a>
 				                	</li>
