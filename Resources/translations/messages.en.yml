@@ -226,3 +226,5 @@ menu_form:
   target: 'Target'
   create_success_message: 'Menu item has been created correctly'
   create_error_message: 'Error creating menu item <strong>%name%</strong>: %error%'
+  remove_success_message: 'Menu item <strong>%name%</strong> has been removed correctly'
+  remove_error_message: 'Error removing <strong>%name%</strong> menu item: %error%'

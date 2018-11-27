@@ -33,7 +33,7 @@
 					    		<a href="#" class="text-info ml-2" title="{{ 'crud.edit' | trans }}" data-toggle="tooltip" data-placement="top">
 					    			<i class="fe fe-edit"></i>
 					    		</a>
-					    		<a href="#" class="text-red" data-toggle="tooltip" data-placement="top" title="{{ 'crud.remove' | trans }}" data-detele-confirm="true">
+					    		<a href="{{ url('reaccion_cms_admin_preferences_menu_remove', { 'menu' : menuItem.id }) }}" class="text-red" data-toggle="tooltip" data-placement="top" title="{{ 'crud.remove' | trans }}" data-detele-confirm="true">
 					    			<i class="fe fe-trash-2"></i>
 					    		</a>
 
