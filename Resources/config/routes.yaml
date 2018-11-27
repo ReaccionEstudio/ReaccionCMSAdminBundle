@@ -61,6 +61,10 @@ reaccion_cms_admin_preferences_menu_create:
     defaults:
         parent: 0
 
+reaccion_cms_admin_preferences_menu_edit:
+    path: /preferences/menu/{menu}
+    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuDetailController::index
+
 reaccion_cms_admin_preferences_menu_remove:
     path: /preferences/menu/{menu}/remove
     controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\RemoveMenuController::index

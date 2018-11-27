@@ -216,6 +216,7 @@ roles:
 # menu
 menu_form:
   title: 'Create menu item'
+  detail_title: 'Menu item: <strong>%name%</strong>'
   name: 'Name'
   type: 'Type'
   url_type: 'Url'
@@ -228,3 +229,5 @@ menu_form:
   create_error_message: 'Error creating menu item <strong>%name%</strong>: %error%'
   remove_success_message: 'Menu item <strong>%name%</strong> has been removed correctly'
   remove_error_message: 'Error removing <strong>%name%</strong> menu item: %error%'
+  update_success_message: 'Menu item has been updated correctly.'
+  update_error_message: 'Error updating menu item: %error%'

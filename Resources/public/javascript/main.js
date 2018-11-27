@@ -20,6 +20,7 @@ $(document).ready(function()
 	let pageEditContentRegex = /admin\/pages\/content\/\d/gi;
 	let userEditRegex = /admin\/users\/\d\/update/gi;
 	let menuCreateRegex = /admin\/preferences\/menu\/create\/\d/gi;
+	let menuDetailRegex = /admin\/preferences\/menu\/\d/gi;
 	
 	if(currentRoute == "/admin/media/add")
 	{
@@ -39,7 +40,10 @@ $(document).ready(function()
 			user.formEvents();
 	}
 
-	if(menuCreateRegex.test(currentRoute) || currentRoute == "/admin\/preferences\/menu\/create")
+	if( menuCreateRegex.test(currentRoute) || 
+		currentRoute == "/admin\/preferences\/menu\/create" || 
+		menuDetailRegex.test(currentRoute) 
+	)
 	{
 		let menu = new Menu();
 			menu.formEvents();

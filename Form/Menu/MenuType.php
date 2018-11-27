@@ -4,6 +4,7 @@
 
 	use Symfony\Component\Form\AbstractType;
 	use Symfony\Component\Form\FormBuilderInterface;
+	use Symfony\Component\OptionsResolver\OptionsResolver;
 	use Symfony\Component\Form\Extension\Core\Type\TextType;
 	use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 	use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -36,7 +37,7 @@
 	            	'label' => 'menu_form.url_value',
 	            	'mapped' => false,
 	            	'required' => false,
-	            	'data' => '#'
+	            	'data' => ($options['urlValue']) ? $options['urlValue'] : '#'
 	            ])
 	            ->add('pageValue', EntityType::class, [
 	            	'label' => 'menu_form.page_value',
@@ -48,7 +49,8 @@
 				            ->orderBy('p.name', 'ASC');
 				    },
 				    'mapped' => false,
-				    'required' => false
+				    'required' => false,
+				    'data' => ($options['pageValue']) ? $options['pageValue'] : ''
 				])
 				->add('target', ChoiceType::class, [
 	            	'label' => 'menu_form.target',
@@ -65,8 +67,17 @@
 	            ->add('enabled', CheckboxType::class, [
 	            	'label' => 'menu_form.is_enabled',
 	            	'attr' => array('checked' => 'checked'),
-	            	'required' => true
+	            	'required' => false
 	            ])
 	        ;
 	    }
+
+	    public function configureOptions(OptionsResolver $resolver)
+		{
+		    $resolver->setDefaults(array(
+		    	'data_class' => 'App\ReaccionEstudio\ReaccionCMSBundle\Entity\Menu',
+		        'pageValue' => '',
+		        'urlValue' => ''
+		    ));
+		}
 	}
