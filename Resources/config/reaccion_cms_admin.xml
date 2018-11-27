@@ -12,7 +12,9 @@
 
         <parameter key="reaccion_cms_admin.media_upload.class">App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Media\MediaUploadService</parameter>
 
-    	<parameter key="reaccion_cms_admin.resize_image_service.class">App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Media\ResizeImageService</parameter>
+        <parameter key="reaccion_cms_admin.resize_image_service.class">App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Media\ResizeImageService</parameter>
+
+    	<parameter key="reaccion_cms_admin.menu_service.class">App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Menu\MenuService</parameter>
 
         <parameter key="reaccion_cms_admin.upload_dir">%kernel.project_dir%/public/uploads/</parameter>
 
@@ -50,7 +52,11 @@
             <argument>%reaccion_cms_admin.allowed_upload_mimetypes%</argument>
         </service>
 
-    	<service id="reaccion_cms_admin.resize_image_service" class="%reaccion_cms_admin.resize_image_service.class%" public="true">
+        <service id="reaccion_cms_admin.resize_image_service" class="%reaccion_cms_admin.resize_image_service.class%" public="true">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+        </service>
+
+    	<service id="reaccion_cms_admin.menu" class="%reaccion_cms_admin.menu_service.class%" public="true">
             <argument type="service" id="doctrine.orm.entity_manager" />
         </service>
 
