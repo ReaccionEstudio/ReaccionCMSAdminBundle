@@ -30,16 +30,17 @@
 		/**
 		 * Build nested array with menu items
 		 *
-		 * @param  Array  $menu  	 Menu items
-		 * @return Array  $nested    Menu nested array
+		 * @param  Boolean 		$hideDisabledItems 		Hide disabled menu items?
+		 * @return Array  		$nested    				Menu nested array
 		 */
-		public function buildNestedArray(Array $arrayToSearch) : Array
+		public function buildNestedArray(Bool $hideDisabledItems=true) : Array
 		{
-			$nested = array();
-			$source = array();
+			$nested 	= array();
+			$source 	= array();
+			$menuItems 	= $this->getMenuItemsAsArray($hideDisabledItems);
 
 			// create source array
-			foreach($arrayToSearch as $menuItem)
+			foreach($menuItems as $menuItem)
 			{
 				$source[$menuItem['id']] = $menuItem;
 			}
@@ -100,5 +101,30 @@
 			$result = $query->getSingleResult();
 
 			return (isset($result['next_position'])) ? $result['next_position'] : 1;
+		}
+
+		/**
+		 * Get all menu items as array
+		 *
+		 * @param  Boolean 		$hideDisabledItems 		Hide disabled menu items?
+		 * @return Array 		[type] 					Array with all menu items
+		 */
+		public function getMenuItemsAsArray(Bool $hideDisabledItems=true) : Array
+		{
+			$dql =  "
+					SELECT 
+					m.id, p.id AS parent_id, m.name, m.type, m.target, m.position
+					FROM  App\ReaccionEstudio\ReaccionCMSBundle\Entity\Menu m 
+					LEFT JOIN App\ReaccionEstudio\ReaccionCMSBundle\Entity\Menu p 
+					WITH p.id = m.parent 
+					";
+
+			if($hideDisabledItems)
+			{
+				$dql .= "WHERE m.enabled = 1";
+			}
+
+			$query = $this->em->createQuery($dql);
+			return $query->getArrayResult();
 		}
 	}

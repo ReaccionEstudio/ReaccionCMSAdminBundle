@@ -13,20 +13,7 @@
 	{
 		public function index(Request $request, TranslatorInterface $translator)
 		{
-			$em = $this->getDoctrine()->getManager();
-
-			$dql =  "
-					SELECT 
-					m.id, p.id AS parent_id, m.name, m.type, m.target, m.position
-					FROM  App\ReaccionEstudio\ReaccionCMSBundle\Entity\Menu m 
-					LEFT JOIN App\ReaccionEstudio\ReaccionCMSBundle\Entity\Menu p 
-					WITH p.id = m.parent
-					";
-
-			$query = $em->createQuery($dql);
-			$menu = $query->getArrayResult();
-
-			$nested = $this->get("reaccion_cms_admin.menu")->buildNestedArray($menu);
+			$nested = $this->get("reaccion_cms_admin.menu")->buildNestedArray(false);
 
 			return $this->render("@ReaccionCMSAdminBundle/menu/list.html.twig",
 				[

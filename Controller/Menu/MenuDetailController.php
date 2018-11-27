@@ -22,7 +22,7 @@
 								? $menu->getValue() 
 								: $em->getRepository(Page::class)->findOneBy(['id' => $menu->getValue() ]);
 
-			$formParams = [ $formParamKey => $formParamsValue ];
+			$formParams = [ $formParamKey => $formParamsValue, 'mode' => 'edit' ];
 
 			// form
 			$form = $this->createForm(MenuType::class, $menu, $formParams);
