@@ -13,7 +13,6 @@
 	  			</a>
 	  		</div>
   			<div class="col-6 text-right">
-
   				<a href="{{ url('reaccion_cms_admin_remove_media', { 'media' : media.id }) }}" class="btn btn-danger" data-detele-confirm="true">
 	  				<i class="fe fe-trash-2"></i>&nbsp;&nbsp;{{ 'crud.remove' | trans }}
 	  			</a>
@@ -25,12 +24,22 @@
 
 			{% set original_image_url = app.request.getSchemeAndHttpHost() ~ asset('/uploads/' ~ media.path) %}
 
+			{% if getMediaType(media) == 'image' %}
 		  	<a href="{{ original_image_url }}" target="_blank" class="card-aside-column">
 		  		<span class="tag tag-primary media-type-tag">
 				  {{ media.mimeType }}
 				</span>
 		  		<img src="{{ asset('uploads/' ~ media.path) }}" />
 		  	</a>
+		  	{% endif %}
+
+		  	{% if getMediaType(media) == 'video' %}
+		  	<video width="50%" controls>
+			  	<source src="{{ asset('uploads/' ~ media.path) }}" type="video/mp4">
+				{{ 'media.video_tag_not_supported' | trans }}
+			</video> 
+		  	{% endif %}
+
 		  	<div class="card-body d-flex flex-column">
 			    <h4>
 		    		<a href="{{ original_image_url }}">{{ media.name }}</a>

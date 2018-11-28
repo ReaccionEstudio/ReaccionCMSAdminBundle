@@ -14,6 +14,9 @@ entries:
 
 media: 
   title: 'Media'
+  video: 'Video'
+  image: 'Image'
+  video_tag_not_supported: 'Your browser does not support the video tag.'
 
 entries_categories: 
   list: 'List all categories'
