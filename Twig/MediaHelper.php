@@ -22,8 +22,31 @@ class MediaHelper extends \Twig_Extension
         return array(
             new \Twig_SimpleFunction('getImageResolution', array($this, 'getImageResolution')),
             new \Twig_SimpleFunction('convertBytesToKb', array($this, 'convertBytesToKb')),
+            new \Twig_SimpleFunction('getMediaType', array($this, 'getMediaType')),
             new \Twig_SimpleFunction('getSmallestImageFromMedia', array($this, 'getSmallestImageFromMedia'))
         );
+    }
+
+    /**
+     * Get media type with mimeType
+     *
+     * @param  String    $mimeType  Media mimeType
+     * @return String    [type]     Media type
+     */
+    public function getMediaType(Media $media) : String
+    {
+        $mimeType = $media->getMimeType();
+
+        if(preg_match("/image\//", $mimeType))
+        {
+            return 'image';
+        }
+        else if(preg_match("/video\//", $mimeType))
+        {
+            return 'video';
+        }
+
+        return '';
     }
 
     /**
