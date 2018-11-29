@@ -83,6 +83,8 @@ class MediaImagePreviewComponent
 		document.addEventListener('selectedItemFromMediaGallery', function(e)
 		{
 			_self.selectedMedia = e.detail.image;
+			
+			if( ! _self.selectedMedia ) return;
 
 			if( typeof e.detail.reset == "undefined" ) e.detail.reset = false;
 

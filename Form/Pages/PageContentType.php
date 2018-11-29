@@ -16,7 +16,8 @@
 		CONST PageContentTypesList = array(
 
 			'page_content_types.text_html' => 'text_html',
-			'page_content_types.image' => 'img'
+			'page_content_types.image' => 'img',
+			'page_content_types.video' => 'video'
 
 		);
 

@@ -1,14 +1,13 @@
 /**
- * Image content type class
+ * Video content type class
  *
  * @author 	Alberto Vian - alberto@reaccionestudio.com
  * @website reaccionestudio.com
  */
 
 import MediaGalleryFormComponent from '../components/media/MediaGalleryFormComponent.js';
-import MediaImagePreviewComponent from '../components/media/MediaImagePreviewComponent.js';
 
-class ImageContentType
+class VideoContentType
 {
 	/** 
 	 * Constructor
@@ -16,7 +15,7 @@ class ImageContentType
 	constructor()
 	{
 		this.mediaGalleryFormComponent = new MediaGalleryFormComponent();
-		this.mediaImagePreviewComponent = this.mediaGalleryFormComponent.mediaImagePreviewComponent;
+		this.mediaVideoPreviewComponent = this.mediaGalleryFormComponent.mediaVideoPreviewComponent;
 		this.formSelector = this.mediaGalleryFormComponent.formSelector;
 	}
 
@@ -47,15 +46,15 @@ class ImageContentType
 	{
 		let selectedValue = $("select#page_content_type").val();
 		
-		if(selectedValue == "img")
+		if(selectedValue == "video")
 		{
-			this.mediaImagePreviewComponent.showGallery();
+			this.mediaVideoPreviewComponent.showGallery();
 		}
-		else
+		else if(selectedValue != "img")
 		{
-			this.mediaImagePreviewComponent.hideGallery(false);
+			this.mediaVideoPreviewComponent.hideGallery(false);
 		}
 	}
 }
 
-export default ImageContentType;
+export default VideoContentType;

@@ -6,6 +6,7 @@
  */
 
  import MediaImagePreviewComponent from './MediaImagePreviewComponent.js';
+ import MediaVideoPreviewComponent from './MediaVideoPreviewComponent.js';
 
 class MediaGalleryFormComponent
 {
@@ -20,6 +21,9 @@ class MediaGalleryFormComponent
 
 		// Media image preview component
 		this.mediaImagePreviewComponent = new MediaImagePreviewComponent(this.galleryComponent, this.formSelector);
+
+		// Media video preview component
+		this.mediaVideoPreviewComponent = new MediaVideoPreviewComponent(this.galleryComponent, this.formSelector);
 		
 		// Media gallery events
 		this.events();
@@ -83,6 +87,8 @@ class MediaGalleryFormComponent
 	 */
 	_selectMediaItemFromGalleryEvent()
 	{
+		let _self = this;
+
 		$("body").on("click", "div#modal div.card a[data-media-id]", function(e)
 		{
 			e.preventDefault();
@@ -97,13 +103,16 @@ class MediaGalleryFormComponent
 				this.selectedMedia = result;
 				
 				// create and dispatch event
+				let mediaKey = _self._getMediaType(this.selectedMedia.mimeType);
+
+				// event data
+				let detail = { "reset" : true };
+					detail[mediaKey] = this.selectedMedia;
+
 				var event = new CustomEvent(
 									'selectedItemFromMediaGallery', 
 									{ 
-										'detail' : {
-											'image' : this.selectedMedia,
-											'reset' : true
-										}
+										'detail' : detail
 									}
 								);
 
@@ -111,6 +120,27 @@ class MediaGalleryFormComponent
 			});
 
 		});
+	}
+
+	/**
+	 * Get media type
+	 *
+	 * @param  String 	mimeType 	Media mimeType
+	 * @return String 	[type] 		Media type
+	 */
+	_getMediaType(mimeType)
+	{
+		let image = /image\//gi;
+		let video = /video\//gi;
+
+		if(image.test(mimeType))
+		{
+			return 'image';
+		}
+		else if(video.test(mimeType))
+		{
+			return 'video';
+		}
 	}
 }
 

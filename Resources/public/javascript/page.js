@@ -5,25 +5,26 @@
  * @website reaccionestudio.com
  */
 
-import ImageContentType from "./page/imageContentType.js";
+import ImageContentType from "./page/ImageContentType.js";
+import VideoContentType from "./page/VideoContentType.js";
 
 class Page
 {
 	/**
 	 * Constructor
 	 */
-	constructor()
-	{
-
-	}
+	constructor(){ }
 
 	/**
 	 * Page form events
 	 */
 	formEvents()
 	{
-		var imageContentType = new ImageContentType();
+		let imageContentType = new ImageContentType();
 			imageContentType.events();
+
+		let videoContentType  = new VideoContentType();
+			videoContentType.events();
 	}
 
 }

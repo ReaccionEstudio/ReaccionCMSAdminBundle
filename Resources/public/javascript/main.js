@@ -7,7 +7,7 @@
 
 require('./CommonEvents.js');
 
-import Media from './media.js';
+import Media from './Media.js';
 import Page from './page.js';
 import User from './User.js';
 import Menu from './Menu.js';
