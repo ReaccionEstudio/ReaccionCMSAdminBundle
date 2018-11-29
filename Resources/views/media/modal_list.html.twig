@@ -34,11 +34,33 @@
 
       {% for item in media %}
       <div class="card">
+
+        {% if getMediaType(item) == 'image' %}
         <a href="#" data-media-id="{{ item.id }}">
           <img class="card-img-top" src="{{ asset('uploads/' ~ getSmallestImageFromMedia(item)) }}" alt="Card image cap">
         </a>
+        {% endif %}
+
+        {% if getMediaType(item) == 'video' %}
+        <video width="100%" controls>
+          <source src="{{ asset('uploads/' ~ item.path) }}" type="video/mp4">
+          {{ 'media.video_tag_not_supported' | trans }}
+        </video> 
+        {% endif %}
+
         <div class="card-body">
-          <h5 class="card-title">{{ item.name }}</h5>
+          <h5 class="card-title">
+            {% if getMediaType(item) == 'video' %}
+            <div class="tag tag-azure">{{ 'media.video' | trans }}</div>&nbsp;
+            {% endif %}
+            {% if getMediaType(item) == 'video' %}
+            <a href="{{ url('reaccion_cms_admin_media_detail', { 'media' : item.id }) }}">
+            {% endif %}
+            {{ item.name }}
+            {% if getMediaType(item) == 'video' %}
+            </a>
+            {% endif %}
+          </h5>
         </div>
       </div>
       {% endfor %}
