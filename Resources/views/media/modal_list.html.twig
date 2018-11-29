@@ -54,7 +54,7 @@
             <div class="tag tag-azure">{{ 'media.video' | trans }}</div>&nbsp;
             {% endif %}
             {% if getMediaType(item) == 'video' %}
-            <a href="{{ url('reaccion_cms_admin_media_detail', { 'media' : item.id }) }}">
+            <a href="#" data-media-id="{{ item.id }}">
             {% endif %}
             {{ item.name }}
             {% if getMediaType(item) == 'video' %}
