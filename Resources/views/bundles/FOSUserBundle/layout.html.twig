@@ -24,9 +24,19 @@
                                 
                                 <div class="card-body p-6">
                                     
-                                    <div class="card-title">Login to your account</div>
+                                    <div class="card-title">{{ 'login.title' | trans }}</div>
 
                                     {% trans_default_domain 'FOSUserBundle' %}
+
+                                    {% if app.request.hasPreviousSession %}
+                                        {% for type, messages in app.session.flashbag.all() %}
+                                            {% for message in messages %}
+                                                <div class="flash-{{ type }}">
+                                                    {{ message }}
+                                                </div>
+                                            {% endfor %}
+                                        {% endfor %}
+                                    {% endif %}
 
                                     {% if error %}
                                         <div class="alert alert-icon alert-danger" role="alert">
@@ -46,7 +56,7 @@
                                     <div class="form-group">
                                         <label class="form-label" for="password">
                                             {{ 'security.login.password'|trans }}
-                                            <a href="./forgot-password.html" class="float-right small">I forgot password</a>
+                                            <a href="./forgot-password.html" class="float-right small">{{ 'login.forgot_password' | trans }}</a>
                                         </label>
                                         <input type="password" id="password" name="_password" required="required" class="form-control" autocomplete="current-password" />
                                     </div>

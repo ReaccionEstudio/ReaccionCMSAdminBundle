@@ -46,6 +46,10 @@ user_dropdown:
 navigation:
   go_to_website: 'Go to website'
   
+# login 
+login:
+  title: 'Login to your account'
+  forgot_password: 'I forgot password'
 
 # crud
 crud:
