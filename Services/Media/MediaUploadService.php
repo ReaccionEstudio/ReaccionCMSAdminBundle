@@ -79,11 +79,13 @@
 		{
 			$this->file = $file;
 
+			$resizedImages = array();
 			$originalFilename = $this->file->getClientOriginalName();
 			$mimeType = $this->file->getClientMimeType();
 			$extension = $this->file->getClientOriginalExtension();
 			$filename = md5(uniqid()) . "." . $extension;
 			$size = $this->file->getSize();
+			$mediaType = $this->getMediaType($mimeType);
 
 			// check if file has valid mimeType
 			if( ! in_array($mimeType, $this->allowedMimeTypes))
@@ -107,11 +109,14 @@
 				// move file to folder
 				$this->file->move($this->uploadPath, $filename);
 
-				// resize image
-				$resizedImages = $this->resizeImageService->resize($filepath);
+				if($mediaType == "image")
+				{
+					// resize image
+					$resizedImages = $this->resizeImageService->resize($filepath);
+				}
 
 				// create media entity
-				$this->createMediaEntity($originalFilename, $filepath, $mimeType, $size, $resizedImages);
+				$this->createMediaEntity($originalFilename, $filepath, $mimeType, $mediaType, $size, $resizedImages);
 			}
 			catch(\Exception $e)
 			{
@@ -126,11 +131,12 @@
 		 * @param 	String 		$originalFilename 		Original filename
 		 * @param 	String 		$filepath 				Uploadad file full path
 		 * @param 	String 		$mimeType 				File mimeType
+		 * @param 	String 		$type 					Media type
 		 * @param 	Float 		$size 					File size in bytes
 		 * @param 	Array 		$$resizedImages 		Resized images info
 		 * @return 	void 		
 		 */
-		private function createMediaEntity(String $originalFilename, String $filepath, String $mimeType, Float $size, Array $resizedImages) : void
+		private function createMediaEntity(String $originalFilename, String $filepath, String $mimeType, String $type, Float $size, Array $resizedImages = array() ) : void
 		{
 			$filepathArray = explode("uploads/", $filepath);
 			$filepath = $filepathArray[1];
@@ -142,23 +148,27 @@
 				$media->setName($originalFilename);
 				$media->setPath($filepath);
 				$media->setMimetype($mimeType);
+				$media->setType($type);
 
-				if( ! empty($resizedImages['l']['path']))
+				if($type == "image")
 				{
-					$media->setLargePath($resizedImages['l']['path']);
-					$media->setLargeSize($resizedImages['l']['size']);
-				}
+					if( ! empty($resizedImages['l']['path']))
+					{
+						$media->setLargePath($resizedImages['l']['path']);
+						$media->setLargeSize($resizedImages['l']['size']);
+					}
 
-				if( ! empty($resizedImages['m']['path']))
-				{
-					$media->setMediumPath($resizedImages['m']['path']);
-					$media->setMediumSize($resizedImages['m']['size']);
-				}
+					if( ! empty($resizedImages['m']['path']))
+					{
+						$media->setMediumPath($resizedImages['m']['path']);
+						$media->setMediumSize($resizedImages['m']['size']);
+					}
 
-				if( ! empty($resizedImages['s']['path']))
-				{
-					$media->setSmallPath($resizedImages['s']['path']);
-					$media->setSmallSize($resizedImages['s']['size']);
+					if( ! empty($resizedImages['s']['path']))
+					{
+						$media->setSmallPath($resizedImages['s']['path']);
+						$media->setSmallSize($resizedImages['s']['size']);
+					}
 				}
 
 				$this->em->persist($media);
@@ -192,4 +202,24 @@
 				}
 			}
 		}
+
+		/**
+	     * Get media type with mimeType
+	     *
+	     * @param  String    $mimeType  Media mimeType
+	     * @return String    [type]     Media type
+	     */
+	    public function getMediaType(String $mimeType) : String
+	    {
+	        if(preg_match("/image\//", $mimeType))
+	        {
+	            return 'image';
+	        }
+	        else if(preg_match("/video\//", $mimeType))
+	        {
+	            return 'video';
+	        }
+
+	        return '';
+	    }
 	}

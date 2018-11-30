@@ -24,7 +24,7 @@
 
 			{% set original_image_url = app.request.getSchemeAndHttpHost() ~ asset('/uploads/' ~ media.path) %}
 
-			{% if getMediaType(media) == 'image' %}
+			{% if media.type == 'image' %}
 		  	<a href="{{ original_image_url }}" target="_blank" class="card-aside-column">
 		  		<span class="tag tag-primary media-type-tag">
 				  {{ media.mimeType }}
@@ -33,7 +33,7 @@
 		  	</a>
 		  	{% endif %}
 
-		  	{% if getMediaType(media) == 'video' %}
+		  	{% if media.type == 'video' %}
 		  	<video width="50%" controls>
 			  	<source src="{{ asset('uploads/' ~ media.path) }}" type="video/mp4">
 				{{ 'media.video_tag_not_supported' | trans }}
