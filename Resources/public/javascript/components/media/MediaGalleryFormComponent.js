@@ -7,6 +7,7 @@
 
  import MediaImagePreviewComponent from './MediaImagePreviewComponent.js';
  import MediaVideoPreviewComponent from './MediaVideoPreviewComponent.js';
+ import PageContentInputTypeEvents from '../../page/PageContentInputTypeEvents.js';
 
 class MediaGalleryFormComponent
 {
@@ -36,7 +37,11 @@ class MediaGalleryFormComponent
 	{
 		this._navigateThroughtMediaGalleryEvent();
 		this._selectMediaItemFromGalleryEvent();
+
+		let pageContentInputTypeEvents = new PageContentInputTypeEvents(this);
+			pageContentInputTypeEvents.events();
 	}
+
 
 	/**
 	 * Get form selector value defined as 'data-form-name' attribute in the 'Open gallery form button'
@@ -55,11 +60,18 @@ class MediaGalleryFormComponent
 
 	/**
 	 * Show media gallery
+	 *
+	 * @param String 	mediaType 	Media type ['image', 'video']
 	 */
-	showMediaGallery()
+	showMediaGallery(mediaType)
 	{
 		var mediaListRoute = Routing.generate('reaccion_cms_admin_media_index');
 		mediaListRoute = mediaListRoute + '?modal=1';
+
+		if(mediaType)
+		{
+			mediaListRoute += '&type=' + mediaType;
+		}
 
 		$("div#modal").modal("show");
 		$("div#modal div.modal-body div.dimmer-content").load(mediaListRoute, function(result)
