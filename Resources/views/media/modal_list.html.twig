@@ -35,13 +35,13 @@
       {% for item in media %}
       <div class="card">
 
-        {% if media.type == 'image' %}
+        {% if item.type == 'image' %}
         <a href="#" data-media-id="{{ item.id }}">
           <img class="card-img-top" src="{{ asset('uploads/' ~ getSmallestImageFromMedia(item)) }}" alt="Card image cap">
         </a>
         {% endif %}
 
-        {% if media.type == 'video' %}
+        {% if item.type == 'video' %}
         <video width="100%" controls>
           <source src="{{ asset('uploads/' ~ item.path) }}" type="video/mp4">
           {{ 'media.video_tag_not_supported' | trans }}
@@ -50,14 +50,14 @@
 
         <div class="card-body">
           <h5 class="card-title">
-            {% if media.type == 'video' %}
+            {% if item.type == 'video' %}
             <div class="tag tag-azure">{{ 'media.video' | trans }}</div>&nbsp;
             {% endif %}
-            {% if media.type == 'video' %}
+            {% if item.type == 'video' %}
             <a href="#" data-media-id="{{ item.id }}">
             {% endif %}
             {{ item.name }}
-            {% if media.type == 'video' %}
+            {% if item.type == 'video' %}
             </a>
             {% endif %}
           </h5>
