@@ -11,9 +11,16 @@
 	{
 		public function index(Request $request)
 		{
+			$queryFilters = [];
+
+			if($request->query->get('type'))
+			{
+				$queryFilters = [ 'type' => $request->query->get('type') ];
+			}
+
 			$em = $this->getDoctrine()->getManager();
 			$media = $em->getRepository(Media::class)->findBy(
-						array(),
+						$queryFilters,
 						array('id' => 'DESC')
 					 );
 
