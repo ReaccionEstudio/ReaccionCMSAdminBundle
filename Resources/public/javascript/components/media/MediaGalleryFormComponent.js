@@ -97,6 +97,7 @@ class MediaGalleryFormComponent
 	/**
 	 * Select media item from gallery
 	 */
+	 // TODO: don't use _getMediaType() method
 	_selectMediaItemFromGalleryEvent()
 	{
 		let _self = this;
@@ -140,6 +141,7 @@ class MediaGalleryFormComponent
 	 * @param  String 	mimeType 	Media mimeType
 	 * @return String 	[type] 		Media type
 	 */
+	 // TODO: remove method
 	_getMediaType(mimeType)
 	{
 		let image = /image\//gi;
