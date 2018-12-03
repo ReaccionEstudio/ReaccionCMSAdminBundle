@@ -32,7 +32,7 @@ class MediaVideoPreviewComponent
 
 		if( $("textarea#page_content_value").val().length )
 		{
-			// this._previewVideoByPath();
+			this._previewVideoByPath();
 		}
 	}
 
@@ -88,6 +88,37 @@ class MediaVideoPreviewComponent
 
 		// show preview component
 		$("div#selected_video_preview").removeClass("d-none");
+	}
+
+	/**
+	 * Preview video from video path value for saved content.
+	 */
+	_previewVideoByPath()
+	{
+		let videoPath = $("textarea#page_content_value").val();
+		let mediaDetailRoute = Routing.generate('reaccion_cms_admin_media_detail_by_path');
+
+		$("div#selected_video_preview").removeClass("d-none");
+
+		// load media data
+		$.post(mediaDetailRoute, { 'path' : videoPath }, function(response)
+		{
+			// create and dispatch event
+			var event = new CustomEvent(
+								'selectedItemFromMediaGallery', 
+								{ 
+									'detail' : {
+										'video' : response
+									}
+								}
+							);
+
+			document.dispatchEvent(event);
+
+			// hide loader
+			$("div#selected_video_preview div.dimmer").removeClass("active");
+		}, 
+		"json");
 	}
 }
 
