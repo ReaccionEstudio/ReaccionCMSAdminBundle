@@ -45,8 +45,7 @@ class Page
 		}
 		else
 		{
-			// TODO: reset form media input value
-			this.mediaVideoPreviewComponent.hideGallery(false);
+			this.mediaImagePreviewComponent.hideGallery(false);
 		}
 	}
 

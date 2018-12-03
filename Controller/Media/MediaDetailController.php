@@ -87,7 +87,8 @@
 					'largeSize' => $media->getLargeSize(),
 					'mediumSize' => $media->getMediumSize(),
 					'smallSize' => $media->getSmallSize(),
-					'mimeType' => $media->getMimeType()
+					'mimeType' => $media->getMimeType(),
+					'type' => $media->getType()
 				];
 				
 			return new JsonResponse($response);

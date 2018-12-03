@@ -97,7 +97,6 @@ class MediaGalleryFormComponent
 	/**
 	 * Select media item from gallery
 	 */
-	 // TODO: don't use _getMediaType() method
 	_selectMediaItemFromGalleryEvent()
 	{
 		let _self = this;
@@ -115,8 +114,10 @@ class MediaGalleryFormComponent
 			{
 				this.selectedMedia = result;
 				
+				console.log(this.selectedMedia);
+
 				// create and dispatch event
-				let mediaKey = _self._getMediaType(this.selectedMedia.mimeType);
+				let mediaKey = this.selectedMedia['type'];
 
 				// event data
 				let detail = { "reset" : true };
@@ -133,28 +134,6 @@ class MediaGalleryFormComponent
 			});
 
 		});
-	}
-
-	/**
-	 * Get media type
-	 *
-	 * @param  String 	mimeType 	Media mimeType
-	 * @return String 	[type] 		Media type
-	 */
-	 // TODO: remove method
-	_getMediaType(mimeType)
-	{
-		let image = /image\//gi;
-		let video = /video\//gi;
-
-		if(image.test(mimeType))
-		{
-			return 'image';
-		}
-		else if(video.test(mimeType))
-		{
-			return 'video';
-		}
 	}
 }
 
