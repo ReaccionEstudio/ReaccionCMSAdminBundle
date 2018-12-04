@@ -5,6 +5,10 @@
  * @website reaccionestudio.com
  */
 
+// images
+require("../images/reaccion_cms_logo.jpg");
+
+// js
 require('./CommonEvents.js');
 
 import Media from './Media.js';
