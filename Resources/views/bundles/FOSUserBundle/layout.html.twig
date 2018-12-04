@@ -16,8 +16,7 @@
                     <div class="row">
                         <div class="col col-login mx-auto">
                             <div class="text-center mb-6">
-                                <!--<img src="" class="h-6" alt="">-->
-                                LOGO
+                                <img src="{{ asset('build/' ~ getConfigValue('admin_logo') ) }}" class="header-brand-img" alt="logo" />
                             </div>
                             
                             <form class="card" action="{{ path("fos_user_security_check") }}" method="post">
