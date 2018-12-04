@@ -7,8 +7,6 @@
 	use Symfony\Component\Translation\TranslatorInterface;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Menu;
 
-	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Menu\MenuService;
-
 	class RemoveMenuController extends Controller
 	{
 		public function index(Menu $menu, Request $request, TranslatorInterface $translator)
@@ -28,6 +26,10 @@
 				$em->remove($menu);
 				$em->flush();
 
+				// update menu html value for cache
+				$this->get("reaccion_cms.menu")->updateMenuHtmlCache();
+
+				// flash message
 				$this->addFlash('success', $translator->trans('menu_form.remove_success_message', array('%name%' => $menuItemName)) );
 			}
 			catch(\Exception $e)

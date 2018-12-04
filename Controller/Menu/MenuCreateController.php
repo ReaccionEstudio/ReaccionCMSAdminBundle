@@ -56,6 +56,10 @@
 					$em->persist($menu);
 					$em->flush();
 
+					// update menu html value for cache
+					$this->get("reaccion_cms.menu")->updateMenuHtmlCache();
+
+					// flash message
 					$this->addFlash('success', $translator->trans('menu_form.create_success_message') );
 					return $this->redirectToRoute('reaccion_cms_admin_preferences_menu');
 				}
