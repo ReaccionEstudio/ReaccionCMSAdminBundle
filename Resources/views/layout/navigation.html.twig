@@ -5,9 +5,11 @@
         		<img src="{{ asset('build/' ~ getConfigValue('admin_logo') ) }}" class="header-brand-img" alt="logo" />
       		</a>
           <div class="d-flex order-lg-2 ml-auto">
-                <div class="nav-item d-none d-md-flex">
-              	<a href="/" class="btn btn-sm btn-outline-primary">{{ 'navigation.go_to_website' | trans }}</a>
+            <div class="nav-item d-none d-md-flex">
+              <a href="/" class="btn btn-sm btn-outline-primary">{{ 'navigation.go_to_website' | trans }}</a>
             </div>
+
+            <!-- app messages
             <div class="dropdown d-none d-md-flex">
               	<a class="nav-link icon" data-toggle="dropdown">
                     <i class="fe fe-bell"></i>
@@ -39,9 +41,11 @@
                 <a href="#" class="dropdown-item text-center text-muted-dark">Mark all as read</a>
               </div>
             </div>
+            -->
+
             <div class="dropdown">
               <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
-                <span class="avatar" style="background-image: url(./demo/faces/female/25.jpg)"></span>
+                <!--<span class="avatar" style="background-image: url(./demo/faces/female/25.jpg)"></span>-->
                 <span class="ml-2 d-none d-lg-block">
                   <span class="text-default">{{ getUserNickname(app.user) }}</span>
                   <small class="text-muted d-block mt-1">{{ getUserMainRoleTranslationKey(app.user) | trans }}</small>
@@ -50,12 +54,14 @@
 
               <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                 <a class="dropdown-item" href="{{ url('reaccion_cms_admin_users_update', { 'user' : app.user.id }) }}">
-                  <i class="dropdown-icon fe fe-user"></i> Profile
+                  <i class="dropdown-icon fe fe-user"></i> {{ 'user_dropdown.profile' | trans }}
                 </a>
+                <!--
                 <a class="dropdown-item" href="#">
                   <span class="float-right"><span class="badge badge-primary">6</span></span>
                   <i class="dropdown-icon fe fe-mail"></i> Inbox
                 </a>
+                -->
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{ url('fos_user_security_logout') }}">
                   <i class="dropdown-icon fe fe-log-out"></i> {{ 'user_dropdown.sign_out' | trans }}
@@ -76,6 +82,7 @@
 
         <div class="row align-items-center">
 
+          <!--
           <div class="col-lg-3 ml-auto">
             <form class="input-icon my-3 my-lg-0">
               <input type="search" class="form-control header-search" placeholder="Search&hellip;" tabindex="1">
@@ -84,6 +91,7 @@
               </div>
             </form>
           </div>
+          -->
 
           <div class="col-lg order-lg-first">
 
@@ -98,6 +106,17 @@
                 <div class="dropdown-menu dropdown-menu-arrow">
                   <a href="{{ url('reaccion_cms_admin_pages_index') }}" class="dropdown-item {{isActive('pages_index')}}">{{ 'pages.list' | trans }}</a>
                   <a href="{{ url('reaccion_cms_admin_pages_create') }}" class="dropdown-item {{isActive('pages_create')}}">{{ 'pages.create' | trans }}</a>
+                </div>
+              </li>
+
+              <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link {{isActive('page', true)}}" data-toggle="dropdown"><i class="fe fe-file-text"></i>&nbsp;&nbsp;{{ 'entries.title' | trans }}</a>
+                <div class="dropdown-menu dropdown-menu-arrow">
+                  <a href="{{ url('reaccion_cms_admin_entries_categories_list') }}" class="dropdown-item {{isActive('entries_categories_list')}}">{{ 'entries_categories.list' | trans }}</a>
+                  <a href="#" class="dropdown-item {{isActive('pages_index')}}">{{ 'entries_categories.create' | trans }}</a>
+                  <div class="dropdown-divider"></div>
+                  <a href="#" class="dropdown-item {{isActive('pages_index')}}">{{ 'entries.list_title' | trans }}</a>
+                  <a href="#" class="dropdown-item {{isActive('pages_create')}}">{{ 'entries.create_title' | trans }}</a>
                 </div>
               </li>
 

@@ -9,18 +9,19 @@ pages:
 
 entries: 
   title: 'Entries'
-  list: 'List all entries'
-  create: 'Create new entry'
+  list_title: 'List all entries'
+  create_title: 'Create new entry'
+
+entries_categories: 
+  title: 'Categories'
+  list: 'List all categories'
+  create: 'Create new category'
 
 media: 
   title: 'Media'
   video: 'Video'
   image: 'Image'
   video_tag_not_supported: 'Your browser does not support the video tag.'
-
-entries_categories: 
-  list: 'List all categories'
-  create: 'Create new category'
 
 plugins: 
   title: 'Plugins'
@@ -42,6 +43,7 @@ preferences_menu:
 
 user_dropdown:
   sign_out: 'Sign out'
+  profile: 'Profile'
 
 navigation:
   go_to_website: 'Go to website'
@@ -250,3 +252,8 @@ menu_form:
   remove_error_message: 'Error removing <strong>%name%</strong> menu item: %error%'
   update_success_message: 'Menu item has been updated correctly.'
   update_error_message: 'Error updating menu item: %error%'
+
+# entries_categories
+entries_categories_list:
+  title: 'List entries categories'
+  create_btn: 'Create new category'
