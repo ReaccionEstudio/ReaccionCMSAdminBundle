@@ -273,3 +273,24 @@ entries_categories_form:
   update_error_form: 'Error updating category: %error%'
   remove_success_message: 'Category <strong>%name%</strong> has been removed correctly'
   remove_error_message: 'Error removig <strong>%name%</strong> category: %error%'
+
+# entries
+entries_list:
+  title: 'List entries'
+  create_btn: 'Create new entry'
+  name: 'Name'
+  isEnabled: 'Is enabled'
+  created_at: 'Created at'
+  updated_at: 'Updated at'
+  enabled: 'Enabled'
+  disabled: 'Disabled'
+
+entries_form:
+  title: 'Create new entry'
+  name: 'Name'
+  content: 'Content'
+  tags: 'Tags'
+  categories: 'Categories'
+  isEnabled: 'Is enabled'
+  create_success_form: 'Entry has been created correctly.'
+  create_error_form: 'Error creating entry: %error%'

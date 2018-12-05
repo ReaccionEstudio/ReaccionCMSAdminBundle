@@ -1,0 +1,86 @@
+{% extends '@ReaccionCMSAdminBundle/base.html.twig' %}
+
+{% block reaccion_cms_admin_body %}
+
+<div class="my-3 my-md-5">
+
+  	<div class="container">
+
+  		<div class="page-header">
+    		<div class="col pl-0">
+	    		<h1 class="page-title">{{ 'entries_list.title' | trans }}</h1>
+	    	</div>
+    		<div class="col col-lg-2 row justify-content-end">
+    			<a href="{{ url('reaccion_cms_admin_entries_create') }}" class="btn btn-primary">
+    				<i class="fe fe-plus"></i>&nbsp;&nbsp;{{ 'entries_list.create_btn' | trans }}
+    			</a>
+    		</div>
+	    </div>
+
+	    <div class="row row-cards">
+
+  			<div class="col-12">
+                <div class="card">
+
+                	{% embed '@ReaccionCMSAdminBundle/shared/crud/listCardHeader.html.twig' with { 'result' : entries } %}{% endembed %}
+
+                  	{% embed '@ReaccionCMSAdminBundle/shared/flash_messages.html.twig' %}{% endembed %}
+
+                  	<div class="table-responsive">
+	                    
+	                    <table class="table card-table table-vcenter text-nowrap">
+
+	                    	<thead>
+	                        	<tr>
+		                        	<th width="20%">{{ 'entries_list.name' | trans }}</th>
+		                        	<th>{{ 'entries_list.isEnabled' | trans }}</th>
+		                        	<th>{{ 'entries_list.created_at' | trans }}</th>
+		                        	<th width="20%"></th>
+		                        </tr>
+		                    </thead>
+
+		                    <tbody>
+
+		                    	{% for row in entries %}
+		                    	<tr>
+		                    		<td>
+		                    			<a href="{{ url('reaccion_cms_admin_entries_categories_update', { 'category' : row.id }) }}" title="{{ row.name }}">{{ row.name }}</a>
+		                    		</td>
+		                    		<td>
+		                    			{% if row.enabled %}
+			                          	<span class="status-icon bg-success"></span> {{ 'entries_list.enabled' | trans }}
+			                          	{% else %}
+			                          	<span class="status-icon bg-danger"></span> {{ 'entries_list.disabled' | trans }}
+			                          	{% endif %}
+			                        </td>
+		                    		<td>{{ row.createdAt | date('d/m/Y H:i:s') }}</td>
+		                    		<td class="text-right">
+			                    		
+			                    		<a href="{{ url('reaccion_cms_admin_entries_categories_update', { 'category' : row.id }) }}" title="{{ 'crud.edit' | trans }}" data-toggle="tooltip" data-placement="top">
+			                              <i class="fe fe-edit"></i>
+			                            </a>
+			                            &nbsp;
+			                            <a class="text-danger" href="{{ url('reaccion_cms_admin_entries_categories_remove', { 'category' : row.id }) }}" data-toggle="tooltip" data-placement="top" title="{{ 'crud.remove' | trans }}" data-detele-confirm="true">
+			                              <i class="fe fe-trash"></i>
+			                            </a>
+
+		                    		</td>
+		                    	</tr>
+		                    	{% endfor %}
+
+		                    </tbody>
+
+	                    </table>
+
+	                </div>
+
+	            </div>
+	        </div>
+
+	    </div>
+
+  	</div>
+
+</div>
+
+{% endblock %}
