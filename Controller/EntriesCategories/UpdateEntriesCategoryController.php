@@ -40,7 +40,9 @@
 
 			return $this->render("@ReaccionCMSAdminBundle/entries/categories/form.html.twig",
 				[
-					'form' => $form->createView()
+					'form' => $form->createView(),
+					'mode' => 'edit',
+					'categoryName' => $form['name']->getData()
 				]
 			);
 		}

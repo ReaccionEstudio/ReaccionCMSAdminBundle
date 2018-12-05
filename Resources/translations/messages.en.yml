@@ -267,6 +267,7 @@ entries_categories_list:
 
 entries_categories_form:
   title: 'Create new category'
+  edit_title: 'Update category: %name%'
   success_form: 'Category has been created correctly.'
   error_form: 'Error creating category: %error%'
   update_success_form: 'Category has been updated correctly.'
