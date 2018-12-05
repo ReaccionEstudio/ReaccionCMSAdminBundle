@@ -287,6 +287,7 @@ entries_list:
 
 entries_form:
   title: 'Create new entry'
+  update_title: 'Update entry: %name%'
   name: 'Name'
   content: 'Content'
   tags: 'Tags'
@@ -294,3 +295,5 @@ entries_form:
   isEnabled: 'Is enabled'
   create_success_form: 'Entry has been created correctly.'
   create_error_form: 'Error creating entry: %error%'
+  update_success_form: 'Entry has been updated correctly.'
+  update_error_form: 'Error updating entry: %error%'

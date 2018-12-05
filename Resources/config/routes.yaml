@@ -134,3 +134,7 @@ reaccion_cms_admin_entries_list:
 reaccion_cms_admin_entries_create:
     path: /entries/create
     controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Entries\CreateEntryController::index
+
+reaccion_cms_admin_entries_update:
+    path: /entries/{entry}/update
+    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Entries\UpdateEntryController::index

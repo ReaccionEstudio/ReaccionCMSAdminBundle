@@ -8,14 +8,12 @@
 	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\Entries\EntryType;
 	use Symfony\Component\Translation\TranslatorInterface;
 
-	class CreateEntryController extends Controller
+	class UpdateEntryController extends Controller
 	{
-		public function index(Request $request, TranslatorInterface $translator)
+		public function index(Entry $entry, Request $request, TranslatorInterface $translator)
 		{
-			$entry = new Entry();
-
 			// form
-			$form = $this->createForm(EntryType::class, $entry);
+			$form = $this->createForm(EntryType::class, $entry, ['mode' => 'edit']);
 			$form->handleRequest($request);
 
 			if ($form->isSubmitted() && $form->isValid()) 
@@ -29,21 +27,22 @@
 					$em->flush();
 
 					// success message
-					$successMessage = $translator->trans('entries_form.create_success_form');
+					$successMessage = $translator->trans('entries_form.update_success_form');
 					$this->addFlash('success', $successMessage);
 
 					return $this->redirectToRoute('reaccion_cms_admin_entries_list');
 				}
 				catch(\Exception $e)
 				{
-					$this->addFlash('error', $translator->trans('entries_form.create_error_form', array('%error%' => $e->getMessage())));
+					$this->addFlash('error', $translator->trans('entries_categories_form.update_error_form', array('%error%' => $e->getMessage())));
 				}
 			}
 			
 			return $this->render("@ReaccionCMSAdminBundle/entries/form.html.twig",
 				[
 					'form' => $form->createView(),
-					'mode' => 'create'
+					'mode' => 'edit',
+					'entryName' => $form['name']->getData()
 				]
 			);
 		}

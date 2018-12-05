@@ -44,7 +44,7 @@
 		                    	{% for row in entries %}
 		                    	<tr>
 		                    		<td>
-		                    			<a href="{{ url('reaccion_cms_admin_entries_categories_update', { 'category' : row.id }) }}" title="{{ row.name }}">{{ row.name }}</a>
+		                    			<a href="{{ url('reaccion_cms_admin_entries_update', { 'entry' : row.id }) }}" title="{{ row.name }}">{{ row.name }}</a>
 		                    		</td>
 		                    		<td>
 		                    			{% if row.enabled %}
@@ -56,7 +56,7 @@
 		                    		<td>{{ row.createdAt | date('d/m/Y H:i:s') }}</td>
 		                    		<td class="text-right">
 			                    		
-			                    		<a href="{{ url('reaccion_cms_admin_entries_categories_update', { 'category' : row.id }) }}" title="{{ 'crud.edit' | trans }}" data-toggle="tooltip" data-placement="top">
+			                    		<a href="{{ url('reaccion_cms_admin_entries_update', { 'entry' : row.id }) }}" title="{{ 'crud.edit' | trans }}" data-toggle="tooltip" data-placement="top">
 			                              <i class="fe fe-edit"></i>
 			                            </a>
 			                            &nbsp;

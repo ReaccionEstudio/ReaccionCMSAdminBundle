@@ -8,7 +8,11 @@
 
 		<div class="row">
 			<div class="col-12">
+				{% if mode == 'create' %}
 				<h3>{{ 'entries_form.title' | trans }}</h3>
+				{% elseif mode == 'edit' %}
+				<h3>{{ 'entries_form.update_title' | trans({ '%name%' : entryName }) | raw }}</h3>
+				{% endif %}
 			</div>
 		</div>
 
