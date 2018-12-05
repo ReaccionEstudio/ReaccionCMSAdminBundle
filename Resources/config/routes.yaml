@@ -121,3 +121,7 @@ reaccion_cms_admin_entries_categories_create:
 reaccion_cms_admin_entries_categories_update:
     path: /entries/categories/{category}/update
     controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EntriesCategories\UpdateEntriesCategoryController::index
+
+reaccion_cms_admin_entries_categories_remove:
+    path: /entries/categories/{category}/remove
+    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EntriesCategories\RemoveEntriesCategoryController::index

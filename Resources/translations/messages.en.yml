@@ -104,9 +104,9 @@ page_form:
   seo_title: 'Title'
   seo_description: 'Description'
   seo_keywords: 'Keywords'
-  create_success_message: 'The page was created correctly.'
+  create_success_message: 'The page has been created correctly.'
   create_error_message: 'Error creating <strong>%name%</strong> content: %error%'
-  remove_success_message: 'Page <strong>%name%</strong> was removed correctly.'
+  remove_success_message: 'Page <strong>%name%</strong> has been removed correctly.'
   remove_error_message: 'Error removing <strong>%name%</strong> content: %error%'
   update_success_message: 'Page has been updated correctly.'
   update_error_message: 'Error updating page: %error%'
@@ -124,10 +124,10 @@ page_content_form:
   is_enabled: 'Is enabled?'
   new_title: 'Add new content'
   edit_title: 'Edit content'
-  create_success_message: 'Content was created correctly.'
+  create_success_message: 'Content has been created correctly.'
   create_error_message: 'Error creating content <strong>%name%</strong>: %error%.'
-  update_success_message: 'Content <strong>%name%</strong> was updated correctly.'
-  remove_success_message: 'Content <strong>%name%</strong> was removed correctly.'
+  update_success_message: 'Content <strong>%name%</strong> has been updated correctly.'
+  remove_success_message: 'Content <strong>%name%</strong> has been removed correctly.'
   remove_error_message: 'Error removing <strong>%name%</strong> content: %error%.'
 
 page_detail:
@@ -154,9 +154,9 @@ config_form:
   title: 'Create new configuration'
   name: 'Name'
   value: 'Value'
-  success_form: 'Config was created correctly.'
+  success_form: 'Config has been created correctly.'
   error_form: 'Error creating config: %error%'
-  update_success_form: 'Config was updated correctly.'
+  update_success_form: 'Config has been updated correctly.'
   update_error_form: 'Error updating config: %error%'
 
 # media
@@ -180,7 +180,7 @@ media_detail:
   medium: 'Medium'
   small: 'Small'
   go_to_media_list: 'Go back to media list'
-  removed_media_successful: 'Media was removed correctly'
+  removed_media_successful: 'Media has been removed correctly'
   removed_media_error: 'Error removing media <strong>%name%</strong>: %error%'
 
 media_common:
@@ -209,9 +209,9 @@ users_list:
 users_form:
   title: 'Create user'
   title_edit: 'Edit user: <strong>%username%</strong>'
-  create_success_message: 'User was created correctly'
+  create_success_message: 'User has been created correctly'
   create_error_message: 'Error creating user <strong>%name%</strong>: %error%'
-  update_success_message: 'User was updated correctly'
+  update_success_message: 'User has been updated correctly'
   update_error_message: 'Error updating user <strong>%name%</strong>: %error%'
   username: 'Username'
   nickname: 'Nickname'
@@ -267,7 +267,9 @@ entries_categories_list:
 
 entries_categories_form:
   title: 'Create new category'
-  success_form: 'Category was created correctly.'
+  success_form: 'Category has been created correctly.'
   error_form: 'Error creating category: %error%'
-  update_success_form: 'Category was updated correctly.'
+  update_success_form: 'Category has been updated correctly.'
   update_error_form: 'Error updating category: %error%'
+  remove_success_message: 'Category <strong>%name%</strong> has been removed correctly'
+  remove_error_message: 'Error removig <strong>%name%</strong> category: %error%'
