@@ -113,7 +113,7 @@
                 <a href="javascript:void(0)" class="nav-link {{isActive('page', true)}}" data-toggle="dropdown"><i class="fe fe-file-text"></i>&nbsp;&nbsp;{{ 'entries.title' | trans }}</a>
                 <div class="dropdown-menu dropdown-menu-arrow">
                   <a href="{{ url('reaccion_cms_admin_entries_categories_list') }}" class="dropdown-item {{isActive('entries_categories_list')}}">{{ 'entries_categories.list' | trans }}</a>
-                  <a href="#" class="dropdown-item {{isActive('pages_index')}}">{{ 'entries_categories.create' | trans }}</a>
+                  <a href="{{ url('reaccion_cms_admin_entries_categories_create') }}" class="dropdown-item {{isActive('entries_categories_create')}}">{{ 'entries_categories.create' | trans }}</a>
                   <div class="dropdown-divider"></div>
                   <a href="#" class="dropdown-item {{isActive('pages_index')}}">{{ 'entries.list_title' | trans }}</a>
                   <a href="#" class="dropdown-item {{isActive('pages_create')}}">{{ 'entries.create_title' | trans }}</a>

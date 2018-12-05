@@ -257,3 +257,17 @@ menu_form:
 entries_categories_list:
   title: 'List entries categories'
   create_btn: 'Create new category'
+  name: 'Name'
+  language: 'Language'
+  isEnabled: 'Is enabled'
+  created_at: 'Created at'
+  updated_at: 'Updated at'
+  enabled: 'Enabled'
+  disabled: 'Disabled'
+
+entries_categories_form:
+  title: 'Create new category'
+  success_form: 'Category was created correctly.'
+  error_form: 'Error creating category: %error%'
+  update_success_form: 'Category was updated correctly.'
+  update_error_form: 'Error updating category: %error%'

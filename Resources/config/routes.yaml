@@ -113,3 +113,11 @@ reaccion_cms_admin_users_update:
 reaccion_cms_admin_entries_categories_list:
     path: /entries/categories
     controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EntriesCategories\EntriesCategoriesListController::index
+
+reaccion_cms_admin_entries_categories_create:
+    path: /entries/categories/create
+    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EntriesCategories\CreateEntriesCategoryController::index
+
+reaccion_cms_admin_entries_categories_update:
+    path: /entries/categories/{category}/update
+    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EntriesCategories\UpdateEntriesCategoryController::index

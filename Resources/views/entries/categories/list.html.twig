@@ -11,7 +11,7 @@
 	    		<h1 class="page-title">{{ 'entries_categories_list.title' | trans }}</h1>
 	    	</div>
     		<div class="col col-lg-2 row justify-content-end">
-    			<a href="#" class="btn btn-primary">
+    			<a href="{{ url('reaccion_cms_admin_entries_categories_create') }}" class="btn btn-primary">
     				<i class="fe fe-plus"></i>&nbsp;&nbsp;{{ 'entries_categories_list.create_btn' | trans }}
     			</a>
     		</div>
@@ -32,8 +32,9 @@
 
 	                    	<thead>
 	                        	<tr>
-		                        	<th width="40%">{{ 'config_list.name' | trans }}</th>
-		                        	<th width="40%">{{ 'config_list.value' | trans }}</th>
+		                        	<th width="20%">{{ 'entries_categories_list.name' | trans }}</th>
+		                        	<th>{{ 'entries_categories_list.isEnabled' | trans }}</th>
+		                        	<th>{{ 'entries_categories_list.created_at' | trans }}</th>
 		                        	<th width="20%"></th>
 		                        </tr>
 		                    </thead>
@@ -43,12 +44,19 @@
 		                    	{% for row in categories %}
 		                    	<tr>
 		                    		<td>
-		                    			<a href="{{ url('reaccion_cms_admin_preferences_update_configuration', { 'config' : row.id }) }}" title="{{ row.name }}">{{ row.name }}</a>
+		                    			<a href="{{ url('reaccion_cms_admin_entries_categories_update', { 'category' : row.id }) }}" title="{{ row.name }}">{{ row.name }}</a>
 		                    		</td>
-		                    		<td>{{ row.value }}</td>
+		                    		<td>
+		                    			{% if row.enabled %}
+			                          	<span class="status-icon bg-success"></span> {{ 'entries_categories_list.enabled' | trans }}
+			                          	{% else %}
+			                          	<span class="status-icon bg-danger"></span> {{ 'entries_categories_list.disabled' | trans }}
+			                          	{% endif %}
+			                        </td>
+		                    		<td>{{ row.createdAt | date('d/m/Y H:i:s') }}</td>
 		                    		<td class="text-right">
 			                    		
-			                    		<a href="{{ url('reaccion_cms_admin_preferences_update_configuration', { 'config' : row.id }) }}" title="{{ 'crud.edit' | trans }}" data-toggle="tooltip" data-placement="top">
+			                    		<a href="{{ url('reaccion_cms_admin_entries_categories_update', { 'category' : row.id }) }}" title="{{ 'crud.edit' | trans }}" data-toggle="tooltip" data-placement="top">
 			                              <i class="fe fe-edit"></i>
 			                            </a>
 			                            &nbsp;
