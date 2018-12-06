@@ -16,4 +16,4 @@ cp -R ${REACCION_ADMIN_BUNDLES_TEMPLATES_PATH} ${BUNDLES_TEMPLATES_PATH}/bundles
 php ${SF_PATH}/bin/console assets:install --symlink 
 
 # Run Webpack encore
-./node_modules/.bin/encore dev # TODO: add request param for selecting an environment
+yarn encore dev
