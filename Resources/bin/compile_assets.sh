@@ -13,7 +13,7 @@ rm -R ${BUNDLES_TEMPLATES_PATH}/bundles
 cp -R ${REACCION_ADMIN_BUNDLES_TEMPLATES_PATH} ${BUNDLES_TEMPLATES_PATH}/bundles
 
 # install assets
-php bin/console assets:install --symlink 
+php ${SF_PATH}/bin/console assets:install --symlink 
 
 # Run Webpack encore
 ./node_modules/.bin/encore dev # TODO: add request param for selecting an environment
