@@ -26,6 +26,7 @@ $(document).ready(function()
 	let userEditRegex = /admin\/users\/\d\/update/gi;
 	let menuCreateRegex = /admin\/preferences\/menu\/create\/\d/gi;
 	let menuDetailRegex = /admin\/preferences\/menu\/\d/gi;
+	let entryEditRegex = /admin\/entries\/\d\/update/gi;
 	
 	if(currentRoute == "/admin/media/add")
 	{
@@ -54,7 +55,7 @@ $(document).ready(function()
 			menu.formEvents();
 	}
 
-	if(currentRoute == "/admin\/entries\/create")
+	if(currentRoute == "/admin\/entries\/create" || entryEditRegex.test(currentRoute))
 	{
 		let entries = new Entries();
 			entries.formEvents();
