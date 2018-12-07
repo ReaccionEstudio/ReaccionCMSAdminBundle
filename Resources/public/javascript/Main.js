@@ -15,6 +15,7 @@ import Media from './Media.js';
 import Page from './Page.js';
 import User from './User.js';
 import Menu from './Menu.js';
+import Entries from './entries/Entries.js';
 
 const currentRoute 	= window.location.pathname;
 
@@ -51,5 +52,11 @@ $(document).ready(function()
 	{
 		let menu = new Menu();
 			menu.formEvents();
+	}
+
+	if(currentRoute == "/admin\/entries\/create")
+	{
+		let entries = new Entries();
+			entries.formEvents();
 	}
 });
