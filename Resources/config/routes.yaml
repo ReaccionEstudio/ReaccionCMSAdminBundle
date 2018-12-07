@@ -50,23 +50,23 @@ reaccion_cms_admin_preferences_update_configuration:
     path: /preferences/configuration/{config}/update/
     controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\UpdateConfigurationController::index
 
-# Preferences > Menu
-reaccion_cms_admin_preferences_menu:
-    path: /preferences/menu
+# Appearance > Menu
+reaccion_cms_admin_appearance_menu:
+    path: /appearance/menu
     controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuListController::index
 
-reaccion_cms_admin_preferences_menu_create:
-    path: /preferences/menu/create/{parent}
+reaccion_cms_admin_appearance_menu_create:
+    path: /appearance/menu/create/{parent}
     controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuCreateController::index
     defaults:
         parent: 0
 
-reaccion_cms_admin_preferences_menu_edit:
-    path: /preferences/menu/{menu}
+reaccion_cms_admin_appearance_menu_edit:
+    path: /appearance/menu/{menu}
     controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuDetailController::index
 
-reaccion_cms_admin_preferences_menu_remove:
-    path: /preferences/menu/{menu}/remove
+reaccion_cms_admin_appearance_menu_remove:
+    path: /appearance/menu/{menu}/remove
     controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\RemoveMenuController::index
 
 # Media
@@ -138,3 +138,8 @@ reaccion_cms_admin_entries_create:
 reaccion_cms_admin_entries_update:
     path: /entries/{entry}/update
     controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Entries\UpdateEntryController::index
+
+# themes
+reaccion_cms_admin_appearance_themes:
+    path: /themes
+    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Themes\ThemesListController::index
