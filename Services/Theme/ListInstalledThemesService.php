@@ -2,6 +2,9 @@
 
 	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Theme;
 
+	use Symfony\Component\Yaml\Yaml;
+	use Symfony\Component\Yaml\Exception\ParseException;
+
 	class ListInstalledThemesService
 	{
 		/**
@@ -10,6 +13,13 @@
 		 * Full theme paths
 		 */
 		private $themesPaths;
+
+		/**
+		 * @var Array
+		 *
+		 * Available themes
+		 */
+		private $availableThemes = array();
 
 		/**
 		 * Constructor
@@ -22,7 +32,7 @@
 		/** 
 		 * List all installed themes
 		 *
-		 * @return Array 	[type] 		Installed themes
+		 * @return Array 	$this->availableThemes 		Installed themes
 		 */
 		public function listAllThemes() : Array
 		{
@@ -31,9 +41,55 @@
 				if(!file_exists($themePath)) continue;
 
 				$files = scandir($themePath);
-				var_dump($files);
+				$this->getThemesFromPath($files, $themePath);
 			}
 
-			return [];
+			return $this->availableThemes;
+		}
+
+		/**
+		 * Get themes from specified path
+		 *
+		 * @param 	Array 	$pathFiles 		Path files
+		 * @param 	String 	$themePath 		Full theme path
+		 * @return 	void 	[type]
+		 */
+		private function getThemesFromPath(Array $pathFiles, String $themePath) : void
+		{
+			foreach($pathFiles as $file)
+			{
+				if($file == "." || $file == "..") continue;
+
+				// theme config file
+				$configThemeFile = $themePath . "/" . $file . "/config.yaml";
+
+				if(!file_exists($configThemeFile)) continue;
+				
+				$themeInfo = $this->loadConfigFile($configThemeFile);
+
+				if(empty($themeInfo['theme_config'])) continue;
+
+				$themeConfig = $themeInfo['theme_config'];
+
+				$this->availableThemes[] = [
+					'name' => $themeConfig['name'],
+					'description' => $themeConfig['name'],
+					'version' => $themeConfig['name'],
+					'author' => $themeConfig['author'],
+					'website' => $themeConfig['website']
+				];
+			}
+		}
+
+		/**
+		 * Load template config.yaml file
+		 *
+		 * @param  String 	$configFilePath		Full config file path
+		 * @return Array 	[type] 				Config file parameters
+		 */
+		private function loadConfigFile(String $configFilePath) : Array
+		{
+			if( ! file_exists($configFilePath) ) return [];
+			return Yaml::parseFile($configFilePath);
 		}
 	}
