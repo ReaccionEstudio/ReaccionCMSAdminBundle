@@ -16,7 +16,9 @@
 
         <parameter key="reaccion_cms_admin.menu_service.class">App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Menu\MenuService</parameter>
 
-    	<parameter key="reaccion_cms_admin.dashboard_service.class">App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Dashboard\DashboardService</parameter>
+        <parameter key="reaccion_cms_admin.dashboard_service.class">App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Dashboard\DashboardService</parameter>
+
+    	<parameter key="reaccion_cms_admin.theme_service.class">App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Theme\ThemeService</parameter>
 
         <parameter key="reaccion_cms_admin.upload_dir">%kernel.project_dir%/public/uploads/</parameter>
 
@@ -62,9 +64,13 @@
             <argument type="service" id="doctrine.orm.entity_manager" />
         </service>
 
-    	<service id="reaccion_cms_admin.dashboard" class="%reaccion_cms_admin.dashboard_service.class%" public="true">
+        <service id="reaccion_cms_admin.dashboard" class="%reaccion_cms_admin.dashboard_service.class%" public="true">
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument>%reaccion_cms_admin.upload_dir%</argument>
+        </service>
+
+    	<service id="reaccion_cms_admin.theme" class="%reaccion_cms_admin.theme_service.class%" public="true">
+            <argument type="service" id="reaccion_cms.config" />
         </service>
 
     </services>
