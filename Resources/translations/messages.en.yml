@@ -37,8 +37,13 @@ preferences:
   title: 'Preferences'
   config: 'Configuration'
 
-preferences_menu:
-  title: 'Website menu'
+appearance:
+  title: 'Appearance'
+  website_menu: 'Website menu'
+  themes: 'Themes'
+
+menu:
+  title: 'Menu'
   add_item: 'Add new item'
 
 user_dropdown:
@@ -298,3 +303,8 @@ entries_form:
   create_error_form: 'Error creating entry: %error%'
   update_success_form: 'Entry has been updated correctly.'
   update_error_form: 'Error updating entry: %error%'
+
+# appearance > themes
+themes:
+  title: 'Themes'
+  add_new: 'Add new theme'
