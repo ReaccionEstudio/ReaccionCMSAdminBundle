@@ -23,6 +23,7 @@
 	            ])
 	            ->add('content', TextareaType::class, [
 	            	'label' => 'entries_form.content',
+	            	'attr' => ['style' =>'display:none'],
 	            	'required' => true
 	            ])
 	            ->add('categories', EntityType::class, [
