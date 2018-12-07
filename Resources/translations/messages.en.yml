@@ -299,6 +299,7 @@ entries_form:
   tags: 'Tags'
   categories: 'Categories'
   isEnabled: 'Is enabled'
+  options: 'Entry options'
   create_success_form: 'Entry has been created correctly.'
   create_error_form: 'Error creating entry: %error%'
   update_success_form: 'Entry has been updated correctly.'

@@ -53,6 +53,18 @@
         	<!-- right column -->
         	<div class="col-lg-3" style="padding-right: 50px">
 
+        		<!-- options -->
+        		<div class="card">
+        			<div class="card-header">
+        				<i class="fe fe-settings"></i>&nbsp;&nbsp;{{ 'entries_form.options' | trans }}
+        			</div>
+        			<div class="card-body">
+		        		<div class="form-group">
+				        	{{ form_widget(form.enabled) }}
+		        		</div>
+	        		</div>
+        		</div>
+
         		<!-- categories -->
         		<div class="card">
         			<div class="card-header">
