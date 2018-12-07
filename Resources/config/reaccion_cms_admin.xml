@@ -71,6 +71,7 @@
 
     	<service id="reaccion_cms_admin.theme" class="%reaccion_cms_admin.theme_service.class%" public="true">
             <argument type="service" id="reaccion_cms.config" />
+            <argument>%kernel.project_dir%</argument>
         </service>
 
     </services>

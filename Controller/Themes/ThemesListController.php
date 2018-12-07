@@ -9,6 +9,12 @@
 	{
 		public function index(Request $request)
 		{
-			return $this->render("@ReaccionCMSAdminBundle/themes/list.html.twig");
+			$themes = $this->get("reaccion_cms_admin.theme")->listInstalledThemes();
+
+			return $this->render("@ReaccionCMSAdminBundle/themes/list.html.twig",
+				[
+					'themes' => $themes
+				]
+			);
 		}
 	}
