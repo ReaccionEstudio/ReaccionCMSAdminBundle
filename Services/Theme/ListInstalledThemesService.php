@@ -74,9 +74,11 @@
 				$this->availableThemes[] = [
 					'name' => $themeConfig['name'],
 					'description' => $themeConfig['name'],
-					'version' => $themeConfig['name'],
+					'version' => $themeConfig['version'],
 					'author' => $themeConfig['author'],
-					'website' => $themeConfig['website']
+					'website' => $themeConfig['website'],
+					'preview_image' => $themeConfig['preview_image'],
+					'folder_name' => $themeConfig['folder_name']
 				];
 			}
 		}

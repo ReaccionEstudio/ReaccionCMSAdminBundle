@@ -29,21 +29,49 @@
       </div>
     </div><!-- end pagination -->
 
-    <!-- media list -->
+    <!-- themes list -->
     <div id="themes_card_columns" class="card-columns">
+
+      {% for theme in themes %}
+
       <div class="card">
+        
+        {% if theme.preview_image is defined and theme.preview_image is not empty %}
         <a href="#">
-          <img class="card-img-top" src="" />
+          <img class="card-img-top" src="{{ asset('build/' ~ theme.preview_image) }}" />
         </a>
-        <div class="card-body">
-          <h5 class="card-title">body</h5>
-          <div class="text-right">
-            body
+        {% endif %}
+
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">
+            <a href="#"><strong>{{ theme.name }}</strong></a>
+            {% if theme.folder_name == getConfigValue('current_theme') %}
+            <!-- current tag -->
+            <span class="ml-1 tag tag-blue">{{ 'themes.current' | trans }}</span>
+            <!-- end current tag -->
+            {% endif %}
+          </h5>
+          <div class="text-muted">{{ theme.description }}</div>
+          <div class="d-flex align-items-center pt-5 mt-auto">
+            <div>
+              {% if theme.author is defined and theme.author is not empty %}
+              <i class="fe fe-user"></i>&nbsp;&nbsp;{{ theme.author }}
+              {% endif %}
+              
+              {% if theme.website is defined and theme.website is not empty %}
+              <div class="d-block ">
+                <i class="fe fe-globe"></i>&nbsp;&nbsp;<small class="text-muted">{{ theme.website }}</small>
+              </div>
+              {% endif %}
+            </div>
+            <div class="ml-auto text-muted">{{ 'themes.version' | trans }} {{ theme.version }}</div>
           </div>
         </div>
       </div>
+      {% endfor %}
+
     </div>
-    <!-- end media list -->
+    <!-- end themes list -->
 
   </div>
 

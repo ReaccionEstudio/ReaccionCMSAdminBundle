@@ -309,3 +309,5 @@ entries_form:
 themes:
   title: 'Themes'
   add_new: 'Add new theme'
+  version: 'Version'
+  current: 'Current'
