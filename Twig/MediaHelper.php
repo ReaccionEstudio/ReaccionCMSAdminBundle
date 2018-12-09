@@ -29,7 +29,8 @@ class MediaHelper extends \Twig_Extension
     /**
      * Get image resolution
      *
-     * @param String  $imagePath     Full image path
+     * @param  String  $imagePath     Full image path
+     * @return String  [type]         Image resolution
      */
     public function getImageResolution(String $imagePath) : String
     {
