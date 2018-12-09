@@ -72,11 +72,14 @@
 		/**
 		 * Upload media file
 		 *
-		 * @param 	UploadedFile 	$file 			File object
-		 * @return 	String 			$filepath		File path
+		 * @param 	UploadedFile 	$file 					File object
+		 * @param 	Boolean 		$createMediaEntity 		Indicate if media entity creation is required
+		 * @param 	Boolean 		$resize 				Indicate if media has to be resized
+		 * @return 	String 			$filepath				File path
 		 */
-		public function upload(UploadedFile $file) : void
+		public function upload(UploadedFile $file, bool $createMediaEntity=true, bool $resize=true) : String
 		{
+			$filepath = "";
 			$this->file = $file;
 
 			$resizedImages = array();
@@ -98,6 +101,7 @@
 										'%validTypes%' => implode(", ", $this->allowedMimeTypes)
 									)
 								);
+
 				throw new \Exception($invalidMssg);
 			}
 
@@ -109,20 +113,25 @@
 				// move file to folder
 				$this->file->move($this->uploadPath, $filename);
 
-				if($mediaType == "image")
+				if($mediaType == "image" && $resize)
 				{
 					// resize image
 					$resizedImages = $this->resizeImageService->resize($filepath);
 				}
 
 				// create media entity
-				$this->createMediaEntity($originalFilename, $filepath, $mimeType, $mediaType, $size, $resizedImages);
+				if($createMediaEntity)
+				{
+					$this->createMediaEntity($originalFilename, $filepath, $mimeType, $mediaType, $size, $resizedImages);
+				}
 			}
 			catch(\Exception $e)
 			{
 				// TODO: log error
 				throw $e;
 			}
+
+			return $filepath;
 		}
 
 		/**
