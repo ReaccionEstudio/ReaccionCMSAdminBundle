@@ -159,6 +159,7 @@ config_form:
   title: 'Create new configuration'
   name: 'Name'
   value: 'Value'
+  image: 'Image'
   success_form: 'Config has been created correctly.'
   error_form: 'Error creating config: %error%'
   update_success_form: 'Config has been updated correctly.'

@@ -1,0 +1,9 @@
+<!-- image preview -->
+{% if config.value is not empty and config.type == 'image' %}
+<div class="card p-3">
+  <a href="javascript:void(0)" class="mb-3">
+    <img src="{{ asset('uploads/' ~ config.value) }}" class="rounded" />
+  </a>
+  <div class="d-flex align-items-center px-2">{{ config.value }}</div>
+</div>
+{% endif %}

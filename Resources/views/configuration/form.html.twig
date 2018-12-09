@@ -18,6 +18,8 @@
 
 			{{ form_widget(form) }}
 
+			{% embed '@ReaccionCMSAdminBundle/configuration/imageType.html.twig' with { 'config' : config } %}{% endembed %}
+
 		</div>
 
 		<div class="card-footer text-right">
@@ -27,7 +29,7 @@
       		</div>
     	</div>
 
-    		{{ form_end(form) }}
+    	{{ form_end(form) }}
 
 	</div>
 

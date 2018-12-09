@@ -15,18 +15,20 @@ import Media from './Media.js';
 import Page from './Page.js';
 import User from './User.js';
 import Menu from './Menu.js';
+import Configuration from './Configuration.js';
 import Entries from './entries/Entries.js';
 
 const currentRoute 	= window.location.pathname;
 
 $(document).ready(function()
 {
-	let pageAddContentRegex = /admin\/pages\/\d\/content\/add/gi;
-	let pageEditContentRegex = /admin\/pages\/content\/\d/gi;
-	let userEditRegex = /admin\/users\/\d\/update/gi;
-	let menuCreateRegex = /admin\/preferences\/menu\/create\/\d/gi;
-	let menuDetailRegex = /admin\/preferences\/menu\/\d/gi;
-	let entryEditRegex = /admin\/entries\/\d\/update/gi;
+	let pageAddContentRegex = /admin\/pages\/\d+\/content\/add/gi;
+	let pageEditContentRegex = /admin\/pages\/content\/\d+/gi;
+	let userEditRegex = /admin\/users\/\d+\/update/gi;
+	let menuCreateRegex = /admin\/preferences\/menu\/create\/\d+/gi;
+	let menuDetailRegex = /admin\/preferences\/menu\/\d+/gi;
+	let entryEditRegex = /admin\/entries\/\d+\/update/gi;
+	let configEditRegex = /admin\/preferences\/configuration\/\d+\/update/gi;
 	
 	if(currentRoute == "/admin/media/add")
 	{
@@ -59,5 +61,11 @@ $(document).ready(function()
 	{
 		let entries = new Entries();
 			entries.formEvents();
+	}
+
+	if(configEditRegex.test(currentRoute))
+	{
+		let config = new Configuration();
+			config.formEvents();
 	}
 });
