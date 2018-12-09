@@ -23,7 +23,12 @@
 				if(isset($form['image']))
 				{
 					$file = $form['image']->getData();
-					$filePath = $this->get("reaccion_cms_admin.media_upload")->upload($file, false, false);
+					$filePath = "";
+
+					if($file !== null)
+					{
+						$filePath = $this->get("reaccion_cms_admin.media_upload")->upload($file, false, false);
+					}
 					
 					if(strlen($filePath))
 					{
@@ -40,6 +45,11 @@
 					$em->persist($config);
 					$em->flush();
 
+					// update cache value
+					$cacheParamKey = "config." . $config->getName();
+					$this->get("reaccion_cms.cache")->set($cacheParamKey, $config->getValue());
+
+					// flash message
 					$this->addFlash('success', $translator->trans('config_form.update_success_form') );
 
 					return $this->redirectToRoute('reaccion_cms_admin_preferences_configuration');
