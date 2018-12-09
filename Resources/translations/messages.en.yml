@@ -306,6 +306,8 @@ entries_form:
   create_error_form: 'Error creating entry: %error%'
   update_success_form: 'Entry has been updated correctly.'
   update_error_form: 'Error updating entry: %error%'
+  remove_success_message: 'Entry <strong>%name%</strong> has been removed correctly'
+  remove_error_message: 'Error removig <strong>%name%</strong> entry: %error%'
 
 # appearance > themes
 themes:

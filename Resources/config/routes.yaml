@@ -143,6 +143,10 @@ reaccion_cms_admin_entries_update:
     path: /entries/{entry}/update
     controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Entries\UpdateEntryController::index
 
+reaccion_cms_admin_entries_remove:
+    path: /entries/{entry}/remove
+    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Entries\RemoveEntryController::index
+
 # themes
 reaccion_cms_admin_appearance_themes:
     path: /themes
