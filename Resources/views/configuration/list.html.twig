@@ -52,9 +52,14 @@
 			                              <i class="fe fe-edit"></i>
 			                            </a>
 			                            &nbsp;
-			                            <a class="text-danger" href="#" data-toggle="tooltip" data-placement="top" title="{{ 'crud.remove' | trans }}" data-detele-confirm="true">
+
+			                            {% if row.required != true %}
+			                            <a class="text-danger" href="{{ url('reaccion_cms_admin_preferences_remove_configuration', { 'config' : row.id }) }}" data-toggle="tooltip" data-placement="top" title="{{ 'crud.remove' | trans }}" data-detele-confirm="true">
 			                              <i class="fe fe-trash"></i>
 			                            </a>
+			                            {% else %}
+			                            <i class="fe fe-trash text-muted"></i>
+			                            {% endif %}
 
 		                    		</td>
 		                    	</tr>

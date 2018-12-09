@@ -163,6 +163,8 @@ config_form:
   error_form: 'Error creating config: %error%'
   update_success_form: 'Config has been updated correctly.'
   update_error_form: 'Error updating config: %error%'
+  remove_success_form: 'Config has been removed correctly.'
+  remove_error_form: 'Error removing config <strong>%name%</strong>: %error%'
 
 # media
 media_list:
