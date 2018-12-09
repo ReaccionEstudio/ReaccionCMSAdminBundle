@@ -15,11 +15,25 @@
 			$em = $this->getDoctrine()->getManager();
 
 			// form
-			$form = $this->createForm(ConfigType::class, $config);
+			$form = $this->createForm(ConfigType::class, $config, ['config' => $config]);
 			$form->handleRequest($request);
 
 			if ($form->isSubmitted() && $form->isValid()) 
 			{
+				if(isset($form['image']))
+				{
+					$file = $form['image']->getData();
+					$filePath = $this->get("reaccion_cms_admin.media_upload")->upload($file, false, false);
+					
+					if(strlen($filePath))
+					{
+						$relativePath = explode("uploads/", $filePath);
+						$relativePath = isset($relativePath[1]) ? $relativePath[1] : '';
+
+						$config->setValue($relativePath);
+					}
+				}
+
 				try
 				{
 					// save
@@ -38,7 +52,8 @@
 
 			return $this->render("@ReaccionCMSAdminBundle/configuration/form.html.twig",
 				[
-					'form' => $form->createView()
+					'form' => $form->createView(),
+					'config' => $config
 				]
 			);
 		}
