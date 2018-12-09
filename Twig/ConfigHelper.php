@@ -19,7 +19,8 @@ class ConfigHelper extends \Twig_Extension
 	public function getFunctions()
     {
         return array(
-            new \Twig_SimpleFunction('getConfigValue', array($this, 'getConfigValue'))
+            new \Twig_SimpleFunction('getConfigValue', array($this, 'getConfigValue')),
+            new \Twig_SimpleFunction('getLogoPath', array($this, 'getLogoPath'))
         );
     }
 
@@ -35,6 +36,25 @@ class ConfigHelper extends \Twig_Extension
 
         $configService = $this->container->get("reaccion_cms.config");
         return $configService->get($key);
+    }
+
+    /**
+     * Get logo path from config parameter
+     *
+     * @return  String   [type]    Logo relative path
+     */
+    public function getLogoPath() : String
+    {
+        $logoPath = $this->getConfigValue("admin_logo");
+
+        if($logoPath == "images/reaccion_cms_logo.jpg")
+        {
+            return 'build/' . $logoPath;
+        }
+        else
+        {
+            return 'uploads/' . $logoPath;
+        }
     }
 
 	public function getName()
