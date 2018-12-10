@@ -20,6 +20,9 @@
 
 			if ($form->isSubmitted() && $form->isValid()) 
 			{
+				$configType = $config->getType();
+				$configValue = $config->getValue();
+
 				if(isset($form['image']))
 				{
 					$file = $form['image']->getData();
@@ -37,6 +40,22 @@
 
 						$config->setValue($relativePath);
 					}
+				}
+
+				if($configType == "serialized")
+				{
+					$serializedData = unserialize($configValue);
+					$serializedDataKeys = array_keys($serializedData);
+					$arrayFormValues = [];
+
+					foreach($serializedDataKeys as $key)
+					{
+						if( ! isset($form[$key])) continue;
+						$arrayFormValues[$key] = $form[$key]->getData();
+					}
+
+					$serializedFormValue = serialize($arrayFormValues);
+					$config->setValue($serializedFormValue);
 				}
 
 				try
