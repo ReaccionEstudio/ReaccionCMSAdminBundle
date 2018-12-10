@@ -45,7 +45,13 @@
 		                    		<td>
 		                    			<a href="{{ url('reaccion_cms_admin_preferences_update_configuration', { 'config' : row.id }) }}" title="{{ row.name }}">{{ row.name }}</a>
 		                    		</td>
+
+		                    		{% if row.type == 'serialized' %}
+		                    		<td>{{ printSerializedValueAsText(row.value) }}</td>
+		                    		{% else %}
 		                    		<td>{{ row.value }}</td>
+		                    		{% endif %}
+
 		                    		<td class="text-right">
 			                    		
 			                    		<a href="{{ url('reaccion_cms_admin_preferences_update_configuration', { 'config' : row.id }) }}" title="{{ 'crud.edit' | trans }}" data-toggle="tooltip" data-placement="top">

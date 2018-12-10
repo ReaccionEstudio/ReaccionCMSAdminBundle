@@ -20,7 +20,8 @@ class ConfigHelper extends \Twig_Extension
     {
         return array(
             new \Twig_SimpleFunction('getConfigValue', array($this, 'getConfigValue')),
-            new \Twig_SimpleFunction('getLogoPath', array($this, 'getLogoPath'))
+            new \Twig_SimpleFunction('getLogoPath', array($this, 'getLogoPath')),
+            new \Twig_SimpleFunction('printSerializedValueAsText', array($this, 'printSerializedValueAsText'))
         );
     }
 
@@ -57,7 +58,27 @@ class ConfigHelper extends \Twig_Extension
         }
     }
 
-	public function getName()
+    /**
+     * Print a serialized config parameter value as string
+     *
+     * @param   String      $value      Serialized value  
+     * @return  String      $result     Text value  
+     */
+    public function printSerializedValueAsText(String $value) : String
+    {
+        $result = '';
+        $array = unserialize($value);
+
+        foreach($array as $key => $item)
+        {
+            $result .= $key . " = " . $item . ", ";
+        }
+
+        $result = substr($result, 0, strlen($result)-2);
+        return $result;
+    }
+
+	public function getName() : String
     {
         return 'ConfigHelper';
     }
