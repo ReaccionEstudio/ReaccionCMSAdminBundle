@@ -8,6 +8,8 @@
 	use Symfony\Component\Form\Extension\Core\Type\TextType;
 	use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\EntryCategory;
+	use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Constants\Languages;
 
 	class EntryCategoryType extends AbstractType
 	{
@@ -17,6 +19,20 @@
 	            ->add('name', TextType::class, [
 	            	'label' => 'menu_form.name',
 	            	'required' => true
+	            ])
+	            ->add('language', ChoiceType::class, [
+	            	'label' => 'users_form.language',
+	            	'choices' => Languages::LANGUAGES,
+	            	'choice_label' => function($choiceValue, $key, $value)
+                    {
+                    	return 'languages.' . $value;
+                    },
+	            	'choice_value' => function($value)
+                    {
+                    	return $value;
+                    },
+	            	'required' => false,
+	            	'attr' => ['class' => 'selectize']
 	            ])
 	            ->add('enabled', CheckboxType::class, [
 	            	'label' => 'menu_form.is_enabled',

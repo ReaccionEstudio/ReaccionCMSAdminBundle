@@ -34,6 +34,7 @@
 	                        	<tr>
 		                        	<th width="20%">{{ 'entries_categories_list.name' | trans }}</th>
 		                        	<th>{{ 'entries_categories_list.isEnabled' | trans }}</th>
+		                        	<th>{{ 'entries_categories_list.language' | trans }}</th>
 		                        	<th>{{ 'entries_categories_list.created_at' | trans }}</th>
 		                        	<th width="20%"></th>
 		                        </tr>
@@ -53,6 +54,9 @@
 			                          	<span class="status-icon bg-danger"></span> {{ 'entries_categories_list.disabled' | trans }}
 			                          	{% endif %}
 			                        </td>
+		                    		<td>
+		                    			{% embed '@ReaccionCMSAdminBundle/components/languages/languageWithFlagComponent.html.twig' with {'lang' : row.language} %}{% endembed %}
+		                    		</td>
 		                    		<td>{{ row.createdAt | date('d/m/Y H:i:s') }}</td>
 		                    		<td class="text-right">
 			                    		
