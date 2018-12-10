@@ -13,7 +13,7 @@
 		];
 
 		const LANGUAGE_ICONS = [
-			'en' => 'gb', 
+			'en' => 'us', 
 			'es' => 'es'
 		];
 	}
