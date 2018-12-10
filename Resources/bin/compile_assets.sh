@@ -1,8 +1,8 @@
 # PATHS
 __DIR__="`dirname \"$0\"`"
 SF_PATH=${__DIR__}/../../../../../
-REACCION_ADMIN_BUNDLES_TEMPLATES_PATH=${SF_PATH}/src/ReaccionEstudio/ReaccionCMSAdminBundle/Resources/views/bundles
-BUNDLES_TEMPLATES_PATH=${SF_PATH}/templates
+REACCION_ADMIN_BUNDLES_TEMPLATES_PATH=./src/ReaccionEstudio/ReaccionCMSAdminBundle/Resources/views/bundles
+BUNDLES_TEMPLATES_PATH=./templates
 
 # OVERRIDE THIRD-PARTY BUNDLE VIEWS
 echo "Removing ${BUNDLES_TEMPLATES_PATH}/bundles folder ..."
