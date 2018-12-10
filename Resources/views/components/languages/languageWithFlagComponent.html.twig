@@ -1,0 +1,3 @@
+{% if lang is not empty %}
+<i class="flag flag-{{ getFlagIconForLanguage(lang) }}" data-toggle="tooltip" data-placement="top" title="{{  ('languages.' ~ lang) | trans }}"></i>
+{% endif %}

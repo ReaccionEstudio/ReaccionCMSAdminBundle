@@ -94,6 +94,7 @@ pages_list_table:
   id: 'Id'
   name: 'Name'
   is_enabled: 'Is enabled'
+  language: 'Language'
   enabled: 'Enabled'
   disabled: 'Disabled'
   created_at: 'Created at'

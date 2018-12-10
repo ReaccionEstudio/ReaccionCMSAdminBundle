@@ -69,9 +69,7 @@
 	                      				{% endif %}
 	                      			</td>
 	                      			<td>
-	                      				{% if user.language is not empty %}
-	                      				<i class="flag flag-{{ getFlagIconForLanguage(user.language) }}" data-toggle="tooltip" data-placement="top" title="{{  ('languages.' ~ user.language) | trans }}"></i>
-	                      				{% endif %}
+	                      				{% embed '@ReaccionCMSAdminBundle/components/languages/languageWithFlagComponent.html.twig' with {'lang' : user.language} %}{% endembed %}
 	                      			</td>
 	                      			<td>
 	                      				{% if user.lastLogin is not empty %}
