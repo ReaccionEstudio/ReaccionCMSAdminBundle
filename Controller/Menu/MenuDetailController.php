@@ -50,7 +50,7 @@
 					$em->flush();
 
 					// update menu html value for cache
-					$this->get("reaccion_cms.menu")->updateMenuHtmlCache();
+					$this->get("reaccion_cms.menu_content")->updateMenuHtmlCache();
 
 					// flash message
 					$this->addFlash('success', $translator->trans('menu_form.update_success_message') );

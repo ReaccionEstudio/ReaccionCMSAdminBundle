@@ -17,6 +17,8 @@
     		</div>
 	    </div>
 
+        {% embed '@ReaccionCMSAdminBundle/shared/flash_messages.html.twig' %}{% endembed %}
+        
 	    <div class="row row-cards">
 
   			<div class="col-12">
@@ -24,7 +26,6 @@
 
                 	{% embed '@ReaccionCMSAdminBundle/shared/crud/listCardHeader.html.twig' with { 'result' : config } %}{% endembed %}
 
-                  	{% embed '@ReaccionCMSAdminBundle/shared/flash_messages.html.twig' %}{% endembed %}
 
                   	<div class="table-responsive">
 	                    

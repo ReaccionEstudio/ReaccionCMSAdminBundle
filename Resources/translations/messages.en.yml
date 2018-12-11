@@ -39,11 +39,14 @@ preferences:
 
 appearance:
   title: 'Appearance'
-  website_menu: 'Website menu'
+  website_menu: 'Menu'
   themes: 'Themes'
 
 menu:
   title: 'Menu'
+  create_new: 'Create new menu'
+
+menu_content:
   add_item: 'Add new item'
 
 user_dropdown:

@@ -6,18 +6,29 @@
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\Translation\TranslatorInterface;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Menu;
-
 	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Menu\MenuService;
 
 	class MenuListController extends Controller
 	{
 		public function index(Request $request, TranslatorInterface $translator)
 		{
-			$nested = $this->get("reaccion_cms_admin.menu")->buildNestedArray(false);
+			$em = $this->getDoctrine()->getManager();
+			$menu = $em->getRepository(Menu::class)->findBy(
+						array(),
+						array('id' => 'DESC')
+					 );
+
+			// pagination
+			$paginator = $this->get('knp_paginator');
+		    $menu = $paginator->paginate(
+				        $menu,
+				        $request->query->getInt('page', 1),
+				        $this->getParameter("pagination_page_limit")
+				    );
 
 			return $this->render("@ReaccionCMSAdminBundle/menu/list.html.twig",
 				[
-					'menu' => $nested
+					'menu' => $menu
 				]
 			);
 		}

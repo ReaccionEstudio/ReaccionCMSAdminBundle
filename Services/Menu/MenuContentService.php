@@ -3,14 +3,14 @@
 	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Menu;
 
 	use Doctrine\ORM\EntityManager;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Menu;
+	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\MenuContent;
 
 	/**
 	 * Menu service
 	 *
 	 * @author Alberto Vian <alberto@reaccionestudio.com>
 	 */
-	class MenuService
+	class MenuContentService
 	{
 		/**
 		 * @var EntityManagerInterface
@@ -83,7 +83,7 @@
 		public function getNextItemPosition(Int $parentId) : Int
 		{
 			$dql =  "SELECT (MAX(m.position) + 1) AS next_position 
-					 FROM  App\ReaccionEstudio\ReaccionCMSBundle\Entity\Menu m 
+					 FROM  App\ReaccionEstudio\ReaccionCMSBundle\Entity\MenuContent m 
 					";
 
 			if($parentId > 0)
@@ -114,8 +114,8 @@
 			$dql =  "
 					SELECT 
 					m.id, p.id AS parent_id, m.name, m.type, m.target, m.position
-					FROM  App\ReaccionEstudio\ReaccionCMSBundle\Entity\Menu m 
-					LEFT JOIN App\ReaccionEstudio\ReaccionCMSBundle\Entity\Menu p 
+					FROM  App\ReaccionEstudio\ReaccionCMSBundle\Entity\MenuContent m 
+					LEFT JOIN App\ReaccionEstudio\ReaccionCMSBundle\Entity\MenuContent p 
 					WITH p.id = m.parent 
 					";
 
