@@ -69,6 +69,10 @@
 			                              <i class="fe fe-zoom-in"></i>
 			                            </a>
 			                            &nbsp;
+			                            <a href="{{ url('reaccion_cms_admin_appearance_menu_detail', { 'menu' : menuItem.id }) }}" title="{{ 'crud.edit' | trans }}" data-toggle="tooltip" data-placement="top">
+			                              <i class="fe fe-edit"></i>
+			                            </a>
+			                            &nbsp;
 			                            <a class="text-danger" href="{{ url('reaccion_cms_admin_appearance_menu_remove', {'menu' : menuItem.id}) }}" data-toggle="tooltip" data-placement="top" title="{{ 'crud.remove' | trans }}" data-detele-confirm="true">
 			                              <i class="fe fe-trash"></i>
 			                            </a>

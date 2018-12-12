@@ -49,6 +49,7 @@ menu:
   isEnabled: 'Is enabled'
   language: 'Language'
   slug: 'Slug'
+  edit_title: 'Edite menu: <strong>%name%</strong>'
 
 menu_content:
   title: 'Menu: <strong>%name%</strong>'

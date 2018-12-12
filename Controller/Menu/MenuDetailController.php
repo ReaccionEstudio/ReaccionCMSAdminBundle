@@ -2,48 +2,46 @@
 
 	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu;
 
-	use Cocur\Slugify\Slugify;
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\Translation\TranslatorInterface;
+	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Menu;
 	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\Menu\MenuType;
 	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Menu\MenuService;
 
-	class MenuCreateController extends Controller
+	class MenuDetailController extends Controller
 	{
-		public function index(Request $request, TranslatorInterface $translator)
+		public function index(Menu $menu, Request $request, TranslatorInterface $translator)
 		{
-			$menu = new Menu();
+			$em = $this->getDoctrine()->getManager();
+
+			// form params
+			$formParams = ['mode' => 'edit'];
 
 			// form
-			$form = $this->createForm(MenuType::class, $menu);
+			$form = $this->createForm(MenuType::class, $menu, $formParams);
 			$form->handleRequest($request);
 
 			if ($form->isSubmitted() && $form->isValid()) 
 			{
-				$em = $this->getDoctrine()->getManager();
-
 				try
 				{
-					// generate slug
-					$slugify = new Slugify();
-					$slug = $slugify->slugify($menu->getName());
-					$menu->setSlug($slug);
-
 					// save
 					$em->persist($menu);
 					$em->flush();
 
-					// flash message
-					$this->addFlash('success', $translator->trans('menu_form.create_success_message') );
+					// update menu html value for cache
+					$this->get("reaccion_cms.menu")->updateMenuHtmlCache($menu);
 
+					// flash message
+					$this->addFlash('success', $translator->trans('menu_form.update_success_message') );
 					return $this->redirectToRoute('reaccion_cms_admin_appearance_menu');
 				}
 				catch(\Exception $e)
 				{
 					$errMssg =  $translator->trans(
-									"menu_form.create_error_message", 
+									"menu_form.update_error_message", 
 									array(
 										'%name%' => $form['name']->getData(),
 										'%error%' => $e->getMessage()
@@ -56,7 +54,8 @@
 			return $this->render("@ReaccionCMSAdminBundle/menu/form.html.twig",
 				[
 					'form' => $form->createView(),
-					'mode' => 'create'
+					'menu' => $menu,
+					'mode' => 'edit'
 				]
 			);
 		}

@@ -9,7 +9,11 @@
 		{{ form_start(form, { 'attr': { 'class' : 'card' } }) }}
 
 		<div class="card-header">
+			{% if mode == 'create' %}
 			<h3 class="card-title">{{ 'menu.create_new' | trans }}</h3>
+			{% elseif mode == 'edit' %}
+			<h3 class="card-title">{{ 'menu.edit_title' | trans({ '%name%' : menu.name }) | raw }}</h3>
+			{% endif %}
 		</div>
 
 		<div class="card-body col-8 align-self-center">

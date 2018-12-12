@@ -63,6 +63,10 @@ reaccion_cms_admin_appearance_menu_create:
     path: /appearance/menu/create
     controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuCreateController::index
 
+reaccion_cms_admin_appearance_menu_detail:
+    path: /appearance/menu/{menu}
+    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuDetailController::index
+
 reaccion_cms_admin_appearance_menu_remove:
     path: /appearance/menu/{menu}/remove
     controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\RemoveMenuController::index

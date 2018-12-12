@@ -17,6 +17,11 @@
     				<i class="fe fe-arrow-left"></i>&nbsp;&nbsp;{{ 'menu_form.go_to_menu_list' | trans }}
     			</a>
 
+	    		<!-- go back btn -->
+    			<a href="{{ url('reaccion_cms_admin_appearance_menu_detail', { 'menu' : menu.id }) }}" class="btn btn-primary mr-2">
+    				<i class="fe fe-edit"></i>&nbsp;&nbsp;{{ 'crud.edit' | trans }}
+    			</a>
+
 	    		<!-- remove btn -->
     			<a href="{{ url('reaccion_cms_admin_appearance_menu_remove', {'menu' : menu.id}) }}" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="{{ 'crud.remove' | trans }}" data-detele-confirm="true">
     				<i class="fe fe-trash-2"></i>&nbsp;&nbsp;{{ 'crud.remove' | trans }}
