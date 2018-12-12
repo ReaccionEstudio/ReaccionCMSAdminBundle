@@ -59,24 +59,32 @@ reaccion_cms_admin_appearance_menu:
     path: /appearance/menu
     controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuListController::index
 
+reaccion_cms_admin_appearance_menu_create:
+    path: /appearance/menu/create
+    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuCreateController::index
+
+reaccion_cms_admin_appearance_menu_remove:
+    path: /appearance/menu/{menu}/remove
+    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\RemoveMenuController::index
+
 # Appearance > Menu > Content
 reaccion_cms_admin_appearance_menu_content:
     path: /appearance/menu/{menu}/content
     controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuContentListController::index
 
-reaccion_cms_admin_appearance_menu_create:
-    path: /appearance/menu/create/{parent}
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuCreateController::index
+reaccion_cms_admin_appearance_menu_content_create:
+    path: /appearance/menu/{menu}/create/{parent}
+    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuContentCreateController::index
     defaults:
         parent: 0
 
-reaccion_cms_admin_appearance_menu_edit:
-    path: /appearance/menu/{menu}
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuDetailController::index
+reaccion_cms_admin_appearance_menu_content_edit:
+    path: /appearance/menu/{menu}/content/{menuContent}
+    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuContentDetailController::index
 
-reaccion_cms_admin_appearance_menu_remove:
-    path: /appearance/menu/{menu}/remove
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\RemoveMenuController::index
+reaccion_cms_admin_appearance_menu_content_remove:
+    path: /appearance/menu/{menu}/remove/{menuContent}
+    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\RemoveMenuContentController::index
 
 # Media
 reaccion_cms_admin_media_index:

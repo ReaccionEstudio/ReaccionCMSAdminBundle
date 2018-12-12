@@ -15,10 +15,10 @@
 
 			if(empty($menu))
 			{
-				throw new NotFoundHttpException("Menu item not found");
+				throw new NotFoundHttpException("Menu not found");
 			}
 
-			$menuItemName = $menu->getName();
+			$menuName = $menu->getName();
 
 			try
 			{
@@ -27,17 +27,17 @@
 				$em->flush();
 
 				// update menu html value for cache
-				$this->get("reaccion_cms.menu_content")->updateMenuHtmlCache();
+				$this->get("reaccion_cms.menu")->updateMenuHtmlCache($menu);
 
 				// flash message
-				$this->addFlash('success', $translator->trans('menu_form.remove_success_message', array('%name%' => $menuItemName)) );
+				$this->addFlash('success', $translator->trans('menu_form.remove_success_message', array('%name%' => $menuName)) );
 			}
 			catch(\Exception $e)
 			{
-				$errorMssg = $translator->trans('menu_form.remove_error_message', array('%name%' => $menuItemName, '%error%' => $e->getMessage()));
+				$errorMssg = $translator->trans('menu_form.remove_error_message', array('%name%' => $menuName, '%error%' => $e->getMessage()));
 				$this->addFlash('error', $errorMssg);
 			}
 
-			return 	$this->redirectToRoute('reaccion_cms_admin_preferences_menu');
+			return 	$this->redirectToRoute('reaccion_cms_admin_appearance_menu');
 		}
 	}

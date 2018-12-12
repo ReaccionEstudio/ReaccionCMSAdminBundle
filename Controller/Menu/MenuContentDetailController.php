@@ -5,27 +5,28 @@
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\Translation\TranslatorInterface;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Menu;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
+	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Menu;
+	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\MenuContent;
 	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\Menu\MenuContentType;
 	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Menu\MenuService;
 
-	class MenuDetailController extends Controller
+	class MenuContentDetailController extends Controller
 	{
-		public function index(Menu $menu, Request $request, TranslatorInterface $translator)
+		public function index(Menu $menu, MenuContent $menuContent, Request $request, TranslatorInterface $translator)
 		{
 			$em = $this->getDoctrine()->getManager();
 
 			// form params
-			$formParamKey 	 =  ($menu->getType() == "url") ? 'urlValue' : 'pageValue';
-			$formParamsValue =  ($menu->getType() == "url") 
-								? $menu->getValue() 
-								: $em->getRepository(Page::class)->findOneBy(['id' => $menu->getValue() ]);
+			$formParamKey 	 =  ($menuContent->getType() == "url") ? 'urlValue' : 'pageValue';
+			$formParamsValue =  ($menuContent->getType() == "url") 
+								? $menuContent->getValue() 
+								: $em->getRepository(Page::class)->findOneBy(['id' => $menuContent->getValue() ]);
 
 			$formParams = [ $formParamKey => $formParamsValue, 'mode' => 'edit' ];
 
 			// form
-			$form = $this->createForm(MenuContentType::class, $menu, $formParams);
+			$form = $this->createForm(MenuContentType::class, $menuContent, $formParams);
 			$form->handleRequest($request);
 
 			if ($form->isSubmitted() && $form->isValid()) 
@@ -43,18 +44,18 @@
 						$menuValue = $page->getId();
 					}
 
-					$menu->setValue($menuValue);
+					$menuContent->setValue($menuValue);
 
 					// save
-					$em->persist($menu);
+					$em->persist($menuContent);
 					$em->flush();
 
 					// update menu html value for cache
-					$this->get("reaccion_cms.menu_content")->updateMenuHtmlCache();
+					$this->get("reaccion_cms.menu")->updateMenuHtmlCache($menu);
 
 					// flash message
 					$this->addFlash('success', $translator->trans('menu_form.update_success_message') );
-					return $this->redirectToRoute('reaccion_cms_admin_preferences_menu');
+					return $this->redirectToRoute('reaccion_cms_admin_appearance_menu_content', ['menu' => $menu->getId() ]);
 				}
 				catch(\Exception $e)
 				{
@@ -69,9 +70,10 @@
 				}
 			}
 
-			return $this->render("@ReaccionCMSAdminBundle/menu/detail.html.twig",
+			return $this->render("@ReaccionCMSAdminBundle/menu/content/form.html.twig",
 				[
-					'form' => $form->createView()
+					'form' => $form->createView(),
+					'menu' => $menu
 				]
 			);
 		}

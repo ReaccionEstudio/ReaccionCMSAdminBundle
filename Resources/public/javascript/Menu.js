@@ -22,7 +22,7 @@ class Menu
    	 */
   	formEvents()
   	{
-    	this.commonFunctions.appendRequiredFormFieldsAsterisks("menu");
+    	this.commonFunctions.appendRequiredFormFieldsAsterisks("menu_content");
     	this._toggleFormFieldsEvent();
 	}
 
@@ -32,13 +32,16 @@ class Menu
 	_toggleFormFieldsEvent()
 	{
 		let _self = this;
-		let type  = $("select#menu_type").val();
+
+		if( ! $("select#menu_content_type").length ) return;
+
+		let type  = $("select#menu_content_type").val();
 
 		// hide field on load
 		if( ! type.length )
 		{
-			$("select#menu_pageValue").parent().addClass("d-none");
-			$("input#menu_urlValue").parent().addClass("d-none");
+			$("select#menu_content_pageValue").parent().addClass("d-none");
+			$("input#menu_content_urlValue").parent().addClass("d-none");
 		}
 		else
 		{
@@ -46,7 +49,7 @@ class Menu
 		}
 
 		// on change event
-		$("select#menu_type").on("change", function()
+		$("select#menu_content_type").on("change", function()
 		{
 			let type = $(this).val();
 			_self._toggleFormFields(type);
@@ -60,13 +63,13 @@ class Menu
 	{
 		if(type == "url")
 		{
-			$("select#menu_pageValue").parent().addClass("d-none");
-			$("input#menu_urlValue").parent().removeClass("d-none");
+			$("select#menu_content_pageValue").parent().addClass("d-none");
+			$("input#menu_content_urlValue").parent().removeClass("d-none");
 		}
 		else if(type == "page")
 		{
-			$("input#menu_urlValue").parent().addClass("d-none");
-			$("select#menu_pageValue").parent().removeClass("d-none");
+			$("input#menu_content_urlValue").parent().addClass("d-none");
+			$("select#menu_content_pageValue").parent().removeClass("d-none");
 		}
 	}
 }

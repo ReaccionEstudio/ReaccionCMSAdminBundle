@@ -45,8 +45,13 @@ appearance:
 menu:
   title: 'Menu'
   create_new: 'Create new menu'
+  name: 'Name'
+  isEnabled: 'Is enabled'
+  language: 'Language'
+  slug: 'Slug'
 
 menu_content:
+  title: 'Menu: <strong>%name%</strong>'
   add_item: 'Add new item'
 
 user_dropdown:
@@ -248,8 +253,8 @@ roles:
 
 # menu
 menu_form:
-  title: 'Create menu item'
-  detail_title: 'Menu item: <strong>%name%</strong>'
+  title: 'Create menu for <strong>%name%</strong> menu'
+  detail_title: 'Menu: <strong>%name%</strong>'
   name: 'Name'
   type: 'Type'
   url_type: 'Url'
@@ -258,6 +263,15 @@ menu_form:
   url_value: 'Url'
   page_value: 'Page'
   target: 'Target'
+  go_to_menu_list: 'Go back to menu list'
+  create_success_message: 'Menu has been created correctly'
+  create_error_message: 'Error creating menu <strong>%name%</strong>: %error%'
+  remove_success_message: 'Menu <strong>%name%</strong> has been removed correctly'
+  remove_error_message: 'Error removing <strong>%name%</strong> menu: %error%'
+  update_success_message: 'Menu has been updated correctly.'
+  update_error_message: 'Error updating menu: %error%'
+
+menu_content_form:
   create_success_message: 'Menu item has been created correctly'
   create_error_message: 'Error creating menu item <strong>%name%</strong>: %error%'
   remove_success_message: 'Menu item <strong>%name%</strong> has been removed correctly'

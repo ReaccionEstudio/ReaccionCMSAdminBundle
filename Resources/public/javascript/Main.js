@@ -25,8 +25,8 @@ $(document).ready(function()
 	let pageAddContentRegex = /admin\/pages\/\d+\/content\/add/gi;
 	let pageEditContentRegex = /admin\/pages\/content\/\d+/gi;
 	let userEditRegex = /admin\/users\/\d+\/update/gi;
-	let menuCreateRegex = /admin\/preferences\/menu\/create\/\d+/gi;
-	let menuDetailRegex = /admin\/preferences\/menu\/\d+/gi;
+	let menuCreateRegex = /admin\/appearance\/menu\/\d+\/create\/?\d*/gi;
+	let menuDetailRegex = /admin\/appearance\/menu\/\d+/gi;
 	let entryEditRegex = /admin\/entries\/\d+\/update/gi;
 	let configEditRegex = /admin\/preferences\/configuration\/\d+\/update/gi;
 	

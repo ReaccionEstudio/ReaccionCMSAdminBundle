@@ -3,6 +3,7 @@
 	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Menu;
 
 	use Doctrine\ORM\EntityManager;
+	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Menu;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\MenuContent;
 
 	/**
@@ -30,14 +31,15 @@
 		/**
 		 * Build nested array with menu items
 		 *
+		 * @param  Menu 		$menu 					Menu entity
 		 * @param  Boolean 		$hideDisabledItems 		Hide disabled menu items?
 		 * @return Array  		$nested    				Menu nested array
 		 */
-		public function buildNestedArray(Bool $hideDisabledItems=true) : Array
+		public function buildNestedArray(Menu $menu, bool $hideDisabledItems=true) : Array
 		{
 			$nested 	= array();
 			$source 	= array();
-			$menuItems 	= $this->getMenuItemsAsArray($hideDisabledItems);
+			$menuItems 	= $this->getMenuItemsAsArray($menu, $hideDisabledItems);
 
 			// create source array
 			foreach($menuItems as $menuItem)
@@ -109,7 +111,7 @@
 		 * @param  Boolean 		$hideDisabledItems 		Hide disabled menu items?
 		 * @return Array 		[type] 					Array with all menu items
 		 */
-		public function getMenuItemsAsArray(Bool $hideDisabledItems=true) : Array
+		public function getMenuItemsAsArray(Menu $menu, bool $hideDisabledItems=true) : Array
 		{
 			$dql =  "
 					SELECT 
@@ -117,14 +119,15 @@
 					FROM  App\ReaccionEstudio\ReaccionCMSBundle\Entity\MenuContent m 
 					LEFT JOIN App\ReaccionEstudio\ReaccionCMSBundle\Entity\MenuContent p 
 					WITH p.id = m.parent 
+					WHERE m.menu = :menuId
 					";
 
 			if($hideDisabledItems)
 			{
-				$dql .= "WHERE m.enabled = 1";
+				$dql .= " AND m.enabled = 1";
 			}
 
-			$query = $this->em->createQuery($dql);
+			$query = $this->em->createQuery($dql)->setParameter("menuId", $menu->getId());
 			return $query->getArrayResult();
 		}
 	}

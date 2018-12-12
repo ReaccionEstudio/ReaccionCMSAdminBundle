@@ -10,8 +10,8 @@
 			<div class="col pl-0">
 	    		<h1 class="page-title">{{ 'menu.title' | trans }}</h1>
 	    	</div>
-	    	<div class="col col-lg-2 row justify-content-end">
-    			<a href="{{ url('reaccion_cms_admin_preferences_create_configuration') }}" class="btn btn-primary">
+	    	<div class="col col-lg-6 row justify-content-end">
+    			<a href="{{ url('reaccion_cms_admin_appearance_menu_create') }}" class="btn btn-primary">
     				<i class="fe fe-plus"></i>&nbsp;&nbsp;{{ 'menu.create_new' | trans }}
     			</a>
     		</div>
@@ -31,7 +31,57 @@
             		<!-- flash messages -->
             		{% embed '@ReaccionCMSAdminBundle/shared/flash_messages.html.twig' %}{% endembed %}
 
-					
+					<div class="table-responsive">
+	                    
+	                    <table class="table card-table table-vcenter text-nowrap">
+
+	                    	<thead>
+	                        	<tr>
+		                        	<th>{{ 'menu.name' | trans }}</th>
+		                        	<th>{{ 'menu.slug' | trans }}</th>
+		                        	<th>{{ 'menu.language' | trans }}</th>
+		                        	<th>{{ 'menu.isEnabled' | trans }}</th>
+		                        	<th width="5%"></th>
+		                        </tr>
+		                    </thead>
+
+		                    <tbody>
+
+		                    	{% for menuItem in menu %}
+		                    	<tr>
+		                    		<td>
+		                    			<a href="{{ url('reaccion_cms_admin_appearance_menu_content', { 'menu' : menuItem.id }) }}" title="{{ menuItem.name }}">{{ menuItem.name }}</a>
+		                    		</td>
+		                    		<td>{{ menuItem.slug }}</td>
+		                    		<td>
+		                    			{% embed '@ReaccionCMSAdminBundle/components/languages/languageWithFlagComponent.html.twig' with {'lang' : menuItem.language} %}{% endembed %}
+		                    		</td>
+		                    		<td>
+		                    			{% if menuItem.enabled %}
+			                          	<span class="status-icon bg-success"></span> {{ 'entries_list.enabled' | trans }}
+			                          	{% else %}
+			                          	<span class="status-icon bg-danger"></span> {{ 'entries_list.disabled' | trans }}
+			                          	{% endif %}
+			                        </td>
+		                    		<td>
+		                    			
+		                    			<a href="{{ url('reaccion_cms_admin_appearance_menu_content', { 'menu' : menuItem.id }) }}" title="{{ 'crud.show' | trans }}" data-toggle="tooltip" data-placement="top">
+			                              <i class="fe fe-zoom-in"></i>
+			                            </a>
+			                            &nbsp;
+			                            <a class="text-danger" href="{{ url('reaccion_cms_admin_appearance_menu_remove', {'menu' : menuItem.id}) }}" data-toggle="tooltip" data-placement="top" title="{{ 'crud.remove' | trans }}" data-detele-confirm="true">
+			                              <i class="fe fe-trash"></i>
+			                            </a>
+
+		                    		</td>
+		                    	</tr>
+		                    	{% endfor %}
+
+		                    </tbody>
+
+		                </table>
+
+		            </div>
 
 	    		</div>
 

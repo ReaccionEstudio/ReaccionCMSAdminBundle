@@ -9,7 +9,7 @@
 		{{ form_start(form, { 'attr': { 'class' : 'card' } }) }}
 
 		<div class="card-header">
-			<h3 class="card-title">{{ 'menu.create_new' | trans }}</h3>
+			<h3 class="card-title">{{ 'menu_form.title' | trans({ '%name%' : menu.name }) | raw }}</h3>
 		</div>
 
 		<div class="card-body col-8 align-self-center">
@@ -22,7 +22,7 @@
 
 		<div class="card-footer text-right">
         	<div class="d-flex">
-          		<a href="{{ url('reaccion_cms_admin_appearance_menu') }}" class="btn btn-link">{{ 'crud.cancel' | trans }}</a>
+          		<a href="{{ url('reaccion_cms_admin_appearance_menu_content', {'menu' : menu.id }) }}" class="btn btn-link">{{ 'crud.cancel' | trans }}</a>
           		<button type="submit" class="btn btn-primary ml-auto">{{ 'crud.send_data' | trans }}</button>
         	</div>
       	</div>
