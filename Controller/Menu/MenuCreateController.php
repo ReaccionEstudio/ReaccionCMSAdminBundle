@@ -6,7 +6,7 @@
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\Translation\TranslatorInterface;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Menu;
-	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\Menu\MenuType;
+	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\Menu\MenuContentType;
 	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Menu\MenuService;
 
 	class MenuCreateController extends Controller
@@ -16,7 +16,7 @@
 			$menu = new Menu();
 
 			// form
-			$form = $this->createForm(MenuType::class, $menu);
+			$form = $this->createForm(MenuContentType::class, $menu);
 			$form->handleRequest($request);
 
 			if ($form->isSubmitted() && $form->isValid()) 

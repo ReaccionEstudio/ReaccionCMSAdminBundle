@@ -14,7 +14,7 @@
 
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
 
-	class MenuType extends AbstractType
+	class MenuContentType extends AbstractType
 	{
 	    public function buildForm(FormBuilderInterface $builder, array $options)
 	    {

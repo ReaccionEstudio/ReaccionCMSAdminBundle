@@ -7,7 +7,7 @@
 	use Symfony\Component\Translation\TranslatorInterface;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Menu;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
-	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\Menu\MenuType;
+	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\Menu\MenuContentType;
 	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Menu\MenuService;
 
 	class MenuDetailController extends Controller
@@ -25,7 +25,7 @@
 			$formParams = [ $formParamKey => $formParamsValue, 'mode' => 'edit' ];
 
 			// form
-			$form = $this->createForm(MenuType::class, $menu, $formParams);
+			$form = $this->createForm(MenuContentType::class, $menu, $formParams);
 			$form->handleRequest($request);
 
 			if ($form->isSubmitted() && $form->isValid()) 
