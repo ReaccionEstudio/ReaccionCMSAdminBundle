@@ -5,6 +5,7 @@
 	use Doctrine\ORM\EntityManager;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Menu;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\MenuContent;
+	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Page\Page;
 
 	/**
 	 * Menu service
@@ -21,11 +22,19 @@
 		private $em;
 
 		/**
+		 * @var Page
+		 *
+		 * Page service
+		 */
+		private $page;
+
+		/**
 		 * Constructor
 		 */
-		public function __construct(EntityManager $em)
+		public function __construct(EntityManager $em, Page $page)
 		{
 			$this->em = $em;
+			$this->page = $page;
 		}
 
 		/**
@@ -41,9 +50,33 @@
 			$source 	= array();
 			$menuItems 	= $this->getMenuItemsAsArray($menu, $hideDisabledItems);
 
+			// get all pages
+			$pageFilters = [ 'language' => $menu->getLanguage(), 'isEnabled' => true ];
+			$pages 		 = $this->page->getPages($pageFilters);
+
+			// create new array to store page slugs
+			$arrayPageSlugs = [];
+
+			foreach($pages as $page)
+			{
+				$key = $page->getId();
+				$arrayPageSlugs[$key] = $page->getSlug();
+			}
+
 			// create source array
 			foreach($menuItems as $menuItem)
 			{
+				// replace menu value when menu item type is page with the page slug
+				if($menuItem['type'] == "page")
+				{
+					$pageId = $menuItem['value'];
+
+					if( ! isset($arrayPageSlugs[$pageId])) continue;
+
+					$menuItem['value'] = $arrayPageSlugs[$pageId];
+				}
+
+				// add to source array
 				$source[$menuItem['id']] = $menuItem;
 			}
 
@@ -115,7 +148,13 @@
 		{
 			$dql =  "
 					SELECT 
-					m.id, p.id AS parent_id, m.name, m.type, m.target, m.position
+					m.id, 
+					p.id AS parent_id, 
+					m.name, 
+					m.type, 
+					m.target, 
+					m.position,
+					m.value
 					FROM  App\ReaccionEstudio\ReaccionCMSBundle\Entity\MenuContent m 
 					LEFT JOIN App\ReaccionEstudio\ReaccionCMSBundle\Entity\MenuContent p 
 					WITH p.id = m.parent 
