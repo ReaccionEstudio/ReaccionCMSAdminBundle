@@ -119,6 +119,7 @@ page_form:
   seo_title: 'Title'
   seo_description: 'Description'
   seo_keywords: 'Keywords'
+  template_view: 'Template view'
   create_success_message: 'The page has been created correctly.'
   create_error_message: 'Error creating <strong>%name%</strong> content: %error%'
   remove_success_message: 'Page <strong>%name%</strong> has been removed correctly.'

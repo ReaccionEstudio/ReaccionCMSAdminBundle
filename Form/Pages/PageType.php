@@ -33,6 +33,11 @@
 	            	'required' => false,
 	            	'attr' => ['class' => 'selectize']
 	            ])
+	            // TODO: get current theme views from config file
+				->add('templateView', TextType::class, [
+	            	'label' => 'page_form.template_view',
+	            	'required' => true
+	            ])
 	            ->add('isEnabled', CheckboxType::class, [
 	            	'label' => 'page_form.is_enabled',
 	            	'required' => false
