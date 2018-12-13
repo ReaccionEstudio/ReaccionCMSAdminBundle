@@ -6,6 +6,7 @@
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Component\Translation\TranslatorInterface;
 
+	use Cocur\Slugify\Slugify;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\PageContent;
 	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\Pages\PageContentType;
@@ -24,6 +25,11 @@
 
 			if ($form->isSubmitted() && $form->isValid()) 
 			{
+				// generate slug
+				$slugify = new Slugify();
+				$slug = $slugify->slugify($content->getName());
+				$content->setSlug($slug);
+
 				// save
 				$em->persist($content);
 				$em->flush();
