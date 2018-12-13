@@ -41,33 +41,37 @@
 		 * Build nested array with menu items
 		 *
 		 * @param  Menu 		$menu 					Menu entity
-		 * @param  Boolean 		$hideDisabledItems 		Hide disabled menu items?
+		 * @param  Boolean 		$hideDisabledItems 		Hide disabled menu items
+		 * @param  Boolean 		$addPageSlugs 			Add page slugs
 		 * @return Array  		$nested    				Menu nested array
 		 */
-		public function buildNestedArray(Menu $menu, bool $hideDisabledItems=true) : Array
+		public function buildNestedArray(Menu $menu, bool $hideDisabledItems=true, bool $addPageSlugs=false) : Array
 		{
 			$nested 	= array();
 			$source 	= array();
 			$menuItems 	= $this->getMenuItemsAsArray($menu, $hideDisabledItems);
 
-			// get all pages
-			$pageFilters = [ 'language' => $menu->getLanguage(), 'isEnabled' => true ];
-			$pages 		 = $this->page->getPages($pageFilters);
-
-			// create new array to store page slugs
-			$arrayPageSlugs = [];
-
-			foreach($pages as $page)
+			if($addPageSlugs)
 			{
-				$key = $page->getId();
-				$arrayPageSlugs[$key] = $page->getSlug();
+				// get all pages
+				$pageFilters = [ 'language' => $menu->getLanguage(), 'isEnabled' => true ];
+				$pages 		 = $this->page->getPages($pageFilters);
+
+				// create new array to store page slugs
+				$arrayPageSlugs = [];
+
+				foreach($pages as $page)
+				{
+					$key = $page->getId();
+					$arrayPageSlugs[$key] = $page->getSlug();
+				}
 			}
 
 			// create source array
 			foreach($menuItems as $menuItem)
 			{
 				// replace menu value when menu item type is page with the page slug
-				if($menuItem['type'] == "page")
+				if($addPageSlugs && $menuItem['type'] == "page")
 				{
 					$pageId = $menuItem['value'];
 
