@@ -34,7 +34,7 @@ class Page
 	_toggleGalleryEvent()
 	{
 		let selectedValue = $("select#page_content_type").val();
-		
+
 		if(selectedValue == "video")
 		{
 			this.mediaVideoPreviewComponent.showGallery();
@@ -45,6 +45,7 @@ class Page
 		}
 		else if(selectedValue == "entry_categories" || selectedValue == "entries_list")
 		{
+			this.mediaImagePreviewComponent.hideGallery(false);
 			$("textarea#page_content_value").parent().addClass("d-none");
 		}
 		else
