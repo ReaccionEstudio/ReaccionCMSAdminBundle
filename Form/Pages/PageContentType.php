@@ -29,7 +29,7 @@
 	            ])
 	            ->add('value', TextareaType::class, [
 	            	'label' => 'page_content_form.value',
-	            	'required' => true,
+	            	'required' => false,
 	            	'attr' => array('rows' => 8)
 	            ])
 	            ->add('isEnabled', CheckboxType::class, [
