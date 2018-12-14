@@ -132,6 +132,9 @@ page_content_types:
   img: 'Image'
   image: 'Image'
   video: 'Video'
+  entry_categories: 'Entry categories'
+  entries_list: 'Entries list'
+  entry: 'Entry'
 
 page_content_form:
   name: 'Name / Alias'

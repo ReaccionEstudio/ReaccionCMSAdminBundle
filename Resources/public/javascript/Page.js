@@ -43,6 +43,10 @@ class Page
 		{
 			this.mediaImagePreviewComponent.showGallery();
 		}
+		else if(selectedValue == "entry_categories" || selectedValue == "entries_list")
+		{
+			$("textarea#page_content_value").parent().addClass("d-none");
+		}
 		else
 		{
 			this.mediaImagePreviewComponent.hideGallery(false);
