@@ -112,8 +112,8 @@
               <li class="nav-item">
                 <a href="javascript:void(0)" class="nav-link {{isActive('entries', true)}}" data-toggle="dropdown"><i class="fe fe-file-text"></i>&nbsp;&nbsp;{{ 'entries.title' | trans }}</a>
                 <div class="dropdown-menu dropdown-menu-arrow">
-                  <a href="{{ url('reaccion_cms_admin_entries_list') }}" class="dropdown-item {{isActive('admin_entries_list')}}">{{ 'entries.list_title' | trans }}</a>
-                  <a href="{{ url('reaccion_cms_admin_entries_create') }}" class="dropdown-item {{isActive('pages_create')}}">{{ 'entries.create_title' | trans }}</a>
+                  <a href="{{ url('reaccion_cms_admin_entries_list') }}" class="dropdown-item {{isActive('entries_list')}}">{{ 'entries.list_title' | trans }}</a>
+                  <a href="{{ url('reaccion_cms_admin_entries_create') }}" class="dropdown-item {{isActive('entries_create')}}">{{ 'entries.create_title' | trans }}</a>
                   <div class="dropdown-divider"></div>
                   <a href="{{ url('reaccion_cms_admin_entries_categories_list') }}" class="dropdown-item {{isActive('entries_categories_list')}}">{{ 'entries_categories.list' | trans }}</a>
                   <a href="{{ url('reaccion_cms_admin_entries_categories_create') }}" class="dropdown-item {{isActive('entries_categories_create')}}">{{ 'entries_categories.create' | trans }}</a>
