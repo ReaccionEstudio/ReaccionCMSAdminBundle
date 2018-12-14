@@ -10,14 +10,22 @@
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\PageContent;
 	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\Pages\PageType;
 	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\Pages\SeoPageType;
-	
+	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Themes\ThemeConfigService;
 
 	class PageDetailController extends Controller
 	{
 		public function index(Page $page, Request $request, TranslatorInterface $translator)
 		{
+			// get current template views
+			$themeFullPath = $this->get("reaccion_cms.theme")->getFullTemplatePath();
+			$themeViews = (new ThemeConfigService($themeFullPath))->getViews();
+
 			// forms
-			$pageForm = $this->createForm(PageType::class, $page);
+			$pageForm = $this->createForm(
+								PageType::class, 
+								$page, 
+								['templateViews' => $themeViews]
+							);
 			$seoPageForm = $this->createForm(SeoPageType::class, $page);
 
 			// handle forms request

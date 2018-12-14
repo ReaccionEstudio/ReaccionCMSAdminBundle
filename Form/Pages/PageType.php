@@ -4,6 +4,7 @@
 
 	use Symfony\Component\Form\AbstractType;
 	use Symfony\Component\Form\FormBuilderInterface;
+	use Symfony\Component\OptionsResolver\OptionsResolver;
 	use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 	use Symfony\Component\Form\Extension\Core\Type\TextType;
 	use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -33,10 +34,18 @@
 	            	'required' => false,
 	            	'attr' => ['class' => 'selectize']
 	            ])
-	            // TODO: get current theme views from config file
-				->add('templateView', TextType::class, [
+				->add('templateView', ChoiceType::class, [
 	            	'label' => 'page_form.template_view',
-	            	'required' => true
+	            	'required' => true,
+	            	'choices' => $options['templateViews'],
+	            	'choice_label' => function($choiceValue, $key, $value)
+                    {
+                    	return $value;
+                    },
+	            	'choice_value' => function($value)
+                    {
+                    	return $value;
+                    },
 	            ])
 	            ->add('isEnabled', CheckboxType::class, [
 	            	'label' => 'page_form.is_enabled',
@@ -48,4 +57,12 @@
 	            ])
 	        ;
 	    }
+
+	    public function configureOptions(OptionsResolver $resolver)
+		{
+		    $resolver->setDefaults(array(
+		    	'data_class' => 'App\ReaccionEstudio\ReaccionCMSBundle\Entity\Page',
+		        'templateViews' => []
+		    ));
+		}
 	}

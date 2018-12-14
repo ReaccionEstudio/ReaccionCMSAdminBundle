@@ -2,13 +2,13 @@
 
 	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages;
 
-	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+	use Cocur\Slugify\Slugify;
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Component\Translation\TranslatorInterface;
-
-	use Cocur\Slugify\Slugify;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
+	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\Pages\PageType;
+	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Themes\ThemeConfigService;
 
 	class CreatePageController extends Controller
 	{
@@ -16,8 +16,12 @@
 		{
 			$page = new Page();
 
+			// get current template views
+			$themeFullPath = $this->get("reaccion_cms.theme")->getFullTemplatePath();
+			$themeViews = (new ThemeConfigService($themeFullPath))->getViews();
+
 			// form
-			$form = $this->createForm(PageType::class, $page);
+			$form = $this->createForm(PageType::class, $page, ['templateViews' => $themeViews]);
 			$form->handleRequest($request);
 
 			if ($form->isSubmitted() && $form->isValid()) 
