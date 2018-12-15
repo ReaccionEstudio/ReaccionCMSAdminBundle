@@ -22,6 +22,9 @@
 
 				try
 				{
+					// generate resume
+					$this->get("reaccion_cms_admin.entry")->generateResume($entry);
+
 					// save
 					$em->persist($entry);
 					$em->flush();
