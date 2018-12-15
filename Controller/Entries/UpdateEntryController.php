@@ -2,6 +2,7 @@
 
 	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Entries;
 
+	use Cocur\Slugify\Slugify;
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Entry;
@@ -24,6 +25,11 @@
 				{
 					// generate resume
 					$this->get("reaccion_cms_admin.entry")->generateResume($entry);
+
+					// generate slug
+					$slugify = new Slugify();
+					$slug = $slugify->slugify($entry->getName());
+					$entry->setSlug($slug);
 
 					// save
 					$em->persist($entry);
