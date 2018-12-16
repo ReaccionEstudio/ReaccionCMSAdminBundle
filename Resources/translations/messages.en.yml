@@ -260,6 +260,7 @@ roles:
 menu_form:
   title: 'Create menu for <strong>%name%</strong> menu'
   detail_title: 'Menu: <strong>%name%</strong>'
+  slug: 'Slug'
   name: 'Name'
   type: 'Type'
   url_type: 'Url'
