@@ -50,6 +50,10 @@
 					$em->persist($page);
 					$em->flush();
 
+					// TODO: update menu html value for cache (we have to check if this page is in an existing menu)
+					
+
+					// success message
 					$this->addFlash('success', $translator->trans('page_form.update_success_message'));
 
 				}
