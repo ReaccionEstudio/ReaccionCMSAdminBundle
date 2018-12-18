@@ -42,6 +42,9 @@
 					$em->persist($pageContent);
 					$em->flush();
 
+					// update page type if necessary
+					$this->get("reaccion_cms_admin.page")->setPageTypeByPageContent($pageContent);
+
 					// flash message
 					$successMessage = $translator->trans('page_content_form.create_success_message');
 					$this->addFlash('success', $successMessage);

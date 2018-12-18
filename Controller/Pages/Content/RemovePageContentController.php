@@ -31,6 +31,9 @@
 				$em->remove($content);
 				$em->flush();
 
+				// update page type if necessary
+				$this->get("reaccion_cms_admin.page")->resetPageType($page);
+
 				// flash message
 				$successMessage = $translator->trans(
 									'page_content_form.remove_success_message', 

@@ -8,7 +8,7 @@
         
         <parameter key="reaccion_cms_admin.page_content.position.class">App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\PageContent\PageContentPosition</parameter>
 
-        <parameter key="reaccion_cms_admin.page.position.class">App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Page\Page</parameter>
+        <parameter key="reaccion_cms_admin.page.class">App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Page\Page</parameter>
 
         <parameter key="reaccion_cms_admin.media_upload.class">App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Media\MediaUploadService</parameter>
 
@@ -20,8 +20,8 @@
 
         <parameter key="reaccion_cms_admin.theme_service.class">App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Theme\ThemeService</parameter>
 
-    	<parameter key="reaccion_cms_admin.entry_service.class">App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Entries\EntryService</parameter>
-
+        <parameter key="reaccion_cms_admin.entry_service.class">App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Entries\EntryService</parameter>
+    	
         <parameter key="reaccion_cms_admin.upload_dir">%kernel.project_dir%/public/uploads/</parameter>
 
         <parameter type="collection" key="reaccion_cms_admin.allowed_upload_mimetypes">
@@ -46,7 +46,7 @@
             <argument type="service" id="doctrine.orm.entity_manager" />
         </service>
 
-        <service id="reaccion_cms_admin.page" class="%reaccion_cms_admin.page.position.class%" public="true">
+        <service id="reaccion_cms_admin.page" class="%reaccion_cms_admin.page.class%" public="true">
             <argument type="service" id="doctrine.orm.entity_manager" />
         </service>
 
@@ -77,7 +77,7 @@
             <argument>%kernel.project_dir%</argument>
         </service>
 
-    	<service id="reaccion_cms_admin.entry" class="%reaccion_cms_admin.entry_service.class%" public="true">
+        <service id="reaccion_cms_admin.entry" class="%reaccion_cms_admin.entry_service.class%" public="true">
             <argument type="service" id="reaccion_cms.config" />
             <argument>%kernel.project_dir%</argument>
         </service>

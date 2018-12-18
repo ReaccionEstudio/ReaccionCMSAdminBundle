@@ -4,6 +4,8 @@
 
 	use Doctrine\ORM\EntityManagerInterface;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Page as PageEntity;
+	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\PageContent;
+	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Constants\PageContentTypes;
 
 	/**
 	 * Service with utils for Page entity
@@ -65,5 +67,78 @@
 		public function getPages(Array $params = ['language' => 'en', 'isEnabled' => true]) : Array
 		{
 			return $this->em->getRepository(PageEntity::class)->findBy($params, ['id' => 'ASC']);
+		}
+
+		/**
+		 * Set page type depending on the page content entities
+		 *
+		 * @param  PageContent  	$pageContent 	PageContent entity
+		 * @return void 			[type]
+		 */
+		public function setPageTypeByPageContent(PageContent $pageContent) : void
+		{
+			// Page type => news
+			$needUpdate = false;
+
+			$pageContentTypesForNewsPage = [
+				PageContentTypes::PageContentTypesList['page_content_types.entry_categories'],
+				PageContentTypes::PageContentTypesList['page_content_types.entries_list']
+			];
+
+			// get Page entity
+			$page = $pageContent->getPage();
+
+			if( in_array($pageContent->getType(), $pageContentTypesForNewsPage) )
+			{
+				$page->setType("news");
+				$needUpdate = true;
+			}
+			else
+			{
+				foreach($page->getContent() as $pageContent)
+				{
+					if( in_array($pageContent->getType(), $pageContentTypesForNewsPage) )
+					{
+						$page->setType("news");
+						$needUpdate = true;
+						break;
+					}
+				}
+			}
+
+			if($needUpdate)
+			{
+				// update page type value
+				try
+				{
+					$this->em->persist($page);
+					$this->em->flush();
+				}
+				catch(\Exception $e)
+				{
+					// TODO: log
+				}
+			}
+		}
+
+		/**
+		 * Reset page type value
+		 *
+		 * @param 	Page 		$page 		Page entity
+		 * @return  void 		[type]
+		 */ 
+		public function resetPageType(PageEntity $page) : void
+		{
+			try
+			{
+				$page->setType("");
+
+				$this->em->persist($page);
+				$this->em->flush();
+			}
+			catch(\Exception $e)
+			{
+				// TODO: log
+			}
 		}
 	}
