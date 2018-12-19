@@ -37,6 +37,13 @@
 		private $entryService;
 
 		/**
+		 * @var Array 
+		 *
+		 * Generated page data
+		 */
+		private $generatedPageData = [];
+
+		/**
 		 * Constructor
 		 */
 		public function __construct(CacheService $cache, EntityManagerInterface $em, EntryService $entryService)
@@ -54,32 +61,61 @@
 		 */
 		public function addPage(Page $page) : bool
 		{
-			$cachePageKey = $this->getCacheKeyForPage($page);
+			$cachePageKey = $this->getCacheKeyForPage($page->getSlug());
 
 			// generate page array data
-			$pageData = $this->generateArrayPageData($page);
+			$this->generateArrayPageData($page);
 			
 			// save in cache
-			return $this->cache->set($cachePageKey, $pageData);
+			return $this->cache->set($cachePageKey, $this->generatedPageData);
+		}
+
+		/**
+		 * Get page data by slug from cache
+		 *
+		 * @param 	String 	$slug 		Page slug
+		 * @return  Array 	$pageData 	Page data array
+		 */
+		public function getPageBySlug(String $slug) : Array
+		{
+			// get cached page data if exists
+			$pageCacheKey = $this->getCacheKeyForPage($slug);
+			$pageData = $this->cache->get($pageCacheKey);
+
+			if($pageData !== null) return $pageData;
+
+			// get page from database
+			$pageFilters = ['slug' => $slug, 'isEnabled' => true ];
+			$page = $this->em->getRepository(Page::class)->findOneBy($pageFilters);
+
+			if(empty($page)) return [];
+
+			// save page data in cache
+			$this->addPage($page);
+
+			// return generated page data
+			return $this->generatedPageData;
 		}
 
 		/**
 		 * Generate page data as Array
 		 *
 		 * @param 	Page 	$page 		Page entity
-		 * @return 	Array 	$pageData 	Array data for the page entity
+		 * @return 	void 	[type]
 		 */
-		private function generateArrayPageData(Page $page) : Array
+		private function generateArrayPageData(Page $page) : void
 		{
 			// create content collection
 			$pageViewContentCollection = new PageViewContentCollection($page->getContent(), $this->entryService, $page->getLanguage());
 			$contentCollection = $pageViewContentCollection->getContentCollection();
 
 			// page data
-			$pageData = [
+			$this->generatedPageData = [
 				'id' => $page->getId(),
 				'slug' => $page->getSlug(),
 				'name' => $page->getName(),
+				'type' => $page->getType(),
+				'templateView' => $page->getTemplateView(),
 				'seo' => [
 							'title' => $page->getSeoTitle(),
 							'description' => $page->getSeoDescription(),
@@ -87,8 +123,6 @@
 						 ],
 				'content' => $contentCollection
 			];
-
-			return $pageData;
 		}
 
 		/**
@@ -102,12 +136,11 @@
 		/**
 		 * Get cache key for current page entity
 		 *
-		 * @param 	Page 	$page 	Page entity
+		 * @param 	String 	$slug 	Page slug
 		 * @return 	String 	[type] 	Cache page key
 		 */
-		private function getCacheKeyForPage(Page $page) : String
+		private function getCacheKeyForPage(String $slug) : String
 		{
-			$slug = $page->getSlug();
 			return str_replace("-", "_", $slug) . "_page";
 		}
 
