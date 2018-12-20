@@ -80,9 +80,11 @@
 		{
 			// get cached page data if exists
 			$pageCacheKey = $this->getCacheKeyForPage($slug);
-			$pageData = $this->cache->get($pageCacheKey);
 
-			if($pageData !== null) return $pageData;
+			if($this->cache->hasItem($pageCacheKey))
+			{
+				return $this->cache->get($pageCacheKey);
+			}
 
 			// get page from database
 			$pageFilters = ['slug' => $slug, 'isEnabled' => true ];
@@ -95,6 +97,40 @@
 
 			// return generated page data
 			return $this->generatedPageData;
+		}
+
+		/**
+		 * Get main page
+		 *
+		 * @return Array 	[type] 		Page data
+		 */
+		public function getMainPage() : Array
+		{
+			if($this->cache->hasItem("main_page"))
+			{
+				return $this->cache->get("main_page");
+			}
+			else
+			{
+				// get from database
+				$mainPage = $this->em->getRepository(Page::class)->findOneBy(
+					[
+						'mainPage' => true,
+						'isEnabled' => true
+					]
+				);
+
+				// generate page array data
+				$this->generateArrayPageData($mainPage);
+				
+				// save in cache
+				$this->cache->set("main_page", $this->generatedPageData);
+
+				// return data
+				return $this->generatedPageData;
+			}
+
+			return [];
 		}
 
 		/**
@@ -115,6 +151,7 @@
 				'slug' => $page->getSlug(),
 				'name' => $page->getName(),
 				'type' => $page->getType(),
+				'mainPage' => $page->isMainPage(),
 				'templateView' => $page->getTemplateView(),
 				'seo' => [
 							'title' => $page->getSeoTitle(),
@@ -123,14 +160,6 @@
 						 ],
 				'content' => $contentCollection
 			];
-		}
-
-		/**
-		 * Removes cache items form non-existing pages
-		 */
-		private function clearCacheKeys() : void
-		{
-
 		}
 
 		/**
