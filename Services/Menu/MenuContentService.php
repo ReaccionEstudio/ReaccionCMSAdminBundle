@@ -2,7 +2,7 @@
 
 	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Menu;
 
-	use Doctrine\ORM\EntityManager;
+	use Doctrine\ORM\EntityManagerInterface;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Menu;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\MenuContent;
 	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Page\Page;
@@ -17,7 +17,7 @@
 		/**
 		 * @var EntityManagerInterface
 		 *
-		 * EntityManager
+		 * EntityManagerInterface
 		 */
 		private $em;
 
@@ -31,7 +31,7 @@
 		/**
 		 * Constructor
 		 */
-		public function __construct(EntityManager $em, Page $page)
+		public function __construct(EntityManagerInterface $em, Page $page)
 		{
 			$this->em = $em;
 			$this->page = $page;
