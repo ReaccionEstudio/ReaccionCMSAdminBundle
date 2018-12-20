@@ -4,6 +4,7 @@
 
 	use Doctrine\ORM\EntityManagerInterface;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
+	use App\ReaccionEstudio\ReaccionCMSBundle\Helpers\CacheHelper;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Cache\CacheService;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Entries\EntryService;
 	use App\ReaccionEstudio\ReaccionCMSBundle\PageView\PageViewContentCollection;
@@ -170,7 +171,7 @@
 		 */
 		private function getCacheKeyForPage(String $slug) : String
 		{
-			return str_replace("-", "_", $slug) . "_page";
+			return (new CacheHelper())->convertSlugToCacheKey($slug, "_page");
 		}
 
 	}
