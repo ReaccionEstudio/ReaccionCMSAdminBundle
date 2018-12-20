@@ -152,6 +152,7 @@
 				'slug' => $page->getSlug(),
 				'name' => $page->getName(),
 				'type' => $page->getType(),
+				'language' => $page->getLanguage(),
 				'mainPage' => $page->isMainPage(),
 				'templateView' => $page->getTemplateView(),
 				'seo' => [
