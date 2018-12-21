@@ -4,10 +4,12 @@
 
 	use Doctrine\ORM\EntityManagerInterface;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
+	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Entry;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Helpers\CacheHelper;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Cache\CacheService;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Entries\EntryService;
 	use App\ReaccionEstudio\ReaccionCMSBundle\PageView\PageViewContentCollection;
+	use App\ReaccionEstudio\ReaccionCMSBundle\EntryView\EntryViewVarsFactory;
 
 	/**
 	 * Page cache service.
@@ -72,12 +74,12 @@
 		}
 
 		/**
-		 * Get page data by slug from cache
+		 * Get page data from cache
 		 *
 		 * @param 	String 	$slug 		Page slug
 		 * @return  Array 	$pageData 	Page data array
 		 */
-		public function getPageBySlug(String $slug) : Array
+		public function getPage(String $slug) : Array
 		{
 			// get cached page data if exists
 			$pageCacheKey = $this->getCacheKeyForPage($slug);
@@ -95,6 +97,38 @@
 
 			// save page data in cache
 			$this->addPage($page);
+
+			// return generated page data
+			return $this->generatedPageData;
+		}
+
+		/**
+		 * Get entry detail
+		 * 
+		 * @param 	String 	$slug 		Page slug
+		 * @return  Array 	$pageData 	Page data array
+		 */
+		public function getEntryDetailPage(String $slug) : Array
+		{
+			// get cached page data if exists
+			$pageCacheKey = $this->getCacheKeyForPage($slug . "_entry");
+
+			if($this->cache->hasItem($pageCacheKey))
+			{
+				return $this->cache->get($pageCacheKey);
+			}
+
+			// get page from database
+			$pageFilters = ['slug' => $slug, 'isEnabled' => true ];
+			$entry = $this->em->getRepository(Entry::class)->findOneBy($pageFilters);
+
+			if(empty($entry)) return [];
+
+			// create page entity
+			// TODO: create custom class which make Page entity
+
+			// save page data in cache
+			// $this->addPage($page);						
 
 			// return generated page data
 			return $this->generatedPageData;
