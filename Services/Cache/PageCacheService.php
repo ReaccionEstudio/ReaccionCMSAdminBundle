@@ -10,6 +10,7 @@
 	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Entries\EntryService;
 	use App\ReaccionEstudio\ReaccionCMSBundle\PageView\PageViewContentCollection;
 	use App\ReaccionEstudio\ReaccionCMSBundle\EntryView\EntryViewVarsFactory;
+	use App\ReaccionEstudio\ReaccionCMSBundle\DataTransformer\Entry\EntryDataTransformer;	
 
 	/**
 	 * Page cache service.
@@ -119,16 +120,17 @@
 			}
 
 			// get page from database
-			$pageFilters = ['slug' => $slug, 'isEnabled' => true ];
+			$pageFilters = ['slug' => $slug, 'enabled' => true ];
 			$entry = $this->em->getRepository(Entry::class)->findOneBy($pageFilters);
 
 			if(empty($entry)) return [];
 
 			// create page entity
-			// TODO: create custom class which make Page entity
-
+			$entryDataTransformer = new EntryDataTransformer($entry);
+			$page = $entryDataTransformer->getPageEntity($this->entryService);
+			
 			// save page data in cache
-			// $this->addPage($page);						
+			$this->addPage($page);						
 
 			// return generated page data
 			return $this->generatedPageData;
