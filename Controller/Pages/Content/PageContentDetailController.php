@@ -26,9 +26,7 @@
 			if ($form->isSubmitted() && $form->isValid()) 
 			{
 				// generate slug
-				$slugify = new Slugify();
-				$slug = $slugify->slugify($content->getName());
-				$content->setSlug($slug);
+				$content->setSlug($content->getName());
 
 				// save
 				$em->persist($content);

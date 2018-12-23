@@ -27,6 +27,9 @@
 			{
 				try
 				{
+					// generate slug
+					$menu->setSlug($menu->getName());
+					
 					// save
 					$em->persist($menu);
 					$em->flush();

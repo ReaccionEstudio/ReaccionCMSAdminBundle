@@ -20,10 +20,6 @@
 	            	'label' => 'menu_form.name',
 	            	'required' => true
 	            ])
-	            ->add('slug', TextType::class, [
-	            	'label' => 'menu_form.slug',
-	            	'required' => true
-	            ])
 	            ->add('language', ChoiceType::class, [
 	            	'label' => 'users_form.language',
 	            	'choices' => Languages::LANGUAGES,

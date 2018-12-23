@@ -34,9 +34,7 @@
 					}
 
 					// generate slug
-					$slugify = new Slugify();
-					$slug = $slugify->slugify($page->getName());
-					$page->setSlug($slug);
+					$page->setSlug($page->getName());
 
 					// save
 					$em = $this->getDoctrine()->getManager();

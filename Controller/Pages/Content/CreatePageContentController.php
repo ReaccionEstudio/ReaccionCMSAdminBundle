@@ -34,9 +34,7 @@
 					$pageContent->setPosition($nextPosition);
 
 					// generate slug
-					$slugify = new Slugify();
-					$slug = $slugify->slugify($pageContent->getName());
-					$pageContent->setSlug($slug);
+					$pageContent->setSlug($pageContent->getName());
 					
 					// save
 					$em->persist($pageContent);

@@ -2,7 +2,6 @@
 
 	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu;
 
-	use Cocur\Slugify\Slugify;
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\Translation\TranslatorInterface;
@@ -27,9 +26,7 @@
 				try
 				{
 					// generate slug
-					$slugify = new Slugify();
-					$slug = $slugify->slugify($menu->getName());
-					$menu->setSlug($slug);
+					$menu->setSlug($menu->getName());
 
 					// save
 					$em->persist($menu);

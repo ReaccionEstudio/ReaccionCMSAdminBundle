@@ -26,11 +26,6 @@
 					// generate resume
 					$this->get("reaccion_cms_admin.entry")->generateResume($entry);
 
-					// generate slug
-					$slugify = new Slugify();
-					$slug = $slugify->slugify($entry->getName());
-					$entry->setSlug($slug);
-
 					// save
 					$em->persist($entry);
 					$em->flush();

@@ -324,6 +324,7 @@ entries_form:
   update_title: 'Update entry: %name%'
   name: 'Name'
   content: 'Content'
+  slug: 'Slug'
   tags: 'Tags'
   categories: 'Categories'
   isEnabled: 'Is enabled'

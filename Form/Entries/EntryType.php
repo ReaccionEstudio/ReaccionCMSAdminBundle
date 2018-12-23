@@ -34,6 +34,10 @@
 		            'expanded'  => true,
                 	'multiple'  => true,
 		        ])
+	            ->add('slug', TextType::class, [
+	            	'label' => 'entries_form.slug',
+	            	'required' => true
+	            ])
 	            ->add('tags', TextType::class, [
 	            	'label' => 'entries_form.tags',
 	            	'required' => true

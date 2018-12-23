@@ -59,10 +59,18 @@
         				<i class="fe fe-settings"></i>&nbsp;&nbsp;{{ 'entries_form.options' | trans }}
         			</div>
         			<div class="card-body">
+
+		        		<div class="form-group">
+				        	{{ form_label(form.slug) }}
+				        	{{ form_widget(form.slug) }}
+		        		</div>
+
 		        		<div class="form-group">
 				        	{{ form_label(form.language) }}
 				        	{{ form_widget(form.language) }}
 		        		</div>
+
+
 		        		<div class="form-group">
 				        	{{ form_widget(form.enabled) }}
 		        		</div>

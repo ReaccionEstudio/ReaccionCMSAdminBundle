@@ -24,6 +24,9 @@
 
 				try
 				{
+					// generate slug
+					$category->setSlug($category->getName());
+					
 					// save
 					$em->persist($category);
 					$em->flush();
