@@ -8,9 +8,10 @@
 	use App\ReaccionEstudio\ReaccionCMSBundle\Helpers\CacheHelper;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Cache\CacheService;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Entries\EntryService;
-	use App\ReaccionEstudio\ReaccionCMSBundle\PageView\PageViewContentCollection;
 	use App\ReaccionEstudio\ReaccionCMSBundle\EntryView\EntryViewVarsFactory;
+	use App\ReaccionEstudio\ReaccionCMSBundle\DataTransformer\Page\PageDataTransformer;
 	use App\ReaccionEstudio\ReaccionCMSBundle\DataTransformer\Entry\EntryDataTransformer;	
+	use App\ReaccionEstudio\ReaccionCMSBundle\Services\DynamicRouting\DynamicRoutingManager;
 
 	/**
 	 * Page cache service.
@@ -80,6 +81,7 @@
 		 * @param 	String 	$slug 		Page slug
 		 * @return  Array 	$pageData 	Page data array
 		 */
+		// TODO: create FACADE class
 		public function getPage(String $slug) : Array
 		{
 			// get cached page data if exists
@@ -90,17 +92,34 @@
 				return $this->cache->get($pageCacheKey);
 			}
 
+			// get page entity if exists
+			$page = $this->getPageEntity($slug);
+			
+			if(empty($page)) return [];
+
+			// save page data in cache
+			if($page instanceof Page)
+			{
+				$this->addPage($page);
+			}
+
+			// return generated page data
+			return $this->generatedPageData;
+		}
+
+		/**
+		 * Get page entity from databas by slug
+		 *
+		 * @param  String 		$slug 	Page slug
+		 * @return Page | null 	$page 	Page entity
+		 */
+		public function getPageEntity(String $slug)
+		{
 			// get page from database
 			$pageFilters = ['slug' => $slug, 'isEnabled' => true ];
 			$page = $this->em->getRepository(Page::class)->findOneBy($pageFilters);
 
-			if(empty($page)) return [];
-
-			// save page data in cache
-			$this->addPage($page);
-
-			// return generated page data
-			return $this->generatedPageData;
+			return $page;
 		}
 
 		/**
@@ -130,7 +149,7 @@
 			$page = $entryDataTransformer->getPageEntity($this->entryService);
 			
 			// save page data in cache
-			$this->addPage($page);						
+			$this->addPage($page);
 
 			// return generated page data
 			return $this->generatedPageData;
@@ -178,26 +197,8 @@
 		 */
 		private function generateArrayPageData(Page $page) : void
 		{
-			// create content collection
-			$pageViewContentCollection = new PageViewContentCollection($page->getContent(), $this->entryService, $page->getLanguage());
-			$contentCollection = $pageViewContentCollection->getContentCollection();
-
-			// page data
-			$this->generatedPageData = [
-				'id' => $page->getId(),
-				'slug' => $page->getSlug(),
-				'name' => $page->getName(),
-				'type' => $page->getType(),
-				'language' => $page->getLanguage(),
-				'mainPage' => $page->isMainPage(),
-				'templateView' => $page->getTemplateView(),
-				'seo' => [
-							'title' => $page->getSeoTitle(),
-							'description' => $page->getSeoDescription(),
-							'keywords' => $page->getSeoKeywords()
-						 ],
-				'content' => $contentCollection
-			];
+			$pageDataTransformer = new PageDataTransformer($page);
+			$this->generatedPageData = $pageDataTransformer->getPageViewVars($this->entryService);
 		}
 
 		/**
