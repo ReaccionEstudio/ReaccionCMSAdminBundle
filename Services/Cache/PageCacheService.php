@@ -102,12 +102,8 @@
 
 				if($cachedPage['type'] == "entry") 
 				{
-
 					// load comments
-					$options = unserialize($cachedPage['options']);
-					$entryId = $options['entry_id'];
-					$cachedPage['comments'] = $this->commentService->getComments($entryId);
-					
+					$cachedPage = $this->appendCommentsInPage($cachedPage);
 				}
 
 				return $cachedPage;
@@ -172,6 +168,9 @@
 			// save page data in cache
 			$this->addPage($page);
 
+			// load comments
+			$this->generatedPageData = $this->appendCommentsInPage($this->generatedPageData);
+
 			// return generated page data
 			return $this->generatedPageData;
 		}
@@ -231,6 +230,21 @@
 		private function getCacheKeyForPage(String $slug) : String
 		{
 			return (new CacheHelper())->convertSlugToCacheKey($slug, "_page");
+		}
+
+		/**
+		 * Append comments nested array in the page data darray
+		 *
+		 * @param  Array  $pageData  Page data array
+		 * @return Array  $pageData  Page data array with entry comments
+		 */
+		private function appendCommentsInPage(Array $pageData) : Array
+		{
+			$options = unserialize($pageData['options']);
+			$entryId = $options['entry_id'];
+			$pageData['comments'] = $this->commentService->getComments($entryId);
+
+			return $pageData;
 		}
 
 	}
