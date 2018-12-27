@@ -102,8 +102,12 @@
 
 				if($cachedPage['type'] == "entry") 
 				{
-					// TODO: load comments
-					// $this->commentService->getComments();
+
+					// load comments
+					$options = unserialize($cachedPage['options']);
+					$entryId = $options['entry_id'];
+					$cachedPage['comments'] = $this->commentService->getComments($entryId);
+					
 				}
 
 				return $cachedPage;
