@@ -8,6 +8,7 @@
 	use App\ReaccionEstudio\ReaccionCMSBundle\Helpers\CacheHelper;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Cache\CacheService;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Entries\EntryService;
+	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Comment\CommentService;
 	use App\ReaccionEstudio\ReaccionCMSBundle\EntryView\EntryViewVarsFactory;
 	use App\ReaccionEstudio\ReaccionCMSBundle\DataTransformer\Page\PageDataTransformer;
 	use App\ReaccionEstudio\ReaccionCMSBundle\DataTransformer\Entry\EntryDataTransformer;	
@@ -42,6 +43,13 @@
 		private $entryService;
 
 		/**
+		 * @var CommentService
+		 *
+		 * Comments service
+		 */
+		private $commentService;
+
+		/**
 		 * @var Array 
 		 *
 		 * Generated page data
@@ -51,11 +59,12 @@
 		/**
 		 * Constructor
 		 */
-		public function __construct(CacheService $cache, EntityManagerInterface $em, EntryService $entryService)
+		public function __construct(CacheService $cache, EntityManagerInterface $em, EntryService $entryService, CommentService $commentService)
 		{
 			$this->em = $em;
 			$this->cache = $cache;
 			$this->entryService = $entryService;
+			$this->commentService = $commentService;
 		}
 
 		/**
@@ -86,10 +95,18 @@
 		{
 			// get cached page data if exists
 			$pageCacheKey = $this->getCacheKeyForPage($slug);
-
+			
 			if($this->cache->hasItem($pageCacheKey))
 			{
-				return $this->cache->get($pageCacheKey);
+				$cachedPage = $this->cache->get($pageCacheKey);
+
+				if($cachedPage['type'] == "entry") 
+				{
+					// TODO: load comments
+					// $this->commentService->getComments();
+				}
+
+				return $cachedPage;
 			}
 
 			// get page entity if exists
