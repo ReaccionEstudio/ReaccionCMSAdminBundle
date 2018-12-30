@@ -3,13 +3,15 @@
 	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Cache;
 
 	use Doctrine\ORM\EntityManagerInterface;
+	use Symfony\Component\HttpFoundation\RequestStack;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Entry;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Helpers\CacheHelper;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Cache\CacheService;
+	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Config\ConfigService;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Entries\EntryService;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Comment\CommentService;
 	use App\ReaccionEstudio\ReaccionCMSBundle\EntryView\EntryViewVarsFactory;
+	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Comment\GetCommentsAsArray;
 	use App\ReaccionEstudio\ReaccionCMSBundle\DataTransformer\Page\PageDataTransformer;
 	use App\ReaccionEstudio\ReaccionCMSBundle\DataTransformer\Entry\EntryDataTransformer;	
 	use App\ReaccionEstudio\ReaccionCMSBundle\Services\DynamicRouting\DynamicRoutingManager;
@@ -43,11 +45,18 @@
 		private $entryService;
 
 		/**
-		 * @var CommentService
+		 * @var RequestStack
 		 *
-		 * Comments service
+		 * RequestStack service
 		 */
-		private $commentService;
+		private $request;
+
+		/**
+		 * @var ConfigService
+		 *
+		 * Config service
+		 */
+		private $config;
 
 		/**
 		 * @var Array 
@@ -59,12 +68,13 @@
 		/**
 		 * Constructor
 		 */
-		public function __construct(CacheService $cache, EntityManagerInterface $em, EntryService $entryService, CommentService $commentService)
+		public function __construct(CacheService $cache, EntityManagerInterface $em, EntryService $entryService, RequestStack $request, ConfigService $config)
 		{
-			$this->em = $em;
-			$this->cache = $cache;
+			$this->em 			= $em;
+			$this->cache 		= $cache;
+			$this->config 		= $config;
 			$this->entryService = $entryService;
-			$this->commentService = $commentService;
+			$this->request 		= $request->getCurrentRequest();
 		}
 
 		/**
@@ -90,13 +100,12 @@
 		 * @param 	String 	$slug 		Page slug
 		 * @return  Array 	$pageData 	Page data array
 		 */
-		// TODO: create FACADE class
-		public function getPage(String $slug) : Array
+		public function getPage(String $slug, Bool $cache = true ) : Array
 		{
 			// get cached page data if exists
 			$pageCacheKey = $this->getCacheKeyForPage($slug);
 			
-			if($this->cache->hasItem($pageCacheKey))
+			if($cache && $this->cache->hasItem($pageCacheKey))
 			{
 				$cachedPage = $this->cache->get($pageCacheKey);
 
@@ -125,7 +134,7 @@
 		}
 
 		/**
-		 * Get page entity from databas by slug
+		 * Get page entity from database by slug
 		 *
 		 * @param  String 		$slug 	Page slug
 		 * @return Page | null 	$page 	Page entity
@@ -145,12 +154,12 @@
 		 * @param 	String 	$slug 		Page slug
 		 * @return  Array 	$pageData 	Page data array
 		 */
-		public function getEntryDetailPage(String $slug) : Array
+		public function getEntryDetailPage(String $slug, Bool $cache = true) : Array
 		{
 			// get cached page data if exists
 			$pageCacheKey = $this->getCacheKeyForPage($slug . "_entry");
 
-			if($this->cache->hasItem($pageCacheKey))
+			if($cache && $this->cache->hasItem($pageCacheKey))
 			{
 				return $this->cache->get($pageCacheKey);
 			}
@@ -210,6 +219,21 @@
 		}
 
 		/**
+		 * Refresh page cache
+		 */
+		public function refreshPageCache(String $slug) : Array
+		{
+			$pageData = $this->getPage($slug, false);
+
+			if(empty($pageData))
+			{
+				$pageData = $this->getEntryDetailPage($slug, false);
+			}
+
+			return $pageData;
+		}
+
+		/**
 		 * Generate page data as Array
 		 *
 		 * @param 	Page 	$page 		Page entity
@@ -242,9 +266,22 @@
 		{
 			$options = unserialize($pageData['options']);
 			$entryId = $options['entry_id'];
-			$pageData['comments'] = $this->commentService->getComments($entryId);
+			$pageData['comments'] = $this->getComments($entryId);
 
 			return $pageData;
+		}
+
+		/**
+		 * Get comments list
+		 *
+		 * @param  Integer  $entryId 	Entry ID
+		 * @return Array 	[type]		Comments array
+		 */
+		private function getComments(Int $entryId)
+		{
+			$page = ($this->request->query->get('cp')) ?? 1;
+			$getCommentsAsArray = new GetCommentsAsArray($this->em, $entryId, $page, $this->config);
+			return $getCommentsAsArray->getComments();
 		}
 
 	}
