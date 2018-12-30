@@ -40,7 +40,7 @@
 	            ])
 	            ->add('tags', TextType::class, [
 	            	'label' => 'entries_form.tags',
-	            	'required' => true
+	            	'required' => false
 	            ])
 	            ->add('enabled', CheckboxType::class, [
 	            	'label' => 'entries_form.isEnabled',
