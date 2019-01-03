@@ -17,3 +17,6 @@ php ${SF_PATH}/bin/console assets:install --symlink
 
 # Run Webpack encore
 yarn encore dev
+
+# Clear cache
+php ${SF_PATH}/bin/console cache:clear
