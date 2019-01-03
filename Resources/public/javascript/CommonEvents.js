@@ -15,7 +15,9 @@
   	{
   		e.preventDefault();
 
-  		if(confirm(translations["remove_item_confirm_message"]))
+      let translator = new Translator();
+
+  		if(confirm(translator.trans("remove_item_confirm_message")))
   		{
   			var removeUrl = $(this).attr("href");
 

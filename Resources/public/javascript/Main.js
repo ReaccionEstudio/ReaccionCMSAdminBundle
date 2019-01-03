@@ -8,6 +8,8 @@
 // images
 require("../images/reaccion_cms_logo.jpg");
 
+import Translator from './Translator.js';
+
 // js
 require('./CommonEvents.js');
 
