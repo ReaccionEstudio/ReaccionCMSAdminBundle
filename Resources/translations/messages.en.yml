@@ -81,9 +81,6 @@ crud:
   copy: 'Copy'
   created_at: 'Created at'
 
-# common messages
-remove_item_confirm_message: 'Do you want to remove this item?'
-
 # dashboard
 dashboard:
   title: 'Dashboard'
