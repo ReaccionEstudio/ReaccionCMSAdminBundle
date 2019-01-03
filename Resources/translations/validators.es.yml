@@ -1,0 +1,4 @@
+Error: 'Error'
+
+users_form:
+  password_not_matching: 'Las contraseñas no coinciden'

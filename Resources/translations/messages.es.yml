@@ -1,0 +1,342 @@
+# navigation
+home: 
+  title: 'Inicio'
+  
+pages: 
+  title: 'Páginas'
+  list: 'Ver todas las páginas'
+  create: 'Crear nueva página'  
+
+entries: 
+  title: 'Entradas'
+  list_title: 'Ver todas las entradas'
+  create_title: 'Crear nueva entrada'
+
+entries_categories: 
+  title: 'Categorías'
+  list: 'Ver todas las categorías'
+  create: 'Crear nueva categoría'
+
+media: 
+  title: 'Media'
+  video: 'Vídeo'
+  image: 'Imagen'
+  video_tag_not_supported: 'Tu navegador no soporta la etiqueta video.'
+
+plugins: 
+  title: 'Plugins'
+  list: 'Ver todos los plugins'
+  add: 'Añadir nuevo plugin'
+
+users: 
+  title: 'Usuarios'
+  list: 'Ver todos los usuarios'
+  add: 'Añadir nuevo usuario'
+
+preferences: 
+  title: 'Preferencias'
+  config: 'Configuración'
+
+appearance:
+  title: 'Apariencia'
+  website_menu: 'Menú'
+  themes: 'Temas'
+
+menu:
+  title: 'Menú'
+  create_new: 'Crear un nuevo menú'
+  name: 'Nombre'
+  isEnabled: '¿Está activo?'
+  language: 'Idioma'
+  slug: 'Url'
+  edit_title: 'Editar el menú: <strong>%name%</strong>'
+
+menu_content:
+  title: 'Menú: <strong>%name%</strong>'
+  add_item: 'Añadir un elemento'
+
+user_dropdown:
+  sign_out: 'Salir'
+  profile: 'Perfil'
+
+navigation:
+  go_to_website: 'Ir a la web'
+  
+# login 
+login:
+  title: 'Acceder a tu cuenta'
+  forgot_password: '¿Olvidaste tu contraseña?'
+
+# crud
+crud:
+  close: 'Cerrar'
+  show: 'Mostrar'
+  edit: 'Editar'
+  remove: 'Eliminar'
+  listing_x_of_y: 'Mostrando %current% de %total%'
+  cancel: 'Cancelar'
+  send_data: 'Enviar'
+  save_changes: 'Guardar los cambios'
+  go_back: 'Ir atrás'
+  copy: 'Copiar'
+  created_at: 'Creado el'
+
+# dashboard
+dashboard:
+  title: 'Escritorio'
+  pages: 'Páginas'
+  content_rows: 'Registros de contenido'
+  media_content: 'Multimedia'
+  entries: 'Entradas'
+  comments: 'Comentarios'
+  users: 'Usuarios'
+
+# pages
+pages_list:
+  title: 'Listado de páginas'
+  create_new_page_btn: 'Crear una página'
+
+pages_list_table:
+  id: 'Id'
+  name: 'Nombre'
+  is_enabled: '¿Habilitado?'
+  language: 'Idiom'
+  enabled: 'Habilitado'
+  disabled: 'Deshabilitado'
+  created_at: 'Creado el'
+  updated_at: 'Actualizado el'
+
+# TODO ...
+page_form:
+  title: 'Create new page'
+  name: 'Name'
+  main_page: 'Main page'
+  is_enabled: 'Is enabled?'
+  is_main_page: 'Is main page?'
+  slug: 'Slug / Page url'
+  seo_title: 'Title'
+  seo_description: 'Description'
+  seo_keywords: 'Keywords'
+  template_view: 'Template view'
+  create_success_message: 'The page has been created correctly.'
+  create_error_message: 'Error creating <strong>%name%</strong> content: %error%'
+  remove_success_message: 'Page <strong>%name%</strong> has been removed correctly.'
+  remove_error_message: 'Error removing <strong>%name%</strong> content: %error%'
+  update_success_message: 'Page has been updated correctly.'
+  update_error_message: 'Error updating page: %error%'
+
+page_content_types:
+  text_html: 'Text / HTML'
+  img: 'Image'
+  image: 'Image'
+  video: 'Video'
+  entry_categories: 'Entry categories'
+  entries_list: 'Entries list'
+  entry: 'Entry'
+
+page_content_form:
+  name: 'Name / Alias'
+  type: 'Type'
+  value: 'Value'
+  is_enabled: 'Is enabled?'
+  new_title: 'Add new content'
+  edit_title: 'Edit content'
+  create_success_message: 'Content has been created correctly.'
+  create_error_message: 'Error creating content <strong>%name%</strong>: %error%.'
+  update_success_message: 'Content <strong>%name%</strong> has been updated correctly.'
+  remove_success_message: 'Content <strong>%name%</strong> has been removed correctly.'
+  remove_error_message: 'Error removing <strong>%name%</strong> content: %error%.'
+
+page_detail:
+  go_back_page_list: 'Go back to page list'
+  title: 'Content'
+  general_info_title: 'General info'
+  seo_title: 'SEO'
+  new_content_btn: 'Add new content'
+
+page_detail_table:
+  name: 'Name'
+  type: 'Type'
+  position: 'Position'
+  last_update: 'Last update'
+
+# configuration
+config_list:
+  title: 'Configuration'
+  create_new_value: 'Create new config'
+  name: 'Name'
+  value: 'Value'
+
+config_form:
+  title: 'Create new configuration'
+  name: 'Name'
+  value: 'Value'
+  image: 'Image'
+  success_form: 'Config has been created correctly.'
+  error_form: 'Error creating config: %error%'
+  update_success_form: 'Config has been updated correctly.'
+  update_error_form: 'Error updating config: %error%'
+  remove_success_form: 'Config has been removed correctly.'
+  remove_error_form: 'Error removing config <strong>%name%</strong>: %error%'
+
+# media
+media_list:
+  title: 'Media'
+  add_new: 'Add new media'
+
+media_create:
+  title: 'Add media'
+  file: 'Media file'
+  media_upload_success: 'File <strong>%filename%</strong> has been uploaded correctly.'
+  invalid_mimetype: 'File <strong>%filename%</strong> is not valid: %mimeType%. <br />Valid types are: <strong>%validTypes%</strong>'
+
+media_detail:
+  image_type: 'Image type'
+  resolution: 'Resolution'
+  file_size: 'File size'
+  file_url: 'File url'
+  original: 'Original'
+  large: 'Large'
+  medium: 'Medium'
+  small: 'Small'
+  go_to_media_list: 'Go back to media list'
+  removed_media_successful: 'Media has been removed correctly'
+  removed_media_error: 'Error removing media <strong>%name%</strong>: %error%'
+
+media_common:
+  open_gallery: 'Open gallery'
+  original: 'Original'
+  large: 'Large'
+  medium: 'Medium'
+  small: 'Small'
+  select_image_quality: 'Select image quality'
+
+# pages
+users_list:
+  title: 'Users list'
+  create_new_user_btn: 'Create new user'
+  id: 'Id'
+  username: 'Username'
+  nickname: 'Nickname'
+  email: 'Email'
+  is_enabled: 'Is enabled'
+  last_login: 'Last login'
+  language: 'Language'
+  roles: 'Roles'
+  enabled: 'Enabled'
+  disabled: 'Disabled'
+
+users_form:
+  title: 'Create user'
+  title_edit: 'Edit user: <strong>%username%</strong>'
+  create_success_message: 'User has been created correctly'
+  create_error_message: 'Error creating user <strong>%name%</strong>: %error%'
+  update_success_message: 'User has been updated correctly'
+  update_error_message: 'Error updating user <strong>%name%</strong>: %error%'
+  username: 'Username'
+  nickname: 'Nickname'
+  email: 'Email'
+  password: 'Password'
+  repeat_password: 'Repeat Password'
+  is_enabled: 'Is enabled'
+  language: 'Language'
+  roles: 'Roles'
+  role: 'Role'
+
+# languages
+languages:
+  en: 'English'
+  es: 'Spanish'
+
+# roles
+roles:
+  role_admin: 'Administrator'
+  role_editor: 'Editor'
+  role_user: 'User'
+
+# menu
+menu_form:
+  title: 'Create menu for <strong>%name%</strong> menu'
+  detail_title: 'Menu: <strong>%name%</strong>'
+  slug: 'Slug'
+  name: 'Name'
+  type: 'Type'
+  url_type: 'Url'
+  page_type: 'Page'
+  is_enabled: 'Is enabled?'
+  url_value: 'Url'
+  page_value: 'Page'
+  target: 'Target'
+  go_to_menu_list: 'Go back to menu list'
+  create_success_message: 'Menu has been created correctly'
+  create_error_message: 'Error creating menu <strong>%name%</strong>: %error%'
+  remove_success_message: 'Menu <strong>%name%</strong> has been removed correctly'
+  remove_error_message: 'Error removing <strong>%name%</strong> menu: %error%'
+  update_success_message: 'Menu has been updated correctly.'
+  update_error_message: 'Error updating menu: %error%'
+
+menu_content_form:
+  create_success_message: 'Menu item has been created correctly'
+  create_error_message: 'Error creating menu item <strong>%name%</strong>: %error%'
+  remove_success_message: 'Menu item <strong>%name%</strong> has been removed correctly'
+  remove_error_message: 'Error removing <strong>%name%</strong> menu item: %error%'
+  update_success_message: 'Menu item has been updated correctly.'
+  update_error_message: 'Error updating menu item: %error%'
+
+# entries_categories
+entries_categories_list:
+  title: 'List entries categories'
+  create_btn: 'Create new category'
+  name: 'Name'
+  language: 'Language'
+  isEnabled: 'Is enabled'
+  created_at: 'Created at'
+  updated_at: 'Updated at'
+  enabled: 'Enabled'
+  disabled: 'Disabled'
+
+entries_categories_form:
+  title: 'Create new category'
+  edit_title: 'Update category: %name%'
+  success_form: 'Category has been created correctly.'
+  error_form: 'Error creating category: %error%'
+  update_success_form: 'Category has been updated correctly.'
+  update_error_form: 'Error updating category: %error%'
+  remove_success_message: 'Category <strong>%name%</strong> has been removed correctly'
+  remove_error_message: 'Error removig <strong>%name%</strong> category: %error%'
+
+# entries
+entries_list:
+  title: 'List entries'
+  create_btn: 'Create new entry'
+  name: 'Name'
+  language: 'Language'
+  isEnabled: 'Is enabled'
+  created_at: 'Created at'
+  updated_at: 'Updated at'
+  enabled: 'Enabled'
+  disabled: 'Disabled'
+
+entries_form:
+  title: 'Create new entry'
+  update_title: 'Update entry: %name%'
+  name: 'Name'
+  content: 'Content'
+  slug: 'Slug'
+  tags: 'Tags'
+  categories: 'Categories'
+  isEnabled: 'Is enabled'
+  options: 'Entry options'
+  create_success_form: 'Entry has been created correctly.'
+  create_error_form: 'Error creating entry: %error%'
+  update_success_form: 'Entry has been updated correctly.'
+  update_error_form: 'Error updating entry: %error%'
+  remove_success_message: 'Entry <strong>%name%</strong> has been removed correctly'
+  remove_error_message: 'Error removig <strong>%name%</strong> entry: %error%'
+
+# appearance > themes
+themes:
+  title: 'Themes'
+  add_new: 'Add new theme'
+  version: 'Version'
+  current: 'Current'
