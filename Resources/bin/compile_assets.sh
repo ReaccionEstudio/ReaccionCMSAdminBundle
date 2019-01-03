@@ -18,5 +18,9 @@ php ${SF_PATH}/bin/console assets:install --symlink
 # Run Webpack encore
 yarn encore dev
 
+# Update translations
+php ${SF_PATH}/bin/console translation:update en --force
+php ${SF_PATH}/bin/console translation:update es --force
+
 # Clear cache
 php ${SF_PATH}/bin/console cache:clear
