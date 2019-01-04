@@ -100,7 +100,7 @@ pages_list_table:
   id: 'Id'
   name: 'Nombre'
   is_enabled: '¿Habilitado?'
-  language: 'Idiom'
+  language: 'Idioma'
   enabled: 'Habilitado'
   disabled: 'Deshabilitado'
   created_at: 'Creado el'
