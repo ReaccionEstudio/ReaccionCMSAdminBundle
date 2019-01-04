@@ -40,6 +40,8 @@
         </parameter>
         <parameter key="reaccion_cms_admin.version">0.1</parameter>
 
+        <parameter key="reaccion_cms.logger.class">App\ReaccionEstudio\ReaccionCMSBundle\Services\Utils\LoggerService</parameter>
+
     </parameters>
 
     <services>
@@ -50,6 +52,7 @@
 
         <service id="reaccion_cms_admin.page" class="%reaccion_cms_admin.page.class%" public="true">
             <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="reaccion_cms_admin.logger" />
         </service>
 
         <service id="reaccion_cms_admin.media_upload" class="%reaccion_cms_admin.media_upload.class%" public="true">
@@ -90,6 +93,13 @@
             <argument type="service" id="reaccion_cms.entries" />
             <argument type="service" id="request_stack" />
             <argument type="service" id="reaccion_cms.config" />
+            <argument type="service" id="reaccion_cms_admin.logger" />
+            <argument type="service" id="reaccion_cms.language" />
+        </service>
+
+        <service id="reaccion_cms_admin.logger" class="%reaccion_cms.logger.class%" public="true">
+            <argument type="service" id="logger" />
+            <tag name="monolog.logger" channel="reaccion_cms_admin" />
         </service>
 
     </services>

@@ -4,13 +4,17 @@
 
 	use Doctrine\ORM\EntityManagerInterface;
 	use Symfony\Component\HttpFoundation\RequestStack;
+	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\User;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Entry;
+	use App\ReaccionEstudio\ReaccionCMSBundle\Constants\Cache;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Helpers\CacheHelper;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Cache\CacheService;
+	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Utils\LoggerService;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Config\ConfigService;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Entries\EntryService;
 	use App\ReaccionEstudio\ReaccionCMSBundle\EntryView\EntryViewVarsFactory;
+	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Language\LanguageService;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Comment\GetCommentsAsArray;
 	use App\ReaccionEstudio\ReaccionCMSBundle\DataTransformer\Page\PageDataTransformer;
 	use App\ReaccionEstudio\ReaccionCMSBundle\DataTransformer\Entry\EntryDataTransformer;	
@@ -66,15 +70,50 @@
 		private $generatedPageData = [];
 
 		/**
+		 * @var LoggerService
+		 *
+		 * Logger service
+		 */
+		private $logger;
+
+		/**
+		 * @var LanguageService
+		 *
+		 * Language service
+		 */
+		private $language;
+
+		/**
+		 * @var User
+		 *
+		 * User entity
+		 */
+		private $user = null;
+
+		/**
 		 * Constructor
 		 */
-		public function __construct(CacheService $cache, EntityManagerInterface $em, EntryService $entryService, RequestStack $request, ConfigService $config)
+		public function __construct(CacheService $cache, EntityManagerInterface $em, EntryService $entryService, RequestStack $request, ConfigService $config, LoggerService $logger, LanguageService $language)
 		{
 			$this->em 			= $em;
 			$this->cache 		= $cache;
+			$this->logger 		= $logger;
 			$this->config 		= $config;
-			$this->entryService = $entryService;
 			$this->request 		= $request->getCurrentRequest();
+			$this->language 	= $language;
+			$this->entryService = $entryService;
+		}
+
+		/**
+		 * Set user entity
+		 *
+		 * @param  User 	$user 	User entity
+		 * @return self
+		 */
+		public function setUser(User $user) : self
+		{
+			$this->user = $user;
+			return $this;
 		}
 
 		/**
@@ -191,35 +230,65 @@
 		 */
 		public function getMainPage() : Array
 		{
-			if($this->cache->hasItem("main_page"))
+			if($this->user != null)
 			{
-				return $this->cache->get("main_page");
+				$this->language->setUser($this->user);
+			}
+
+			$currentLanguage = $this->language->getLanguage();
+			
+			$cacheKey = Cache::ITEMS['main_page'] . "_" . $currentLanguage;
+
+			if($this->cache->hasItem($cacheKey))
+			{
+				return $this->cache->get($cacheKey);
 			}
 			else
 			{
 				// get from database
-				$mainPage = $this->em->getRepository(Page::class)->findOneBy(
-					[
-						'mainPage' => true,
-						'isEnabled' => true
-					]
-				);
-
-				// generate page array data
-				$this->generateArrayPageData($mainPage);
-				
-				// save in cache
-				$this->cache->set("main_page", $this->generatedPageData);
-
-				// return data
-				return $this->generatedPageData;
+				return $this->refreshMainPageCache($currentLanguage);
 			}
 
 			return [];
 		}
 
 		/**
+		 * Refresh main page cache value
+		 *
+		 * @param  String 	$language 	Page language
+		 * @return Array 	[type] 		Cached page value
+		 */
+		public function refreshMainPageCache(String $language = "en")
+		{
+			$mainPage = $this->em->getRepository(Page::class)->findOneBy(
+				[
+					'mainPage' => true,
+					'isEnabled' => true,
+					'language' => $language
+				]
+			);
+
+			if( ! $mainPage) 
+			{
+				// TODO: create custom exception
+				$this->logger->addInfo("Main page for language '" . $language . "' was not found.");
+				return;
+			}
+
+			// generate page array data
+			$this->generateArrayPageData($mainPage);
+			
+			// save in cache
+			$this->cache->set("main_page", $this->generatedPageData);
+
+			return $this->generatedPageData;
+		}
+
+		/**
 		 * Refresh page cache
+		 *
+		 * @param  String 	$slug 	Page slug
+		 * @return Array 	[type] 		Cached page value
 		 */
 		public function refreshPageCache(String $slug) : Array
 		{
@@ -283,5 +352,4 @@
 			$getCommentsAsArray = new GetCommentsAsArray($this->em, $entryId, $page, $this->config);
 			return $getCommentsAsArray->getComments();
 		}
-
 	}
