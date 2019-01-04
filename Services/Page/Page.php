@@ -6,6 +6,7 @@
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Page as PageEntity;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\PageContent;
 	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Constants\PageContentTypes;
+	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Utils\LoggerService;
 
 	/**
 	 * Service with utils for Page entity
@@ -22,11 +23,19 @@
 		private $em;
 
 		/**
+		 * @var LoggerService
+		 *
+		 * Logger service
+		 */
+		private $logger;
+
+		/**
 		 * Constructor
 		 */
-		public function __construct(EntityManagerInterface $em)
+		public function __construct(EntityManagerInterface $em, LoggerService $logger)
 		{
 			$this->em = $em;
+			$this->logger = $logger;
 		}
 
 		/**
@@ -53,7 +62,7 @@
 			}
 			catch(\Exception $e)
 			{
-				// TODO: log error
+				$this->logger->logException($e);
 				return false;
 			}
 		}
@@ -116,7 +125,7 @@
 				}
 				catch(\Exception $e)
 				{
-					// TODO: log
+					$this->logger->logException($e);
 				}
 			}
 		}
@@ -138,7 +147,7 @@
 			}
 			catch(\Exception $e)
 			{
-				// TODO: log
+				$this->logger->logException($e);
 			}
 		}
 	}
