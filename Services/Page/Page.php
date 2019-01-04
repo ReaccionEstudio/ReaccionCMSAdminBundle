@@ -41,12 +41,16 @@
 		/**
 		 * Sets 'mainPage' value as false for the main page entity (mainPage = true)
 		 *
+		 * @param  String 	$language 	Page language
 		 * @return Boolean 	true|false 	Update result
 		 */
-		public function resetMainPage() : bool
+		public function resetMainPage(String $language="en") : bool
 		{
 			$mainPage = $this->em->getRepository(PageEntity::class)->findOneBy(
-							[ 'mainPage' => true ]
+							[ 
+								'mainPage' => true,
+								'language' => $language
+							]
 						);
 
 			if(empty($mainPage)) return false;
