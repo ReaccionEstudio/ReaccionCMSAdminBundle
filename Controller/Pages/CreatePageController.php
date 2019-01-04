@@ -28,9 +28,11 @@
 			{
 				try
 				{
+					$language = $pageForm['language']->getData();
+
 					if($form['mainPage']->getData() == true)
 					{
-						$this->get("reaccion_cms_admin.page")->resetMainPage();
+						$this->get("reaccion_cms_admin.page")->resetMainPage($language);
 					}
 
 					// generate slug
@@ -40,6 +42,12 @@
 					$em = $this->getDoctrine()->getManager();
 					$em->persist($page);
 					$em->flush();
+
+					// refresh main page cache
+					if($form['mainPage']->getData() == true)
+					{
+						$this->get("reaccion_cms_admin.page_cache_service")->refreshMainPageCache($language);
+					}
 
 					$this->addFlash('success', $translator->trans('page_form.create_success_message') );
 					return $this->redirectToRoute('reaccion_cms_admin_pages_index');

@@ -2,11 +2,11 @@
 
 	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages;
 
-	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Component\Translation\TranslatorInterface;
-
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
+	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+	use App\ReaccionEstudio\ReaccionCMSBundle\Constants\Cache;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\PageContent;
 	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\Pages\PageType;
 	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\Pages\SeoPageType;
@@ -40,9 +40,11 @@
 			{
 				try
 				{
+					$language = $pageForm['language']->getData();
+
 					if($pageForm['mainPage']->getData() == true)
 					{
-						$this->get("reaccion_cms_admin.page")->resetMainPage();
+						$this->get("reaccion_cms_admin.page")->resetMainPage($language);
 					}
 
 					// save
@@ -50,8 +52,8 @@
 					$em->persist($page);
 					$em->flush();
 
-					// TODO: update menu html value for cache (we have to check if this page is in an existing menu)
-					
+					// refresh cache if it is necessary
+					$this->refreshPageCache($pageForm);
 
 					// success message
 					$this->addFlash('success', $translator->trans('page_form.update_success_message'));
@@ -71,5 +73,22 @@
 					'seoPageForm' => $seoPageForm->createView()
 				]
 			);
+		}
+
+		/**
+		 * Refresh page cache if it is necessary
+		 *
+		 * @param  Array  $pageForm 	Page form data
+		 * @return void   [type]
+		 */
+		private function refreshPageCache(Array $pageForm) : void
+		{
+			// TODO: update menu html value for cache (we have to check if this page is in an existing menu)
+
+			// refresh main page cache
+			if($pageForm['mainPage']->getData() == true)
+			{
+				$this->get("reaccion_cms_admin.page_cache_service")->refreshMainPageCache($language);
+			}
 		}
 	}
