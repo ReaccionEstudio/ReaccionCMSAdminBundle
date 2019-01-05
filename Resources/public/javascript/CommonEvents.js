@@ -5,6 +5,8 @@
  * @website reaccionestudio.com
  */
 
+ import Translator from './Translator.js';
+
  $(document).ready(function()
  {
  	  // Bootstrap tooltips events
