@@ -17,6 +17,7 @@ class Entries
 		this.editor = null;
 		this._initEditor("textarea#entry_content");
 		this._setEditorContentOnFormSubmit();
+		this._handleLanguageChangeEvent();
 	}
 
 	/**
@@ -52,6 +53,30 @@ class Entries
 			$("textarea#entry_content").val(ckeditorContent);
 
 			return true;
+		});
+	}
+
+	/**
+	 * Handle language change event: 
+	 *
+	 *	 - Show only the categories for selected language
+	 */
+	_handleLanguageChangeEvent()
+	{
+		$("select#entry_language").on("change", function(e)
+		{
+			e.preventDefault();
+
+			// unselect all languages
+			$('div#entry_categories input[data-language]').prop('checked', false);
+
+			let language = $("#entry_language").val();
+
+			if(language.length)
+			{
+				$('div#entry_categories input[data-language]').parent().addClass("d-none");
+				$('div#entry_categories input[data-language="' + language + '"]').parent().removeClass("d-none");
+			}
 		});
 	}
 }

@@ -30,6 +30,10 @@
 	            ])
 	            ->add('categories', EntityType::class, [
 	            	'class' => 'App\ReaccionEstudio\ReaccionCMSBundle\Entity\EntryCategory',
+	            	'choice_attr' => function($choiceValue, $key, $value) 
+	            	{
+	            		return ['data-language' => $choiceValue->getLanguage() ];
+	            	},
 	            	'choice_label' => 'name',
 		            'expanded'  => true,
                 	'multiple'  => true,
