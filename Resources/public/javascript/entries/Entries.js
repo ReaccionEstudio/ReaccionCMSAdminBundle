@@ -17,6 +17,7 @@ class Entries
 		this.editor = null;
 		this._initEditor("textarea#entry_content");
 		this._setEditorContentOnFormSubmit();
+		this._toggleFormCategories();
 		this._handleLanguageChangeEvent();
 	}
 
@@ -63,6 +64,8 @@ class Entries
 	 */
 	_handleLanguageChangeEvent()
 	{
+		let _self = this;
+
 		$("select#entry_language").on("change", function(e)
 		{
 			e.preventDefault();
@@ -70,14 +73,31 @@ class Entries
 			// unselect all languages
 			$('div#entry_categories input[data-language]').prop('checked', false);
 
-			let language = $("#entry_language").val();
-
-			if(language.length)
-			{
-				$('div#entry_categories input[data-language]').parent().addClass("d-none");
-				$('div#entry_categories input[data-language="' + language + '"]').parent().removeClass("d-none");
-			}
+			_self._toggleFormCategories();
 		});
+	}
+
+	/**
+	 * Show only the categories for selected language
+	 *
+	 * @param String  Language  Selected language value
+	 */
+	_toggleFormCategories(language)
+	{
+		if(typeof language == "undefined")
+		{
+			language = $("#entry_language").val();
+		}
+
+		if(language)
+		{
+			$('div#entry_categories input[data-language]').parent().addClass("d-none");
+			$('div#entry_categories input[data-language="' + language + '"]').parent().removeClass("d-none");
+		}
+		else
+		{
+			$('div#entry_categories input[data-language]').parent().addClass("d-none");
+		}
 	}
 }
 
