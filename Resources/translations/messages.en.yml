@@ -37,6 +37,16 @@ preferences:
   title: 'Preferences'
   config: 'Configuration'
 
+preferences_mailer:
+  title: 'Mailer configuration'
+  menu_title: 'Mailer'
+  host: 'Host'
+  port: 'Port'
+  username: 'Username'
+  password: 'Password'
+  encryption: 'Encryption'
+  auth_mode: 'Auth mode'
+
 appearance:
   title: 'Appearance'
   website_menu: 'Menu'
@@ -63,9 +73,8 @@ navigation:
   go_to_website: 'Go to website'
   
 # login 
-login:
-  title: 'Login to your account'
-  forgot_password: 'I forgot password'
+login.title: 'Login to your account'
+login.forgot_password: 'I forgot password'
 
 # crud
 crud:
