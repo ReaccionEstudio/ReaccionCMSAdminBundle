@@ -1,0 +1,50 @@
+{% extends '@ReaccionCMSAdminBundle/base.html.twig' %}
+
+{% block reaccion_cms_admin_body %}
+
+<div class="my-3 my-md-5">
+
+  	<div class="container">
+
+  		<div class="page-header">
+    		<div class="col pl-0">
+	    		<h1 class="page-title">{{ 'preferences_mailer.title' | trans }}</h1>
+	    	</div>
+    		<div class="col col-lg-2 row justify-content-end">
+    			<a href="{{ url('reaccion_cms_admin_preferences_create_configuration') }}" class="btn btn-primary">
+    				<i class="fe fe-plus"></i>&nbsp;&nbsp;{{ 'config_list.create_new_value' | trans }}
+    			</a>
+    		</div>
+	    </div>
+
+        {% embed '@ReaccionCMSAdminBundle/shared/flash_messages.html.twig' %}{% endembed %}
+        
+	    <div class="row row-cards">
+
+	    	<div class="col-12 card p-4">
+
+                <div class="col-8 ml-auto mr-auto mt-4 mb-4">
+					
+                	{{ form_start(form) }}
+
+                		{{ form_widget(form) }}
+
+                		<div class="text-center">
+                			<button class="btn btn-primary">
+                				<i class="fe fe-save"></i>&nbsp;&nbsp;{{ 'crud.save_changes' | trans }}
+                			</button>
+                		</div>
+
+                	{{ form_end(form) }}
+
+                </div>
+
+            </div>
+
+	    </div>
+
+	</div>
+
+</div>
+
+{% endblock %}
