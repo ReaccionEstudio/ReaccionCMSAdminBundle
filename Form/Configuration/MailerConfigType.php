@@ -4,6 +4,7 @@
 
 	use Symfony\Component\Form\AbstractType;
 	use Symfony\Component\Form\FormBuilderInterface;
+	use Symfony\Component\OptionsResolver\OptionsResolver;
 	use Symfony\Component\Form\Extension\Core\Type\TextType;
 	use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 	use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -16,14 +17,17 @@
 	        $builder
 	            ->add('host', TextType::class, [
 	            	'label' => 'preferences_mailer.host',
-	            	'required' => true
+	            	'required' => true,
+	            	'data' => ($options['config']['host']) ?? ''
 	            ])
 	            ->add('port', TextType::class, [
 	            	'label' => 'preferences_mailer.port',
+	            	'data' => ($options['config']['port']) ?? '',
 	            	'required' => true
 	            ])
 	            ->add('username', TextType::class, [
 	            	'label' => 'preferences_mailer.username',
+	            	'data' => ($options['config']['username']) ?? '',
 	            	'required' => true
 	            ])
 	            ->add('password', PasswordType::class, [
@@ -32,6 +36,7 @@
 	            ])
 	            ->add('authentication', ChoiceType::class, [
 	            	'label' => 'preferences_mailer.authentication',
+	            	'data' => ($options['config']['authentication']) ?? '',
 	            	'choices' => [
 	            		'SSL' => 'ssl',
 	            		'TLS' => 'tls'
@@ -41,4 +46,11 @@
 	            ])
 	        ;
 	    }
+
+	    public function configureOptions(OptionsResolver $resolver)
+		{
+		    $resolver->setDefaults(array(
+		        'config' => []
+		    ));
+		}
  	}
