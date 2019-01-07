@@ -28,4 +28,21 @@
   			window.location = removeUrl;
   		}
   	});
+
+    // Show loading spinner when button is pressed
+    $('button[data-spinner="true"], a[data-spinner="true"]').on('click', function()
+    {
+      let form = $(this).parents("form");
+
+      if( ! form.length ) return;
+
+      if( form[0].checkValidity() == false ) return;
+
+      if( ! $(this).hasClass('btn-loading'))
+      {
+        $(this).addClass('btn-loading');
+      }
+
+      $(this).attr('disabled', 'disabled');
+    });
  });
