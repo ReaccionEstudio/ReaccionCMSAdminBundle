@@ -45,7 +45,11 @@ preferences_mailer:
   username: 'Username'
   password: 'Password'
   encryption: 'Encryption'
-  auth_mode: 'Auth mode'
+  authentication: 'Authentication'
+  none: 'None'
+  update_success_message: 'Your mailer settings have been updated correctly.'
+  update_error_message: '<strong>Error updating your mailer settings:</strong> %error%.'
+  can_not_connect_to_smtp_server: 'ReaccionCMS cannot connect to SMTP server.'
 
 appearance:
   title: 'Appearance'

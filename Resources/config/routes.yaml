@@ -54,6 +54,11 @@ reaccion_cms_admin_preferences_remove_configuration:
     path: /preferences/configuration/{config}/remove
     controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\RemoveConfigurationController::index
 
+# Preferences > Mailer
+reaccion_cms_admin_preferences_mailer:
+    path: /preferences/mailer
+    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\Mailer\MailerConfigController::index
+
 # Appearance > Menu
 reaccion_cms_admin_appearance_menu:
     path: /appearance/menu

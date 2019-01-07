@@ -16,12 +16,12 @@
     			</a>
     		</div>
 	    </div>
-
-        {% embed '@ReaccionCMSAdminBundle/shared/flash_messages.html.twig' %}{% endembed %}
         
 	    <div class="row row-cards">
 
 	    	<div class="col-12 card p-4">
+
+        		{% embed '@ReaccionCMSAdminBundle/shared/flash_messages.html.twig' %}{% endembed %}
 
                 <div class="col-8 ml-auto mr-auto mt-4 mb-4">
 					
@@ -30,7 +30,7 @@
                 		{{ form_widget(form) }}
 
                 		<div class="text-center">
-                			<button class="btn btn-primary">
+                			<button class="btn btn-primary" data-spinner="true">
                 				<i class="fe fe-save"></i>&nbsp;&nbsp;{{ 'crud.save_changes' | trans }}
                 			</button>
                 		</div>
