@@ -32,17 +32,21 @@
     // Show loading spinner when button is pressed
     $('button[data-spinner="true"], a[data-spinner="true"]').on('click', function()
     {
-      let form = $(this).parents("form");
-
-      if( ! form.length ) return;
-
-      if( form[0].checkValidity() == false ) return;
+      let buttonType = $(this).attr("type");
+      let parent = $(this).parents().eq(3);
+      
+      if(buttonType == "submit")
+      {
+        let form = $(this).parents("form");
+        if( ! form.length || form[0].checkValidity() == false ) return;
+        parent = form;
+      }
 
       if( ! $(this).hasClass('btn-loading'))
       {
         $(this).addClass('btn-loading');
       }
 
-      $(this).attr('disabled', 'disabled');
+      parent.find("button").attr('disabled', 'disabled');
     });
  });

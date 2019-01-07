@@ -59,6 +59,12 @@ reaccion_cms_admin_preferences_mailer:
     path: /preferences/mailer
     controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\Mailer\MailerConfigController::index
 
+reaccion_cms_admin_preferences_mailer_sent_test_email:
+    path: /preferences/mailer/send/test_email
+    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\Mailer\SendTestEmailController::index
+    options:
+        expose: true
+
 # Appearance > Menu
 reaccion_cms_admin_appearance_menu:
     path: /appearance/menu

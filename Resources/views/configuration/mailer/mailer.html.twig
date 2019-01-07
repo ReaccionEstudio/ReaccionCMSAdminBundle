@@ -30,8 +30,11 @@
                 		{{ form_widget(form) }}
 
                 		<div class="text-center">
-                			<button class="btn btn-primary" data-spinner="true">
-                				<i class="fe fe-save"></i>&nbsp;&nbsp;{{ 'crud.save_changes' | trans }}
+                            <button type="submit" class="btn btn-primary" data-spinner="true">
+                                <i class="fe fe-save"></i>&nbsp;&nbsp;{{ 'crud.save_changes' | trans }}
+                            </button>
+                			<button id="send_test_email" class="btn btn-warning" data-spinner="true">
+                				<i class="fe fe-send"></i>&nbsp;&nbsp;{{ 'preferences_mailer.send_test_email' | trans }}
                 			</button>
                 		</div>
 

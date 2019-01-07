@@ -19,6 +19,7 @@ import User from './User.js';
 import Menu from './Menu.js';
 import Configuration from './Configuration.js';
 import Entries from './entries/Entries.js';
+import Mailer from './Mailer.js';
 
 const currentRoute 	= window.location.pathname;
 
@@ -63,6 +64,12 @@ $(document).ready(function()
 	{
 		let entries = new Entries();
 			entries.formEvents();
+	}
+
+	if(currentRoute == "/admin\/preferences\/mailer")
+	{
+		let mailer = new Mailer();
+			mailer.events();
 	}
 
 	if(configEditRegex.test(currentRoute))

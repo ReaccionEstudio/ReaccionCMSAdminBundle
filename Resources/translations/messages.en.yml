@@ -47,9 +47,11 @@ preferences_mailer:
   encryption: 'Encryption'
   authentication: 'Authentication'
   none: 'None'
+  send_test_email: 'Send test email'
   update_success_message: 'Your mailer settings have been updated correctly.'
   update_error_message: '<strong>Error updating your mailer settings:</strong> %error%.'
   can_not_connect_to_smtp_server: 'ReaccionCMS cannot connect to SMTP server.'
+  sent_test_email_successfully: 'Test email was sent successfully'
 
 appearance:
   title: 'Appearance'
