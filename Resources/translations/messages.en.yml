@@ -36,6 +36,7 @@ users:
 preferences: 
   title: 'Preferences'
   config: 'Configuration'
+  email_templates: 'Email templates'
 
 preferences_mailer:
   title: 'Mailer configuration'
@@ -79,8 +80,13 @@ navigation:
   go_to_website: 'Go to website'
   
 # login 
-login.title: 'Login to your account'
-login.forgot_password: 'I forgot password'
+login:
+  title: 'Login to your account'
+  forgot_password: 'I forgot password'
+  username: 'Username'
+  password: 'Password'
+  remember_me: 'Remember me'
+  submit: 'Sign in'
 
 # crud
 crud:

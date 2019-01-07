@@ -63,8 +63,13 @@ navigation:
   go_to_website: 'Ir a la web'
   
 # login 
-login.title: 'Acceder a tu cuenta'
-login.forgot_password: '¿Olvidaste tu contraseña?'
+login:
+  title: 'Login to your account'
+  forgot_password: 'I forgot password'
+  username: 'Username'
+  password: 'Password'
+  remember_me: 'Remember me'
+  submit: 'Sign in'
 
 # crud
 crud:
