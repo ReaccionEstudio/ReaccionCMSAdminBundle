@@ -25,8 +25,6 @@
                                     
                                     <div class="card-title">{{ 'login.title' | trans }}</div>
 
-                                    {% trans_default_domain 'FOSUserBundle' %}
-
                                     {% if app.request.hasPreviousSession %}
                                         {% for type, messages in app.session.flashbag.all() %}
                                             {% for message in messages %}
@@ -48,26 +46,26 @@
                                     {% endif %}
 
                                     <div class="form-group">
-                                        <label class="form-label" for="username">{{ 'security.login.username'|trans }}</label>
+                                        <label class="form-label" for="username">{{ 'login.username'|trans }}</label>
                                         <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" class="form-control" />
                                     </div>
 
                                     <div class="form-group">
                                         <label class="form-label" for="password">
-                                            {{ 'security.login.password'|trans }}
-                                            <a href="#" class="float-right small">{% trans from "messages" %}login.forgot_password{% endtrans %}</a>
+                                            {{ 'login.password'|trans }}
+                                            <a href="#" class="float-right small">{{ 'login.forgot_password' | trans }}</a>
                                         </label>
                                         <input type="password" id="password" name="_password" required="required" class="form-control" autocomplete="current-password" />
                                     </div>
                                     <div class="form-group">
                                         <label class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="remember_me" name="_remember_me" value="on" class="" />
-                                            <span class="custom-control-label">{{ 'security.login.remember_me'|trans }}</span>
+                                            <span class="custom-control-label">{{ 'login.remember_me'|trans }}</span>
                                         </label>
                                     </div>
 
                                     <div class="form-footer">
-                                        <button type="submit" id="_submit" name="_submit" class="btn btn-primary btn-block">{{ 'security.login.submit'|trans }}</button>
+                                        <button type="submit" id="_submit" name="_submit" class="btn btn-primary btn-block">{{ 'login.submit'|trans }}</button>
                                     </div>
 
                                 </div>
