@@ -20,11 +20,5 @@ php ${SF_PATH}/bin/console assets:install --symlink
 echo "Compiling assets ..."
 yarn encore dev
 
-# Update translations
-echo "Updating translation files ..."
-rm -R ${SF_PATH}/translations/*.yml
-php ${SF_PATH}/bin/console translation:update en --force
-php ${SF_PATH}/bin/console translation:update es --force
-
 # Clear cache
 php ${SF_PATH}/bin/console cache:clear
