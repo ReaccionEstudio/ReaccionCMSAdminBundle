@@ -33,6 +33,12 @@ users:
   list: 'List all users'
   add: 'Add new user'
 
+common:
+  created_at: 'Created at'
+  updated_at: 'Updated at'
+  enabled: 'Enabled'
+  disabled: 'Disabled'
+
 preferences: 
   title: 'Preferences'
   config: 'Configuration'
@@ -53,6 +59,27 @@ preferences_mailer:
   update_error_message: '<strong>Error updating your mailer settings:</strong> %error%.'
   can_not_connect_to_smtp_server: 'ReaccionCMS cannot connect to SMTP server.'
   sent_test_email_successfully: 'Test email was sent successfully'
+
+email_templates:
+  title: 'Email templates'
+  create_btn: 'Create new email template'
+  type: 'Type'
+  name: 'Name'
+  slug: 'Slug'
+  language: 'Language'
+  message: 'Message'
+  subject: 'Subject'
+  fromname: 'From'
+  fromemail: 'From email'
+  template_file: 'Template file'
+  isEnabled: 'Is enabled?'
+  plain_text: 'Is plain text?'
+  create_success_message: 'The email template has been created correctly.'
+  create_error_message: 'Error creating email template: %error%'
+  remove_success_message: 'Email template <strong>%name%</strong> has been removed correctly.'
+  remove_error_message: 'Error removing <strong>%name%</strong> email template: %error%'
+  update_success_message: 'Email template has been updated correctly.'
+  update_error_message: 'Error updating email template: %error%'
 
 appearance:
   title: 'Appearance'

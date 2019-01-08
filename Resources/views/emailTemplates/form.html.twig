@@ -1,0 +1,45 @@
+{% extends '@ReaccionCMSAdminBundle/base.html.twig' %}
+
+{% block reaccion_cms_admin_body %}
+
+<div class="my-3 my-md-5">
+
+  	<div class="container">
+
+		<div class="row">
+			<div class="col-12">
+				{% if mode == 'create' %}
+				<h3>{{ 'entries_form.title' | trans }}</h3>
+				{% elseif mode == 'edit' %}
+				<h3>{{ 'entries_form.update_title' | trans({ '%name%' : entryName }) | raw }}</h3>
+				{% endif %}
+			</div>
+		</div>
+
+        {% embed '@ReaccionCMSAdminBundle/shared/flash_messages.html.twig' with {'extraClasses' : 'pl-0 pr-0'} %}{% endembed %}
+
+		<div class="row col-lg-12">
+    		<div class="card">
+    			<div class="card-body">
+
+    				<div class="col-lg-8 mr-auto ml-auto">
+						{{ form_start(form) }}
+							{{ form_widget(form) }}
+
+							<div class="pt-2 pb-2 text-center">
+								<button type="submit" class="btn btn-primary" data-spinner="true">
+									<i class="fe fe-save"></i>&nbsp;&nbsp;{{ 'crud.save_changes' | trans }}
+								</button>
+							</div>
+
+						{{ form_end(form) }}
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+{% endblock %}
