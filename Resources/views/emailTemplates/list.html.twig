@@ -44,7 +44,9 @@
 
 		                    	{% for row in emailTemplates %}
 		                    	<tr>
-		                    		<td>{{ row.name }}</td>
+		                    		<td>
+		                    			<a href="{{ url('reaccion_cms_admin_preferences_update_email_template', { emailTemplate : row.id }) }}">{{ row.name }}</a>
+		                    		</td>
 		                    		<td>{{ row.slug }}</td>
 		                    		<td>
 		                    			{% embed '@ReaccionCMSAdminBundle/components/languages/languageWithFlagComponent.html.twig' with {'lang' : row.language} %}{% endembed %}
@@ -58,7 +60,7 @@
 			                        </td>
 		                    		<td class="text-right">
 
-		                    			<a href="#" title="{{ 'crud.edit' | trans }}" data-toggle="tooltip" data-placement="top">
+		                    			<a href="{{ url('reaccion_cms_admin_preferences_update_email_template', { emailTemplate : row.id }) }}" title="{{ 'crud.edit' | trans }}" data-toggle="tooltip" data-placement="top">
 			                              <i class="fe fe-edit"></i>
 			                            </a>
 			                            &nbsp;

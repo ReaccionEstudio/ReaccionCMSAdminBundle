@@ -9,9 +9,9 @@
 		<div class="row">
 			<div class="col-12">
 				{% if mode == 'create' %}
-				<h3>{{ 'entries_form.title' | trans }}</h3>
+				<h3>{{ 'email_templates.create_title' | trans }}</h3>
 				{% elseif mode == 'edit' %}
-				<h3>{{ 'entries_form.update_title' | trans({ '%name%' : entryName }) | raw }}</h3>
+				<h3>{{ 'email_templates.update_title' | trans({ '%name%' : emailTemplateName }) | raw }}</h3>
 				{% endif %}
 			</div>
 		</div>
@@ -30,6 +30,9 @@
 								<button type="submit" class="btn btn-primary" data-spinner="true">
 									<i class="fe fe-save"></i>&nbsp;&nbsp;{{ 'crud.save_changes' | trans }}
 								</button>
+								<a href="{{ url('reaccion_cms_admin_preferences_email_templates') }}" class="btn btn-secondary">
+						          <i class="fe fe-arrow-left-circle"></i>&nbsp;&nbsp;{{ 'crud.go_back' | trans }}
+						        </a>
 							</div>
 
 						{{ form_end(form) }}

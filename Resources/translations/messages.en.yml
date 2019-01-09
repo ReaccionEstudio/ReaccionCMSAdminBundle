@@ -62,6 +62,8 @@ preferences_mailer:
 
 email_templates:
   title: 'Email templates'
+  create_title: 'Create email template'
+  update_title: 'Update email template: %name%'
   create_btn: 'Create new email template'
   type: 'Type'
   name: 'Name'
