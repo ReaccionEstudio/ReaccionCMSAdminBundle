@@ -77,7 +77,7 @@ email_templates:
   isEnabled: 'Is enabled?'
   plain_text: 'Is plain text?'
   add_custom_field_btn: 'Add custom field'
-  email_message_params: 'Email message parameters'
+  email_params: 'Email parameters'
   create_success_message: 'The email template has been created correctly.'
   create_error_message: 'Error creating email template: %error%'
   remove_success_message: 'Email template <strong>%name%</strong> has been removed correctly.'
