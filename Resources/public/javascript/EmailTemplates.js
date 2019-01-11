@@ -23,6 +23,26 @@ class EmailTemplates
 	events()
 	{
 		this._addEmailMessageParam();
+		this._showFormMessageParams();
+	}
+
+	/**
+	 * Show message param form inputs
+	 */
+	_showFormMessageParams()
+	{
+		let messageParams = $("textarea#messageParams").val();
+
+		if( ! messageParams.length) return;
+		
+		messageParams = JSON.parse(messageParams);
+
+		for(var i in messageParams)
+		{
+			let inputCount = i + 1;
+			let inputField = this._getCustomParamHtml(inputCount, messageParams[i].name, messageParams[i].value);
+			$("div#custom_email_message_params").append(inputField);
+		}
 	}
 
 	/**
@@ -37,19 +57,7 @@ class EmailTemplates
 		{
 			e.preventDefault();
 
-			let inputField = 	'<div class="custom-email-param-group">\
-									<hr />\
-									<div class="form-group">\
-										<label>' + _self.translator.trans('email_message_param_name') + '</label>\
-										<input type="text" id="custom_param_name_' +  inputCount + '" name="custom_params[' +  inputCount + '][name]" class="form-control" />\
-									</div>\
-									<div class="form-group">\
-										<label>' + _self.translator.trans('email_message_param_value') + '</label>\
-										<input type="text" id="custom_param_value_' +  inputCount + '" name="custom_params[' +  inputCount + '][value]" class="form-control" />\
-									</div>\
-									<a href="#" class="text-danger remove-mssg-param"><i class="fe fe-trash-2"></i>&nbsp;&nbsp;' + _self.translator.trans('remove') + '</a>\
-							  	</div>';
-
+			let inputField = _self._getCustomParamHtml(inputCount);
 			$("div#custom_email_message_params").append(inputField);
 
 			inputCount++;
@@ -61,6 +69,33 @@ class EmailTemplates
 			$(this).parent().remove();
 			inputCount--;
 		});
+	}
+
+	/**
+	 * Get custom param input html code
+	 *
+	 * @param  Int 		inputCount 	Input number
+	 * @param  String 	name 		Input name value
+	 * @param  String 	value 		Input value
+	 * @return String 	[type]		Input HTML
+	 */
+	_getCustomParamHtml(inputCount, name, value)
+	{
+		if(typeof name == "undefined")  name = "";
+		if(typeof value == "undefined") value = "";
+
+		return '<div class="custom-email-param-group">\
+					<hr />\
+					<div class="form-group">\
+						<label>' + this.translator.trans('email_message_param_name') + '</label>\
+						<input type="text" id="custom_param_name_' +  inputCount + '" name="custom_params[' +  inputCount + '][name]" class="form-control" value="' + name + '" />\
+					</div>\
+					<div class="form-group">\
+						<label>' + this.translator.trans('email_message_param_value') + '</label>\
+						<textarea id="custom_param_value_' +  inputCount + '" name="custom_params[' +  inputCount + '][value]" class="form-control">' + value + '</textarea>\
+					</div>\
+					<a href="#" class="text-danger remove-mssg-param"><i class="fe fe-trash-2"></i>&nbsp;&nbsp;' + this.translator.trans('remove') + '</a>\
+			  	</div>';
 	}
 }
 

@@ -11,7 +11,7 @@
 				{% if mode == 'create' %}
 				<h3>{{ 'email_templates.create_title' | trans }}</h3>
 				{% elseif mode == 'edit' %}
-				<h3>{{ 'email_templates.update_title' | trans({ '%name%' : emailTemplateName }) | raw }}</h3>
+				<h3>{{ 'email_templates.update_title' | trans({ '%name%' : emailTemplate.name }) | raw }}</h3>
 				{% endif %}
 			</div>
 		</div>
@@ -33,6 +33,7 @@
 	    				<h3>{{ 'email_templates.email_message_params' | trans }}</h3>
 
 	    				<div id="custom_email_message_params"></div>
+	    				<textarea class="d-none" id="messageParams">{{ emailTemplate.messageParams }}</textarea>
 
 	    				<div class="text-center mt-4">
 	    					<button id="add_custom_email_message_param" type="button" class="btn btn-primary">
