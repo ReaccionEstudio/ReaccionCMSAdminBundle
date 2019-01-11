@@ -53,7 +53,7 @@
 				[
 					'form' => $form->createView(),
 					'mode' => 'edit',
-					'emailTemplateName' => $emailTemplate->getName()
+					'emailTemplate' => $emailTemplate
 				]
 			);
 		}
