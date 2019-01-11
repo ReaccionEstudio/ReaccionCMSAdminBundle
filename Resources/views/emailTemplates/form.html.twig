@@ -33,7 +33,10 @@
 	    				<h3>{{ 'email_templates.email_message_params' | trans }}</h3>
 
 	    				<div id="custom_email_message_params"></div>
+
+	    				{% if emailTemplate.messageParams is defined %}
 	    				<textarea class="d-none" id="messageParams">{{ emailTemplate.messageParams }}</textarea>
+	    				{% endif %}
 
 	    				<div class="text-center mt-4">
 	    					<button id="add_custom_email_message_param" type="button" class="btn btn-primary">
