@@ -20,6 +20,7 @@ import Menu from './Menu.js';
 import Configuration from './Configuration.js';
 import Entries from './entries/Entries.js';
 import Mailer from './Mailer.js';
+import EmailTemplates from './EmailTemplates.js';
 
 const currentRoute 	= window.location.pathname;
 
@@ -32,6 +33,7 @@ $(document).ready(function()
 	let menuDetailRegex = /admin\/appearance\/menu\/\d+/gi;
 	let entryEditRegex = /admin\/entries\/\d+\/update/gi;
 	let configEditRegex = /admin\/preferences\/configuration\/\d+\/update/gi;
+	let emailTemplateEditRegex = /admin\/preferences\/email\/templates\/\d+\/update/gi;
 	
 	if(currentRoute == "/admin/media/add")
 	{
@@ -77,4 +79,12 @@ $(document).ready(function()
 		let config = new Configuration();
 			config.formEvents();
 	}
+
+	if(currentRoute == "/admin\/preferences\/email\/templates\/create" || 
+		emailTemplateEditRegex.test(currentRoute) )
+	{
+		let emailTemplates = new EmailTemplates();
+			emailTemplates.events();
+	}
+
 });

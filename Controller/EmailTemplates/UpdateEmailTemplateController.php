@@ -7,6 +7,7 @@
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\EmailTemplate;
 	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\EmailTemplates\EmailTemplateType;
+	use App\ReaccionEstudio\ReaccionCMSAdminBundle\DataTransformer\EmailTemplate\MessageParamsDataTransformer;
 
 	class UpdateEmailTemplateController extends Controller
 	{
@@ -23,6 +24,15 @@
 
 				try
 				{
+					// build custom message params
+					$messageParamsDataTransformer = new MessageParamsDataTransformer($request);
+					$messageParams = $messageParamsDataTransformer->getMessageParamsAsJson();
+
+					if($messageParams != "[]")
+					{
+						$emailTemplate->setMessageParams($messageParams);
+					}
+
 					// save
 					$em->persist($emailTemplate);
 					$em->flush();
