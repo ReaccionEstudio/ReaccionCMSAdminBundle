@@ -28,10 +28,8 @@
 					$messageParamsDataTransformer = new MessageParamsDataTransformer($request);
 					$messageParams = $messageParamsDataTransformer->getMessageParamsAsJson();
 
-					if($messageParams != "[]")
-					{
-						$emailTemplate->setMessageParams($messageParams);
-					}
+					$messageParams = ($messageParams == "[]") ? null : $messageParams;
+					$emailTemplate->setMessageParams($messageParams);
 
 					// save
 					$em->persist($emailTemplate);
