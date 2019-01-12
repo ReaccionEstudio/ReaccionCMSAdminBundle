@@ -219,7 +219,8 @@ config_list:
   value: 'Value'
 
 config_form:
-  title: 'Create new configuration'
+  create_title: 'Create new configuration'
+  edit_title: 'Update configuration: %config%'
   name: 'Name'
   value: 'Value'
   image: 'Image'

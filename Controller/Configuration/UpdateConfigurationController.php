@@ -82,7 +82,8 @@
 			return $this->render("@ReaccionCMSAdminBundle/configuration/form.html.twig",
 				[
 					'form' => $form->createView(),
-					'config' => $config
+					'config' => $config,
+					'mode' => 'edit'
 				]
 			);
 		}
