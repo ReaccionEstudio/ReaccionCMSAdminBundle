@@ -12,6 +12,11 @@
 			'es'
 		];
 
+		const LANGUAGES_ORIGINAL_NAMES = [
+			'en' => 'English',
+			'es' => 'Español'
+		];
+
 		const LANGUAGE_ICONS = [
 			'en' => 'us', 
 			'es' => 'es'
