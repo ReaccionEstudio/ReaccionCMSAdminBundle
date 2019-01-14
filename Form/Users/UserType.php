@@ -64,7 +64,7 @@
 	            	'choices' => Languages::LANGUAGES,
 	            	'choice_label' => function($choiceValue, $key, $value)
                     {
-                    	return 'languages.' . $value;
+                    	return Languages::LANGUAGES_ORIGINAL_NAMES[$value];
                     },
 	            	'choice_value' => function($value)
                     {
