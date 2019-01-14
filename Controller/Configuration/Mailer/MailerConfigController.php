@@ -119,6 +119,13 @@
 					if(empty($configParam) || ! isset($this->$configKey)) continue;
 
 					$paramValue = $this->$configKey;
+
+					if($configKey == "password")
+					{
+						// Encrypt password
+						$paramValue = $this->get("reaccion_cms.encryptor")->encrypt($paramValue);
+					}
+
 					$configParam->setValue($paramValue);
 
 					$em->persist($configParam);
