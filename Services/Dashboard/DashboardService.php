@@ -58,19 +58,24 @@
 			$totalEntriesDql = "SELECT COUNT(e.id) AS total 
 							    FROM App\ReaccionEstudio\ReaccionCMSBundle\Entity\Entry e ";
 
+			$totalCommentsDql = "SELECT COUNT(c.id) AS total 
+							    FROM App\ReaccionEstudio\ReaccionCMSBundle\Entity\Comment c ";
+
 			// query results
 			$totalPagesResult = $this->em->createQuery($totalPagesDql)->getSingleResult();
 			$totalPageContentResult = $this->em->createQuery($totalPageContentDql)->getSingleResult();
 			$totalUsersResult = $this->em->createQuery($totalUsersDql)->getSingleResult();
 			$totalMediaResult = $this->em->createQuery($totalMediaDql)->getSingleResult();
 			$totalEntriesResult = $this->em->createQuery($totalEntriesDql)->getSingleResult();
+			$totalCommentsResult = $this->em->createQuery($totalCommentsDql)->getSingleResult();
 
 			return [
-				'pages' => ($totalPagesResult['total']) ? $totalPagesResult['total'] : 0,
-				'pageContent' => ($totalPageContentResult['total']) ? $totalPageContentResult['total'] : 0,
-				'users' => ($totalUsersResult['total']) ? $totalUsersResult['total'] : 0,
-				'media' => ($totalMediaResult['total']) ? $totalMediaResult['total'] : 0,
-				'entries' => ($totalEntriesResult['total']) ? $totalEntriesResult['total'] : 0,
+				'pages' => ($totalPagesResult['total']) ?? 0,
+				'pageContent' => ($totalPageContentResult['total']) ?? 0,
+				'users' => ($totalUsersResult['total']) ?? 0,
+				'media' => ($totalMediaResult['total']) ?? 0,
+				'entries' => ($totalEntriesResult['total']) ?? 0,
+				'comments' => ($totalCommentsResult['total']) ?? 0
 			];
 		}
 	}
