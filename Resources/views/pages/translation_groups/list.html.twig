@@ -19,17 +19,12 @@
                 {% for group in translationGroups %}
                 <div class="btn-group">
                   <a href="#" role="button" class="btn btn-secondary">{{ group.name }}</a>
-                  <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="sr-only">Toggle Dropdown</span>
+                  <button type="button" class="btn btn-secondary text-primary">
+                    <i class="fe fe-edit"></i>
                   </button>
-                  <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item text-right text-primary" href="#">
-                        <i class="fe fe-edit"></i>&nbsp;&nbsp;{{ 'crud.show' | trans }}
-                    </a>
-                    <a class="dropdown-item text-right text-danger" href="#">
-                        <i class="fe fe-trash-2"></i>&nbsp;&nbsp;{{ 'crud.remove' | trans }}
-                    </a>
-                  </div>
+                  <button type="button" class="btn btn-secondary">
+                    <i class="fe fe-trash-2 text-danger"></i>
+                  </button>
                 </div>
                 {% endfor %}
 
