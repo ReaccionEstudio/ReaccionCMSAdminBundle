@@ -35,25 +35,6 @@ class User
 
       $(this).attr("data-data", JSON.stringify(data));
     });
-
-    // Selectize inputs
-    $('select#user_language').selectize(
-    {
-      render: {
-        option: function (data, escape) {
-            return '<div>' +
-                      '<span class="image"><i class="flag flag-' + data.icon + '"></i></span>' +
-                      '<span class="title">' + escape(data.text) + '</span>' +
-                    '</div>';
-        },
-        item: function (data, escape) {
-            return '<div>' +
-                      '<span class="image"><i class="flag flag-' + data.icon + '"></i></span>' +
-                      escape(data.text) +
-                    '</div>';
-        }
-      }
-    });
   }
 
 }
