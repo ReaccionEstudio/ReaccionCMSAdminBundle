@@ -9,3 +9,13 @@ div.card-footer.footer-pagination div.row div.col-4 h3{
 div.card-footer.footer-pagination div.row ul.pagination{
 	margin-right: 11px;
 }
+div#language_picker_widget button i.flag{
+	width: 1.2rem;
+	height: 0.8rem;
+}
+div#language_picker_widget div.dropdown-menu a:active{
+	color: #FFF;
+}
+footer.footer li.list-inline-item.last-item:before{
+	content: '';
+}

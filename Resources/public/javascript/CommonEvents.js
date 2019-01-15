@@ -49,4 +49,19 @@
 
       parent.find("button").attr('disabled', 'disabled');
     });
+
+    // change language
+    $('div#language_picker_widget div.dropdown-menu a').on('click', function(e)
+    {
+      e.preventDefault();
+
+      let language = $(this).attr('data-language');
+
+      if( ! language) return;
+
+      let route = Routing.generate('change_language', { 'language' : language });
+
+      window.location = route;
+
+    });
  });
