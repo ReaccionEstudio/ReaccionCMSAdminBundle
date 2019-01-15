@@ -2,9 +2,10 @@
 
 	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages;
 
+	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
-	use Symfony\Component\HttpFoundation\Request;
+	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\PageTranslationGroup;
 
 
 	class PageListController extends Controller
@@ -25,9 +26,13 @@
 		        $this->getParameter("pagination_page_limit")
 		    );
 
+		    // get translation groups
+		    $translationGroups = $em->getRepository(PageTranslationGroup::class)->findBy([], ['id' => 'DESC']);
+
 			return $this->render("@ReaccionCMSAdminBundle/pages/list.html.twig",
 				[
-					'pages' => $pages
+					'pages' => $pages,
+					'translationGroups' => $translationGroups
 				]
 			);
 		}
