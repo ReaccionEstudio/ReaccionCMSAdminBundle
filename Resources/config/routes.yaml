@@ -37,6 +37,11 @@ reaccion_cms_admin_remove_page_content:
     path: /pages/content/{content}/remove
     controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\Content\RemovePageContentController::index
 
+# Page translation groups
+reaccion_cms_admin_create_page_translation_group:
+    path: /pages/translation_group/create
+    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\TranslationGroups\CreateTranslationGroupController::index
+
 # Preferences
 reaccion_cms_admin_preferences_configuration:
     path: /preferences/configuration

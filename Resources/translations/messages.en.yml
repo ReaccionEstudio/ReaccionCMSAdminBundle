@@ -146,7 +146,9 @@ dashboard:
 # pages
 pages_list:
   title: 'Pages list'
+  translation_group_title: 'Page translations groups'
   create_new_page_btn: 'Create new page'
+  create_new_page_trans_group: 'Create new page translations group'
 
 pages_list_table:
   id: 'Id'
@@ -197,6 +199,12 @@ page_content_form:
   update_success_message: 'Content <strong>%name%</strong> has been updated correctly.'
   remove_success_message: 'Content <strong>%name%</strong> has been removed correctly.'
   remove_error_message: 'Error removing <strong>%name%</strong> content: %error%.'
+
+page_translation_group_form:
+  title: 'Create page translation group'
+  name: 'Name'
+  create_success_message: 'Translation group has been created correctly.'
+  create_error_message: 'Error creating translation group <strong>%name%</strong>: %error%.'
 
 page_detail:
   go_back_page_list: 'Go back to page list'

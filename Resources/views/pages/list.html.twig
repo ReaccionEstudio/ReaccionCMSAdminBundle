@@ -5,112 +5,12 @@
 
   	<div class="container">
 
-  		<div class="page-header">
-    		<div class="col pl-0">
-	    		<h1 class="page-title">{{ 'pages_list.title' | trans }}</h1>
-	    	</div>
-    		<div class="col col-lg-2 row justify-content-end">
-    			<a href="{{ url('reaccion_cms_admin_pages_create') }}" class="btn btn-primary">
-    				<i class="fe fe-plus"></i>&nbsp;&nbsp;{{ 'pages_list.create_new_page_btn' | trans }}
-    			</a>
-    		</div>
-	    </div>
+  		<!-- pages translation group -->
+  		{% embed '@ReaccionCMSAdminBundle/pages/translation_groups/list.html.twig' %}{% endembed %}
 
-  		<div class="row row-cards">
-
-  			<div class="col-12">
-                <div class="card">
-
-                	{% embed '@ReaccionCMSAdminBundle/shared/crud/listCardHeader.html.twig' with { 'result' : pages } %}{% endembed %}
-
-                  	{% embed '@ReaccionCMSAdminBundle/shared/flash_messages.html.twig' %}{% endembed %}
-
-                  	<div class="table-responsive">
-	                    
-	                    <table class="table card-table table-vcenter text-nowrap">
-
-	                    	<thead>
-	                        	<tr>
-		                          	<th class="w-1">{{ 'pages_list_table.id' | trans }}</th>
-		                          	<th>{{ 'pages_list_table.name' | trans }}</th>
-		                          	<th>{{ 'pages_list_table.is_enabled' | trans }}</th>
-		                          	<th>{{ 'pages_list_table.language' | trans }}</th>
-		                          	<th>{{ 'pages_list_table.created_at' | trans }}</th>
-		                          	<th>{{ 'pages_list_table.updated_at' | trans }}</th>
-		                          	<th></th>
-	                        	</tr>
-	                      	</thead>
-
-	                      	<tbody>
-
-	                      		{% for page in pages %}
-		                        <tr>
-		                          
-		                          <td>
-		                          	<a href="{{ url('reaccion_cms_admin_pages_detail', { 'page' : page.id }) }}" title="{{ page.id }}" class="text-inherit">
-		                          		<span class="text-muted">{{ page.id }}</span>
-		                          	</a>
-		                          </td>
-		                          
-		                          <td width="40%">
-		                          	
-		                          	<a href="{{ url('reaccion_cms_admin_pages_detail', { 'page' : page.id }) }}" title="{{ page.name }}" class="text-inherit">{{ page.name }}</a>
-
-		                          	{% if page.mainPage %}
-	                          		<div class="tag tag-danger ml-3">{{ 'page_form.main_page' | trans }}</div>
-		                          	{% endif %}
-
-		                          </td>
-		                          
-		                          <td>
-		                            {% if page.isEnabled %}
-		                          	<span class="status-icon bg-success"></span> {{ 'pages_list_table.enabled' | trans }}
-		                          	{% else %}
-		                          	<span class="status-icon bg-danger"></span> {{ 'pages_list_table.disabled' | trans }}
-		                          	{% endif %}
-		                          </td>
-
-		                          <td>
-		                          	{% embed '@ReaccionCMSAdminBundle/components/languages/languageWithFlagComponent.html.twig' with {'lang' : page.language} %}{% endembed %}
-		                          </td>
-		                          
-		                          <td>
-		                          	{% if page.createdAt %}
-		                            	{{ page.createdAt | date('d/m/Y H:i:s') }}
-		                            {% endif %}
-		                          </td>
-		                          
-		                          <td>
-		                          	{% if page.updatedAt %}
-		                            	{{ page.updatedAt | date('d/m/Y H:i:s') }}
-		                            {% endif %}
-		                          </td>
-
-		                          <td class="text-right">
-		                            <a href="{{ url('reaccion_cms_admin_pages_detail', { 'page' : page.id }) }}" title="{{ 'crud.edit' | trans }}" data-toggle="tooltip" data-placement="top">
-		                              <i class="fe fe-edit"></i>
-		                            </a>
-		                            &nbsp;
-		                            <a class="text-danger" href="{{ url('reaccion_cms_admin_pages_remove', { 'page' : page.id }) }}" data-toggle="tooltip" data-placement="top" title="{{ 'crud.remove' | trans }}" data-detele-confirm="true">
-		                              <i class="fe fe-trash"></i>
-		                            </a>
-		                          </td>
-
-	                        	</tr>
-	                        	{% endfor %}
-
-	                      	</tbody>
-                    	</table>
-
-                  	</div>
-
-                  	{% embed '@ReaccionCMSAdminBundle/shared/crud/listCardFooter.html.twig' with { 'result' : pages } %}{% endembed %}
-                  	
-                </div>
-
-            </div>
-
-  		</div>
+        <!-- pages list header -->
+  		{% embed '@ReaccionCMSAdminBundle/pages/pageList.html.twig' with { 'result' : pages } %}{% endembed %}
+        
 
   	</div>
 
