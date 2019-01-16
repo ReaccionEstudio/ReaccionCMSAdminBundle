@@ -43,7 +43,7 @@
 				{
 					$language = $pageForm['language']->getData();
 
-					if($pageForm['mainPage']->getData() == true)
+					if($pageForm['mainPage']->getData() == true && $page->isMainPage() == false)
 					{
 						$this->get("reaccion_cms_admin.page")->resetMainPage($language);
 					}
