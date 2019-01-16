@@ -300,6 +300,7 @@ users_form:
   repeat_password: 'Repeat Password'
   is_enabled: 'Is enabled'
   language: 'Language'
+  translation_group: 'Translation group'
   roles: 'Roles'
   role: 'Role'
 
