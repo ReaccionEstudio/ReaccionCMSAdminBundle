@@ -4,12 +4,14 @@
 
 	use Symfony\Component\Form\AbstractType;
 	use Symfony\Component\Form\FormBuilderInterface;
+	use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 	use Symfony\Component\OptionsResolver\OptionsResolver;
-	use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 	use Symfony\Component\Form\Extension\Core\Type\TextType;
-	use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 	use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+	use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+	use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Constants\Languages;
+	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\PageTranslationGroup;
 
 	class PageType extends AbstractType
 	{
@@ -19,6 +21,16 @@
 	            ->add('name', TextType::class, [
 	            	'label' => 'page_form.name',
 	            	'required' => true
+	            ])
+	            ->add('translationGroup', EntityType::class, [
+	            	'label' => 'users_form.translation_group',
+	            	'class' => PageTranslationGroup::class,
+	            	'choice_label' => function($choiceValue)
+                    {
+                    	return $choiceValue->getName();
+                    },
+                    'empty_data' => null,
+                    'required' => false
 	            ])
 	            ->add('language', ChoiceType::class, [
 	            	'label' => 'users_form.language',
