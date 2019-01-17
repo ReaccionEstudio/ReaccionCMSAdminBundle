@@ -12,12 +12,12 @@
 <div class="row row-cards">
 
 		<!-- pages list -->
-		<div class="col-12">
+	<div class="col-12">
         <div class="card">
 
         	{% embed '@ReaccionCMSAdminBundle/shared/crud/listCardHeader.html.twig' with { 'result' : pages } %}{% endembed %}
 
-          	{% embed '@ReaccionCMSAdminBundle/shared/flash_messages.html.twig' %}{% endembed %}
+          	{% embed '@ReaccionCMSAdminBundle/shared/flash_messages.html.twig' with { 'extraClasses' : 'ml-3 mr-3'} %}{% endembed %}
 
           	<div class="table-responsive">
                 
