@@ -35,7 +35,7 @@
                     {
                     	return ($choiceValue) ? $choiceValue->getId() : '';
                     },
-                    'empty_data' => null,
+                    'empty_data' => '',
                     'required' => false,
                     'data' => (isset($options['query']['translationGroup'])) 
                     			? $entityManager->getRepository(PageTranslationGroup::class)->findOneBy(['id' => $options['query']['translationGroup']])
