@@ -1,0 +1,32 @@
+<div class="card">
+
+	<div class="card-header">
+		<div class="col pl-0">
+			<h3 class="card-title">{{ 'page_translation_group_form.pages_title' | trans }}</h3>
+		</div>
+		<div class="col col-lg-6 row justify-content-end">
+			<a href="{{ url('reaccion_cms_admin_pages_create') }}?translationGroup={{pageTranslationGroup.id}}" class="btn btn-primary">
+				<i class="fe fe-plus"></i>&nbsp;&nbsp;{{ 'pages_list.create_new_page_btn' | trans }}
+			</a>
+		</div>
+	</div>
+
+	<div class="card-body col-12 align-self-center">
+
+		{% if pageTranslationGroup is defined %}
+
+			{% embed '@ReaccionCMSAdminBundle/pages/pageListTable.html.twig' with { 'pages' : pageTranslationGroup.pages } %}{% endembed %}
+		
+		{% endif %}
+
+	</div>
+
+</div>
+
+<div class="text-center">
+
+	<a href="{{ url('reaccion_cms_admin_pages_index') }}" title="{{ 'crud.go_back' | trans }}" class="btn btn-secondary">
+		<i class="fe fe-arrow-left-circle"></i>&nbsp;&nbsp;{{ 'crud.go_back' | trans }}
+	</a>
+
+</div>

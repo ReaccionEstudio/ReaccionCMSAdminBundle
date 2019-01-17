@@ -17,9 +17,9 @@
             <div class="card-body">
 
                 {% for group in translationGroups %}
-                <div class="btn-group">
-                  <a href="#" role="button" class="btn btn-secondary">{{ group.name }}</a>
-                  <button type="button" class="btn btn-secondary text-primary">
+                <div class="btn-group mr-4">
+                  <a href="{{ url('reaccion_cms_admin_update_page_translation_group', { 'pageTranslationGroup' : group.id }) }}" role="button" class="btn btn-secondary">{{ group.name }}</a>
+                  <button data-click="href" data-url="{{ url('reaccion_cms_admin_update_page_translation_group', { 'pageTranslationGroup' : group.id }) }}" type="button" class="btn btn-secondary text-primary">
                     <i class="fe fe-edit"></i>
                   </button>
                   <button type="button" class="btn btn-secondary">
