@@ -46,6 +46,10 @@ reaccion_cms_admin_update_page_translation_group:
     path: /pages/translation_group/{pageTranslationGroup}/update
     controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\TranslationGroups\PageTranslationGroupDetailController::index
 
+reaccion_cms_admin_remove_page_translation_group:
+    path: /pages/translation_group/{pageTranslationGroup}/remove
+    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\TranslationGroups\RemovePageTranslationGroupController::index
+
 # Preferences
 reaccion_cms_admin_preferences_configuration:
     path: /preferences/configuration
