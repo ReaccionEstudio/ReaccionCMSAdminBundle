@@ -8,7 +8,25 @@
     </h3>
 	</div>
 
-  <div class="card-body">{{ form_widget(pageForm) }}</div>
+  <div class="card-body">
+
+    {{ form_widget(pageForm) }}
+
+    {% if page.createdAt %}
+    <div class="pt-4">
+        <strong>{{ 'pages_list_table.created_at' | trans }}:</strong>
+        <span class="ml-1">{{ page.createdAt | date('d/m/Y H:i:s') }}</span>
+    </div>
+    {% endif %}
+
+    {% if page.updatedAt %}
+    <div class="pt-2">
+        <strong>{{ 'pages_list_table.updated_at' | trans }}:</strong>
+        <span class="ml-1">{{ page.updatedAt | date('d/m/Y H:i:s') }}</span>
+    </div>
+    {% endif %}
+
+  </div>
 
   <div class="card-footer text-center">
   	<button type="submit" class="btn btn-primary">
