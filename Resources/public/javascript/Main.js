@@ -26,6 +26,7 @@ const currentRoute 	= window.location.pathname;
 
 $(document).ready(function()
 {
+	let pageDetailRegex = /admin\/pages\/\d+/gi;
 	let pageAddContentRegex = /admin\/pages\/\d+\/content\/add/gi;
 	let pageEditContentRegex = /admin\/pages\/content\/\d+/gi;
 	let userEditRegex = /admin\/users\/\d+\/update/gi;
@@ -45,6 +46,12 @@ $(document).ready(function()
 	{
 		let page = new Page();
 			page.formEvents();
+	}
+
+	if(pageDetailRegex.test(currentRoute))
+	{
+		let page = new Page();
+			page.pageDetailEvents();
 	}
 
 	if(currentRoute == "/admin/users/create" || userEditRegex.test(currentRoute))

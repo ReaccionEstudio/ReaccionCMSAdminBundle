@@ -6,6 +6,7 @@
  */
 
 import MediaGalleryFormComponent from './components/media/MediaGalleryFormComponent.js';
+import CommonFunctions from './CommonFunctions.js';
 
 class Page
 {
@@ -14,9 +15,6 @@ class Page
 	 */
 	constructor()
 	{ 
-		this.mediaGalleryFormComponent = new MediaGalleryFormComponent();
-		this.mediaImagePreviewComponent = this.mediaGalleryFormComponent.mediaImagePreviewComponent;
-		this.mediaVideoPreviewComponent = this.mediaGalleryFormComponent.mediaVideoPreviewComponent;
 	}
 
 	/**
@@ -24,8 +22,22 @@ class Page
 	 */
 	formEvents()
 	{
+		this.mediaGalleryFormComponent = new MediaGalleryFormComponent();
+		this.mediaImagePreviewComponent = this.mediaGalleryFormComponent.mediaImagePreviewComponent;
+		this.mediaVideoPreviewComponent = this.mediaGalleryFormComponent.mediaVideoPreviewComponent;
+		
 		this._toggleGalleryEvent();
 		this._onChangePageContentTypeEvent();
+	}
+
+	/**
+	 * Page detail event
+	 */
+	pageDetailEvents()
+	{
+		let commonFunctions = new CommonFunctions();
+		commonFunctions.appendRequiredFormFieldsAsterisks('page');
+		commonFunctions.appendRequiredFormFieldsAsterisks('seo_page');
 	}
 
 	/**

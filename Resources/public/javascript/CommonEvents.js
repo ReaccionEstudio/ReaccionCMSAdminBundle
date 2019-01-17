@@ -64,4 +64,16 @@
       window.location = route;
 
     });
+
+    // data-click="href"
+    $('[data-click="href"]').on('click', function(e)
+    {
+      e.preventDefault();
+
+      if( ! $("[data-url]").length ) return;
+
+      let url = $(this).attr('data-url');
+      window.location = url;
+    });
+
  });
