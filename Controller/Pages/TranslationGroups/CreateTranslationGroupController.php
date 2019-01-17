@@ -45,7 +45,8 @@
 
 			return $this->render("@ReaccionCMSAdminBundle/pages/translation_groups/form.html.twig",
 				[
-					'form' => $form->createView()
+					'form' => $form->createView(),
+					'mode' => 'create'
 				]
 			);
 		}
