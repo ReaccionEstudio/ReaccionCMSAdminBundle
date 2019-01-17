@@ -26,21 +26,19 @@
 					$em->persist($pageTranslationGroup);
 					$em->flush();
 
-					//$this->addFlash('success', $translator->trans('page_translation_group_form.create_success_message') );
+					$this->addFlash('success', $translator->trans('page_translation_group_form.update_success_message') );
 					return $this->redirectToRoute('reaccion_cms_admin_pages_index');
 				}
 				catch(\Exception $e)
 				{
-					/*
 					$errMssg =  $translator->trans(
-									"page_translation_group_form.create_error_message", 
+									"page_translation_group_form.update_error_message", 
 									array(
 										'%name%' => $form['name']->getData(),
 										'%error%' => $e->getMessage()
 									) 
 								);
 					$this->addFlash('error', $errMssg);
-					*/
 				}
 			}
 
