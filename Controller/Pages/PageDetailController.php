@@ -17,6 +17,8 @@
 	{
 		public function index(Page $page, Request $request, TranslatorInterface $translator)
 		{
+			$em = $this->getDoctrine()->getManager();
+
 			// get current template views
 			$themeFullPath = $this->get("reaccion_cms.theme")->getFullTemplatePath();
 			$themeViews = (new ThemeConfigService($themeFullPath))->getViews();
@@ -25,7 +27,10 @@
 			$pageForm = $this->createForm(
 								PageType::class, 
 								$page, 
-								['templateViews' => $themeViews]
+								[ 
+									'templateViews' => $themeViews,
+									'entity_manager' => $em
+								]
 							);
 			$seoPageForm = $this->createForm(SeoPageType::class, $page);
 
@@ -49,7 +54,6 @@
 					}
 
 					// save
-					$em = $this->getDoctrine()->getManager();
 					$em->persist($page);
 					$em->flush();
 

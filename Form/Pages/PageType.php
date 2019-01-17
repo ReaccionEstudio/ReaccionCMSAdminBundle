@@ -17,6 +17,8 @@
 	{
 	    public function buildForm(FormBuilderInterface $builder, array $options)
 	    {
+	    	$entityManager = $options['entity_manager'];
+
 	        $builder
 	            ->add('name', TextType::class, [
 	            	'label' => 'page_form.name',
@@ -29,8 +31,15 @@
                     {
                     	return $choiceValue->getName();
                     },
+	            	'choice_value' => function($choiceValue)
+                    {
+                    	return ($choiceValue) ? $choiceValue->getId() : '';
+                    },
                     'empty_data' => null,
-                    'required' => false
+                    'required' => false,
+                    'data' => (isset($options['query']['translationGroup'])) 
+                    			? $entityManager->getRepository(PageTranslationGroup::class)->findOneBy(['id' => $options['query']['translationGroup']])
+                    			: ''
 	            ])
 	            ->add('language', ChoiceType::class, [
 	            	'label' => 'users_form.language',
@@ -72,9 +81,11 @@
 
 	    public function configureOptions(OptionsResolver $resolver)
 		{
+			$resolver->setRequired('entity_manager');
 		    $resolver->setDefaults(array(
 		    	'data_class' => 'App\ReaccionEstudio\ReaccionCMSBundle\Entity\Page',
-		        'templateViews' => []
+		        'templateViews' => [],
+		        'query' => []
 		    ));
 		}
 	}

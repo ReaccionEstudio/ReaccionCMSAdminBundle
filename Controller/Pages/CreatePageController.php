@@ -15,13 +15,19 @@
 		public function index(Request $request, TranslatorInterface $translator)
 		{
 			$page = new Page();
+			$em = $this->getDoctrine()->getManager();
 
 			// get current template views
 			$themeFullPath = $this->get("reaccion_cms.theme")->getFullTemplatePath();
 			$themeViews = (new ThemeConfigService($themeFullPath))->getViews();
 
 			// form
-			$form = $this->createForm(PageType::class, $page, ['templateViews' => $themeViews]);
+			$formOptions = [ 
+				'templateViews' => $themeViews, 
+				'query' => $request->query->all(),
+				'entity_manager' => $em
+			];
+			$form = $this->createForm(PageType::class, $page, $formOptions);
 			$form->handleRequest($request);
 
 			if ($form->isSubmitted() && $form->isValid()) 
@@ -39,7 +45,6 @@
 					$page->setSlug($page->getName());
 
 					// save
-					$em = $this->getDoctrine()->getManager();
 					$em->persist($page);
 					$em->flush();
 
