@@ -157,6 +157,7 @@ pages_list_table:
   language: 'Language'
   enabled: 'Enabled'
   disabled: 'Disabled'
+  translation_group: 'Translation group'
   created_at: 'Created at'
   updated_at: 'Updated at'
 
