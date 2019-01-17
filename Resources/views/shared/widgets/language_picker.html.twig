@@ -1,0 +1,18 @@
+{% set languagesData = getLanguagesWidgetData() %}
+<div id="language_picker_widget" class="dropdown">
+	<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
+	    <i class="flag flag-{{ languagesData.default.icon }}"></i>&nbsp;&nbsp;<span>{{ languagesData.default.originalName }}</span>
+	</button>
+  	<div class="dropdown-menu">
+  		{% for languageData in languagesData.languages %}
+	    <a class="dropdown-item" data-language="{{ languageData.language }}" href="#">
+	    	<i class="flag flag-{{ languageData.icon }}"></i>&nbsp;&nbsp;
+	    	{% if languageData.originalName is not empty %}
+				{{ languageData.originalName }}
+			{% else %}
+				{{ ('languages.' ~ languageData.language) | trans }}
+			{% endif %}
+	    </a>
+	    {% endfor %}
+  	</div>
+</div>
