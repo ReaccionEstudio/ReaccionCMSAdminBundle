@@ -28,8 +28,8 @@
                           	<th class="w-1">{{ 'pages_list_table.id' | trans }}</th>
                           	<th>{{ 'pages_list_table.name' | trans }}</th>
                           	<th>{{ 'pages_list_table.is_enabled' | trans }}</th>
-                          	<th>{{ 'pages_list_table.language' | trans }}</th>
-                          	<th>{{ 'pages_list_table.created_at' | trans }}</th>
+                            <th>{{ 'pages_list_table.language' | trans }}</th>
+                          	<th>{{ 'pages_list_table.translation_group' | trans }}</th>
                           	<th>{{ 'pages_list_table.updated_at' | trans }}</th>
                           	<th></th>
                     	</tr>
@@ -67,10 +67,10 @@
                           <td>
                           	{% embed '@ReaccionCMSAdminBundle/components/languages/languageWithFlagComponent.html.twig' with {'lang' : page.language} %}{% endembed %}
                           </td>
-                          
+
                           <td>
-                          	{% if page.createdAt %}
-                            	{{ page.createdAt | date('d/m/Y H:i:s') }}
+                            {% if page.translationGroup is not empty %}
+                              <a href="#" title="{{ page.translationGroup.name }}">{{ page.translationGroup.name }}</a>
                             {% endif %}
                           </td>
                           
