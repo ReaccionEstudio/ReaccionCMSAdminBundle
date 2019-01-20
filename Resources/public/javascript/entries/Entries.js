@@ -6,6 +6,20 @@
  */
 
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import ReaccionCMSUploadAdapter from '../ckeditor/imageUpload/ReaccionCMSUploadAdapter.js';
+
+/**
+ * ReaccionCMSUploadAdapter plugin
+ */
+function ReaccionCMSUploadAdapterPlugin( editor ) 
+{
+    editor.plugins.get( 'FileRepository' ).createUploadAdapter = ( loader ) => {
+        
+        let ImageUploadRoute = Routing.generate('reaccion_cms_admin_media_image_upload');
+        return new ReaccionCMSUploadAdapter( loader, 'http://localhost:8000/admin/media/image/upload' );
+
+    };
+}
 
 class Entries
 {
@@ -31,7 +45,9 @@ class Entries
 	{
 		ClassicEditor
 		    .create( 
-		    	document.querySelector(editorId), { }
+		    	document.querySelector(editorId), {
+		    		extraPlugins: [ ReaccionCMSUploadAdapterPlugin ]
+		    	}
 		    )
 		    .then( editor => 
 		    {
