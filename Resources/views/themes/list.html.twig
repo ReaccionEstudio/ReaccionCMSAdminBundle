@@ -54,7 +54,7 @@
             {% endif %}
           </h5>
           <div class="text-muted">{{ theme.description }}</div>
-          <div class="d-flex align-items-center pt-5 mt-auto">
+          <div class="d-flex align-items-center pt-5 mt-auto mb-4">
             <div>
               {% if theme.author is defined and theme.author is not empty %}
               <i class="fe fe-user"></i>&nbsp;&nbsp;{{ theme.author }}
@@ -68,6 +68,16 @@
             </div>
             <div class="ml-auto text-muted">{{ 'themes.version' | trans }} {{ theme.version }}</div>
           </div>
+
+          {% if theme.folder_name != getConfigValue('current_theme') %}
+          <div class="mt-4 text-center">
+            <a href="#" class="btn btn-pill btn-secondary">
+              <i class="fe fe-layout"></i>&nbsp;
+              {{ 'themes.use_this_theme' | trans }}
+            </a>
+          </div>
+          {% endif %}
+
         </div>
       </div>
       {% endfor %}
