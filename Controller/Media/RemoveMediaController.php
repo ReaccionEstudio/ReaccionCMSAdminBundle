@@ -31,6 +31,8 @@
 
 				foreach($paths as $filePath)
 				{
+					if(empty($filePath)) continue;
+
 					$filePath = $this->getParameter("reaccion_cms_admin.upload_dir") . $filePath;
 
 					if( ! file_exists($filePath) ) continue;
@@ -45,9 +47,10 @@
 
 				return $this->redirectToRoute('reaccion_cms_admin_media_index');
 			}
-			catch(\Exception $e)
+			catch(\Doctrine\DBAL\DBALException $e)
 			{
-				// TODO: log error
+				$this->get("reaccion_cms.logger")->logException($e, "Error removing media entity.");
+
 				$errorMssg = $translator->trans(
 								'media_detail.removed_media_error', 
 								[
@@ -57,8 +60,24 @@
 							 );
 
 				$this->addFlash('error', $errorMssg);
-
-				return $this->redirectToRoute('reaccion_cms_admin_media_detail', ['media' => $media->getId() ]);
+				// return $this->redirectToRoute('reaccion_cms_admin_media_index');
 			}
+			catch(\Exception $e)
+			{
+				$this->get("reaccion_cms.logger")->logException($e, "Error removing media files.");
+
+				$errorMssg = $translator->trans(
+								'media_detail.removed_media_error', 
+								[
+									'%name%' => $mediaName, 
+									'%error%' => $e->getMessage()
+								]
+							 );
+
+				$this->addFlash('error', $errorMssg);
+				// return $this->redirectToRoute('reaccion_cms_admin_media_index');
+			}
+
+			die('-');
 		}
 	}
