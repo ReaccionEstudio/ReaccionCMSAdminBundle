@@ -43,8 +43,7 @@
 		private function getTemplatesPaths() : void
 		{
 			$this->themesPaths = [
-				$this->projectDir . "/src/ReaccionEstudio/ReaccionCMSBundle/Resources/views", // default theme path
-				$this->projectDir . "/" . $this->config->get("themes_path") // themes path saved as config parameter
+				$this->projectDir . "/" . $this->config->get("themes_path")
 			];
 		}
 
