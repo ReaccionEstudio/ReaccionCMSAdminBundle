@@ -209,3 +209,7 @@ reaccion_cms_admin_entries_remove:
 reaccion_cms_admin_appearance_themes:
     path: /themes
     controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Themes\ThemesListController::index
+
+reaccion_cms_admin_appearance_update_current_theme:
+    path: /themes/update_current/{themeFolderName}
+    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Themes\UpdateCurrentThemeController::index

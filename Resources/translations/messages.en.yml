@@ -409,3 +409,5 @@ themes:
   version: 'Version'
   current: 'Current'
   use_this_theme: 'Use this theme'
+  update_theme_success_message: 'Current theme has been updated correctly.'
+  update_theme_error_message: 'Error updating current theme. Try it again'

@@ -57,4 +57,15 @@
 			$listInstalledThemesService = new ListInstalledThemesService($this->themesPaths);
 			return $listInstalledThemesService->listAllThemes();
 		}
+
+		/**
+		 * Updates current theme used by the system
+		 *
+		 * @param  String  	$themeFolderName 	Theme folder name
+		 * @return Boolean 	true|false 			Update result
+		 */
+		public function updateCurrentTheme(String $themeFolderName)
+		{
+			return $this->config->set("current_theme", $themeFolderName);
+		}
 	}
