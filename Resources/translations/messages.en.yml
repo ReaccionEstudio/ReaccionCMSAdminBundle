@@ -38,6 +38,7 @@ common:
   updated_at: 'Updated at'
   enabled: 'Enabled'
   disabled: 'Disabled'
+  remove: 'Remove'
 
 preferences: 
   title: 'Preferences'

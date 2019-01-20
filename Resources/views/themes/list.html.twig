@@ -71,10 +71,19 @@
 
           {% if theme.folder_name != getConfigValue('current_theme') %}
           <div class="mt-4 text-center">
+            
             <a href="{{ url('reaccion_cms_admin_appearance_update_current_theme', { 'themeFolderName' : theme.folder_name }) }}" class="btn btn-pill btn-secondary">
               <i class="fe fe-layout"></i>&nbsp;
               {{ 'themes.use_this_theme' | trans }}
             </a>
+
+            <!--
+            <a href="#" class="btn btn-pill btn-danger ml-2">
+              <i class="fe fe-trash-2"></i>&nbsp;
+              {{ 'common.remove' | trans }}
+            </a>
+            -->
+
           </div>
           {% endif %}
 
