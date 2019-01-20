@@ -24,7 +24,7 @@
 
                 	{% embed '@ReaccionCMSAdminBundle/shared/crud/listCardHeader.html.twig' with { 'result' : entries } %}{% endembed %}
 
-                  	{% embed '@ReaccionCMSAdminBundle/shared/flash_messages.html.twig' %}{% endembed %}
+                  	{% embed '@ReaccionCMSAdminBundle/shared/flash_messages.html.twig' with { 'extraClasses' : 'pl-2 pr-2' } %}{% endembed %}
 
                   	<div class="table-responsive">
 	                    
