@@ -2,6 +2,7 @@
 
 	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media;
 
+	use Symfony\Component\Asset\PathPackage;
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Component\HttpFoundation\Response;
 	use Symfony\Component\HttpFoundation\JsonResponse;
@@ -27,6 +28,7 @@
 			try
 			{
 				$imagePath = $this->get("reaccion_cms_admin.media_upload")->upload($image, true, false);
+				$imageUrl  = $this->generateImageUrl($request, $imagePath);
 			}
 			catch(\Exception $e)
 			{
@@ -36,7 +38,15 @@
 				return $response;
 			}
 
-			$response = [ 'imagePath' => $imagePath ];
+			$response = [ 'url' => $imageUrl ];
 			return new JsonResponse($response);
+		}
+
+		private function generateImageUrl($request, $fullImagePath)
+		{
+			$host = $request->getScheme() . '://' . $request->getHttpHost() . $request->getBasePath();
+			$imagePathArray = explode("public/", $fullImagePath);
+			$imagePath = $imagePathArray[1];
+			return $host . "/" . $imagePath;
 		}
 	}
