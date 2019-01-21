@@ -1,6 +1,6 @@
 <div class="d-inline ml-3">
  	
- 	{% if menuItem.position > 1 %}
+ 	{% if menuItem.isFirstItem is not defined %}
 	<a href="#" class="ml-1" data-position="{{ menuItem.position }}" data-toggle="tooltip" data-placement="top" title="{{ 'menu_content.up' | trans }}">
 		<i class="fe fe-arrow-up"></i>
 	</a>

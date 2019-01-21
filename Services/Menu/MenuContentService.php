@@ -84,8 +84,8 @@
 				$source[$menuItem['id']] = $menuItem;
 			}
 
-			// set last item array key
-			$source = $this->setLastItemArrayKey($source);
+			// set items position keys
+			$source = $this->setItemPositionKeys($source);
 
 			// create nested array
 			foreach ($source as &$s) 
@@ -116,11 +116,19 @@
 			return $nested;
 		}
 
-		private function setLastItemArrayKey($source)
+		/**
+		 * Set item position keys (isLastPosition and isFirstPosition)
+		 *
+		 * @param  Array 	$source 	Source array
+		 * @return Array 	$source 	Source result array
+		 */
+		private function setItemPositionKeys(Array $source) : Array
 		{
 			// 1) items without parents
 			$lastPosition = 0;
 			$lastPositionItemId = 0;
+			$firstPosition = 999999;
+			$firstPositionItemId = null;
 
 			foreach($source as $key => $item)
 			{
@@ -131,12 +139,23 @@
 					$lastPosition 		= $item['position'];
 					$lastPositionItemId = $key;
 				}
+				
+				if($firstPosition > $item['position'])
+				{
+					$firstPosition 		= $item['position'];
+					$firstPositionItemId = $key;
+				}
 			}
 
 			// save into source array
 			if($lastPositionItemId > 0)
 			{
 				$source[$lastPositionItemId]['isLastItem'] = true;
+			}
+
+			if($firstPositionItemId != null)
+			{
+				$source[$firstPositionItemId]['isFirstItem'] = true;
 			}
 
 			// 2) items with parents
@@ -155,6 +174,8 @@
 			{
 				$lastPosition = 0;
 				$lastPositionItemId = 0;
+				$firstPosition = 999999;
+				$firstPositionItemId = null;
 
 				foreach($itemsGroup as $item)
 				{
@@ -163,12 +184,23 @@
 						$lastPosition 		= $item['position'];
 						$lastPositionItemId = $item['source_id'];
 					}
+
+					if($firstPosition > $item['position'])
+					{
+						$firstPosition 		 = $item['position'];
+						$firstPositionItemId = $item['source_id'];
+					}
 				}
 
 				// save into source array
 				if($lastPositionItemId > 0)
 				{
 					$source[$lastPositionItemId]['isLastItem'] = true;
+				}
+
+				if($firstPositionItemId != null)
+				{
+					$source[$firstPositionItemId]['isFirstItem'] = true;
 				}
 			}
 
