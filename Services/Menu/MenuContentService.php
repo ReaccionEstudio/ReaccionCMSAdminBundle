@@ -84,6 +84,9 @@
 				$source[$menuItem['id']] = $menuItem;
 			}
 
+			// set last item array key
+			$source = $this->setLastItemArrayKey($source);
+
 			// create nested array
 			foreach ($source as &$s) 
 			{
@@ -111,6 +114,65 @@
 			}
 
 			return $nested;
+		}
+
+		private function setLastItemArrayKey($source)
+		{
+			// 1) items without parents
+			$lastPosition = 0;
+			$lastPositionItemId = 0;
+
+			foreach($source as $key => $item)
+			{
+				if($item['parent_id'] != null) continue;
+				
+				if($lastPosition < $item['position'])
+				{
+					$lastPosition 		= $item['position'];
+					$lastPositionItemId = $key;
+				}
+			}
+
+			// save into source array
+			if($lastPositionItemId > 0)
+			{
+				$source[$lastPositionItemId]['isLastItem'] = true;
+			}
+
+			// 2) items with parents
+			$itemsGroupedByParentIds = [];
+
+			// group by parent ids
+			foreach($source as $key => $item)
+			{
+				if($item['parent_id'] == null) continue;
+				$parentId = $item['parent_id'];
+				$item['source_id'] = $key;
+				$itemsGroupedByParentIds[$parentId][] = $item;
+			}
+
+			foreach($itemsGroupedByParentIds as $itemsGroup)
+			{
+				$lastPosition = 0;
+				$lastPositionItemId = 0;
+
+				foreach($itemsGroup as $item)
+				{
+					if($lastPosition < $item['position'])
+					{
+						$lastPosition 		= $item['position'];
+						$lastPositionItemId = $item['source_id'];
+					}
+				}
+
+				// save into source array
+				if($lastPositionItemId > 0)
+				{
+					$source[$lastPositionItemId]['isLastItem'] = true;
+				}
+			}
+
+			return $source;
 		}
 
 		/**

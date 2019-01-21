@@ -1,0 +1,15 @@
+<div class="d-inline ml-3">
+ 	
+ 	{% if menuItem.position > 1 %}
+	<a href="#" class="ml-1" data-position="{{ menuItem.position }}" data-toggle="tooltip" data-placement="top" title="{{ 'menu_content.up' | trans }}">
+		<i class="fe fe-arrow-up"></i>
+	</a>
+	{% endif %}
+	
+	{% if menuItem.isLastItem is not defined %}
+	<a href="#" class="ml-1" data-position="{{ menuItem.position }}" data-toggle="tooltip" data-placement="top" title="{{ 'menu_content.down' | trans }}">
+		<i class="fe fe-arrow-down"></i>
+	</a>
+	{% endif %}
+
+</div>

@@ -57,6 +57,8 @@
 					    			<i class="fe fe-trash-2"></i>
 					    		</a>
 
+					    		{% embed '@ReaccionCMSAdminBundle/menu/content/position_arrows.html.twig' %}{% endembed %}
+
 					    		{% set parentId = menuItem.id %}
 
 				        	{% if menuItem.children is defined and menuItem.children is not empty %}
