@@ -6,6 +6,7 @@
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Menu;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\MenuContent;
 	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Page\Page;
+	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Utils\LoggerService;
 
 	/**
 	 * Menu service
@@ -29,12 +30,20 @@
 		private $page;
 
 		/**
+		 * @var LoggerService
+		 *
+		 * Logger service
+		 */
+		private $logger;
+
+		/**
 		 * Constructor
 		 */
-		public function __construct(EntityManagerInterface $em, Page $page)
+		public function __construct(EntityManagerInterface $em, Page $page, LoggerService $logger)
 		{
-			$this->em = $em;
-			$this->page = $page;
+			$this->em 		= $em;
+			$this->page 	= $page;
+			$this->logger 	= $logger;
 		}
 
 		/**
@@ -252,7 +261,8 @@
 					m.type, 
 					m.target, 
 					m.position,
-					m.value
+					m.value,
+					m.enabled 
 					FROM  App\ReaccionEstudio\ReaccionCMSBundle\Entity\MenuContent m 
 					LEFT JOIN App\ReaccionEstudio\ReaccionCMSBundle\Entity\MenuContent p 
 					WITH p.id = m.parent 
@@ -264,7 +274,34 @@
 				$dql .= " AND m.enabled = 1";
 			}
 
+			$dql .= " ORDER BY m.position ASC ";
+
 			$query = $this->em->createQuery($dql)->setParameter("menuId", $menu->getId());
 			return $query->getArrayResult();
+		}
+
+		/**
+		 * Update menu content position
+		 *
+		 * @param  MenuContent 	$menuContent 	Menu content entity
+		 * @param  Integer 		$position 		Position value 	
+		 * @return Boolean 		true|false 		Update result
+		 */
+		public function updateMenuContentPosition(MenuContent $menuContent, Int $position = 0) : Bool
+		{
+			try
+			{
+				$menuContent->setPosition($position);
+
+				$this->em->persist($menuContent);
+				$this->em->flush();
+
+				return true;
+			}
+			catch(\Doctrine\DBAL\DBALException $e)
+			{
+				$this->logger->logException($e, "Error updating menu item chain position.");
+				return false;
+			}
 		}
 	}

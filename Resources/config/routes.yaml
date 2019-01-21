@@ -131,6 +131,10 @@ reaccion_cms_admin_appearance_menu_content_remove:
     path: /appearance/menu/{menu}/remove/{menuContent}
     controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\RemoveMenuContentController::index
 
+reaccion_cms_admin_appearance_menu_content_update_position:
+    path: /appearance/menu/{menu}/content/{menuContent}/{action}
+    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\UpdateMenuContentPositionController::index
+
 # Media
 reaccion_cms_admin_media_index:
     path: /media

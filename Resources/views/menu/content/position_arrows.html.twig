@@ -1,13 +1,13 @@
 <div class="d-inline ml-3">
  	
  	{% if menuItem.isFirstItem is not defined %}
-	<a href="#" class="ml-1" data-position="{{ menuItem.position }}" data-toggle="tooltip" data-placement="top" title="{{ 'menu_content.up' | trans }}">
+	<a href="{{ url('reaccion_cms_admin_appearance_menu_content_update_position', { 'menu' : menu.id, 'menuContent' : menuItem.id, 'action' : 'decrease' }) }}" class="ml-1" data-position="{{ menuItem.position }}" data-toggle="tooltip" data-placement="top" title="{{ 'menu_content.up' | trans }}">
 		<i class="fe fe-arrow-up"></i>
 	</a>
 	{% endif %}
 	
 	{% if menuItem.isLastItem is not defined %}
-	<a href="#" class="ml-1" data-position="{{ menuItem.position }}" data-toggle="tooltip" data-placement="top" title="{{ 'menu_content.down' | trans }}">
+	<a href="{{ url('reaccion_cms_admin_appearance_menu_content_update_position', { 'menu' : menu.id, 'menuContent' : menuItem.id, 'action' : 'increase' }) }}" class="ml-1" data-position="{{ menuItem.position }}" data-toggle="tooltip" data-placement="top" title="{{ 'menu_content.down' | trans }}">
 		<i class="fe fe-arrow-down"></i>
 	</a>
 	{% endif %}
