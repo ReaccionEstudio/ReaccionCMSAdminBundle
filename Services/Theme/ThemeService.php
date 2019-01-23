@@ -2,7 +2,7 @@
 
 	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Theme;
 
-	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Config\ConfigService;
+	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Config\ConfigServiceInterface;
 	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Theme\ListInstalledThemesService;
 
 	/**
@@ -13,7 +13,7 @@
 	class ThemeService
 	{
 		/**
-		 * @var ConfigService
+		 * @var ConfigServiceInterface
 		 *
 		 * Configuration service
 		 */
@@ -29,7 +29,7 @@
 		/**
 		 * Constructor
 		 */
-		public function __construct(ConfigService $config, String $projectDir)
+		public function __construct(ConfigServiceInterface $config, String $projectDir)
 		{
 			$this->config = $config;
 			$this->projectDir = $projectDir;
