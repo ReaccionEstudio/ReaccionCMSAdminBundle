@@ -149,10 +149,9 @@
 					$lastPositionItemId = $key;
 				}
 				
-				// TODO: check if there is more than one item in the group
 				if($firstPosition > $item['position'])
 				{
-					$firstPosition 		= $item['position'];
+					$firstPosition 		 = $item['position'];
 					$firstPositionItemId = $key;
 				}
 			}
@@ -180,14 +179,15 @@
 				$itemsGroupedByParentIds[$parentId][] = $item;
 			}
 
-			foreach($itemsGroupedByParentIds as $itemsGroup)
+			foreach($itemsGroupedByParentIds as $key=> $itemsGroup)
 			{
 				$lastPosition = 0;
 				$lastPositionItemId = 0;
 				$firstPosition = 999999;
 				$firstPositionItemId = null;
+				$isUnique = false;
 
-				foreach($itemsGroup as $item)
+				foreach($itemsGroup as $subkey => $item)
 				{
 					if($lastPosition < $item['position'])
 					{
@@ -199,6 +199,11 @@
 					{
 						$firstPosition 		 = $item['position'];
 						$firstPositionItemId = $item['source_id'];
+						
+						if( ! isset($itemsGroupedByParentIds[$key][($subkey+1)]))
+						{
+							$isUnique = true;
+						}
 					}
 				}
 
@@ -210,7 +215,14 @@
 
 				if($firstPositionItemId != null)
 				{
-					$source[$firstPositionItemId]['isFirstItem'] = true;
+					if($isUnique)
+					{
+						$source[$firstPositionItemId]['isUnique'] = true;
+					}
+					else
+					{
+						$source[$firstPositionItemId]['isFirstItem'] = true;
+					}
 				}
 			}
 
