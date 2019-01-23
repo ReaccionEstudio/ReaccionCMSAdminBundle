@@ -6,7 +6,7 @@
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Menu;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\MenuContent;
 	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Page\Page;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Utils\LoggerService;
+	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Utils\Logger\LoggerServiceInterface;
 
 	/**
 	 * Menu service
@@ -30,7 +30,7 @@
 		private $page;
 
 		/**
-		 * @var LoggerService
+		 * @var LoggerServiceInterface
 		 *
 		 * Logger service
 		 */
@@ -39,7 +39,7 @@
 		/**
 		 * Constructor
 		 */
-		public function __construct(EntityManagerInterface $em, Page $page, LoggerService $logger)
+		public function __construct(EntityManagerInterface $em, Page $page, LoggerServiceInterface $logger)
 		{
 			$this->em 		= $em;
 			$this->page 	= $page;
@@ -149,6 +149,7 @@
 					$lastPositionItemId = $key;
 				}
 				
+				// TODO: check if there is more than one item in the group
 				if($firstPosition > $item['position'])
 				{
 					$firstPosition 		= $item['position'];

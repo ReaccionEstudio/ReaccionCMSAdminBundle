@@ -40,7 +40,7 @@
         </parameter>
         <parameter key="reaccion_cms_admin.version">0.1</parameter>
 
-        <parameter key="reaccion_cms.logger.class">App\ReaccionEstudio\ReaccionCMSBundle\Services\Utils\LoggerService</parameter>
+        <parameter key="reaccion_cms.logger.class">App\ReaccionEstudio\ReaccionCMSBundle\Services\Utils\Logger\LoggerService</parameter>
 
     </parameters>
 

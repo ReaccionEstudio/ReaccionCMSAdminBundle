@@ -6,7 +6,7 @@
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Page as PageEntity;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\PageContent;
 	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Constants\PageContentTypes;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Utils\LoggerService;
+	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Utils\Logger\LoggerServiceInterface;
 
 	/**
 	 * Service with utils for Page entity
@@ -23,7 +23,7 @@
 		private $em;
 
 		/**
-		 * @var LoggerService
+		 * @var LoggerServiceInterface
 		 *
 		 * Logger service
 		 */
@@ -32,7 +32,7 @@
 		/**
 		 * Constructor
 		 */
-		public function __construct(EntityManagerInterface $em, LoggerService $logger)
+		public function __construct(EntityManagerInterface $em, LoggerServiceInterface $logger)
 		{
 			$this->em = $em;
 			$this->logger = $logger;
