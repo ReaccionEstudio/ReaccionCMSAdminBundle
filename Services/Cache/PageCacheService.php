@@ -9,11 +9,11 @@
 	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Entry;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Constants\Cache;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Helpers\CacheHelper;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Cache\CacheService;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Entries\EntryService;
 	use App\ReaccionEstudio\ReaccionCMSBundle\EntryView\EntryViewVarsFactory;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Language\LanguageService;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Comment\GetCommentsAsArray;
+	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Cache\CacheServiceInterface;
 	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Config\ConfigServiceInterface;
 	use App\ReaccionEstudio\ReaccionCMSBundle\DataTransformer\Page\PageDataTransformer;
 	use App\ReaccionEstudio\ReaccionCMSBundle\DataTransformer\Entry\EntryDataTransformer;	
@@ -35,7 +35,7 @@
 		private $em;
 
 		/**
-		 * @var CacheService
+		 * @var CacheServiceInterface
 		 *
 		 * Cache service
 		 */
@@ -93,7 +93,7 @@
 		/**
 		 * Constructor
 		 */
-		public function __construct(CacheService $cache, EntityManagerInterface $em, EntryService $entryService, RequestStack $request, ConfigServiceInterface $config, LoggerServiceInterface $logger, LanguageService $language)
+		public function __construct(CacheServiceInterface $cache, EntityManagerInterface $em, EntryService $entryService, RequestStack $request, ConfigServiceInterface $config, LoggerServiceInterface $logger, LanguageService $language)
 		{
 			$this->em 			= $em;
 			$this->cache 		= $cache;
