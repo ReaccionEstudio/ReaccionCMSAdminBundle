@@ -58,7 +58,7 @@
 					$em->flush();
 
 					// refresh cache if it is necessary
-					$this->refreshPageCache($pageForm);
+					$this->refreshCache($pageForm, $seoPageForm, $page);
 
 					// success message
 					$this->addFlash('success', $translator->trans('page_form.update_success_message'));
@@ -86,15 +86,29 @@
 		 * @param  Array  $pageForm 	Page form data
 		 * @return void   [type]
 		 */
-		private function refreshPageCache(Form $pageForm) : void
+		private function refreshCache(Form $pageForm, Form $seoForm, Page $page) : void
 		{
-			// TODO: update menu html value for cache
+			$pageId = $page->getId();
+			$menuService = $this->get("reaccion_cms.menu");
+			$pageCacheService = $this->get("reaccion_cms_admin.page_cache_service");
+
+			// update menu html value for cache if this page is inside any menu
+			$menu = $menuService->getPageMenu($pageId);
+
+			if($menu)
+			{
+				$menuService->saveMenuHtmlInCache($menu->getSlug(), $menu->getLanguage());
+			}
+
+			// update page cache
+			$pageSlug = $seoForm['slug']->getData();
+			$pageCacheService->refreshPageCache($pageSlug);
 		
 			// refresh main page cache
 			if($pageForm['mainPage']->getData() == true)
 			{
 				$language = $pageForm['language']->getData();
-				$this->get("reaccion_cms_admin.page_cache_service")->refreshMainPageCache($language);
+				$pageCacheService->refreshMainPageCache($language);
 			}
 		}
 	}
