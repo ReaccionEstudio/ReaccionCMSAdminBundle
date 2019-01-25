@@ -1,7 +1,3 @@
-# fos user
-fos_user:
-    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
-
 # home
 reaccion_cms_admin_index:
     path: /
