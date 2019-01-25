@@ -1,0 +1,23 @@
+{
+    "name": "reaccionestudio/reaccion-cms-admin-bundle",
+    "type": "symfony-bundle",
+    "description": "Admin panel for Reaccion CMS ",
+    "keywords": ["backend", "admin", "cms"],
+    "homepage": "https://github.com/ReaccionEstudio/ReaccionCMSAdminBundle",
+    "license": "MIT",
+    "authors": [
+    ],
+    "require": {
+        "php": "^7.1.3",
+        "reaccionestudio/reaccion-cms-bundle": "^0.1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "ReaccionEstudio\\ReaccionCMSAdminBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+        }
+    }
+}
