@@ -103,8 +103,8 @@ menu:
 menu_content:
   title: 'Menu: <strong>%name%</strong>'
   add_item: 'Add new item'
-  up: 'Subir'
-  down: 'Bajar'
+  up: 'Up'
+  down: 'Down'
 
 user_dropdown:
   sign_out: 'Sign out'
