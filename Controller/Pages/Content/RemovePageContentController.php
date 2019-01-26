@@ -1,13 +1,13 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\Content;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\Content;
 
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 	use Symfony\Component\Translation\TranslatorInterface;
 
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\PageContent;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\PageContent;
 
 	class RemovePageContentController extends Controller
 	{

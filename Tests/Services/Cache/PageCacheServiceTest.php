@@ -1,12 +1,12 @@
 <?php
 	
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Tests\Services\Cache;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Tests\Services\Cache;
 	
 	use PHPUnit\Framework\TestCase;
 	use Doctrine\Common\Collections\ArrayCollection;
 	use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\PageContent;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\PageContent;
 
 	/**
 	 * Page cache service test

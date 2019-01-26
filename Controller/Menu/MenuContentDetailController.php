@@ -1,15 +1,15 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu;
 
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\Translation\TranslatorInterface;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Menu;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\MenuContent;
-	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\Menu\MenuContentType;
-	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Menu\MenuService;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\Menu;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\MenuContent;
+	use ReaccionEstudio\ReaccionCMSAdminBundle\Form\Menu\MenuContentType;
+	use ReaccionEstudio\ReaccionCMSAdminBundle\Services\Menu\MenuService;
 
 	class MenuContentDetailController extends Controller
 	{

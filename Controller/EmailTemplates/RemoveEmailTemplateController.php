@@ -1,12 +1,12 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EmailTemplates;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EmailTemplates;
 
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Component\Translation\TranslatorInterface;
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\EmailTemplate;
-	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\EmailTemplates\EmailTemplateType;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\EmailTemplate;
+	use ReaccionEstudio\ReaccionCMSAdminBundle\Form\EmailTemplates\EmailTemplateType;
 
 	class RemoveEmailTemplateController extends Controller
 	{

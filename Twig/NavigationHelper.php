@@ -1,6 +1,6 @@
 <?php
 
-namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Twig;
+namespace ReaccionEstudio\ReaccionCMSAdminBundle\Twig;
 
 use Services\Managers\ManagerPermissions;
 use Symfony\Component\HttpFoundation\RequestStack;

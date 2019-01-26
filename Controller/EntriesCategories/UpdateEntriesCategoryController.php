@@ -1,12 +1,12 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EntriesCategories;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EntriesCategories;
 
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\Translation\TranslatorInterface;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\EntryCategory;
-	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\EntriesCategories\EntryCategoryType;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\EntryCategory;
+	use ReaccionEstudio\ReaccionCMSAdminBundle\Form\EntriesCategories\EntryCategoryType;
 
 	class UpdateEntriesCategoryController extends Controller
 	{

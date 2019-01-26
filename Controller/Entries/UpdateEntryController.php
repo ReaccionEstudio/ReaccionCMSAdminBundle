@@ -1,12 +1,12 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Entries;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Entries;
 
 	use Cocur\Slugify\Slugify;
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Entry;
-	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\Entries\EntryType;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\Entry;
+	use ReaccionEstudio\ReaccionCMSAdminBundle\Form\Entries\EntryType;
 	use Symfony\Component\Translation\TranslatorInterface;
 
 	class UpdateEntryController extends Controller

@@ -1,15 +1,15 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\EntriesCategories;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Form\EntriesCategories;
 
 	use Symfony\Component\Form\AbstractType;
 	use Symfony\Component\Form\FormBuilderInterface;
 	use Symfony\Component\OptionsResolver\OptionsResolver;
 	use Symfony\Component\Form\Extension\Core\Type\TextType;
 	use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\EntryCategory;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\EntryCategory;
 	use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Constants\Languages;
+	use ReaccionEstudio\ReaccionCMSAdminBundle\Constants\Languages;
 
 	class EntryCategoryType extends AbstractType
 	{
@@ -45,7 +45,7 @@
 	    public function configureOptions(OptionsResolver $resolver)
 		{
 		    $resolver->setDefaults(array(
-		    	'data_class' => 'App\ReaccionEstudio\ReaccionCMSBundle\Entity\EntryCategory',
+		    	'data_class' => 'ReaccionEstudio\ReaccionCMSBundle\Entity\EntryCategory',
 		        'mode' => 'create'
 		    ));
 		}

@@ -1,11 +1,11 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EntriesCategories;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EntriesCategories;
 
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\EntryCategory;
-	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\EntriesCategories\EntryCategoryType;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\EntryCategory;
+	use ReaccionEstudio\ReaccionCMSAdminBundle\Form\EntriesCategories\EntryCategoryType;
 	use Symfony\Component\Translation\TranslatorInterface;
 
 	class CreateEntriesCategoryController extends Controller

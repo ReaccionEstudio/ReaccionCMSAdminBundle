@@ -1,6 +1,6 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\Pages;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Form\Pages;
 
 	use Symfony\Component\Form\AbstractType;
 	use Symfony\Component\Form\FormBuilderInterface;
@@ -10,8 +10,8 @@
 	use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 	use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 	use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Constants\Languages;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\PageTranslationGroup;
+	use ReaccionEstudio\ReaccionCMSAdminBundle\Constants\Languages;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\PageTranslationGroup;
 
 	class PageType extends AbstractType
 	{
@@ -83,7 +83,7 @@
 		{
 			$resolver->setRequired('entity_manager');
 		    $resolver->setDefaults(array(
-		    	'data_class' => 'App\ReaccionEstudio\ReaccionCMSBundle\Entity\Page',
+		    	'data_class' => 'ReaccionEstudio\ReaccionCMSBundle\Entity\Page',
 		        'templateViews' => [],
 		        'query' => []
 		    ));

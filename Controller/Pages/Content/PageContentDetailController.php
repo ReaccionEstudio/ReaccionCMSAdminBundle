@@ -1,15 +1,15 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\Content;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\Content;
 
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Component\Translation\TranslatorInterface;
 
 	use Cocur\Slugify\Slugify;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\PageContent;
-	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\Pages\PageContentType;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\PageContent;
+	use ReaccionEstudio\ReaccionCMSAdminBundle\Form\Pages\PageContentType;
 
 	class PageContentDetailController extends Controller
 	{

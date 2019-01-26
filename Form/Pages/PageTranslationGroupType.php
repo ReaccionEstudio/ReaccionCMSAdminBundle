@@ -1,6 +1,6 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\Pages;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Form\Pages;
 
 	use Symfony\Component\Form\AbstractType;
 	use Symfony\Component\Form\FormBuilderInterface;

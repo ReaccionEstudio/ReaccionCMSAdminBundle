@@ -1,6 +1,6 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\DataTransformer\EmailTemplate;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\DataTransformer\EmailTemplate;
 
 	use Symfony\Component\HttpFoundation\Request;
 

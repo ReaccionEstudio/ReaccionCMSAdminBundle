@@ -1,221 +1,221 @@
 # home
 reaccion_cms_admin_index:
     path: /
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\IndexController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\IndexController::index
 
 # Pages
 reaccion_cms_admin_pages_index:
     path: /pages
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\PageListController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\PageListController::index
 
 reaccion_cms_admin_pages_create:
     path: /pages/create
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\CreatePageController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\CreatePageController::index
 
 reaccion_cms_admin_pages_detail:
     path: /pages/{page}
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\PageDetailController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\PageDetailController::index
 
 reaccion_cms_admin_pages_remove:
     path: /pages/{page}/remove
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\RemovePageController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\RemovePageController::index
 
 # Pages content
 reaccion_cms_admin_create_page_content:
     path: /pages/{page}/content/add
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\Content\CreatePageContentController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\Content\CreatePageContentController::index
 
 reaccion_cms_admin_edit_page_content:
     path: /pages/content/{content}
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\Content\PageContentDetailController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\Content\PageContentDetailController::index
 
 reaccion_cms_admin_remove_page_content:
     path: /pages/content/{content}/remove
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\Content\RemovePageContentController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\Content\RemovePageContentController::index
 
 # Page translation groups
 reaccion_cms_admin_create_page_translation_group:
     path: /pages/translation_group/create
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\TranslationGroups\CreateTranslationGroupController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\TranslationGroups\CreateTranslationGroupController::index
 
 reaccion_cms_admin_update_page_translation_group:
     path: /pages/translation_group/{pageTranslationGroup}/update
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\TranslationGroups\PageTranslationGroupDetailController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\TranslationGroups\PageTranslationGroupDetailController::index
 
 reaccion_cms_admin_remove_page_translation_group:
     path: /pages/translation_group/{pageTranslationGroup}/remove
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\TranslationGroups\RemovePageTranslationGroupController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\TranslationGroups\RemovePageTranslationGroupController::index
 
 # Preferences
 reaccion_cms_admin_preferences_configuration:
     path: /preferences/configuration
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\ConfigurationListController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\ConfigurationListController::index
 
 reaccion_cms_admin_preferences_create_configuration:
     path: /preferences/configuration/create
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\CreateConfigurationController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\CreateConfigurationController::index
 
 reaccion_cms_admin_preferences_update_configuration:
     path: /preferences/configuration/{config}/update/
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\UpdateConfigurationController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\UpdateConfigurationController::index
 
 reaccion_cms_admin_preferences_remove_configuration:
     path: /preferences/configuration/{config}/remove
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\RemoveConfigurationController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\RemoveConfigurationController::index
 
 # Preferences > Mailer
 reaccion_cms_admin_preferences_mailer:
     path: /preferences/mailer
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\Mailer\MailerConfigController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\Mailer\MailerConfigController::index
 
 reaccion_cms_admin_preferences_mailer_sent_test_email:
     path: /preferences/mailer/send/test_email
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\Mailer\SendTestEmailController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\Mailer\SendTestEmailController::index
     options:
         expose: true
 
 # Preferences > Email templates
 reaccion_cms_admin_preferences_email_templates:
     path: /preferences/email/templates
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EmailTemplates\EmailTemplateController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EmailTemplates\EmailTemplateController::index
 
 reaccion_cms_admin_preferences_create_email_template:
     path: /preferences/email/templates/create
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EmailTemplates\CreateEmailTemplateController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EmailTemplates\CreateEmailTemplateController::index
 
 reaccion_cms_admin_preferences_update_email_template:
     path: /preferences/email/templates/{emailTemplate}/update
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EmailTemplates\UpdateEmailTemplateController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EmailTemplates\UpdateEmailTemplateController::index
 
 reaccion_cms_admin_preferences_remove_email_templates:
     path: /preferences/email/templates/{emailTemplate}/remove
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EmailTemplates\RemoveEmailTemplateController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EmailTemplates\RemoveEmailTemplateController::index
 
 # Appearance > Menu
 reaccion_cms_admin_appearance_menu:
     path: /appearance/menu
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuListController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuListController::index
 
 reaccion_cms_admin_appearance_menu_create:
     path: /appearance/menu/create
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuCreateController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuCreateController::index
 
 reaccion_cms_admin_appearance_menu_detail:
     path: /appearance/menu/{menu}
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuDetailController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuDetailController::index
 
 reaccion_cms_admin_appearance_menu_remove:
     path: /appearance/menu/{menu}/remove
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\RemoveMenuController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\RemoveMenuController::index
 
 # Appearance > Menu > Content
 reaccion_cms_admin_appearance_menu_content:
     path: /appearance/menu/{menu}/content
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuContentListController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuContentListController::index
 
 reaccion_cms_admin_appearance_menu_content_create:
     path: /appearance/menu/{menu}/create/{parent}
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuContentCreateController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuContentCreateController::index
     defaults:
         parent: 0
 
 reaccion_cms_admin_appearance_menu_content_edit:
     path: /appearance/menu/{menu}/content/{menuContent}
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuContentDetailController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuContentDetailController::index
 
 reaccion_cms_admin_appearance_menu_content_remove:
     path: /appearance/menu/{menu}/remove/{menuContent}
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\RemoveMenuContentController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\RemoveMenuContentController::index
 
 reaccion_cms_admin_appearance_menu_content_update_position:
     path: /appearance/menu/{menu}/content/{menuContent}/{action}
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\UpdateMenuContentPositionController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\UpdateMenuContentPositionController::index
 
 # Media
 reaccion_cms_admin_media_index:
     path: /media
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media\MediaListController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media\MediaListController::index
     options:
         expose: true
 
 reaccion_cms_admin_create_media:
     path: /media/add
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media\CreateMediaController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media\CreateMediaController::index
 
 reaccion_cms_admin_media_detail_by_path:
     path: /media/path
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media\MediaDetailController::findByPath
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media\MediaDetailController::findByPath
     options:
         expose: true
 
 reaccion_cms_admin_media_detail:
     path: /media/{media}
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media\MediaDetailController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media\MediaDetailController::index
     options:
         expose: true
 
 reaccion_cms_admin_media_image_upload:
     path: /media/image/upload
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media\MediaImageUploadController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media\MediaImageUploadController::index
     options:
         expose: true
 
 reaccion_cms_admin_remove_media:
     path: /media/{media}/remove
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media\RemoveMediaController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media\RemoveMediaController::index
 
 # Users
 reaccion_cms_admin_users_index:
     path: /users
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Users\UsersListController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Users\UsersListController::index
 
 reaccion_cms_admin_users_create:
     path: /users/create
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Users\CreateUserController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Users\CreateUserController::index
 
 reaccion_cms_admin_users_update:
     path: /users/{user}/update
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Users\UserEditController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Users\UserEditController::index
 
 # Entries > Categories
 reaccion_cms_admin_entries_categories_list:
     path: /entries/categories
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EntriesCategories\EntriesCategoriesListController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EntriesCategories\EntriesCategoriesListController::index
 
 reaccion_cms_admin_entries_categories_create:
     path: /entries/categories/create
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EntriesCategories\CreateEntriesCategoryController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EntriesCategories\CreateEntriesCategoryController::index
 
 reaccion_cms_admin_entries_categories_update:
     path: /entries/categories/{category}/update
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EntriesCategories\UpdateEntriesCategoryController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EntriesCategories\UpdateEntriesCategoryController::index
 
 reaccion_cms_admin_entries_categories_remove:
     path: /entries/categories/{category}/remove
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EntriesCategories\RemoveEntriesCategoryController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EntriesCategories\RemoveEntriesCategoryController::index
 
 # Entries
 reaccion_cms_admin_entries_list:
     path: /entries
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Entries\EntriesListController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Entries\EntriesListController::index
 
 reaccion_cms_admin_entries_create:
     path: /entries/create
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Entries\CreateEntryController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Entries\CreateEntryController::index
 
 reaccion_cms_admin_entries_update:
     path: /entries/{entry}/update
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Entries\UpdateEntryController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Entries\UpdateEntryController::index
 
 reaccion_cms_admin_entries_remove:
     path: /entries/{entry}/remove
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Entries\RemoveEntryController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Entries\RemoveEntryController::index
 
 # themes
 reaccion_cms_admin_appearance_themes:
     path: /themes
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Themes\ThemesListController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Themes\ThemesListController::index
 
 reaccion_cms_admin_appearance_update_current_theme:
     path: /themes/update_current/{themeFolderName}
-    controller: App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Themes\UpdateCurrentThemeController::index
+    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Themes\UpdateCurrentThemeController::index

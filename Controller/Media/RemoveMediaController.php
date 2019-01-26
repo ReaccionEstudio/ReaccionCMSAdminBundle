@@ -1,11 +1,11 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media;
 
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\Translation\TranslatorInterface;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Media;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\Media;
 
 	class RemoveMediaController extends Controller
 	{

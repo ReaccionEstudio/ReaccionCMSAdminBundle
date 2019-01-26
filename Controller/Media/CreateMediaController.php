@@ -1,12 +1,12 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media;
 
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\Translation\TranslatorInterface;
-	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\Media\MediaType;
-	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Media\UploadService;
+	use ReaccionEstudio\ReaccionCMSAdminBundle\Form\Media\MediaType;
+	use ReaccionEstudio\ReaccionCMSAdminBundle\Services\Media\UploadService;
 
 	class CreateMediaController extends Controller
 	{

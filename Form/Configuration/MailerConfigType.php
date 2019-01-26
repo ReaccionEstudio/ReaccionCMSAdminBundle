@@ -1,6 +1,6 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\Configuration;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Form\Configuration;
 
 	use Symfony\Component\Form\AbstractType;
 	use Symfony\Component\Form\FormBuilderInterface;

@@ -1,12 +1,12 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Page;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Services\Page;
 
 	use Doctrine\ORM\EntityManagerInterface;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Page as PageEntity;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\PageContent;
-	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Constants\PageContentTypes;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Utils\Logger\LoggerServiceInterface;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\Page as PageEntity;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\PageContent;
+	use ReaccionEstudio\ReaccionCMSAdminBundle\Constants\PageContentTypes;
+	use ReaccionEstudio\ReaccionCMSBundle\Services\Utils\Logger\LoggerServiceInterface;
 
 	/**
 	 * Service with utils for Page entity

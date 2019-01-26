@@ -1,6 +1,6 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media;
 
 	use Symfony\Component\Asset\PathPackage;
 	use Symfony\Component\HttpFoundation\Request;
@@ -8,7 +8,7 @@
 	use Symfony\Component\HttpFoundation\JsonResponse;
 	use Symfony\Component\Translation\TranslatorInterface;
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Media\UploadService;
+	use ReaccionEstudio\ReaccionCMSAdminBundle\Services\Media\UploadService;
 
 	class MediaImageUploadController extends Controller
 	{

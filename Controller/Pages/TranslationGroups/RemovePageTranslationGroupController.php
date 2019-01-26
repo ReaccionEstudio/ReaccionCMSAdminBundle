@@ -1,14 +1,14 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\TranslationGroups;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\TranslationGroups;
 
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Component\Translation\TranslatorInterface;
 
 	use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\PageTranslationGroup;
-	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\Pages\PageTranslationGroupType;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\PageTranslationGroup;
+	use ReaccionEstudio\ReaccionCMSAdminBundle\Form\Pages\PageTranslationGroupType;
 
 	class RemovePageTranslationGroupController extends Controller
 	{

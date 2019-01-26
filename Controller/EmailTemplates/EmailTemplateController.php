@@ -1,10 +1,10 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EmailTemplates;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EmailTemplates;
 
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\EmailTemplate;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\EmailTemplate;
 
 	class EmailTemplateController extends Controller
 	{

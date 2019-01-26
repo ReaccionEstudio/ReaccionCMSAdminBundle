@@ -1,13 +1,13 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media;
 
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Component\HttpFoundation\JsonResponse;
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\Translation\TranslatorInterface;
-	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\Media\MediaType;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Media;
+	use ReaccionEstudio\ReaccionCMSAdminBundle\Form\Media\MediaType;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\Media;
 
 	class MediaDetailController extends Controller
 	{
@@ -47,7 +47,7 @@
 			try
 			{
 				$dql = "SELECT m 
-						FROM  App\ReaccionEstudio\ReaccionCMSBundle\Entity\Media m 
+						FROM  ReaccionEstudio\ReaccionCMSBundle\Entity\Media m 
 						WHERE m.path = :mediaPath 
 						OR m.large_path = :mediaPath 
 						OR m.medium_path = :mediaPath 

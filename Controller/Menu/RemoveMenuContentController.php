@@ -1,12 +1,12 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu;
 
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\Translation\TranslatorInterface;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Menu;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\MenuContent;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\Menu;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\MenuContent;
 
 	class RemoveMenuContentController extends Controller
 	{

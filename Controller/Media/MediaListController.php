@@ -1,11 +1,11 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media;
 
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Media\ListMediaService;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Media;
+	use ReaccionEstudio\ReaccionCMSAdminBundle\Services\Media\ListMediaService;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\Media;
 
 	class MediaListController extends Controller
 	{

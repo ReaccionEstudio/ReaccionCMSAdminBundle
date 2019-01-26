@@ -1,12 +1,12 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\Mailer;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\Mailer;
 
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Component\Translation\TranslatorInterface;
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Configuration;
-	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\Configuration\MailerConfigType;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\Configuration;
+	use ReaccionEstudio\ReaccionCMSAdminBundle\Form\Configuration\MailerConfigType;
 
 	class MailerConfigController extends Controller
 	{

@@ -6,23 +6,23 @@
 
     <parameters>
         
-        <parameter key="reaccion_cms_admin.page_content.position.class">App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\PageContent\PageContentPosition</parameter>
+        <parameter key="reaccion_cms_admin.page_content.position.class">ReaccionEstudio\ReaccionCMSAdminBundle\Services\PageContent\PageContentPosition</parameter>
 
-        <parameter key="reaccion_cms_admin.page.class">App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Page\Page</parameter>
+        <parameter key="reaccion_cms_admin.page.class">ReaccionEstudio\ReaccionCMSAdminBundle\Services\Page\Page</parameter>
 
-        <parameter key="reaccion_cms_admin.media_upload.class">App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Media\MediaUploadService</parameter>
+        <parameter key="reaccion_cms_admin.media_upload.class">ReaccionEstudio\ReaccionCMSAdminBundle\Services\Media\MediaUploadService</parameter>
 
-        <parameter key="reaccion_cms_admin.resize_image_service.class">App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Media\ResizeImageService</parameter>
+        <parameter key="reaccion_cms_admin.resize_image_service.class">ReaccionEstudio\ReaccionCMSAdminBundle\Services\Media\ResizeImageService</parameter>
 
-        <parameter key="reaccion_cms_admin.menu_content_service.class">App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Menu\MenuContentService</parameter>
+        <parameter key="reaccion_cms_admin.menu_content_service.class">ReaccionEstudio\ReaccionCMSAdminBundle\Services\Menu\MenuContentService</parameter>
 
-        <parameter key="reaccion_cms_admin.dashboard_service.class">App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Dashboard\DashboardService</parameter>
+        <parameter key="reaccion_cms_admin.dashboard_service.class">ReaccionEstudio\ReaccionCMSAdminBundle\Services\Dashboard\DashboardService</parameter>
 
-        <parameter key="reaccion_cms_admin.theme_service.class">App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Theme\ThemeService</parameter>
+        <parameter key="reaccion_cms_admin.theme_service.class">ReaccionEstudio\ReaccionCMSAdminBundle\Services\Theme\ThemeService</parameter>
 
-        <parameter key="reaccion_cms_admin.entry_service.class">App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Entries\EntryService</parameter>
+        <parameter key="reaccion_cms_admin.entry_service.class">ReaccionEstudio\ReaccionCMSAdminBundle\Services\Entries\EntryService</parameter>
         
-        <parameter key="reaccion_cms_admin.page_cache_service.class">App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Cache\PageCacheService</parameter>
+        <parameter key="reaccion_cms_admin.page_cache_service.class">ReaccionEstudio\ReaccionCMSAdminBundle\Services\Cache\PageCacheService</parameter>
     	
         <parameter key="reaccion_cms_admin.upload_dir">%kernel.project_dir%/public/uploads/</parameter>
 
@@ -40,7 +40,7 @@
         </parameter>
         <parameter key="reaccion_cms_admin.version">0.1</parameter>
 
-        <parameter key="reaccion_cms.logger.class">App\ReaccionEstudio\ReaccionCMSBundle\Services\Utils\Logger\LoggerService</parameter>
+        <parameter key="reaccion_cms.logger.class">ReaccionEstudio\ReaccionCMSBundle\Services\Utils\Logger\LoggerService</parameter>
 
     </parameters>
 

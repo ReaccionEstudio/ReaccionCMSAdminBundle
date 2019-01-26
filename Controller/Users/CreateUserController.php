@@ -1,11 +1,11 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Users;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Users;
 
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\HttpFoundation\Request;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\User;
-	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\Users\UserType;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\User;
+	use ReaccionEstudio\ReaccionCMSAdminBundle\Form\Users\UserType;
 	use Symfony\Component\Translation\TranslatorInterface;
 
 	class CreateUserController extends Controller

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Twig;
+namespace ReaccionEstudio\ReaccionCMSAdminBundle\Twig;
 
 use Services\Managers\ManagerPermissions;
-use App\ReaccionEstudio\ReaccionCMSAdminBundle\Constants\Languages;
+use ReaccionEstudio\ReaccionCMSAdminBundle\Constants\Languages;
 
 /**
  * CommonHelper class (Twig_Extension)

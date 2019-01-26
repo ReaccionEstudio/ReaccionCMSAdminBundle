@@ -1,6 +1,6 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\Pages;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Form\Pages;
 
 	use Symfony\Component\Form\AbstractType;
 	use Symfony\Component\Form\FormBuilderInterface;
@@ -10,7 +10,7 @@
 	use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 	use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 	use Symfony\Component\Form\Extension\Core\Type\HiddenType;
-	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Constants\PageContentTypes;
+	use ReaccionEstudio\ReaccionCMSAdminBundle\Constants\PageContentTypes;
 
 	class PageContentType extends AbstractType
 	{

@@ -1,9 +1,9 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\PageContent;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Services\PageContent;
 
 	use Doctrine\ORM\EntityManagerInterface;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
 
 	/**
 	 * Service to manage the page content positions.

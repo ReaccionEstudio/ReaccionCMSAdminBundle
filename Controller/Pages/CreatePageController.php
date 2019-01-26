@@ -1,14 +1,14 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages;
 
 	use Cocur\Slugify\Slugify;
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Component\Translation\TranslatorInterface;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\Pages\PageType;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Themes\ThemeConfigService;
+	use ReaccionEstudio\ReaccionCMSAdminBundle\Form\Pages\PageType;
+	use ReaccionEstudio\ReaccionCMSBundle\Services\Themes\ThemeConfigService;
 
 	class CreatePageController extends Controller
 	{

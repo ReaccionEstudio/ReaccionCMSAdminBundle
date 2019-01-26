@@ -1,6 +1,6 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\Users;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Form\Users;
 
 	use Symfony\Component\Form\AbstractType;
 	use Symfony\Component\Form\FormBuilderInterface;
@@ -12,7 +12,7 @@
 	use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 	use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 	use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Constants\Languages;
+	use ReaccionEstudio\ReaccionCMSAdminBundle\Constants\Languages;
 
 	class UserType extends AbstractType
 	{
@@ -79,7 +79,7 @@
 	    public function configureOptions(OptionsResolver $resolver)
 		{
 		    $resolver->setDefaults(array(
-		    	'data_class' => 'App\ReaccionEstudio\ReaccionCMSBundle\Entity\User',
+		    	'data_class' => 'ReaccionEstudio\ReaccionCMSBundle\Entity\User',
 		        'roles' => [],
 		        'mode' => 'create'
 		    ));

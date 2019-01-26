@@ -1,24 +1,24 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Cache;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Services\Cache;
 
 	use Doctrine\ORM\EntityManagerInterface;
 	use Symfony\Component\HttpFoundation\RequestStack;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\User;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Entry;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Constants\Cache;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Helpers\CacheHelper;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Entries\EntryService;
-	use App\ReaccionEstudio\ReaccionCMSBundle\EntryView\EntryViewVarsFactory;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Language\LanguageService;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Comment\GetCommentsAsArray;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Cache\CacheServiceInterface;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Config\ConfigServiceInterface;
-	use App\ReaccionEstudio\ReaccionCMSBundle\DataTransformer\Page\PageDataTransformer;
-	use App\ReaccionEstudio\ReaccionCMSBundle\DataTransformer\Entry\EntryDataTransformer;	
-	use App\ReaccionEstudio\ReaccionCMSBundle\Services\DynamicRouting\DynamicRoutingManager;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Utils\Logger\LoggerServiceInterface;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\User;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\Entry;
+	use ReaccionEstudio\ReaccionCMSBundle\Constants\Cache;
+	use ReaccionEstudio\ReaccionCMSBundle\Helpers\CacheHelper;
+	use ReaccionEstudio\ReaccionCMSBundle\Services\Entries\EntryService;
+	use ReaccionEstudio\ReaccionCMSBundle\EntryView\EntryViewVarsFactory;
+	use ReaccionEstudio\ReaccionCMSBundle\Services\Language\LanguageService;
+	use ReaccionEstudio\ReaccionCMSBundle\Services\Comment\GetCommentsAsArray;
+	use ReaccionEstudio\ReaccionCMSBundle\Services\Cache\CacheServiceInterface;
+	use ReaccionEstudio\ReaccionCMSBundle\Services\Config\ConfigServiceInterface;
+	use ReaccionEstudio\ReaccionCMSBundle\DataTransformer\Page\PageDataTransformer;
+	use ReaccionEstudio\ReaccionCMSBundle\DataTransformer\Entry\EntryDataTransformer;	
+	use ReaccionEstudio\ReaccionCMSBundle\Services\DynamicRouting\DynamicRoutingManager;
+	use ReaccionEstudio\ReaccionCMSBundle\Services\Utils\Logger\LoggerServiceInterface;
 
 	/**
 	 * Page cache service.

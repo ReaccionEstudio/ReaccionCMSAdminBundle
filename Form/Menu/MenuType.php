@@ -1,6 +1,6 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\Menu;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Form\Menu;
 
 	use Symfony\Component\Form\AbstractType;
 	use Symfony\Component\Form\FormBuilderInterface;
@@ -11,8 +11,8 @@
 
 	use Doctrine\ORM\EntityRepository;
 	use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Constants\Languages;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
+	use ReaccionEstudio\ReaccionCMSAdminBundle\Constants\Languages;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
 
 	class MenuType extends AbstractType
 	{
@@ -48,7 +48,7 @@
 	    public function configureOptions(OptionsResolver $resolver)
 		{
 		    $resolver->setDefaults(array(
-		    	'data_class' => 'App\ReaccionEstudio\ReaccionCMSBundle\Entity\Menu',
+		    	'data_class' => 'ReaccionEstudio\ReaccionCMSBundle\Entity\Menu',
 		        'mode' => 'create'
 		    ));
 		}

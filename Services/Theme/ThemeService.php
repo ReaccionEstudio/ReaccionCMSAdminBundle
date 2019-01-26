@@ -1,9 +1,9 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Theme;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Services\Theme;
 
-	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Config\ConfigServiceInterface;
-	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Theme\ListInstalledThemesService;
+	use ReaccionEstudio\ReaccionCMSBundle\Services\Config\ConfigServiceInterface;
+	use ReaccionEstudio\ReaccionCMSAdminBundle\Services\Theme\ListInstalledThemesService;
 
 	/**
 	 * Theme service

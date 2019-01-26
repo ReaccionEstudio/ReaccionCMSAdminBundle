@@ -1,13 +1,13 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages;
 
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Component\Translation\TranslatorInterface;
 
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
-	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\Pages\PageType;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
+	use ReaccionEstudio\ReaccionCMSAdminBundle\Form\Pages\PageType;
 	use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 	class RemovePageController extends Controller

@@ -1,11 +1,11 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration;
 
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\Translation\TranslatorInterface;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Configuration;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\Configuration;
 
 	class RemoveConfigurationController extends Controller
 	{

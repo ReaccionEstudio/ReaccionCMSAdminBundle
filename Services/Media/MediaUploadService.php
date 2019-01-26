@@ -1,14 +1,14 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Media;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Services\Media;
 
 	use Doctrine\ORM\EntityManager;
 	use Symfony\Component\HttpFoundation\File\UploadedFile;
 	use Symfony\Component\Translation\TranslatorInterface;
 
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Media;
-	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Media\ResizeImageService;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\Media;
+	use ReaccionEstudio\ReaccionCMSAdminBundle\Services\Media\ResizeImageService;
 
 	/**
 	 * Service for managing media file uploads.

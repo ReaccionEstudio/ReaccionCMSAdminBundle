@@ -1,6 +1,6 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\Entries;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Form\Entries;
 
 	use Symfony\Component\Form\AbstractType;
 	use Symfony\Component\Form\FormBuilderInterface;
@@ -8,10 +8,10 @@
 	use Symfony\Component\Form\Extension\Core\Type\TextType;
 	use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 	use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\EntryCategory;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\EntryCategory;
 	use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 	use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Constants\Languages;
+	use ReaccionEstudio\ReaccionCMSAdminBundle\Constants\Languages;
 
 	class EntryType extends AbstractType
 	{
@@ -29,7 +29,7 @@
 	            	'required' => true
 	            ])
 	            ->add('categories', EntityType::class, [
-	            	'class' => 'App\ReaccionEstudio\ReaccionCMSBundle\Entity\EntryCategory',
+	            	'class' => 'ReaccionEstudio\ReaccionCMSBundle\Entity\EntryCategory',
 	            	'choice_attr' => function($choiceValue, $key, $value) 
 	            	{
 	            		return ['data-language' => $choiceValue->getLanguage() ];
@@ -71,7 +71,7 @@
 	    public function configureOptions(OptionsResolver $resolver)
 		{
 		    $resolver->setDefaults(array(
-		    	'data_class' => 'App\ReaccionEstudio\ReaccionCMSBundle\Entity\Entry',
+		    	'data_class' => 'ReaccionEstudio\ReaccionCMSBundle\Entity\Entry',
 		        'mode' => 'create'
 		    ));
 		}

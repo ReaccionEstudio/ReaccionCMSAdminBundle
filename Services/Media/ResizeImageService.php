@@ -1,9 +1,9 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Media;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Services\Media;
 
 	use Doctrine\ORM\EntityManager;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Configuration;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\Configuration;
 
 	/**
 	 * Image manipulation size service
@@ -135,7 +135,7 @@
 			$configKeysToFind = ['large.image.size', 'medium.image.size', 'small.image.size'];
 			
 			$dql = "SELECT c.name, c.value 
-					FROM  App\ReaccionEstudio\ReaccionCMSBundle\Entity\Configuration c
+					FROM  ReaccionEstudio\ReaccionCMSBundle\Entity\Configuration c
 					WHERE c.name IN (:configKeys)";
 
 			$query = $this->em->createQuery($dql)

@@ -1,6 +1,6 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Constants;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Constants;
 
 	/**
 	 * Page content types

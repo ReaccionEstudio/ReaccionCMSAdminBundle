@@ -1,11 +1,11 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EntriesCategories;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EntriesCategories;
 
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\Translation\TranslatorInterface;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\EntryCategory;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\EntryCategory;
 
 	class RemoveEntriesCategoryController extends Controller
 	{

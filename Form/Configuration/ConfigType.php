@@ -1,6 +1,6 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\Configuration;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Form\Configuration;
 
 	use Symfony\Component\Form\AbstractType;
 	use Symfony\Component\Form\FormBuilderInterface;
@@ -75,7 +75,7 @@
 	    public function configureOptions(OptionsResolver $resolver)
 		{
 		    $resolver->setDefaults(array(
-		    	'data_class' => 'App\ReaccionEstudio\ReaccionCMSBundle\Entity\Configuration',
+		    	'data_class' => 'ReaccionEstudio\ReaccionCMSBundle\Entity\Configuration',
 		        'config' => []
 		    ));
 		}

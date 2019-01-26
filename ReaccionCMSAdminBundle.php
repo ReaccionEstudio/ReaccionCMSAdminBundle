@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace App\ReaccionEstudio\ReaccionCMSAdminBundle;
+namespace ReaccionEstudio\ReaccionCMSAdminBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

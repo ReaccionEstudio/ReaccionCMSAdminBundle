@@ -1,9 +1,9 @@
 <?php
 
-namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Twig;
+namespace ReaccionEstudio\ReaccionCMSAdminBundle\Twig;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Media;
+use ReaccionEstudio\ReaccionCMSBundle\Entity\Media;
 
 /**
  * MediaHelper class (Twig_Extension)

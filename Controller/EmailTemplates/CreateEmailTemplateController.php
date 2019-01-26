@@ -1,13 +1,13 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EmailTemplates;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EmailTemplates;
 
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Component\Translation\TranslatorInterface;
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\EmailTemplate;
-	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\EmailTemplates\EmailTemplateType;
-	use App\ReaccionEstudio\ReaccionCMSAdminBundle\DataTransformer\EmailTemplate\MessageParamsDataTransformer;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\EmailTemplate;
+	use ReaccionEstudio\ReaccionCMSAdminBundle\Form\EmailTemplates\EmailTemplateType;
+	use ReaccionEstudio\ReaccionCMSAdminBundle\DataTransformer\EmailTemplate\MessageParamsDataTransformer;
 
 	class CreateEmailTemplateController extends Controller
 	{

@@ -1,9 +1,9 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Dashboard;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Services\Dashboard;
 
 	use Doctrine\ORM\EntityManager;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Menu;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\Menu;
 
 	/**
 	 * Dashboard service
@@ -44,22 +44,22 @@
 		{
 			// DQLs
 			$totalPagesDql = "SELECT COUNT(p.id) AS total 
-							  FROM App\ReaccionEstudio\ReaccionCMSBundle\Entity\Page p ";
+							  FROM ReaccionEstudio\ReaccionCMSBundle\Entity\Page p ";
 
 			$totalPageContentDql =  "SELECT COUNT(p.id) AS total 
-									 FROM App\ReaccionEstudio\ReaccionCMSBundle\Entity\PageContent p ";
+									 FROM ReaccionEstudio\ReaccionCMSBundle\Entity\PageContent p ";
 
 			$totalUsersDql =  "SELECT COUNT(u.id) AS total 
-							   FROM App\ReaccionEstudio\ReaccionCMSBundle\Entity\User u ";
+							   FROM ReaccionEstudio\ReaccionCMSBundle\Entity\User u ";
 			
 			$totalMediaDql =  "SELECT COUNT(q.id) AS total 
-							   FROM App\ReaccionEstudio\ReaccionCMSBundle\Entity\Media q ";
+							   FROM ReaccionEstudio\ReaccionCMSBundle\Entity\Media q ";
 
 			$totalEntriesDql = "SELECT COUNT(e.id) AS total 
-							    FROM App\ReaccionEstudio\ReaccionCMSBundle\Entity\Entry e ";
+							    FROM ReaccionEstudio\ReaccionCMSBundle\Entity\Entry e ";
 
 			$totalCommentsDql = "SELECT COUNT(c.id) AS total 
-							    FROM App\ReaccionEstudio\ReaccionCMSBundle\Entity\Comment c ";
+							    FROM ReaccionEstudio\ReaccionCMSBundle\Entity\Comment c ";
 
 			// query results
 			$totalPagesResult = $this->em->createQuery($totalPagesDql)->getSingleResult();

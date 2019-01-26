@@ -1,6 +1,6 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Theme;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Services\Theme;
 
 	use Symfony\Component\Yaml\Yaml;
 	use Symfony\Component\Yaml\Exception\ParseException;

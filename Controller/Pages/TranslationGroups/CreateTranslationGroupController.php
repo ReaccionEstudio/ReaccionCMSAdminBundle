@@ -1,12 +1,12 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\TranslationGroups;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\TranslationGroups;
 
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Component\Translation\TranslatorInterface;
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\PageTranslationGroup;
-	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Form\Pages\PageTranslationGroupType;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\PageTranslationGroup;
+	use ReaccionEstudio\ReaccionCMSAdminBundle\Form\Pages\PageTranslationGroupType;
 
 	class CreateTranslationGroupController extends Controller
 	{

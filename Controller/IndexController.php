@@ -1,6 +1,6 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Controller;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller;
 
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 

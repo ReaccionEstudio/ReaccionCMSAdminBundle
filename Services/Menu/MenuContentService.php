@@ -1,12 +1,12 @@
 <?php
 
-	namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Menu;
+	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Services\Menu;
 
 	use Doctrine\ORM\EntityManagerInterface;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\Menu;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Entity\MenuContent;
-	use App\ReaccionEstudio\ReaccionCMSAdminBundle\Services\Page\Page;
-	use App\ReaccionEstudio\ReaccionCMSBundle\Services\Utils\Logger\LoggerServiceInterface;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\Menu;
+	use ReaccionEstudio\ReaccionCMSBundle\Entity\MenuContent;
+	use ReaccionEstudio\ReaccionCMSAdminBundle\Services\Page\Page;
+	use ReaccionEstudio\ReaccionCMSBundle\Services\Utils\Logger\LoggerServiceInterface;
 
 	/**
 	 * Menu service
@@ -238,7 +238,7 @@
 		public function getNextItemPosition(Int $parentId) : Int
 		{
 			$dql =  "SELECT (MAX(m.position) + 1) AS next_position 
-					 FROM  App\ReaccionEstudio\ReaccionCMSBundle\Entity\MenuContent m 
+					 FROM  ReaccionEstudio\ReaccionCMSBundle\Entity\MenuContent m 
 					";
 
 			if($parentId > 0)
@@ -276,8 +276,8 @@
 					m.position,
 					m.value,
 					m.enabled 
-					FROM  App\ReaccionEstudio\ReaccionCMSBundle\Entity\MenuContent m 
-					LEFT JOIN App\ReaccionEstudio\ReaccionCMSBundle\Entity\MenuContent p 
+					FROM  ReaccionEstudio\ReaccionCMSBundle\Entity\MenuContent m 
+					LEFT JOIN ReaccionEstudio\ReaccionCMSBundle\Entity\MenuContent p 
 					WITH p.id = m.parent 
 					WHERE m.menu = :menuId
 					";

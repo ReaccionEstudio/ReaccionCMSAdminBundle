@@ -1,6 +1,6 @@
 <?php
 
-namespace App\ReaccionEstudio\ReaccionCMSAdminBundle\Twig;
+namespace ReaccionEstudio\ReaccionCMSAdminBundle\Twig;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
