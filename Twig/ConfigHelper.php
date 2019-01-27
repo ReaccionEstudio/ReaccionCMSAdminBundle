@@ -2,7 +2,7 @@
 
 namespace ReaccionEstudio\ReaccionCMSAdminBundle\Twig;
 
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use ReaccionEstudio\ReaccionCMSBundle\Services\Config\ConfigService;
 
 /**
  * ConfigHelper class (Twig_Extension)
@@ -11,11 +11,19 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 class ConfigHelper extends \Twig_Extension
 {
-    public function __construct(ContainerInterface $container)
+    /**
+     * @var ConfigService
+     */
+    private $config;
+
+    public function __construct(ConfigService $config)
     {
-        $this->container = $container;
+        $this->config = $config;
     }
 
+    /**
+     * Constructor
+     */
 	public function getFunctions()
     {
         return array(
@@ -35,8 +43,7 @@ class ConfigHelper extends \Twig_Extension
     {
         if(empty($key)) return '';
 
-        $configService = $this->container->get("reaccion_cms.config");
-        return $configService->get($key);
+        return $this->config->get($key);
     }
 
     /**

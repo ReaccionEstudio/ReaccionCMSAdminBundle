@@ -2,7 +2,6 @@
 
 namespace ReaccionEstudio\ReaccionCMSAdminBundle\Twig;
 
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use ReaccionEstudio\ReaccionCMSBundle\Entity\Media;
 
 /**
@@ -12,9 +11,17 @@ use ReaccionEstudio\ReaccionCMSBundle\Entity\Media;
  */
 class MediaHelper extends \Twig_Extension
 {
-    public function __construct(ContainerInterface $container)
+    /** 
+     * @var String
+     */
+    private $upload_dir;
+
+    /**
+     * Constructor
+     */
+    public function __construct(String $upload_dir)
     {
-        $this->container = $container;
+        $this->upload_dir = $upload_dir;
     }
 
     public function getFunctions()
@@ -34,7 +41,7 @@ class MediaHelper extends \Twig_Extension
      */
     public function getImageResolution(String $imagePath) : String
     {
-        $imagePath = $this->container->getParameter("reaccion_cms_admin.upload_dir") . $imagePath;
+        $imagePath = $this->upload_dir . $imagePath;
 
         if( ! file_exists($imagePath)) return 'undefined';
 

@@ -21,6 +21,7 @@ class ReaccionCMSAdminExtension extends Extension
 		$processor = new Processor();
 
 		$loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('reaccion_cms_admin.xml');
+        $loader->load('services.xml');
+        $loader->load('twig_extensions.xml');
 	}
 }
