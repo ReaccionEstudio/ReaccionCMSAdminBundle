@@ -43,6 +43,13 @@
         <default key="_controller">reaccion_cms.update_menu_content_position.controller:index</default>
     </route>
 
+    <!-- appearance - themes -->
+    <route id="reaccion_cms_admin_appearance_themes" path="/themes" methods="GET">
+        <default key="_controller">reaccion_cms.appearance_themes.controller:index</default>
+    </route>
 
+    <route id="reaccion_cms_admin_appearance_update_current_theme" path="/themes/update_current/{themeFolderName}" methods="GET POST">
+        <default key="_controller">reaccion_cms.update_current_theme.controller:index</default>
+    </route>
 
 </routes>

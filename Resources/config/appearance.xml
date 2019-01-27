@@ -39,7 +39,12 @@
 
     	<service id="reaccion_cms.update_menu_content_position.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\UpdateMenuContentPositionController" public="true"></service>
 
+    	<!-- appearance - themes -->
+    	<service id="reaccion_cms.appearance_themes.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Themes\ThemesListController" public="true"></service>
 
+    	<service id="reaccion_cms.update_current_theme.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Themes\UpdateCurrentThemeController" public="true">
+    		<argument type="service" id="translator" />
+    	</service>
 
     </services>
 

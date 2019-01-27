@@ -1,9 +1,0 @@
-
-# themes
-reaccion_cms_admin_appearance_themes:
-    path: /themes
-    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Themes\ThemesListController::index
-
-reaccion_cms_admin_appearance_update_current_theme:
-    path: /themes/update_current/{themeFolderName}
-    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Themes\UpdateCurrentThemeController::index
