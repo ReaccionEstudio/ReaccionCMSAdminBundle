@@ -12,7 +12,20 @@
 
 	class CreatePageController extends Controller
 	{
-		public function index(Request $request, TranslatorInterface $translator)
+		/**
+		 * @var TranslatorInterface
+		 */
+		private $translator;
+
+		/** 
+		 * Constructor
+		 */
+		public function __construct(TranslatorInterface $translator)
+		{
+			$this->translator = $translator;	
+		}
+
+		public function index(Request $request)
 		{
 			$page = new Page();
 			$em = $this->getDoctrine()->getManager();
@@ -54,12 +67,12 @@
 						$this->get("reaccion_cms_admin.page_cache_service")->refreshMainPageCache($language);
 					}
 
-					$this->addFlash('success', $translator->trans('page_form.create_success_message') );
+					$this->addFlash('success', $this->translator->trans('page_form.create_success_message') );
 					return $this->redirectToRoute('reaccion_cms_admin_pages_index');
 				}
 				catch(\Exception $e)
 				{
-					$errMssg =  $translator->trans(
+					$errMssg =  $this->translator->trans(
 									"page_form.create_error_message", 
 									array(
 										'%name%' => $form['name']->getData(),
