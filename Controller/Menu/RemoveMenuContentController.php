@@ -10,7 +10,14 @@
 
 	class RemoveMenuContentController extends Controller
 	{
-		public function index(Menu $menu, MenuContent $menuContent, Request $request, TranslatorInterface $translator)
+		private $translator;
+		
+		public function __construct(TranslatorInterface $translator)
+		{
+			$this->translator = $translator;	
+		}
+
+		public function index(Menu $menu, MenuContent $menuContent, Request $request)
 		{
 			$em = $this->getDoctrine()->getManager();
 
@@ -33,11 +40,11 @@
 				$menuService->saveMenuHtmlInCache($menu->getSlug(), $menu->getLanguage(), $cacheKey);
 
 				// flash message
-				$this->addFlash('success', $translator->trans('menu_content_form.remove_success_message', array('%name%' => $menuItemName)) );
+				$this->addFlash('success', $this->translator->trans('menu_content_form.remove_success_message', array('%name%' => $menuItemName)) );
 			}
 			catch(\Exception $e)
 			{
-				$errorMssg = $translator->trans('menu_content_form.remove_error_message', array('%name%' => $menuItemName, '%error%' => $e->getMessage()));
+				$errorMssg = $this->translator->trans('menu_content_form.remove_error_message', array('%name%' => $menuItemName, '%error%' => $e->getMessage()));
 				$this->addFlash('error', $errorMssg);
 			}
 

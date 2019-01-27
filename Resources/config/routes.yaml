@@ -1,20 +1,3 @@
-# Appearance > Menu
-reaccion_cms_admin_appearance_menu:
-    path: /appearance/menu
-    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuListController::index
-
-reaccion_cms_admin_appearance_menu_create:
-    path: /appearance/menu/create
-    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuCreateController::index
-
-reaccion_cms_admin_appearance_menu_detail:
-    path: /appearance/menu/{menu}
-    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuDetailController::index
-
-reaccion_cms_admin_appearance_menu_remove:
-    path: /appearance/menu/{menu}/remove
-    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\RemoveMenuController::index
-
 # Appearance > Menu > Content
 reaccion_cms_admin_appearance_menu_content:
     path: /appearance/menu/{menu}/content

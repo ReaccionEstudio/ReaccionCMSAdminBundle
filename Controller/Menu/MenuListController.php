@@ -4,13 +4,12 @@
 
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-	use Symfony\Component\Translation\TranslatorInterface;
 	use ReaccionEstudio\ReaccionCMSBundle\Entity\Menu;
 	use ReaccionEstudio\ReaccionCMSAdminBundle\Services\Menu\MenuService;
 
 	class MenuListController extends Controller
 	{
-		public function index(Request $request, TranslatorInterface $translator)
+		public function index(Request $request)
 		{
 			$em = $this->getDoctrine()->getManager();
 			$menu = $em->getRepository(Menu::class)->findBy(

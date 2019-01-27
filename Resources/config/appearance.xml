@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+    	<!-- appearance - menu -->
+    	<service id="reaccion_cms.menu_list.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuListController" public="true"></service>
+
+    	<service id="reaccion_cms.create_menu.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuCreateController" public="true">
+    		<argument type="service" id="translator" />
+    	</service>
+
+    	<service id="reaccion_cms.menu_detail.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuDetailController" public="true">
+    		<argument type="service" id="translator" />
+    	</service>
+
+    	<service id="reaccion_cms.remove_menu.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\RemoveMenuContentController" public="true">
+    		<argument type="service" id="translator" />
+    	</service>
+
+    	<!-- appearance - menu content -->
+    	
+
+    </services>
+
+</container>

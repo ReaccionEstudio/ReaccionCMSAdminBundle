@@ -12,7 +12,14 @@
 
 	class MenuDetailController extends Controller
 	{
-		public function index(Menu $menu, Request $request, TranslatorInterface $translator)
+		private $translator;
+		
+		public function __construct(TranslatorInterface $translator)
+		{
+			$this->translator = $translator;	
+		}
+
+		public function index(Menu $menu, Request $request)
 		{
 			$em = $this->getDoctrine()->getManager();
 
@@ -38,12 +45,12 @@
 					$this->get("reaccion_cms.menu")->updateMenuHtmlCache($menu);
 
 					// flash message
-					$this->addFlash('success', $translator->trans('menu_form.update_success_message') );
+					$this->addFlash('success', $this->translator->trans('menu_form.update_success_message') );
 					return $this->redirectToRoute('reaccion_cms_admin_appearance_menu');
 				}
 				catch(\Exception $e)
 				{
-					$errMssg =  $translator->trans(
+					$errMssg =  $this->translator->trans(
 									"menu_form.update_error_message", 
 									array(
 										'%name%' => $form['name']->getData(),

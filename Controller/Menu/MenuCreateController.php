@@ -11,7 +11,14 @@
 
 	class MenuCreateController extends Controller
 	{
-		public function index(Request $request, TranslatorInterface $translator)
+		private $translator;
+		
+		public function __construct(TranslatorInterface $translator)
+		{
+			$this->translator = $translator;	
+		}
+
+		public function index(Request $request)
 		{
 			$menu = new Menu();
 
@@ -33,13 +40,13 @@
 					$em->flush();
 
 					// flash message
-					$this->addFlash('success', $translator->trans('menu_form.create_success_message') );
+					$this->addFlash('success', $this->translator->trans('menu_form.create_success_message') );
 
 					return $this->redirectToRoute('reaccion_cms_admin_appearance_menu');
 				}
 				catch(\Exception $e)
 				{
-					$errMssg =  $translator->trans(
+					$errMssg =  $this->translator->trans(
 									"menu_form.create_error_message", 
 									array(
 										'%name%' => $form['name']->getData(),

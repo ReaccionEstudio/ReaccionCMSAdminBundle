@@ -28,6 +28,7 @@ class ReaccionCMSAdminExtension extends Extension
         $loader->load('services.xml');
         $loader->load('dashboard.xml');
         $loader->load('preferences.xml');
+        $loader->load('appearance.xml');
         $loader->load('twig_extensions.xml');
 	}
 }
