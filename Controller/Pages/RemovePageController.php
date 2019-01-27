@@ -12,7 +12,14 @@
 
 	class RemovePageController extends Controller
 	{
-		public function index(Page $page, TranslatorInterface $translator)
+		private $translator;
+		
+		public function __construct(TranslatorInterface $translator)
+		{
+			$this->translator = $translator;	
+		}
+
+		public function index(Page $page)
 		{
 			$em = $this->getDoctrine()->getManager();
 
@@ -29,13 +36,13 @@
 				$em->remove($page);
 				$em->flush();
 
-				$this->addFlash('success', $translator->trans('page_form.remove_success_message', array('%name%' => $pageName)) );
+				$this->addFlash('success', $this->translator->trans('page_form.remove_success_message', array('%name%' => $pageName)) );
 
 				return $this->redirectToRoute('reaccion_cms_admin_pages_index');
 			}
 			catch(\Exception $e)
 			{
-				$errorMssg = $translator->trans('page_form.remove_error_message', array('%name%' => $pageName, '%error%' => $e->getMessage()));
+				$errorMssg = $this->translator->trans('page_form.remove_error_message', array('%name%' => $pageName, '%error%' => $e->getMessage()));
 				$this->addFlash('error', $errorMssg);
 
 				return 	$this->redirectToRoute(

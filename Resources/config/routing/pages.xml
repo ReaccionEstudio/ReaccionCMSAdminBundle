@@ -8,4 +8,18 @@
         <default key="_controller">reaccion_cms.create_page.controller:index</default>
     </route>
 
+    <route id="reaccion_cms_admin_pages_index" path="/pages" methods="GET">
+        <default key="_controller">reaccion_cms.list_pages.controller:index</default>
+    </route>
+
+    <route id="reaccion_cms_admin_pages_detail" path="/pages/{page}" methods="GET POST">
+        <default key="_controller">reaccion_cms.page_detail.controller:index</default>
+    </route>
+
+    <route id="reaccion_cms_admin_pages_remove" path="/pages/{page}/remove" methods="GET">
+        <default key="_controller">reaccion_cms.remove_page.controller:index</default>
+    </route>
+
+
+
 </routes>

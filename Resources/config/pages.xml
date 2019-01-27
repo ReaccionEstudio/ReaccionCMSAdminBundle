@@ -10,6 +10,14 @@
     		<argument type="service" id="translator" />
         </service>
 
+    	<service id="reaccion_cms.list_pages.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\PageListController" public="true"></service>
+
+    	<service id="reaccion_cms.page_detail.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\PageDetailController" public="true"></service>
+
+    	<service id="reaccion_cms.remove_page.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\RemovePageController" public="true">
+    		<argument type="service" id="translator" />
+    	</service>
+
     </services>
 
 </container>
