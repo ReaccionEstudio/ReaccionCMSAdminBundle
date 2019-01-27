@@ -13,7 +13,14 @@
 
 	class CreatePageContentController extends Controller
 	{
-		public function index(Page $page, Request $request, TranslatorInterface $translator)
+		private $translator;
+		
+		public function __construct(TranslatorInterface $translator)
+		{
+			$this->translator = $translator;	
+		}
+
+		public function index(Page $page, Request $request)
 		{
 			$pageContent = new PageContent();
 			$em = $this->getDoctrine()->getManager();
@@ -44,7 +51,7 @@
 					$this->get("reaccion_cms_admin.page")->setPageTypeByPageContent($pageContent);
 
 					// flash message
-					$successMessage = $translator->trans('page_content_form.create_success_message');
+					$successMessage = $this->translator->trans('page_content_form.create_success_message');
 					$this->addFlash('success', $successMessage);
 
 					return 	$this->redirectToRoute(
@@ -54,7 +61,7 @@
 				}
 				catch(\Exception $e)
 				{
-					$errorMssg = $translator->trans(
+					$errorMssg = $this->translator->trans(
 												'page_content_form.create_error_message', 
 												[ 
 													'%name%' => $pageContent->getName(),

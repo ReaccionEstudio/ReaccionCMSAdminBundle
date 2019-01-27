@@ -1,16 +1,3 @@
-# Pages content
-reaccion_cms_admin_create_page_content:
-    path: /pages/{page}/content/add
-    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\Content\CreatePageContentController::index
-
-reaccion_cms_admin_edit_page_content:
-    path: /pages/content/{content}
-    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\Content\PageContentDetailController::index
-
-reaccion_cms_admin_remove_page_content:
-    path: /pages/content/{content}/remove
-    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\Content\RemovePageContentController::index
-
 # Page translation groups
 reaccion_cms_admin_create_page_translation_group:
     path: /pages/translation_group/create

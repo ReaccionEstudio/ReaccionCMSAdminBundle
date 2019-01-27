@@ -13,7 +13,14 @@
 
 	class PageContentDetailController extends Controller
 	{
-		public function index(PageContent $content, Request $request, TranslatorInterface $translator)
+		private $translator;
+		
+		public function __construct(TranslatorInterface $translator)
+		{
+			$this->translator = $translator;	
+		}
+
+		public function index(PageContent $content, Request $request)
 		{
 			$page = $content->getPage();
 
@@ -36,7 +43,7 @@
 				$this->get("reaccion_cms_admin.page")->setPageTypeByPageContent($content);
 
 				// flash message
-				$successMessage = $translator->trans(
+				$successMessage = $this->translator->trans(
 									'page_content_form.update_success_message', 
 									array('%name%' => $content->getName())
 								);

@@ -6,6 +6,7 @@
 
     <services>
 
+        <!-- pages -->
     	<service id="reaccion_cms.create_page.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\CreatePageController" public="true">
     		<argument type="service" id="translator" />
         </service>
@@ -17,6 +18,20 @@
     	<service id="reaccion_cms.remove_page.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\RemovePageController" public="true">
     		<argument type="service" id="translator" />
     	</service>
+
+        <!-- pages content -->
+        <service id="reaccion_cms.create_page_content.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\Content\CreatePageContentController" public="true">
+            <argument type="service" id="translator" />
+        </service>
+        
+        <service id="reaccion_cms.page_content_detail.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\Content\PageContentDetailController" public="true">
+            <argument type="service" id="translator" />
+        </service>
+        
+        <service id="reaccion_cms.remove_page_content.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\Content\RemovePageContentController" public="true">
+            <argument type="service" id="translator" />
+        </service>
+        
 
     </services>
 

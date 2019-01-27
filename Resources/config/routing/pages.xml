@@ -4,6 +4,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
+    <!-- pages -->
     <route id="reaccion_cms_admin_pages_create" path="/pages/create" methods="GET POST">
         <default key="_controller">reaccion_cms.create_page.controller:index</default>
     </route>
@@ -20,6 +21,19 @@
         <default key="_controller">reaccion_cms.remove_page.controller:index</default>
     </route>
 
+    <!-- pages content -->
+    <route id="reaccion_cms_admin_create_page_content" path="/pages/{page}/content/add" methods="GET POST">
+        <default key="_controller">reaccion_cms.create_page_content.controller:index</default>
+    </route>
+    
+    <route id="reaccion_cms_admin_edit_page_content" path="/pages/content/{content}" methods="GET POST">
+        <default key="_controller">reaccion_cms.page_content_detail.controller:index</default>
+    </route>
+    
+    <route id="reaccion_cms_admin_remove_page_content" path="/pages/content/{content}/remove" methods="GET POST">
+        <default key="_controller">reaccion_cms.remove_page_content.controller:index</default>
+    </route>
+    
 
 
 </routes>

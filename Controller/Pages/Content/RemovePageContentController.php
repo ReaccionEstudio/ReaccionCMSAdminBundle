@@ -6,12 +6,18 @@
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 	use Symfony\Component\Translation\TranslatorInterface;
-
 	use ReaccionEstudio\ReaccionCMSBundle\Entity\PageContent;
 
 	class RemovePageContentController extends Controller
 	{
-		public function index(PageContent $content, TranslatorInterface $translator)
+		private $translator;
+		
+		public function __construct(TranslatorInterface $translator)
+		{
+			$this->translator = $translator;	
+		}
+
+		public function index(PageContent $content)
 		{
 			// check if page content exists
 			if(empty($content))
@@ -35,7 +41,7 @@
 				$this->get("reaccion_cms_admin.page")->resetPageType($page);
 
 				// flash message
-				$successMessage = $translator->trans(
+				$successMessage = $this->translator->trans(
 									'page_content_form.remove_success_message', 
 									array('%name%' => $content->getName())
 								);
@@ -49,7 +55,7 @@
 			}
 			catch(\Exception $e)
 			{
-				$errorMessage = $translator->trans(
+				$errorMessage = $this->translator->trans(
 									'page_content_form.remove_error_message',
 									array(
 										'%name%' => $content->getName(),
