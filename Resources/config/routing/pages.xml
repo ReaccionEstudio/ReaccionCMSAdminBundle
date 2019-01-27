@@ -25,7 +25,7 @@
     <route id="reaccion_cms_admin_create_page_content" path="/pages/{page}/content/add" methods="GET POST">
         <default key="_controller">reaccion_cms.create_page_content.controller:index</default>
     </route>
-    
+
     <route id="reaccion_cms_admin_edit_page_content" path="/pages/content/{content}" methods="GET POST">
         <default key="_controller">reaccion_cms.page_content_detail.controller:index</default>
     </route>
@@ -34,6 +34,17 @@
         <default key="_controller">reaccion_cms.remove_page_content.controller:index</default>
     </route>
     
-
+    <!-- pages translation groups -->
+    <route id="reaccion_cms_admin_create_page_translation_group" path="/pages/translation_group/create" methods="GET POST">
+        <default key="_controller">reaccion_cms.create_page_translation_group.controller:index</default>
+    </route>
+    
+    <route id="reaccion_cms_admin_update_page_translation_group" path="/pages/translation_group/{pageTranslationGroup}/update" methods="GET POST">
+        <default key="_controller">reaccion_cms.page_translation_group_detail.controller:index</default>
+    </route>
+    
+    <route id="reaccion_cms_admin_remove_page_translation_group" path="/pages/translation_group/{pageTranslationGroup}/remove" methods="GET POST">
+        <default key="_controller">reaccion_cms.remove_page_translation_group.controller:index</default>
+    </route>
 
 </routes>

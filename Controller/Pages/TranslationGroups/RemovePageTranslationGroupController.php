@@ -12,7 +12,14 @@
 
 	class RemovePageTranslationGroupController extends Controller
 	{
-		public function index(PageTranslationGroup $pageTranslationGroup, TranslatorInterface $translator)
+		private $translator;
+		
+		public function __construct(TranslatorInterface $translator)
+		{
+			$this->translator = $translator;	
+		}
+
+		public function index(PageTranslationGroup $pageTranslationGroup)
 		{
 			$em = $this->getDoctrine()->getManager();
 
@@ -29,13 +36,13 @@
 				$em->remove($pageTranslationGroup);
 				$em->flush();
 
-				$this->addFlash('success', $translator->trans('page_translation_group_form.remove_success_message', array('%name%' => $name)) );
+				$this->addFlash('success', $this->translator->trans('page_translation_group_form.remove_success_message', array('%name%' => $name)) );
 
 				return $this->redirectToRoute('reaccion_cms_admin_pages_index');
 			}
 			catch(\Exception $e)
 			{
-				$errorMssg = $translator->trans('page_translation_group_form.remove_error_message', array('%name%' => $name, '%error%' => $e->getMessage()));
+				$errorMssg = $this->translator->trans('page_translation_group_form.remove_error_message', array('%name%' => $name, '%error%' => $e->getMessage()));
 				$this->addFlash('error', $errorMssg);
 
 				return 	$this->redirectToRoute(

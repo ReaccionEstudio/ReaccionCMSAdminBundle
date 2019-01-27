@@ -31,7 +31,19 @@
         <service id="reaccion_cms.remove_page_content.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\Content\RemovePageContentController" public="true">
             <argument type="service" id="translator" />
         </service>
-        
+
+        <!-- pages translation groups -->
+        <service id="reaccion_cms.create_page_translation_group.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\TranslationGroups\CreateTranslationGroupController" public="true">
+            <argument type="service" id="translator" />
+        </service>
+
+        <service id="reaccion_cms.page_translation_group_detail.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\TranslationGroups\PageTranslationGroupDetailController" public="true">
+            <argument type="service" id="translator" />
+        </service>
+
+        <service id="reaccion_cms.remove_page_translation_group.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\TranslationGroups\RemovePageTranslationGroupController" public="true">
+            <argument type="service" id="translator" />
+        </service>
 
     </services>
 

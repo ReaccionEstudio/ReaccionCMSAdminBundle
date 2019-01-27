@@ -10,7 +10,14 @@
 
 	class CreateTranslationGroupController extends Controller
 	{
-		public function index(Request $request, TranslatorInterface $translator)
+		private $translator;
+		
+		public function __construct(TranslatorInterface $translator)
+		{
+			$this->translator = $translator;	
+		}
+
+		public function index(Request $request)
 		{
 			$pageTranslationGroup = new PageTranslationGroup();
 
@@ -27,12 +34,12 @@
 					$em->persist($pageTranslationGroup);
 					$em->flush();
 
-					$this->addFlash('success', $translator->trans('page_translation_group_form.create_success_message') );
+					$this->addFlash('success', $this->translator->trans('page_translation_group_form.create_success_message') );
 					return $this->redirectToRoute('reaccion_cms_admin_pages_index');
 				}
 				catch(\Exception $e)
 				{
-					$errMssg =  $translator->trans(
+					$errMssg =  $this->translator->trans(
 									"page_translation_group_form.create_error_message", 
 									array(
 										'%name%' => $form['name']->getData(),
