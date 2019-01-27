@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="reaccion_cms_admin_users_index" path="/users" methods="GET">
+        <default key="_controller">reaccion_cms.list_users.controller:index</default>
+    </route>
+
+    <route id="reaccion_cms_admin_users_create" path="/users/create" methods="GET POST">
+        <default key="_controller">reaccion_cms.create_user.controller:index</default>
+    </route>
+    
+    <route id="reaccion_cms_admin_users_update" path="/users/{user}/update" methods="GET POST">
+        <default key="_controller">reaccion_cms.update_user.controller:index</default>
+    </route>
+
+</routes>

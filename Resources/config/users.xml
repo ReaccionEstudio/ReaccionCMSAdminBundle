@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+    	<service id="reaccion_cms.list_users.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Users\UsersListController" public="true"></service>
+
+    	<service id="reaccion_cms.create_user.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Users\CreateUserController" public="true">
+    		<argument type="service" id="translator" />
+        </service>
+
+    	<service id="reaccion_cms.update_user.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Users\UserEditController" public="true">
+    		<argument type="service" id="translator" />
+        </service>
+
+    </services>
+
+</container>

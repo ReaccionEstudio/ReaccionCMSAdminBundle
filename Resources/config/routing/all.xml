@@ -7,6 +7,8 @@
     <import resource="@ReaccionCMSAdminBundle/Resources/config/routing/dashboard.xml" />
 
     <import resource="@ReaccionCMSAdminBundle/Resources/config/routing/pages.xml" />
+
+    <import resource="@ReaccionCMSAdminBundle/Resources/config/routing/users.xml" />
         
 
 </routes>

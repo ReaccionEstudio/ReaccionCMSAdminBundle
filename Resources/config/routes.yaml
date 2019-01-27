@@ -1,7 +1,5 @@
 # home
-reaccion_cms_admin_index:
-    path: /
-    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\IndexController::index
+
 
 # Pages
 reaccion_cms_admin_pages_index:
@@ -161,19 +159,6 @@ reaccion_cms_admin_media_image_upload:
 reaccion_cms_admin_remove_media:
     path: /media/{media}/remove
     controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media\RemoveMediaController::index
-
-# Users
-reaccion_cms_admin_users_index:
-    path: /users
-    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Users\UsersListController::index
-
-reaccion_cms_admin_users_create:
-    path: /users/create
-    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Users\CreateUserController::index
-
-reaccion_cms_admin_users_update:
-    path: /users/{user}/update
-    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Users\UserEditController::index
 
 # Entries > Categories
 reaccion_cms_admin_entries_categories_list:

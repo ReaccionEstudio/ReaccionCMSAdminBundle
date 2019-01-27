@@ -10,7 +10,14 @@
 
 	class UserEditController extends Controller
 	{
-		public function index(User $user, Request $request, TranslatorInterface $translator)
+		private $translator;
+		
+		public function __construct(TranslatorInterface $translator)
+		{
+			$this->translator = $translator;	
+		}
+
+		public function index(User $user, Request $request)
 		{
 			$em = $this->getDoctrine()->getManager();
 
@@ -38,7 +45,7 @@
         			$userManager = $this->container->get('fos_user.user_manager');
         			$userManager->updateUser($user, true);
 
-					$this->addFlash('success', $translator->trans('users_form.update_success_message') );
+					$this->addFlash('success', $this->translator->trans('users_form.update_success_message') );
 					
 					return $this->redirectToRoute('reaccion_cms_admin_users_index');
 				}
@@ -46,7 +53,7 @@
 				{
 					$this->addFlash(
 						'error', 
-						$translator->trans('users_form.update_error_message', [
+						$this->translator->trans('users_form.update_error_message', [
 							'%name%' => $form['username']->getData(),
 							'%error%' => $e->getMessage()
 						]) 

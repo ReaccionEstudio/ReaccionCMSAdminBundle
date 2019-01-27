@@ -10,7 +10,14 @@
 
 	class CreateUserController extends Controller
 	{
-		public function index(Request $request, TranslatorInterface $translator)
+		private $translator;
+		
+		public function __construct(TranslatorInterface $translator)
+		{
+			$this->translator = $translator;	
+		}
+
+		public function index(Request $request)
 		{
 			$user = new User();
 			$em = $this->getDoctrine()->getManager();
@@ -34,7 +41,7 @@
 					$em->persist($user);
 					$em->flush();
 
-					$this->addFlash('success', $translator->trans('users_form.create_success_message') );
+					$this->addFlash('success', $this->translator->trans('users_form.create_success_message') );
 					
 					return $this->redirectToRoute('reaccion_cms_admin_users_index');
 				}
@@ -42,7 +49,7 @@
 				{
 					$this->addFlash(
 						'error', 
-						$translator->trans('users_form.create_error_message', [
+						$this->translator->trans('users_form.create_error_message', [
 							'%name%' => $form['username']->getData(),
 							'%error%' => $e->getMessage()
 						]) 
