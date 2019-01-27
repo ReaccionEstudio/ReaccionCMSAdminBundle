@@ -45,10 +45,23 @@
 		 */
 		private $password;
 
+		/** 
+		 * @var TranslatorInterface
+		 */
+		private $translator;
+		
+		/**
+		 * Constructor
+		 */
+		public function __construct(TranslatorInterface $translator)
+		{
+			$this->translator = $translator;	
+		}
+
 		/**
 		 * Index
 		 */
-		public function index(Request $request, TranslatorInterface $translator)
+		public function index(Request $request)
 		{
 			$em = $this->getDoctrine()->getManager();
 			$configEntities = $em->getRepository(Configuration::class)->findBy(
@@ -84,12 +97,12 @@
 				if($testConnection)
 				{
 					// save config
-					$this->updateConfigParams($translator);
+					$this->updateConfigParams();
 				}
 				else
 				{
 					// cannot connect to SMTP server
-					$cannotConnectMssg = $translator->trans("preferences_mailer.can_not_connect_to_smtp_server");
+					$cannotConnectMssg = $this->translator->trans("preferences_mailer.can_not_connect_to_smtp_server");
 					$this->addFlash("error", $cannotConnectMssg);
 				}
 			}
@@ -104,7 +117,7 @@
 		/**
 		 * Update config params in database
 		 */
-		private function updateConfigParams(TranslatorInterface $translator)
+		private function updateConfigParams()
 		{
 			$paramKeys = [ 'host', 'port', 'username', 'password', 'authentication' ];
 			$configService = $this->get("reaccion_cms.config");
@@ -133,7 +146,7 @@
 				}
 
 				// display success message
-				$successTranslation = $translator->trans("preferences_mailer.update_success_message");
+				$successTranslation = $this->translator->trans("preferences_mailer.update_success_message");
 				$this->addFlash("success", $successTranslation);
 			}
 			catch(\Exception $e)
@@ -141,7 +154,7 @@
 				$this->get("reaccion_cms.logger")->logException($e, "Error updating mailer config paramameter.");
 				
 				// display error message
-				$errorMessage = $translator->trans("preferences_mailer.update_error_message", ['%error%' => $e->getMessage() ]);
+				$errorMessage = $this->translator->trans("preferences_mailer.update_error_message", ['%error%' => $e->getMessage() ]);
 				$this->addFlash("error", $errorMessage);
 			}
 		}

@@ -10,7 +10,14 @@
 
 	class UpdateConfigurationController extends Controller
 	{
-		public function index(Configuration $config, Request $request, TranslatorInterface $translator)
+		private $translator;
+		
+		public function __construct(TranslatorInterface $translator)
+		{
+			$this->translator = $translator;	
+		}
+
+		public function index(Configuration $config, Request $request)
 		{
 			$em = $this->getDoctrine()->getManager();
 
@@ -69,13 +76,13 @@
 					$this->get("reaccion_cms.cache")->set($cacheParamKey, $config->getValue());
 
 					// flash message
-					$this->addFlash('success', $translator->trans('config_form.update_success_form') );
+					$this->addFlash('success', $this->translator->trans('config_form.update_success_form') );
 
 					return $this->redirectToRoute('reaccion_cms_admin_preferences_configuration');
 				}
 				catch(\Exception $e)
 				{
-					$this->addFlash('error', $translator->trans('config_form.update_error_form', array('%error%' => $e->getMessage())));
+					$this->addFlash('error', $this->translator->trans('config_form.update_error_form', array('%error%' => $e->getMessage())));
 				}
 			}
 

@@ -12,6 +12,8 @@
 
     <import resource="@ReaccionCMSAdminBundle/Resources/config/routing/media.xml" />
 
+    <import resource="@ReaccionCMSAdminBundle/Resources/config/routing/preferences.xml" />
+
     <import resource="@ReaccionCMSAdminBundle/Resources/config/routing/entries.xml" />
         
 

@@ -10,7 +10,14 @@
 
 	class CreateConfigurationController extends Controller
 	{
-		public function index(Request $request, TranslatorInterface $translator)
+		private $translator;
+		
+		public function __construct(TranslatorInterface $translator)
+		{
+			$this->translator = $translator;	
+		}
+
+		public function index(Request $request)
 		{
 			$config = new Configuration();
 			$em = $this->getDoctrine()->getManager();
@@ -27,13 +34,13 @@
 					$em->persist($config);
 					$em->flush();
 
-					$this->addFlash('success', $translator->trans('config_form.success_form') );
+					$this->addFlash('success', $this->translator->trans('config_form.success_form') );
 
 					return $this->redirectToRoute('reaccion_cms_admin_preferences_configuration');
 				}
 				catch(\Exception $e)
 				{
-					$this->addFlash('error', $translator->trans('config_form.error_form', array('%error%' => $e->getMessage())));
+					$this->addFlash('error', $this->translator->trans('config_form.error_form', array('%error%' => $e->getMessage())));
 				}
 			}
 

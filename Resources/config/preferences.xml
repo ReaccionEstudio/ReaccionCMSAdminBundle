@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+    	<!-- preferences -->
+    	<service id="reaccion_cms.configuration_list.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\ConfigurationListController" public="true">
+        </service>
+
+    	<service id="reaccion_cms.create_configuration.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\CreateConfigurationController" public="true">
+    		<argument type="service" id="translator" />
+        </service>
+
+    	<service id="reaccion_cms.update_configuration.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\UpdateConfigurationController" public="true">
+    		<argument type="service" id="translator" />
+        </service>
+
+    	<service id="reaccion_cms.remove_configuration.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\RemoveConfigurationController" public="true">
+    		<argument type="service" id="translator" />
+        </service>
+
+        <!-- preferences - mailer -->
+    	<service id="reaccion_cms.mailer_configuration.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\Mailer\MailerConfigController" public="true">
+    		<argument type="service" id="translator" />
+        </service>
+
+    	<service id="reaccion_cms.mailer_configuration_send_test_email.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\Mailer\SendTestEmailController" public="true">
+    		<argument type="service" id="translator" />
+        </service>
+
+    </services>
+
+</container>

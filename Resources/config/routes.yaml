@@ -1,31 +1,3 @@
-# Preferences
-reaccion_cms_admin_preferences_configuration:
-    path: /preferences/configuration
-    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\ConfigurationListController::index
-
-reaccion_cms_admin_preferences_create_configuration:
-    path: /preferences/configuration/create
-    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\CreateConfigurationController::index
-
-reaccion_cms_admin_preferences_update_configuration:
-    path: /preferences/configuration/{config}/update/
-    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\UpdateConfigurationController::index
-
-reaccion_cms_admin_preferences_remove_configuration:
-    path: /preferences/configuration/{config}/remove
-    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\RemoveConfigurationController::index
-
-# Preferences > Mailer
-reaccion_cms_admin_preferences_mailer:
-    path: /preferences/mailer
-    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\Mailer\MailerConfigController::index
-
-reaccion_cms_admin_preferences_mailer_sent_test_email:
-    path: /preferences/mailer/send/test_email
-    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\Mailer\SendTestEmailController::index
-    options:
-        expose: true
-
 # Preferences > Email templates
 reaccion_cms_admin_preferences_email_templates:
     path: /preferences/email/templates

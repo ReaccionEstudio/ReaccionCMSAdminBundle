@@ -9,13 +9,23 @@
 
 	class SendTestEmailController extends Controller
 	{
-		public function index(Request $request, TranslatorInterface $translator)
+		private $translator;
+		
+		/**
+		 * Constructor
+		 */
+		public function __construct(TranslatorInterface $translator)
+		{
+			$this->translator = $translator;	
+		}
+
+		public function index(Request $request)
 		{
 			$result = $this->get("reaccion_cms.mailer")->sendTestEmail();
 
 			if($result)
 			{
-				$successMessage = $translator->trans('preferences_mailer.sent_test_email_successfully');
+				$successMessage = $this->translator->trans('preferences_mailer.sent_test_email_successfully');
 				$this->addFlash('success', $successMessage);
 			}
 

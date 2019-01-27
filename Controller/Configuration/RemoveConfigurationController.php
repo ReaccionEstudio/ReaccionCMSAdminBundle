@@ -9,7 +9,14 @@
 
 	class RemoveConfigurationController extends Controller
 	{
-		public function index(Configuration $config, TranslatorInterface $translator)
+		private $translator;
+		
+		public function __construct(TranslatorInterface $translator)
+		{
+			$this->translator = $translator;	
+		}
+
+		public function index(Configuration $config)
 		{
 			if(empty($config))
 			{
@@ -24,12 +31,12 @@
 				$em->remove($config);
 				$em->flush();
 
-				$this->addFlash('success', $translator->trans('config_form.remove_success_form') );
+				$this->addFlash('success', $this->translator->trans('config_form.remove_success_form') );
 			}
 			catch(\Exception $e)
 			{
 				// TODO: log error
-				$errorMssg = $translator->trans(
+				$errorMssg = $this->translator->trans(
 								'config_form.remove_error_form', 
 								[
 									'%name%' => $name, 
