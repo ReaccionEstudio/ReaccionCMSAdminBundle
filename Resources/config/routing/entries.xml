@@ -5,6 +5,21 @@
     xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
     <!-- entries categories -->
+    <route id="reaccion_cms_admin_entries_categories_list" path="/entries/categories" methods="GET">
+        <default key="_controller">reaccion_cms.list_entries_categories.controller:index</default>
+    </route>
+    
+    <route id="reaccion_cms_admin_entries_categories_create" path="/entries/categories/create" methods="GET POST">
+        <default key="_controller">reaccion_cms.create_entries_category.controller:index</default>
+    </route>
+    
+    <route id="reaccion_cms_admin_entries_categories_update" path="/entries/categories/{category}/update" methods="GET POST">
+        <default key="_controller">reaccion_cms.update_entries_category.controller:index</default>
+    </route>
+    
+    <route id="reaccion_cms_admin_entries_categories_remove" path="/entries/categories/{category}/remove" methods="GET POST">
+        <default key="_controller">reaccion_cms.remove_entries_category.controller:index</default>
+    </route>
 
     <!-- entries -->
     <route id="reaccion_cms_admin_entries_create" path="/entries/create" methods="GET POST">

@@ -22,6 +22,20 @@
     	</service>
 
     	<!-- entries categories -->
+    	<service id="reaccion_cms.list_entries_categories.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EntriesCategories\EntriesCategoriesListController" public="true"></service>
+    	
+    	<service id="reaccion_cms.create_entries_category.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EntriesCategories\CreateEntriesCategoryController" public="true">
+    		<argument type="service" id="translator" />
+    	</service>
+    	
+    	<service id="reaccion_cms.update_entries_category.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EntriesCategories\UpdateEntriesCategoryController" public="true">
+    		<argument type="service" id="translator" />
+    	</service>
+    	
+    	<service id="reaccion_cms.remove_entries_category.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EntriesCategories\RemoveEntriesCategoryController" public="true">
+    		<argument type="service" id="translator" />
+    	</service>
+
 
     </services>
 

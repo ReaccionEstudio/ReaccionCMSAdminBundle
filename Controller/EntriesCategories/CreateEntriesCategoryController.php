@@ -10,7 +10,14 @@
 
 	class CreateEntriesCategoryController extends Controller
 	{
-		public function index(Request $request, TranslatorInterface $translator)
+		private $translator;
+		
+		public function __construct(TranslatorInterface $translator)
+		{
+			$this->translator = $translator;	
+		}
+
+		public function index(Request $request)
 		{
 			$category = new EntryCategory();
 
@@ -32,14 +39,14 @@
 					$em->flush();
 
 					// success message
-					$successMessage = $translator->trans('entries_categories_form.success_form');
+					$successMessage = $this->translator->trans('entries_categories_form.success_form');
 					$this->addFlash('success', $successMessage);
 
 					return $this->redirectToRoute('reaccion_cms_admin_entries_categories_list');
 				}
 				catch(\Exception $e)
 				{
-					$this->addFlash('error', $translator->trans('entries_categories_form.update_error_form', array('%error%' => $e->getMessage())));
+					$this->addFlash('error', $this->translator->trans('entries_categories_form.update_error_form', array('%error%' => $e->getMessage())));
 				}
 			}
 			

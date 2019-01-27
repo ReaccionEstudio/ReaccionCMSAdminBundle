@@ -9,7 +9,14 @@
 
 	class RemoveEntriesCategoryController extends Controller
 	{
-		public function index(EntryCategory $category, Request $request, TranslatorInterface $translator)
+		private $translator;
+		
+		public function __construct(TranslatorInterface $translator)
+		{
+			$this->translator = $translator;	
+		}
+
+		public function index(EntryCategory $category, Request $request)
 		{
 			$em = $this->getDoctrine()->getManager();
 
@@ -27,11 +34,11 @@
 				$em->flush();
 
 				// flash message
-				$this->addFlash('success', $translator->trans('entries_categories_form.remove_success_message', array('%name%' => $name)) );
+				$this->addFlash('success', $this->translator->trans('entries_categories_form.remove_success_message', array('%name%' => $name)) );
 			}
 			catch(\Exception $e)
 			{
-				$errorMssg = $translator->trans('entries_categories_form.remove_error_message', array('%name%' => $name, '%error%' => $e->getMessage()));
+				$errorMssg = $this->translator->trans('entries_categories_form.remove_error_message', array('%name%' => $name, '%error%' => $e->getMessage()));
 				$this->addFlash('error', $errorMssg);
 			}
 
