@@ -31,4 +31,21 @@
         <option key="expose">true</option>
     </route>
 
+    <!-- preferences - email templates -->
+	<route id="reaccion_cms_admin_preferences_email_templates" path="/preferences/email/templates" methods="GET">
+        <default key="_controller">reaccion_cms.list_email_template.controller:index</default>
+    </route>
+
+	<route id="reaccion_cms_admin_preferences_create_email_template" path="/preferences/email/templates/create" methods="GET POST">
+        <default key="_controller">reaccion_cms.create_email_template.controller:index</default>
+    </route>
+
+	<route id="reaccion_cms_admin_preferences_update_email_template" path="/preferences/email/templates/{emailTemplate}/update" methods="GET POST">
+        <default key="_controller">reaccion_cms.update_email_template.controller:index</default>
+    </route>
+
+	<route id="reaccion_cms_admin_preferences_remove_email_templates" path="/preferences/email/templates/{emailTemplate}/remove" methods="GET">
+        <default key="_controller">reaccion_cms.remove_email_template.controller:index</default>
+    </route>
+
 </routes>

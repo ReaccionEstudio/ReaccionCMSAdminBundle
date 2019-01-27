@@ -1,20 +1,3 @@
-# Preferences > Email templates
-reaccion_cms_admin_preferences_email_templates:
-    path: /preferences/email/templates
-    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EmailTemplates\EmailTemplateController::index
-
-reaccion_cms_admin_preferences_create_email_template:
-    path: /preferences/email/templates/create
-    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EmailTemplates\CreateEmailTemplateController::index
-
-reaccion_cms_admin_preferences_update_email_template:
-    path: /preferences/email/templates/{emailTemplate}/update
-    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EmailTemplates\UpdateEmailTemplateController::index
-
-reaccion_cms_admin_preferences_remove_email_templates:
-    path: /preferences/email/templates/{emailTemplate}/remove
-    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EmailTemplates\RemoveEmailTemplateController::index
-
 # Appearance > Menu
 reaccion_cms_admin_appearance_menu:
     path: /appearance/menu

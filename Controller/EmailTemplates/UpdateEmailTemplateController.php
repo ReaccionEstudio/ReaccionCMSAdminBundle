@@ -11,7 +11,14 @@
 
 	class UpdateEmailTemplateController extends Controller
 	{
-		public function index(EmailTemplate $emailTemplate, Request $request, TranslatorInterface $translator)
+		private $translator;
+		
+		public function __construct(TranslatorInterface $translator)
+		{
+			$this->translator = $translator;	
+		}
+
+		public function index(EmailTemplate $emailTemplate, Request $request)
 		{
 			// form
 			$formOptions = ['mode' => 'edit'];
@@ -36,14 +43,14 @@
 					$em->flush();
 
 					// success message
-					$successMessage = $translator->trans('email_templates.update_success_message');
+					$successMessage = $this->translator->trans('email_templates.update_success_message');
 					$this->addFlash('success', $successMessage);
 
 					return $this->redirectToRoute('reaccion_cms_admin_preferences_email_templates');
 				}
 				catch(\Exception $e)
 				{
-					$this->addFlash('error', $translator->trans('email_templates.update_error_message', array('%error%' => $e->getMessage())));
+					$this->addFlash('error', $this->translator->trans('email_templates.update_error_message', array('%error%' => $e->getMessage())));
 				}
 			}
 

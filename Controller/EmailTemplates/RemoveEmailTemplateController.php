@@ -10,7 +10,14 @@
 
 	class RemoveEmailTemplateController extends Controller
 	{
-		public function index(EmailTemplate $emailTemplate, TranslatorInterface $translator)
+		private $translator;
+		
+		public function __construct(TranslatorInterface $translator)
+		{
+			$this->translator = $translator;	
+		}
+
+		public function index(EmailTemplate $emailTemplate)
 		{
 			if(empty($emailTemplate))
 			{
@@ -26,7 +33,7 @@
 				$em->flush();
 
 				// success message
-				$this->addFlash('success', $translator->trans('email_templates.remove_success_message', [ '%name%' => $name ]));
+				$this->addFlash('success', $this->translator->trans('email_templates.remove_success_message', [ '%name%' => $name ]));
 			}
 			catch(\Exception $e)
 			{
@@ -34,7 +41,7 @@
 				$this->get("reaccion_cms.logger")->logException($e);
 
 				// show error mssg
-				$errorMssg = $translator->trans(
+				$errorMssg = $this->translator->trans(
 								'email_templates.remove_error_message', 
 								[
 									'%name%' => $name, 

@@ -11,7 +11,14 @@
 
 	class CreateEmailTemplateController extends Controller
 	{
-		public function index(Request $request, TranslatorInterface $translator)
+		private $translator;
+		
+		public function __construct(TranslatorInterface $translator)
+		{
+			$this->translator = $translator;	
+		}
+
+		public function index(Request $request)
 		{
 			$emailTemplate = new EmailTemplate();
 
@@ -40,14 +47,14 @@
 					$em->flush();
 
 					// success message
-					$successMessage = $translator->trans('email_templates.create_success_message');
+					$successMessage = $this->translator->trans('email_templates.create_success_message');
 					$this->addFlash('success', $successMessage);
 
 					return $this->redirectToRoute('reaccion_cms_admin_preferences_email_templates');
 				}
 				catch(\Exception $e)
 				{
-					$this->addFlash('error', $translator->trans('email_templates.create_error_message', array('%error%' => $e->getMessage())));
+					$this->addFlash('error', $this->translator->trans('email_templates.create_error_message', array('%error%' => $e->getMessage())));
 				}
 			}
 

@@ -31,6 +31,17 @@
     		<argument type="service" id="translator" />
         </service>
 
+        <!-- preferences - email templates -->
+    	<service id="reaccion_cms.list_email_template.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EmailTemplates\EmailTemplateController" public="true"></service>
+    	
+    	<service id="reaccion_cms.update_email_template.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EmailTemplates\UpdateEmailTemplateController" public="true">
+    		<argument type="service" id="translator" />
+    	</service>
+
+    	<service id="reaccion_cms.remove_email_template.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EmailTemplates\RemoveEmailTemplateController" public="true">
+    		<argument type="service" id="translator" />
+    	</service>
+
     </services>
 
 </container>
