@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <service id="reaccion_cms.media_list.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media\MediaListController" public="true"></service>
+        
+        <service id="reaccion_cms.create_media.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media\CreateMediaController" public="true">
+            <argument type="service" id="translator" />
+        </service>
+        
+        <service id="reaccion_cms.media_detail.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media\MediaDetailController" public="true">
+        </service>
+        
+        <service id="reaccion_cms.media_image_upload.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media\MediaImageUploadController" public="true">
+        </service>
+        
+        <service id="reaccion_cms.remove_media.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media\RemoveMediaController" public="true">
+            <argument type="service" id="translator" />
+        </service>
+
+    </services>
+
+</container>

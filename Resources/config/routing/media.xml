@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="reaccion_cms_admin_media_index" path="/media" methods="GET">
+        <default key="_controller">reaccion_cms.media_list.controller:index</default>
+        <option key="expose">true</option>
+    </route>
+
+    <route id="reaccion_cms_admin_create_media" path="/media/add" methods="GET POST">
+        <default key="_controller">reaccion_cms.create_media.controller:index</default>
+    </route>
+
+    <route id="reaccion_cms_admin_media_detail_by_path" path="/media/path" methods="GET">
+        <default key="_controller">reaccion_cms.media_detail.controller:findByPath</default>
+        <option key="expose">true</option>
+    </route>
+
+    <route id="reaccion_cms_admin_media_detail" path="/media/{media}" methods="GET">
+        <default key="_controller">reaccion_cms.media_detail.controller:index</default>
+        <option key="expose">true</option>
+    </route>
+
+    <route id="reaccion_cms_admin_media_image_upload" path="/media/image/upload" methods="POST">
+        <default key="_controller">reaccion_cms.media_image_upload.controller:index</default>
+        <option key="expose">true</option>
+    </route>
+
+    <route id="reaccion_cms_admin_remove_media" path="/media/{media}/remove" methods="GET">
+        <default key="_controller">reaccion_cms.remove_media.controller:index</default>
+    </route>
+
+</routes>

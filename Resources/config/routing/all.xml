@@ -10,6 +10,8 @@
 
     <import resource="@ReaccionCMSAdminBundle/Resources/config/routing/users.xml" />
 
+    <import resource="@ReaccionCMSAdminBundle/Resources/config/routing/media.xml" />
+
     <import resource="@ReaccionCMSAdminBundle/Resources/config/routing/entries.xml" />
         
 

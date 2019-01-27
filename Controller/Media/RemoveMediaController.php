@@ -9,7 +9,14 @@
 
 	class RemoveMediaController extends Controller
 	{
-		public function index(Media $media, TranslatorInterface $translator)
+		private $translator;
+		
+		public function __construct(TranslatorInterface $translator)
+		{
+			$this->translator = $translator;	
+		}
+
+		public function index(Media $media)
 		{
 			if(empty($media))
 			{
@@ -43,15 +50,13 @@
 				$em->remove($media);
 				$em->flush();
 
-				$this->addFlash('success', $translator->trans('media_detail.removed_media_successful') );
-
-				return $this->redirectToRoute('reaccion_cms_admin_media_index');
+				$this->addFlash('success', $this->translator->trans('media_detail.removed_media_successful') );
 			}
 			catch(\Doctrine\DBAL\DBALException $e)
 			{
 				$this->get("reaccion_cms.logger")->logException($e, "Error removing media entity.");
 
-				$errorMssg = $translator->trans(
+				$errorMssg = $this->translator->trans(
 								'media_detail.removed_media_error', 
 								[
 									'%name%' => $mediaName, 
@@ -60,13 +65,12 @@
 							 );
 
 				$this->addFlash('error', $errorMssg);
-				// return $this->redirectToRoute('reaccion_cms_admin_media_index');
 			}
 			catch(\Exception $e)
 			{
 				$this->get("reaccion_cms.logger")->logException($e, "Error removing media files.");
 
-				$errorMssg = $translator->trans(
+				$errorMssg = $this->translator->trans(
 								'media_detail.removed_media_error', 
 								[
 									'%name%' => $mediaName, 
@@ -75,9 +79,8 @@
 							 );
 
 				$this->addFlash('error', $errorMssg);
-				// return $this->redirectToRoute('reaccion_cms_admin_media_index');
 			}
-
-			die('-');
+			
+			return $this->redirectToRoute('reaccion_cms_admin_media_index');
 		}
 	}

@@ -10,7 +10,14 @@
 
 	class CreateMediaController extends Controller
 	{
-		public function index(Request $request, TranslatorInterface $translator)
+		private $translator;
+		
+		public function __construct(TranslatorInterface $translator)
+		{
+			$this->translator = $translator;	
+		}
+
+		public function index(Request $request)
 		{
 			// form
 			$form = $this->createForm(MediaType::class);
@@ -29,7 +36,7 @@
 					$mediaUploadService->upload($file);
 
 					// success message
-					$successMessage = $translator->trans('media_create.media_upload_success', array('%filename%' => $originalFilename) );
+					$successMessage = $this->translator->trans('media_create.media_upload_success', array('%filename%' => $originalFilename) );
 					$this->addFlash('success', $successMessage);
 
 					return $this->redirectToRoute('reaccion_cms_admin_media_index');

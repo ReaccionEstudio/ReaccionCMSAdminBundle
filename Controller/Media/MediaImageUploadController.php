@@ -6,13 +6,12 @@
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Component\HttpFoundation\Response;
 	use Symfony\Component\HttpFoundation\JsonResponse;
-	use Symfony\Component\Translation\TranslatorInterface;
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use ReaccionEstudio\ReaccionCMSAdminBundle\Services\Media\UploadService;
 
 	class MediaImageUploadController extends Controller
 	{
-		public function index(Request $request, TranslatorInterface $translator)
+		public function index(Request $request)
 		{
 			$image = $request->files->get('upload');
 			

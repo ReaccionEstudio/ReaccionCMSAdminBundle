@@ -23,6 +23,7 @@ class ReaccionCMSAdminExtension extends Extension
 		$loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('pages.xml');
         $loader->load('users.xml');
+        $loader->load('media.xml');
         $loader->load('entries.xml');
         $loader->load('services.xml');
         $loader->load('dashboard.xml');
