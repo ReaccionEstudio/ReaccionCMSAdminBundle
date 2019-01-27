@@ -12,7 +12,14 @@
 
 	class MenuContentCreateController extends Controller
 	{
-		public function index(Menu $menu, Int $parent = 0, Request $request, TranslatorInterface $translator)
+		private $translator;
+		
+		public function __construct(TranslatorInterface $translator)
+		{
+			$this->translator = $translator;	
+		}
+		
+		public function index(Menu $menu, Int $parent = 0, Request $request)
 		{
 			$menuContent = new MenuContent();
 
@@ -64,13 +71,13 @@
 					$menuService->saveMenuHtmlInCache($menu->getSlug(), $menu->getLanguage(), $cacheKey);
 
 					// flash message
-					$this->addFlash('success', $translator->trans('menu_form.create_success_message') );
+					$this->addFlash('success', $this->translator->trans('menu_form.create_success_message') );
 
 					return $this->redirectToRoute('reaccion_cms_admin_appearance_menu_content', ['menu' => $menu->getId() ]);
 				}
 				catch(\Exception $e)
 				{
-					$errMssg =  $translator->trans(
+					$errMssg =  $this->translator->trans(
 									"menu_form.create_error_message", 
 									array(
 										'%name%' => $form['name']->getData(),

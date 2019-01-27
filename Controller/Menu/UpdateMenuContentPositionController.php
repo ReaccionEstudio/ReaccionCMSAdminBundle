@@ -4,14 +4,13 @@
 
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-	use Symfony\Component\Translation\TranslatorInterface;
 	use ReaccionEstudio\ReaccionCMSBundle\Entity\Menu;
 	use ReaccionEstudio\ReaccionCMSBundle\Entity\MenuContent;
 	use ReaccionEstudio\ReaccionCMSAdminBundle\Services\Menu\MenuService;
 
 	class UpdateMenuContentPositionController extends Controller
 	{
-		public function index(Menu $menu, MenuContent $menuContent, String $action, TranslatorInterface $translator)
+		public function index(Menu $menu, MenuContent $menuContent, String $action)
 		{
 			// TODO: create method in MenuContentService
 			$sideEntityToUpdate = null;

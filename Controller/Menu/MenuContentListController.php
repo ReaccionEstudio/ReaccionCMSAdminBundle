@@ -4,13 +4,12 @@
 
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-	use Symfony\Component\Translation\TranslatorInterface;
 	use ReaccionEstudio\ReaccionCMSBundle\Entity\Menu;
 	use ReaccionEstudio\ReaccionCMSAdminBundle\Services\Menu\MenuService;
 
 	class MenuContentListController extends Controller
 	{
-		public function index(Menu $menu, Request $request, TranslatorInterface $translator)
+		public function index(Menu $menu, Request $request)
 		{
 			$nested = $this
 						->get("reaccion_cms_admin.menu_content")

@@ -22,5 +22,27 @@
     </route>
 
     <!-- appearance - menu content -->
+    <route id="reaccion_cms_admin_appearance_menu_content" path="/appearance/menu/{menu}/content" methods="GET">
+        <default key="_controller">reaccion_cms.list_menu_content.controller:index</default>
+    </route>
+
+    <route id="reaccion_cms_admin_appearance_menu_content_create" path="/appearance/menu/{menu}/create/{parent}" methods="GET POST">
+        <default key="_controller">reaccion_cms.create_menu_content.controller:index</default>
+        <default key="parent">0</default>
+    </route>
+
+    <route id="reaccion_cms_admin_appearance_menu_content_edit" path="/appearance/menu/{menu}/content/{menuContent}" methods="GET POST">
+        <default key="_controller">reaccion_cms.menu_content_detail.controller:index</default>
+    </route>
+
+    <route id="reaccion_cms_admin_appearance_menu_content_remove" path="/appearance/menu/{menu}/remove/{menuContent}" methods="GET POST">
+        <default key="_controller">reaccion_cms.remove_menu_content.controller:index</default>
+    </route>
+
+    <route id="reaccion_cms_admin_appearance_menu_content_update_position" path="/appearance/menu/{menu}/content/{menuContent}/{action}" methods="GET">
+        <default key="_controller">reaccion_cms.update_menu_content_position.controller:index</default>
+    </route>
+
+
 
 </routes>

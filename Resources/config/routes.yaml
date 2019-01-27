@@ -1,25 +1,3 @@
-# Appearance > Menu > Content
-reaccion_cms_admin_appearance_menu_content:
-    path: /appearance/menu/{menu}/content
-    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuContentListController::index
-
-reaccion_cms_admin_appearance_menu_content_create:
-    path: /appearance/menu/{menu}/create/{parent}
-    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuContentCreateController::index
-    defaults:
-        parent: 0
-
-reaccion_cms_admin_appearance_menu_content_edit:
-    path: /appearance/menu/{menu}/content/{menuContent}
-    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuContentDetailController::index
-
-reaccion_cms_admin_appearance_menu_content_remove:
-    path: /appearance/menu/{menu}/remove/{menuContent}
-    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\RemoveMenuContentController::index
-
-reaccion_cms_admin_appearance_menu_content_update_position:
-    path: /appearance/menu/{menu}/content/{menuContent}/{action}
-    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\UpdateMenuContentPositionController::index
 
 # themes
 reaccion_cms_admin_appearance_themes:
