@@ -11,7 +11,14 @@
 
 	class CreateEntryController extends Controller
 	{
-		public function index(Request $request, TranslatorInterface $translator)
+		private $translator;
+		
+		public function __construct(TranslatorInterface $translator)
+		{
+			$this->translator = $translator;	
+		}
+
+		public function index(Request $request)
 		{
 			$entry = new Entry();
 
@@ -36,14 +43,14 @@
 					$em->flush();
 
 					// success message
-					$successMessage = $translator->trans('entries_form.create_success_form');
+					$successMessage = $this->translator->trans('entries_form.create_success_form');
 					$this->addFlash('success', $successMessage);
 
 					return $this->redirectToRoute('reaccion_cms_admin_entries_list');
 				}
 				catch(\Exception $e)
 				{
-					$this->addFlash('error', $translator->trans('entries_form.create_error_form', array('%error%' => $e->getMessage())));
+					$this->addFlash('error', $this->translator->trans('entries_form.create_error_form', array('%error%' => $e->getMessage())));
 				}
 			}
 			

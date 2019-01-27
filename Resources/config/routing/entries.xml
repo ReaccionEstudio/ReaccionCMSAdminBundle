@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <!-- entries categories -->
+
+    <!-- entries -->
+    <route id="reaccion_cms_admin_entries_create" path="/entries/create" methods="GET POST">
+        <default key="_controller">reaccion_cms.create_entry.controller:index</default>
+    </route>
+
+    <route id="reaccion_cms_admin_entries_list" path="/entries" methods="GET">
+        <default key="_controller">reaccion_cms.entries_list.controller:index</default>
+    </route>
+
+    <route id="reaccion_cms_admin_entries_remove" path="/entries/{entry}/remove" methods="GET POST">
+        <default key="_controller">reaccion_cms.remove_entry.controller:index</default>
+    </route>
+
+    <route id="reaccion_cms_admin_entries_update" path="/entries/{entry}/update" methods="GET POST">
+        <default key="_controller">reaccion_cms.update_entry.controller:index</default>
+    </route>
+
+</routes>

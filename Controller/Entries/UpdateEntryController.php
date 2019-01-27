@@ -11,7 +11,14 @@
 
 	class UpdateEntryController extends Controller
 	{
-		public function index(Entry $entry, Request $request, TranslatorInterface $translator)
+		private $translator;
+		
+		public function __construct(TranslatorInterface $translator)
+		{
+			$this->translator = $translator;	
+		}
+
+		public function index(Entry $entry, Request $request)
 		{
 			// form
 			$form = $this->createForm(EntryType::class, $entry, ['mode' => 'edit']);
@@ -31,14 +38,14 @@
 					$em->flush();
 
 					// success message
-					$successMessage = $translator->trans('entries_form.update_success_form');
+					$successMessage = $this->translator->trans('entries_form.update_success_form');
 					$this->addFlash('success', $successMessage);
 
 					return $this->redirectToRoute('reaccion_cms_admin_entries_list');
 				}
 				catch(\Exception $e)
 				{
-					$this->addFlash('error', $translator->trans('entries_categories_form.update_error_form', array('%error%' => $e->getMessage())));
+					$this->addFlash('error', $this->translator->trans('entries_categories_form.update_error_form', array('%error%' => $e->getMessage())));
 				}
 			}
 			

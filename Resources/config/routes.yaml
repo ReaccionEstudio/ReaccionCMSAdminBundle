@@ -159,22 +159,6 @@ reaccion_cms_admin_entries_categories_remove:
     path: /entries/categories/{category}/remove
     controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EntriesCategories\RemoveEntriesCategoryController::index
 
-# Entries
-reaccion_cms_admin_entries_list:
-    path: /entries
-    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Entries\EntriesListController::index
-
-reaccion_cms_admin_entries_create:
-    path: /entries/create
-    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Entries\CreateEntryController::index
-
-reaccion_cms_admin_entries_update:
-    path: /entries/{entry}/update
-    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Entries\UpdateEntryController::index
-
-reaccion_cms_admin_entries_remove:
-    path: /entries/{entry}/remove
-    controller: ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Entries\RemoveEntryController::index
 
 # themes
 reaccion_cms_admin_appearance_themes:

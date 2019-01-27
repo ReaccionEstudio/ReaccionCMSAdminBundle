@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+    	<!-- entries -->
+    	<service id="reaccion_cms.create_entry.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Entries\CreateEntryController" public="true">
+    		<argument type="service" id="translator" />
+    	</service>
+
+    	<service id="reaccion_cms.entries_list.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Entries\EntriesListController" public="true"></service>
+
+    	<service id="reaccion_cms.remove_entry.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Entries\RemoveEntryController" public="true">
+    		<argument type="service" id="translator" />
+    	</service>
+
+    	<service id="reaccion_cms.update_entry.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Entries\UpdateEntryController" public="true">
+    		<argument type="service" id="translator" />
+    	</service>
+
+    	<!-- entries categories -->
+
+    </services>
+
+</container>

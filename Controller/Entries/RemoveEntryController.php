@@ -3,13 +3,20 @@
 	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Entries;
 
 	use Symfony\Component\HttpFoundation\Request;
-	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-	use Symfony\Component\Translation\TranslatorInterface;
 	use ReaccionEstudio\ReaccionCMSBundle\Entity\Entry;
+	use Symfony\Component\Translation\TranslatorInterface;
+	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 	class RemoveEntryController extends Controller
 	{
-		public function index(Entry $entry, TranslatorInterface $translator)
+		private $translator;
+		
+		public function __construct(TranslatorInterface $translator)
+		{
+			$this->translator = $translator;	
+		}
+
+		public function index(Entry $entry)
 		{
 			if(empty($entry))
 			{
@@ -24,12 +31,12 @@
 				$em->remove($entry);
 				$em->flush();
 
-				$this->addFlash('success', $translator->trans('entries_form.remove_success_message') );
+				$this->addFlash('success', $this->translator->trans('entries_form.remove_success_message') );
 			}
 			catch(\Exception $e)
 			{
 				// TODO: log error
-				$errorMssg = $translator->trans(
+				$errorMssg = $this->translator->trans(
 								'entries_form.remove_error_message', 
 								[
 									'%name%' => $name, 
