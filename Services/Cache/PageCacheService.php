@@ -272,7 +272,7 @@
 			{
 				// TODO: create custom exception
 				$this->logger->addInfo("Main page for language '" . $language . "' was not found.");
-				return;
+				return [];
 			}
 
 			// generate page array data
