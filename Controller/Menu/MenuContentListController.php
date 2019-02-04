@@ -12,7 +12,7 @@
 		public function index(Menu $menu, Request $request)
 		{
 			$nested = $this
-						->get("reaccion_cms_admin.menu_content")
+						->get("reaccion_cms.menu_content")
 						->buildNestedArray($menu, false);
 
 			return $this->render("@ReaccionCMSAdminBundle/menu/content/list.html.twig",

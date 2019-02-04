@@ -34,7 +34,7 @@
 				$em->flush();
 
 				// update menu html value for cache
-				$this->get("reaccion_cms.menu")->updateMenuHtmlCache($menu);
+				$this->get("reaccion_cms.menu")->saveMenuHtmlInCache($menu->getSlug(), $menu->getLanguage());
 
 				// flash message
 				$this->addFlash('success', $this->translator->trans('menu_form.remove_success_message', array('%name%' => $menuName)) );

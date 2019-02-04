@@ -67,7 +67,6 @@
 
         <service id="reaccion_cms_admin.menu_content" class="%reaccion_cms_admin.menu_content_service.class%" public="true">
             <argument type="service" id="doctrine.orm.entity_manager" />
-            <argument type="service" id="reaccion_cms_admin.page" />
             <argument type="service" id="reaccion_cms_admin.logger" />
         </service>
 

@@ -72,17 +72,6 @@
 		}
 
 		/**
-		 * Get all Page entities
-		 *
-		 * @param 	Array 		$params 		Query filter parameters
-		 * @return 	Array 		[type]			Array page entities
-		 */
-		public function getPages(Array $params = ['language' => 'en', 'isEnabled' => true]) : Array
-		{
-			return $this->em->getRepository(PageEntity::class)->findBy($params, ['id' => 'ASC']);
-		}
-
-		/**
 		 * Set page type depending on the page content entities
 		 *
 		 * @param  PageContent  	$pageContent 	PageContent entity
