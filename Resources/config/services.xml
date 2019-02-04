@@ -22,8 +22,6 @@
 
         <parameter key="reaccion_cms_admin.entry_service.class">ReaccionEstudio\ReaccionCMSAdminBundle\Services\Entries\EntryService</parameter>
         
-        <parameter key="reaccion_cms_admin.page_cache_service.class">ReaccionEstudio\ReaccionCMSAdminBundle\Services\Cache\PageCacheService</parameter>
-    	
         <parameter key="reaccion_cms_admin.upload_dir">%kernel.project_dir%/public/uploads/</parameter>
 
         <parameter type="collection" key="reaccion_cms_admin.allowed_upload_mimetypes">
@@ -86,16 +84,6 @@
         <service id="reaccion_cms_admin.entry" class="%reaccion_cms_admin.entry_service.class%" public="true">
             <argument type="service" id="reaccion_cms.config" />
             <argument>%kernel.project_dir%</argument>
-        </service>
-
-        <service id="reaccion_cms_admin.page_cache_service" class="%reaccion_cms_admin.page_cache_service.class%" public="true">
-            <argument type="service" id="reaccion_cms.cache" />
-            <argument type="service" id="doctrine.orm.entity_manager" />
-            <argument type="service" id="reaccion_cms.entries" />
-            <argument type="service" id="request_stack" />
-            <argument type="service" id="reaccion_cms.config" />
-            <argument type="service" id="reaccion_cms_admin.logger" />
-            <argument type="service" id="reaccion_cms.language" />
         </service>
 
         <service id="reaccion_cms_admin.logger" class="%reaccion_cms.logger.class%" public="true">

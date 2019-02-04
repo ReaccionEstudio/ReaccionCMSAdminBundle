@@ -90,7 +90,7 @@
 		{
 			$pageId = $page->getId();
 			$menuService = $this->get("reaccion_cms.menu");
-			$pageCacheService = $this->get("reaccion_cms_admin.page_cache_service");
+			$pageCacheService = $this->get("reaccion_cms.page_cache_service");
 
 			// update menu html value for cache if this page is inside any menu
 			$menu = $menuService->getPageMenu($pageId);

@@ -64,7 +64,7 @@
 					// refresh main page cache
 					if($form['mainPage']->getData() == true)
 					{
-						$this->get("reaccion_cms_admin.page_cache_service")->refreshMainPageCache($language);
+						$this->get("reaccion_cms.page_cache_service")->refreshMainPageCache($language);
 					}
 
 					$this->addFlash('success', $this->translator->trans('page_form.create_success_message') );

@@ -22,7 +22,7 @@
 	    {
 	    	$kernel = self::bootKernel();
 	    	$this->generatePageTestEntity();
-	    	$this->pageCacheService = $kernel->getContainer()->get('reaccion_cms_admin.page_cache_service');
+	    	$this->pageCacheService = $kernel->getContainer()->get('reaccion_cms.page_cache_service');
 	    }
 
 	    private function generatePageTestEntity()
