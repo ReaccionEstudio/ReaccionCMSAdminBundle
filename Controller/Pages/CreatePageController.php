@@ -47,7 +47,7 @@
 			{
 				try
 				{
-					$language = $pageForm['language']->getData();
+					$language = $form['language']->getData();
 
 					if($form['mainPage']->getData() == true)
 					{
