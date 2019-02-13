@@ -15,7 +15,20 @@
 
 	class PageDetailController extends Controller
 	{
-		public function index(Page $page, Request $request, TranslatorInterface $translator)
+		/**
+		 * @var TranslatorInterface
+		 */
+		private $translator;
+
+		/** 
+		 * Constructor
+		 */
+		public function __construct(TranslatorInterface $translator)
+		{
+			$this->translator = $translator;	
+		}
+
+		public function index(Page $page, Request $request)
 		{
 			$em = $this->getDoctrine()->getManager();
 
@@ -61,12 +74,12 @@
 					$this->refreshCache($pageForm, $seoPageForm, $page);
 
 					// success message
-					$this->addFlash('success', $translator->trans('page_form.update_success_message'));
+					$this->addFlash('success', $this->translator->trans('page_form.update_success_message'));
 
 				}
 				catch(\Exception $e)
 				{
-					$errMssg = $translator->trans("page_form.update_error_message", array('%error%' => $e->getMessage()) );
+					$errMssg = $this->translator->trans("page_form.update_error_message", array('%error%' => $e->getMessage()) );
 					$this->addFlash('error', $errMssg);
 				}
 			}
