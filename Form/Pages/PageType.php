@@ -18,7 +18,15 @@
 	    public function buildForm(FormBuilderInterface $builder, array $options)
 	    {
 	    	$entityManager = $options['entity_manager'];
+	    	$translationGroup = "";
 
+	    	if(isset($options['query']['translationGroup'])) 
+	    	{
+	    		$filters = ['id' => $options['query']['translationGroup']];
+	    		$translationGroup = $entityManager->getRepository(PageTranslationGroup::class)->findOneBy($filters);
+	    	}
+
+	    	// FORM
 	        $builder
 	            ->add('name', TextType::class, [
 	            	'label' => 'page_form.name',
@@ -37,9 +45,7 @@
                     },
                     'empty_data' => '',
                     'required' => false,
-                    'data' => (isset($options['query']['translationGroup'])) 
-                    			? $entityManager->getRepository(PageTranslationGroup::class)->findOneBy(['id' => $options['query']['translationGroup']])
-                    			: ''
+                    'data' => $translationGroup
 	            ])
 	            ->add('language', ChoiceType::class, [
 	            	'label' => 'users_form.language',

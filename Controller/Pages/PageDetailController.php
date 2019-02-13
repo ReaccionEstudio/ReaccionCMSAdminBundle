@@ -42,7 +42,10 @@
 								$page, 
 								[ 
 									'templateViews' => $themeViews,
-									'entity_manager' => $em
+									'entity_manager' => $em,
+									'query' => [
+										'translationGroup' => $page->getTranslationGroup() 
+									]
 								]
 							);
 			$seoPageForm = $this->createForm(SeoPageType::class, $page);
@@ -79,7 +82,7 @@
 				}
 				catch(\Exception $e)
 				{
-					$errMssg = $this->translator->trans("page_form.update_error_message", array('%error%' => $e->getMessage()) );
+					$errMssg = $this->translator->trans("page_form.update_error_message", array('%error%' => $e->getMessage() . "<br /><br />" . $e->getTraceAsString()) );
 					$this->addFlash('error', $errMssg);
 				}
 			}
