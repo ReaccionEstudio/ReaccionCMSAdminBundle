@@ -14,6 +14,7 @@
 
 		const LANGUAGES_ORIGINAL_NAMES = [
 			'en' => 'English',
+			'us' => 'English',
 			'es' => 'Español'
 		];
 

@@ -47,7 +47,11 @@
                                     <td>
                                         <a href="{{ url('reaccion_cms_admin_languages_update', { 'language' : language.id }) }}" title="{{ language.name}}">{{ language.name }}</a>
                                     </td>
-                                    <td>{{ language.flag }}</td>
+                                    <td>
+                                        {% if language.flag is not empty %}
+                                        <i class="flag flag-{{ getFlagIconForLanguage(language.flag) }}"></i>
+                                        {% endif %}
+                                    </td>
                                     <td>
                                         {% if language.isEnabled %}
                                             <span class="status-icon bg-success"></span> {{ 'languages_crud.enabled' | trans }}
@@ -56,7 +60,6 @@
                                         {% endif %}
                                     </td>
                                     <td>{{ language.position }}</td>
-
                                     <td>
                                         <a href="{{ url('reaccion_cms_admin_languages_update', { 'language' : language.id }) }}" title="{{ 'crud.edit' | trans }}" data-toggle="tooltip" data-placement="top">
                                             <i class="fe fe-edit"></i>
@@ -65,7 +68,6 @@
                                             <i class="fe fe-trash"></i>
                                         </a>
                                     </td>
-
                                 </tr>
                             {% endfor %}
 
