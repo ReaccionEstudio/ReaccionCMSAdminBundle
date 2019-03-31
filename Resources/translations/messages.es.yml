@@ -358,3 +358,11 @@ languages_crud:
   enabled: 'Habilitado'
   disabled: 'Deshabilitado'
   position: 'Posición'
+
+  languages_form:
+    create_title: 'Crear idioma'
+    edit_title: 'Editar idioma: %name%'
+    create_success_form: 'El idioma se ha creado correctamente.'
+    create_error_form: 'Error al crear el idioma: %error%'
+    update_success_form: 'El idioma se ha actualizado correctamente.'
+    update_error_form: 'Error al actualizar el idioma: %error%'

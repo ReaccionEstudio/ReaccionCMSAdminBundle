@@ -9,6 +9,16 @@
         <service id="reaccion_cms.languages.list_controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Languages\LanguageListController" public="true">
         </service>
 
+        <service id="reaccion_cms.languages.create_controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Languages\CreateLanguageController" public="true">
+            <argument type="service" id="translator" />
+            <argument type="service" id="reaccion_cms.manager.language" />
+        </service>
+
+        <service id="reaccion_cms.languages.update_controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Languages\EditLanguageController" public="true">
+            <argument type="service" id="translator" />
+            <argument type="service" id="reaccion_cms.manager.language" />
+        </service>
+
     </services>
 
 </container>

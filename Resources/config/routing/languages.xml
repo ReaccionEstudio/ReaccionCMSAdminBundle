@@ -7,13 +7,13 @@
     <route id="reaccion_cms_admin_languages_index" path="/languages" methods="GET">
         <default key="_controller">reaccion_cms.languages.list_controller:index</default>
     </route>
-<!--
+
     <route id="reaccion_cms_admin_languages_create" path="/languages/create" methods="GET POST">
-        <default key="_controller">reaccion_cms.create_user.controller:index</default>
+        <default key="_controller">reaccion_cms.languages.create_controller:index</default>
     </route>
 
-    <route id="reaccion_cms_admin_languages_update" path="/languages/{user}/update" methods="GET POST">
-        <default key="_controller">reaccion_cms.update_user.controller:index</default>
+    <route id="reaccion_cms_admin_languages_update" path="/languages/{language}/update" methods="GET POST">
+        <default key="_controller">reaccion_cms.languages.update_controller:index</default>
     </route>
--->
+
 </routes>

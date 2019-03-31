@@ -10,7 +10,7 @@
                 <h1 class="page-title">{{ 'languages_crud.title' | trans }}</h1>
             </div>
             <div class="col col-lg-2 row justify-content-end">
-                <a href="{{ url('reaccion_cms_admin_users_create') }}" class="btn btn-primary">
+                <a href="{{ url('reaccion_cms_admin_languages_create') }}" class="btn btn-primary">
                     <i class="fe fe-plus"></i>&nbsp;&nbsp;{{ 'languages_crud.add_new_btn' | trans }}
                 </a>
             </div>
@@ -22,8 +22,7 @@
                 <div class="card">
 
                     {% embed '@ReaccionCMSAdminBundle/shared/crud/listCardHeader.html.twig' with { 'result' : languages } %}{% endembed %}
-
-                    {% embed '@ReaccionCMSAdminBundle/shared/flash_messages.html.twig' %}{% endembed %}
+                    {% embed '@ReaccionCMSAdminBundle/shared/flash_messages.html.twig' with {'extraClasses' : 'pl-2 pr-2' } %}{% endembed %}
 
                     <div class="table-responsive">
 
@@ -46,7 +45,7 @@
                                 <tr>
                                     <td class="w-1">{{ language.id }}</td>
                                     <td>
-                                        <a href="{{ url('reaccion_cms_admin_users_update', { 'user' : language.id }) }}" title="{{ language.name}}">{{ language.name }}</a>
+                                        <a href="{{ url('reaccion_cms_admin_languages_update', { 'language' : language.id }) }}" title="{{ language.name}}">{{ language.name }}</a>
                                     </td>
                                     <td>{{ language.flag }}</td>
                                     <td>
@@ -59,10 +58,9 @@
                                     <td>{{ language.position }}</td>
 
                                     <td>
-                                        <a href="{{ url('reaccion_cms_admin_users_update', { 'user' : user.id }) }}" title="{{ 'crud.edit' | trans }}" data-toggle="tooltip" data-placement="top">
+                                        <a href="{{ url('reaccion_cms_admin_languages_update', { 'language' : language.id }) }}" title="{{ 'crud.edit' | trans }}" data-toggle="tooltip" data-placement="top">
                                             <i class="fe fe-edit"></i>
                                         </a>
-                                        &nbsp;
                                         <a class="text-danger" href="#" data-toggle="tooltip" data-placement="top" title="{{ 'crud.remove' | trans }}" data-detele-confirm="true">
                                             <i class="fe fe-trash"></i>
                                         </a>

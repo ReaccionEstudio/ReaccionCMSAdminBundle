@@ -1,0 +1,40 @@
+{% extends '@ReaccionCMSAdminBundle/base.html.twig' %}
+
+{% block reaccion_cms_admin_body %}
+
+    <div class="my-3 my-md-5">
+
+        <div class="container">
+
+            {{ form_start(form, { 'attr': { 'class' : 'card' } }) }}
+
+            <div class="card-header">
+                {% if mode == 'create' %}
+                    <h3 class="card-title">{{ 'languages_form.create_title' | trans }}</h3>
+                {% elseif mode == 'edit' %}
+                    <h3 class="card-title">{{ 'languages_form.edit_title' | trans({ '%name%' : language.name }) | raw }}</h3>
+                {% endif %}
+            </div>
+
+            <div class="card-body col-8 align-self-center">
+
+                {% embed '@ReaccionCMSAdminBundle/shared/flash_messages.html.twig' with { 'extraClasses' : 'pl-0 pr-0' } %}{% endembed %}
+
+                {{ form_widget(form) }}
+
+            </div>
+
+            <div class="card-footer text-right">
+                <div class="d-flex">
+                    <a href="{{ url('reaccion_cms_admin_languages_index') }}" class="btn btn-link">{{ 'crud.cancel' | trans }}</a>
+                    <button type="submit" class="btn btn-primary ml-auto">{{ 'crud.send_data' | trans }}</button>
+                </div>
+            </div>
+
+            {{ form_end(form) }}
+
+        </div>
+
+    </div>
+
+{% endblock %}
