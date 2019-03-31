@@ -1,0 +1,85 @@
+{% extends '@ReaccionCMSAdminBundle/base.html.twig' %}
+
+{% block reaccion_cms_admin_body %}
+    <div class="my-3 my-md-5">
+
+    <div class="container">
+
+        <div class="page-header">
+            <div class="col pl-0">
+                <h1 class="page-title">{{ 'languages_crud.title' | trans }}</h1>
+            </div>
+            <div class="col col-lg-2 row justify-content-end">
+                <a href="{{ url('reaccion_cms_admin_users_create') }}" class="btn btn-primary">
+                    <i class="fe fe-plus"></i>&nbsp;&nbsp;{{ 'languages_crud.add_new_btn' | trans }}
+                </a>
+            </div>
+        </div>
+
+        <div class="row row-cards">
+
+            <div class="col-12">
+                <div class="card">
+
+                    {% embed '@ReaccionCMSAdminBundle/shared/crud/listCardHeader.html.twig' with { 'result' : languages } %}{% endembed %}
+
+                    {% embed '@ReaccionCMSAdminBundle/shared/flash_messages.html.twig' %}{% endembed %}
+
+                    <div class="table-responsive">
+
+                        <table class="table card-table table-vcenter text-nowrap">
+
+                            <thead>
+                            <tr>
+                                <th class="w-1">{{ 'languages_crud.id' | trans }}</th>
+                                <th>{{ 'languages_crud.name' | trans }}</th>
+                                <th>{{ 'languages_crud.flag' | trans }}</th>
+                                <th>{{ 'languages_crud.is_enabled' | trans }}</th>
+                                <th>{{ 'languages_crud.position' | trans }}</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+
+                            {% for language in languages %}
+                                <tr>
+                                    <td class="w-1">{{ language.id }}</td>
+                                    <td>
+                                        <a href="{{ url('reaccion_cms_admin_users_update', { 'user' : language.id }) }}" title="{{ language.name}}">{{ language.name }}</a>
+                                    </td>
+                                    <td>{{ language.flag }}</td>
+                                    <td>
+                                        {% if language.isEnabled %}
+                                            <span class="status-icon bg-success"></span> {{ 'languages_crud.enabled' | trans }}
+                                        {% else %}
+                                            <span class="status-icon bg-danger"></span> {{ 'languages_crud.disabled' | trans }}
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ language.position }}</td>
+
+                                    <td>
+                                        <a href="{{ url('reaccion_cms_admin_users_update', { 'user' : user.id }) }}" title="{{ 'crud.edit' | trans }}" data-toggle="tooltip" data-placement="top">
+                                            <i class="fe fe-edit"></i>
+                                        </a>
+                                        &nbsp;
+                                        <a class="text-danger" href="#" data-toggle="tooltip" data-placement="top" title="{{ 'crud.remove' | trans }}" data-detele-confirm="true">
+                                            <i class="fe fe-trash"></i>
+                                        </a>
+                                    </td>
+
+                                </tr>
+                            {% endfor %}
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}

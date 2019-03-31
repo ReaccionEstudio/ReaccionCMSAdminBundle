@@ -44,6 +44,7 @@ preferences:
   title: 'Preferences'
   config: 'Configuration'
   email_templates: 'Email templates'
+  languages: 'Languages'
 
 preferences_mailer:
   title: 'Mailer configuration'
@@ -414,3 +415,15 @@ themes:
   use_this_theme: 'Use this theme'
   update_theme_success_message: 'Current theme has been updated correctly.'
   update_theme_error_message: 'Error updating current theme. Try it again'
+
+# languages
+languages_crud:
+  title: 'Languages'
+  add_new_btn: 'Add new language'
+  id: 'ID'
+  name: 'Name'
+  flag: 'Flag'
+  is_enabled: 'Is enabled'
+  enabled: 'Enabled'
+  disabled: 'Disabled'
+  position: 'Position'

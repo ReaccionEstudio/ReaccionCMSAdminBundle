@@ -17,6 +17,7 @@
     <import resource="@ReaccionCMSAdminBundle/Resources/config/routing/appearance.xml" />
 
     <import resource="@ReaccionCMSAdminBundle/Resources/config/routing/entries.xml" />
-        
+
+    <import resource="@ReaccionCMSAdminBundle/Resources/config/routing/languages.xml" />
 
 </routes>

@@ -36,6 +36,8 @@ users:
 preferences: 
   title: 'Preferencias'
   config: 'Configuración'
+  email_templates: 'Plantillas de email'
+  languages: 'Idiomas'
 
 appearance:
   title: 'Apariencia'
@@ -344,3 +346,15 @@ themes:
   add_new: 'Add new theme'
   version: 'Version'
   current: 'Current'
+
+# languages
+languages_crud:
+  title: 'Idiomas'
+  add_new_btn: 'Añadir idioma'
+  id: 'ID'
+  name: 'Nombre'
+  flag: 'Bandera'
+  is_enabled: 'Habilitado'
+  enabled: 'Habilitado'
+  disabled: 'Deshabilitado'
+  position: 'Posición'
