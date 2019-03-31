@@ -7,6 +7,7 @@
 	 */
 	class Languages
 	{
+	    // TODO: remove
 		const LANGUAGES = [
 			'en', 
 			'es'

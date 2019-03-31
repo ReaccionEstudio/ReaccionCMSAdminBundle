@@ -424,6 +424,7 @@ languages_crud:
   name: 'Name'
   flag: 'Flag'
   is_enabled: 'Is enabled'
+  is_default: 'Default language'
   enabled: 'Enabled'
   disabled: 'Disabled'
   position: 'Position'

@@ -10,11 +10,21 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use ReaccionEstudio\ReaccionCMSAdminBundle\Constants\Languages;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 
 class LanguageType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $language = ($options['language']) ?? null;
+        $enabled = true;
+
+        if($language != null)
+        {
+            $enabled = $language->isEnabled();
+        }
+
         $builder
             ->add('name', TextType::class, [
                 'label' => 'languages_crud.name',
@@ -36,10 +46,14 @@ class LanguageType extends AbstractType
             ->add('enabled', CheckboxType::class, [
                 'label' => 'languages_crud.is_enabled',
                 'required' => false,
-                'attr' => ['checked' => true]
+                'attr' => ['checked' => $enabled ]
             ])
             ->add('position', NumberType::class, [
                 'label' => 'languages_crud.position',
+                'required' => false
+            ])
+            ->add('main', CheckboxType::class, [
+                'label' => 'languages_crud.is_default',
                 'required' => false
             ])
         ;
@@ -49,7 +63,8 @@ class LanguageType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'ReaccionEstudio\ReaccionCMSBundle\Entity\Language',
-            'mode' => 'create'
+            'mode' => 'create',
+            'language' => null
         ));
     }
 }

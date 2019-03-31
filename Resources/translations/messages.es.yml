@@ -355,6 +355,7 @@ languages_crud:
   name: 'Nombre'
   flag: 'Bandera'
   is_enabled: 'Habilitado'
+  is_default: 'Idioma principal'
   enabled: 'Habilitado'
   disabled: 'Deshabilitado'
   position: 'Posición'

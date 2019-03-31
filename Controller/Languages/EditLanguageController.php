@@ -23,7 +23,8 @@ class EditLanguageController extends Controller
 
     public function index(Language $language, Request $request)
     {
-        $form = $this->createForm(LanguageType::class, $language);
+        $formOptions = [ 'language' => $language ];
+        $form = $this->createForm(LanguageType::class, $language, $formOptions);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid())
@@ -41,7 +42,7 @@ class EditLanguageController extends Controller
                 $this->addFlash(
                     'error',
                     $this->translator->trans('languages_form.update_error_message', [
-                        '%name%' => $form['username']->getData(),
+                        '%name%' => $form['name']->getData(),
                         '%error%' => $e->getMessage()
                     ])
                 );
