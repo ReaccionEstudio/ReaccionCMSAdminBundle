@@ -36,7 +36,7 @@ class CreateLanguageController extends Controller
                 // save
                 $this->languageManager->save($language);
 
-                $this->addFlash('success', $this->translator->trans('users_form.create_success_message') );
+                $this->addFlash('success', $this->translator->trans('languages_form.create_success_form') );
 
                 return $this->redirectToRoute('reaccion_cms_admin_languages_index');
             }
@@ -44,7 +44,7 @@ class CreateLanguageController extends Controller
             {
                 $this->addFlash(
                     'error',
-                    $this->translator->trans('users_form.create_error_message', [
+                    $this->translator->trans('languages_form.create_error_form', [
                         '%name%' => $form['name']->getData(),
                         '%error%' => $e->getMessage()
                     ])
