@@ -57,6 +57,16 @@ class LanguageType extends AbstractType
                 'required' => false
             ])
         ;
+
+        $builder->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event)
+        {
+            $form = $event->getForm();
+
+            if( ! $form['main']->getData())
+            {
+                $form['main']->setData(null);
+            }
+        });
     }
 
     public function configureOptions(OptionsResolver $resolver)
