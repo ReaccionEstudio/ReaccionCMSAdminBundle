@@ -19,6 +19,11 @@
             <argument type="service" id="reaccion_cms.manager.language" />
         </service>
 
+        <service id="reaccion_cms.languages.remove_controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Languages\RemoveLanguageController" public="true">
+            <argument type="service" id="translator" />
+            <argument type="service" id="reaccion_cms.manager.language" />
+        </service>
+
     </services>
 
 </container>

@@ -404,7 +404,7 @@ entries_form:
   update_success_form: 'Entry has been updated correctly.'
   update_error_form: 'Error updating entry: %error%'
   remove_success_message: 'Entry <strong>%name%</strong> has been removed correctly'
-  remove_error_message: 'Error removig <strong>%name%</strong> entry: %error%'
+  remove_error_message: 'Error removing <strong>%name%</strong> entry: %error%'
 
 # appearance > themes
 themes:
@@ -435,3 +435,5 @@ languages_form:
   create_error_form: 'Error creating language: %error%'
   update_success_message: 'Language has been updated correctly.'
   update_error_message: 'Error updating language: %error%'
+  remove_success_message: 'Language <strong>%name%</strong> has been removed correctly'
+  remove_error_message: 'Error removing <strong>%name%</strong> language: %error%'

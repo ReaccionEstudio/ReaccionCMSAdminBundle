@@ -16,4 +16,8 @@
         <default key="_controller">reaccion_cms.languages.update_controller:index</default>
     </route>
 
+    <route id="reaccion_cms_admin_languages_remove" path="/languages/{language}/remove" methods="GET POST">
+        <default key="_controller">reaccion_cms.languages.remove_controller:index</default>
+    </route>
+
 </routes>

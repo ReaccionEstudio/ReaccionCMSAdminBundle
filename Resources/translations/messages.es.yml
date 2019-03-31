@@ -366,3 +366,5 @@ languages_crud:
     create_error_form: 'Error al crear el idioma: %error%'
     update_success_form: 'El idioma se ha actualizado correctamente.'
     update_error_form: 'Error al actualizar el idioma: %error%'
+    remove_success_message: 'El idioma <strong>%name%</strong> se ha eliminado correctamente'
+    remove_error_message: 'Error al eliminar el idioma <strong>%name%</strong>: %error%'
