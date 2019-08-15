@@ -50,7 +50,7 @@
 		                    		{% if row.type == 'serialized' %}
 		                    		<td>{{ printSerializedValueAsText(row.value) }}</td>
 		                    		{% else %}
-		                    		<td>{{ row.value }}</td>
+		                    		<td>{{ substrSentence(row.value, 50) }}</td>
 		                    		{% endif %}
 
 		                    		<td class="text-right">
