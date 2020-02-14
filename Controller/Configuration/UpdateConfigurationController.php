@@ -71,10 +71,6 @@
 					$em->persist($config);
 					$em->flush();
 
-					// update cache value
-					$cacheParamKey = "config." . $config->getName();
-					$this->get("reaccion_cms.cache")->set($cacheParamKey, $config->getValue());
-
 					// flash message
 					$this->addFlash('success', $this->translator->trans('config_form.update_success_form') );
 

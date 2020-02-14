@@ -61,12 +61,6 @@
 					$em->persist($page);
 					$em->flush();
 
-					// refresh main page cache
-					if($form['mainPage']->getData() == true)
-					{
-						$this->get("reaccion_cms.page_cache_service")->refreshMainPageCache($language);
-					}
-
 					$this->addFlash('success', $this->translator->trans('page_form.create_success_message') );
 					return $this->redirectToRoute('reaccion_cms_admin_pages_index');
 				}
