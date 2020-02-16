@@ -6,7 +6,6 @@
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\Translation\TranslatorInterface;
 	use ReaccionEstudio\ReaccionCMSAdminBundle\Form\Media\MediaType;
-	use ReaccionEstudio\ReaccionCMSAdminBundle\Services\Media\UploadService;
 
 	class CreateMediaController extends Controller
 	{
