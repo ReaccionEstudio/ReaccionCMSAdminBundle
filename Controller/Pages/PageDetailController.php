@@ -2,6 +2,7 @@
 
 namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages;
 
+use ReaccionEstudio\ReaccionCMSBundle\Core\Router\Loader\FileLoader;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Translation\TranslatorInterface;
@@ -67,6 +68,9 @@ class PageDetailController extends Controller
                 // save
                 $em->persist($page);
                 $em->flush();
+
+                // TODO: create EVENT
+                $this->get('reaccion_cms.router')->setLoader(FileLoader::class)->updateSchema();
 
                 // success message
                 $this->addFlash('success', $this->translator->trans('page_form.update_success_message'));
