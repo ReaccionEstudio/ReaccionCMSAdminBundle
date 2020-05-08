@@ -24,7 +24,7 @@
 	            	'required' => false
 	            ])
 	            ->add('seoKeywords', TextType::class, [
-	            	'label' => 'page_form.seo_description',
+	            	'label' => 'page_form.seo_keywords',
 	            	'required' => false
 	            ])
 	        ;
