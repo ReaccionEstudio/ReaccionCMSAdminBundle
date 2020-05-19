@@ -3,7 +3,8 @@
 	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages;
 
 	use Cocur\Slugify\Slugify;
-	use Symfony\Component\HttpFoundation\Request;
+    use ReaccionEstudio\ReaccionCMSBundle\Core\Router\Loader\FileLoader;
+    use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Component\Translation\TranslatorInterface;
 	use ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -61,11 +62,8 @@
 					$em->persist($page);
 					$em->flush();
 
-					// refresh main page cache
-					if($form['mainPage']->getData() == true)
-					{
-						$this->get("reaccion_cms.page_cache_service")->refreshMainPageCache($language);
-					}
+                    // TODO: create EVENT
+                    $this->get('reaccion_cms.router')->setLoader(FileLoader::class)->updateSchema();
 
 					$this->addFlash('success', $this->translator->trans('page_form.create_success_message') );
 					return $this->redirectToRoute('reaccion_cms_admin_pages_index');

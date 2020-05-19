@@ -57,11 +57,6 @@
 					$em->persist($menuContent);
 					$em->flush();
 
-					// update menu html value for cache
-					$menuService = $this->get("reaccion_cms.menu");
-					$cacheKey = $menuService->getCacheKey($menu->getSlug(), $menu->getLanguage());
-					$menuService->saveMenuHtmlInCache($menu->getSlug(), $menu->getLanguage(), $cacheKey);
-
 					// flash message
 					$this->addFlash('success', $this->translator->trans('menu_form.update_success_message') );
 					return $this->redirectToRoute('reaccion_cms_admin_appearance_menu_content', ['menu' => $menu->getId() ]);

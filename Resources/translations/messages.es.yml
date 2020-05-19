@@ -111,16 +111,16 @@ pages_list_table:
   updated_at: 'Actualizado el'
 
 page_form:
-  title: 'Crear una nueva página'
+  title: 'Crear nueva página'
   name: 'Nombre'
   main_page: 'Página principal'
-  is_enabled: '¿Habilitado?'
-  is_main_page: '¿Página principal?'
-  slug: 'URL de la página'
+  is_enabled: 'Activo'
+  is_main_page: 'Establecer como página principal'
+  slug: 'Slug / Dirección de la página'
   seo_title: 'Título'
   seo_description: 'Descripción'
   seo_keywords: 'Palabras clave'
-  template_view: 'Plantilla'
+  template_view: 'Plantilla / Vista'
   create_success_message: 'La página se ha creado correctamente.'
   create_error_message: 'Error creando el contenido <strong>%name%</strong>: %error%'
   remove_success_message: 'La página <strong>%name%</strong> se ha eliminado correctamente.'
@@ -151,21 +151,21 @@ page_content_form:
   remove_error_message: 'Error removing <strong>%name%</strong> content: %error%.'
 
 page_detail:
-  go_back_page_list: 'Go back to page list'
-  title: 'Content'
-  general_info_title: 'General info'
-  seo_title: 'SEO'
-  new_content_btn: 'Add new content'
+  go_back_page_list: 'Volver al listado'
+  title: 'Contenido de la página'
+  general_info_title: 'Información general'
+  seo_title: 'Posicionamiento web / SEO'
+  new_content_btn: 'Añadir nuevo contenido'
 
 page_detail_table:
-  name: 'Name'
-  type: 'Type'
-  position: 'Position'
-  last_update: 'Last update'
+  name: 'Nombre'
+  type: 'Tipo'
+  position: 'Posición'
+  last_update: 'Última actualización'
 
 # configuration
 config_list:
-  title: 'Configuration'
+  title: 'Configuración'
   create_new_value: 'Create new config'
   name: 'Name'
   value: 'Value'

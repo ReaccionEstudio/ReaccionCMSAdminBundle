@@ -2,12 +2,12 @@
 
 	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages;
 
-	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+	use ReaccionEstudio\ReaccionCMSBundle\Core\Router\Loader\FileLoader;
+    use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Component\Translation\TranslatorInterface;
 
 	use ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
-	use ReaccionEstudio\ReaccionCMSAdminBundle\Form\Pages\PageType;
 	use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 	class RemovePageController extends Controller
@@ -35,6 +35,9 @@
 				// remove
 				$em->remove($page);
 				$em->flush();
+
+                // TODO: create EVENT
+                $this->get('reaccion_cms.router')->setLoader(FileLoader::class)->updateSchema();
 
 				$this->addFlash('success', $this->translator->trans('page_form.remove_success_message', array('%name%' => $pageName)) );
 
