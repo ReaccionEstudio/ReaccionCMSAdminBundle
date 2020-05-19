@@ -36,6 +36,48 @@ users:
 preferences: 
   title: 'Preferencias'
   config: 'Configuración'
+  email_templates: 'Email templates'
+
+preferences_mailer:
+  title: 'Mailer configuration'
+  menu_title: 'Mailer'
+  host: 'Host'
+  port: 'Port'
+  username: 'Username'
+  password: 'Password'
+  encryption: 'Encryption'
+  authentication: 'Authentication'
+  none: 'None'
+  send_test_email: 'Send test email'
+  update_success_message: 'Your mailer settings have been updated correctly.'
+  update_error_message: '<strong>Error updating your mailer settings:</strong> %error%.'
+  can_not_connect_to_smtp_server: 'ReaccionCMS cannot connect to SMTP server.'
+  sent_test_email_successfully: 'Test email was sent successfully'
+
+email_templates:
+  title: 'Email templates'
+  create_title: 'Create email template'
+  update_title: 'Update email template: %name%'
+  create_btn: 'Create new email template'
+  type: 'Type'
+  name: 'Name'
+  slug: 'Slug'
+  language: 'Language'
+  message: 'Message'
+  subject: 'Subject'
+  fromname: 'From'
+  fromemail: 'From email'
+  template_file: 'Template file'
+  isEnabled: 'Is enabled?'
+  plain_text: 'Is plain text?'
+  add_custom_field_btn: 'Add custom field'
+  email_params: 'Email parameters'
+  create_success_message: 'The email template has been created correctly.'
+  create_error_message: 'Error creating email template: %error%'
+  remove_success_message: 'Email template <strong>%name%</strong> has been removed correctly.'
+  remove_error_message: 'Error removing <strong>%name%</strong> email template: %error%'
+  update_success_message: 'Email template has been updated correctly.'
+  update_error_message: 'Error updating email template: %error%'
 
 appearance:
   title: 'Apariencia'
@@ -54,6 +96,8 @@ menu:
 menu_content:
   title: 'Menú: <strong>%name%</strong>'
   add_item: 'Añadir un elemento'
+  up: 'Up'
+  down: 'Down'
 
 user_dropdown:
   sign_out: 'Salir'
@@ -98,7 +142,9 @@ dashboard:
 # pages
 pages_list:
   title: 'Listado de páginas'
+  translation_group_title: 'Page translations groups'
   create_new_page_btn: 'Crear una página'
+  create_new_page_trans_group: 'Create new page translations group'
 
 pages_list_table:
   id: 'Id'
@@ -107,6 +153,7 @@ pages_list_table:
   language: 'Idioma'
   enabled: 'Habilitado'
   disabled: 'Deshabilitado'
+  translation_group: 'Translation group'
   created_at: 'Creado el'
   updated_at: 'Actualizado el'
 
@@ -150,6 +197,18 @@ page_content_form:
   remove_success_message: 'Content <strong>%name%</strong> has been removed correctly.'
   remove_error_message: 'Error removing <strong>%name%</strong> content: %error%.'
 
+page_translation_group_form:
+  title: 'Create page translation group'
+  detail_title: 'Page translation detail: %name%'
+  pages_title: 'Pages'
+  name: 'Name'
+  create_success_message: 'Translation group has been created correctly.'
+  create_error_message: 'Error creating translation group <strong>%name%</strong>: %error%.'
+  update_success_message: 'Translation group has been updated correctly.'
+  update_error_message: 'Error updating translation group <strong>%name%</strong>: %error%.'
+  remove_success_message: 'Translation group <strong>%name%</strong> has been removed correctly.'
+  remove_error_message: 'Error removing translation group <strong>%name%</strong>: %error%.'
+
 page_detail:
   go_back_page_list: 'Volver al listado'
   title: 'Contenido de la página'
@@ -172,6 +231,7 @@ config_list:
 
 config_form:
   title: 'Create new configuration'
+  edit_title: 'Update configuration: %config%'
   name: 'Name'
   value: 'Value'
   image: 'Image'
@@ -243,6 +303,7 @@ users_form:
   repeat_password: 'Repeat Password'
   is_enabled: 'Is enabled'
   language: 'Language'
+  translation_group: 'Translation group'
   roles: 'Roles'
   role: 'Role'
 
@@ -319,8 +380,8 @@ entries_list:
   language: 'Idioma'
   isEnabled: 'Habilitada'
   created_at: 'Fecha de creación'
-  enabled: 'Enabled'
   updated_at: 'Última actualización'
+  enabled: 'Enabled'
   disabled: 'Deshabilitado'
 
 entries_form:
@@ -347,3 +408,6 @@ themes:
   add_new: 'Add new theme'
   version: 'Version'
   current: 'Current'
+  use_this_theme: 'Use this theme'
+  update_theme_success_message: 'Current theme has been updated correctly.'
+  update_theme_error_message: 'Error updating current theme. Try it again'

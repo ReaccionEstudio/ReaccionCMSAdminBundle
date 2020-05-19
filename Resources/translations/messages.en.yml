@@ -368,6 +368,9 @@ entries_categories_list:
 
 entries_categories_form:
   title: 'Create new category'
+  name: 'Name'
+  language: 'Language'
+  isEnabled: 'Enabled'
   edit_title: 'Update category: %name%'
   success_form: 'Category has been created correctly.'
   error_form: 'Error creating category: %error%'
@@ -395,6 +398,7 @@ entries_form:
   content: 'Content'
   slug: 'Slug'
   tags: 'Tags'
+  language: 'Idioma'
   categories: 'Categories'
   isEnabled: 'Is enabled'
   options: 'Entry options'
