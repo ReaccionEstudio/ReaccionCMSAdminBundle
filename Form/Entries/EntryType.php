@@ -52,7 +52,7 @@
 	            	'required' => false
 	            ])
 	            ->add('language', ChoiceType::class, [
-	            	'label' => 'users_form.language',
+	            	'label' => 'entries_form.language',
 	            	'choices' => Languages::LANGUAGES,
 	            	'choice_label' => function($choiceValue, $key, $value)
                     {

@@ -64,12 +64,12 @@ navigation:
   
 # login 
 login:
-  title: 'Login to your account'
-  forgot_password: 'I forgot password'
-  username: 'Username'
-  password: 'Password'
-  remember_me: 'Remember me'
-  submit: 'Sign in'
+  title: 'Accede con tu cuenta'
+  forgot_password: 'Olvidé mi contraseña'
+  username: 'Usuario'
+  password: 'Contraseña'
+  remember_me: 'Recordarme'
+  submit: 'Acceder'
 
 # crud
 crud:
@@ -248,8 +248,8 @@ users_form:
 
 # languages
 languages:
-  en: 'English'
-  es: 'Spanish'
+  en: 'Inglés'
+  es: 'Español'
 
 # roles
 roles:
@@ -288,54 +288,58 @@ menu_content_form:
 
 # entries_categories
 entries_categories_list:
-  title: 'List entries categories'
-  create_btn: 'Create new category'
-  name: 'Name'
-  language: 'Language'
-  isEnabled: 'Is enabled'
-  created_at: 'Created at'
-  updated_at: 'Updated at'
-  enabled: 'Enabled'
-  disabled: 'Disabled'
+  title: 'Mostrar categorías para las entradas'
+  create_btn: 'Crear categoría'
+  name: 'Nombre'
+  language: 'idioma'
+  isEnabled: 'Habilitado'
+  created_at: 'Fecha de creación'
+  updated_at: 'Última actualización'
+  enabled: 'Habilitado'
+  disabled: 'Deshabilitado'
 
 entries_categories_form:
-  title: 'Create new category'
-  edit_title: 'Update category: %name%'
-  success_form: 'Category has been created correctly.'
-  error_form: 'Error creating category: %error%'
-  update_success_form: 'Category has been updated correctly.'
-  update_error_form: 'Error updating category: %error%'
-  remove_success_message: 'Category <strong>%name%</strong> has been removed correctly'
-  remove_error_message: 'Error removig <strong>%name%</strong> category: %error%'
+  title: 'Crear categoría'
+  name: 'Nombre'
+  language: 'Idioma'
+  isEnabled: 'Habilitada'
+  edit_title: 'Actualizar categoría: %name%'
+  success_form: 'La categoría se ha creado correctamente.'
+  error_form: 'Error al crear la categoría: %error%'
+  update_success_form: 'La categoría se ha actualizado correctamente.'
+  update_error_form: 'Error al actualizar la categoría: %error%'
+  remove_success_message: 'La categoría <strong>%name%</strong> se ha eliminado correctamente.'
+  remove_error_message: 'Error al eliminar la categoría <strong>%name%</strong>: %error%'
 
 # entries
 entries_list:
-  title: 'List entries'
-  create_btn: 'Create new entry'
-  name: 'Name'
-  language: 'Language'
-  isEnabled: 'Is enabled'
-  created_at: 'Created at'
-  updated_at: 'Updated at'
+  title: 'Listar entradas'
+  create_btn: 'Crear entrada'
+  name: 'Nombre'
+  language: 'Idioma'
+  isEnabled: 'Habilitada'
+  created_at: 'Fecha de creación'
   enabled: 'Enabled'
-  disabled: 'Disabled'
+  updated_at: 'Última actualización'
+  disabled: 'Deshabilitado'
 
 entries_form:
-  title: 'Create new entry'
-  update_title: 'Update entry: %name%'
-  name: 'Name'
-  content: 'Content'
+  title: 'Crear nueva entrada'
+  update_title: 'Actualizar entrada: %name%'
+  name: 'Nombre'
+  content: 'Contenido'
   slug: 'Slug'
-  tags: 'Tags'
-  categories: 'Categories'
-  isEnabled: 'Is enabled'
-  options: 'Entry options'
-  create_success_form: 'Entry has been created correctly.'
-  create_error_form: 'Error creating entry: %error%'
-  update_success_form: 'Entry has been updated correctly.'
-  update_error_form: 'Error updating entry: %error%'
-  remove_success_message: 'Entry <strong>%name%</strong> has been removed correctly'
-  remove_error_message: 'Error removig <strong>%name%</strong> entry: %error%'
+  tags: 'Etiquetas'
+  language: 'Idioma'
+  categories: 'Categorías'
+  isEnabled: 'Habilitado'
+  options: 'Opciones de la entrada'
+  create_success_form: 'La entrada se ha creado correctamente.'
+  create_error_form: 'Error al crear al entrada: %error%'
+  update_success_form: 'La entrada se ha actualizado correctamente.'
+  update_error_form: 'Error al actualizar la entrada: %error%'
+  remove_success_message: 'La entrada <strong>%name%</strong> se ha eliminado correctamente'
+  remove_error_message: 'Error al eliminar la entrada <strong>%name%</strong>: %error%'
 
 # appearance > themes
 themes:

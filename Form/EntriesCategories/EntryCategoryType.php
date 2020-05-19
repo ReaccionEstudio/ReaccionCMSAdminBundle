@@ -17,11 +17,11 @@
 	    {
 	        $builder
 	            ->add('name', TextType::class, [
-	            	'label' => 'menu_form.name',
+	            	'label' => 'entries_categories_form.name',
 	            	'required' => true
 	            ])
 	            ->add('language', ChoiceType::class, [
-	            	'label' => 'users_form.language',
+	            	'label' => 'entries_categories_form.language',
 	            	'choices' => Languages::LANGUAGES,
 	            	'choice_label' => function($choiceValue, $key, $value)
                     {
@@ -35,7 +35,7 @@
 	            	'attr' => ['class' => 'selectize']
 	            ])
 	            ->add('enabled', CheckboxType::class, [
-	            	'label' => 'menu_form.is_enabled',
+	            	'label' => 'entries_categories_form.isEnabled',
 	            	'attr' => ($options['mode'] == "create") ? ['checked' => 'checked'] : [],
 	            	'required' => false
 	            ])

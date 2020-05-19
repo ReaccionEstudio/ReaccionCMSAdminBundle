@@ -2,46 +2,12 @@
   	<div class="container">
         <div class="d-flex">
       		<a class="header-brand" href="{{ url('reaccion_cms_admin_index') }}">
-        		<img src="{{ asset(getLogoPath()) }}" class="header-brand-img" alt="logo" />
+        		<img src="https://www.socairepsicologia.com/build/logo.svg" class="header-brand-img" alt="logo" />
       		</a>
           <div class="d-flex order-lg-2 ml-auto">
             <div class="nav-item d-none d-md-flex">
               <a href="/" class="btn btn-sm btn-outline-primary">{{ 'navigation.go_to_website' | trans }}</a>
             </div>
-
-            <!-- app messages
-            <div class="dropdown d-none d-md-flex">
-              	<a class="nav-link icon" data-toggle="dropdown">
-                    <i class="fe fe-bell"></i>
-                	<span class="nav-unread"></span>
-              	</a>
-              	<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                    <a href="#" class="dropdown-item d-flex">
-                  	<span class="avatar mr-3 align-self-center" style="background-image: url(demo/faces/male/41.jpg)"></span>
-                  	<div>
-                    	<strong>Nathan</strong> pushed new commit: Fix page load performance issue.
-                    	<div class="small text-muted">10 minutes ago</div>
-                  	</div>
-                </a>
-                <a href="#" class="dropdown-item d-flex">
-                  <span class="avatar mr-3 align-self-center" style="background-image: url(demo/faces/female/1.jpg)"></span>
-                  <div>
-                    <strong>Alice</strong> started new task: Tabler UI design.
-                    <div class="small text-muted">1 hour ago</div>
-                  </div>
-                </a>
-                <a href="#" class="dropdown-item d-flex">
-                  <span class="avatar mr-3 align-self-center" style="background-image: url(demo/faces/female/18.jpg)"></span>
-                  <div>
-                    <strong>Rose</strong> deployed new version of NodeJS REST Api V3
-                    <div class="small text-muted">2 hours ago</div>
-                  </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item text-center text-muted-dark">Mark all as read</a>
-              </div>
-            </div>
-            -->
 
             <div class="dropdown">
               <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
@@ -101,11 +67,11 @@
                 <a href="{{ url('reaccion_cms_admin_index') }}" class="nav-link {{isActive('index')}}"><i class="fe fe-home"></i>&nbsp;&nbsp;{{ 'home.title' | trans }}</a>
               </li>
 
-              <li class="nav-item">
-                <a href="javascript:void(0)" class="nav-link {{isActive('page', true)}}" data-toggle="dropdown"><i class="fe fe-file"></i>&nbsp;&nbsp;{{ 'pages.title' | trans }}</a>
+              <li class="nav-item dropdown">
+                <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-file-text "></i>&nbsp;&nbsp;Actividades</a>
                 <div class="dropdown-menu dropdown-menu-arrow">
-                  <a href="{{ url('reaccion_cms_admin_pages_index') }}" class="dropdown-item {{isActive('pages_index')}}">{{ 'pages.list' | trans }}</a>
-                  <a href="{{ url('reaccion_cms_admin_pages_create') }}" class="dropdown-item {{isActive('pages_create')}}">{{ 'pages.create' | trans }}</a>
+                  <a href="{{ url('reaccion_cms_admin_activities_list') }}" class="dropdown-item ">Listado de actividades</a>
+                  <a href="{{ url('reaccion_cms_admin_activities_create') }}" class="dropdown-item ">Crear actividad</a>
                 </div>
               </li>
 
@@ -120,55 +86,15 @@
                 </div>
               </li>
 
-              <!--
-              <li class="nav-item dropdown">
-                <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-file-text"></i>&nbsp;&nbsp;{{ 'entries.title' | trans }}</a>
-                <div class="dropdown-menu dropdown-menu-arrow">
-                  <a href="#" class="dropdown-item ">{{ 'entries.list' | trans }}</a>
-                  <a href="#" class="dropdown-item ">{{ 'entries.create' | trans }}</a>
-                  <hr />
-                  <a href="#" class="dropdown-item ">{{ 'entries_categories.list' | trans }}</a>
-                  <a href="#" class="dropdown-item ">{{ 'entries_categories.create' | trans }}</a>
-                </div>
-              </li>
-              -->
-
               <li class="nav-item">
                 <a href="{{ url('reaccion_cms_admin_media_index') }}" class="nav-link {{isActive('media_index')}}"><i class="fe fe-image"></i>&nbsp;&nbsp;{{ 'media.title' | trans }}</a>
               </li>
-
-              <!--
-              <li class="nav-item dropdown">
-                <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-box"></i>&nbsp;&nbsp;{{ 'plugins.title' | trans }}</a>
-                <div class="dropdown-menu dropdown-menu-arrow">
-                  <a href="#" class="dropdown-item ">{{ 'plugins.list' | trans }}</a>
-                  <a href="#" class="dropdown-item ">{{ 'plugins.add' | trans }}</a>
-                </div>
-              </li>
-              -->
 
               <li class="nav-item dropdown">
                 <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-users "></i>&nbsp;&nbsp;{{ 'users.title' | trans }}</a>
                 <div class="dropdown-menu dropdown-menu-arrow">
                   <a href="{{ url('reaccion_cms_admin_users_index') }}" class="dropdown-item ">{{ 'users.list' | trans }}</a>
-                  <a href="#" class="dropdown-item ">{{ 'users.add' | trans }}</a>
-                </div>
-              </li>
-
-              <li class="nav-item dropdown">
-                <a href="#" class="nav-link {{isActive('appearance', true)}}" data-toggle="dropdown"><i class="fe fe-feather"></i>&nbsp;&nbsp;{{ 'appearance.title' | trans }}</a>
-                <div class="dropdown-menu dropdown-menu-arrow">
-                  <a href="{{ url('reaccion_cms_admin_appearance_menu') }}" class="dropdown-item {{isActive('preferences_menu')}}">{{ 'appearance.website_menu' | trans }}</a>
-                  <a href="{{ url('reaccion_cms_admin_appearance_themes') }}" class="dropdown-item {{isActive('themes')}}">{{ 'appearance.themes' | trans }}</a>
-                </div>
-              </li>
-
-              <li class="nav-item dropdown">
-                <a href="#" class="nav-link {{isActive('preferences', true)}}" data-toggle="dropdown"><i class="fe fe-settings"></i>&nbsp;&nbsp;{{ 'preferences.title' | trans }}</a>
-                <div class="dropdown-menu dropdown-menu-arrow">
-                  <a href="{{ url('reaccion_cms_admin_preferences_configuration') }}" class="dropdown-item {{isActive('preferences_configuration')}}">{{ 'preferences.config' | trans }}</a>
-                  <a href="{{ url('reaccion_cms_admin_preferences_mailer') }}" class="dropdown-item {{isActive('preferences_mailer')}}">{{ 'preferences_mailer.menu_title' | trans }}</a>
-                  <a href="{{ url('reaccion_cms_admin_preferences_email_templates') }}" class="dropdown-item {{isActive('preferences_mailer_sent_test_email')}}">{{ 'preferences.email_templates' | trans }}</a>
+                  <a href="{{ url('reaccion_cms_admin_users_create') }}" class="dropdown-item ">{{ 'users.add' | trans }}</a>
                 </div>
               </li>
 
