@@ -40,7 +40,7 @@
 		        ])
 	            ->add('slug', TextType::class, [
 	            	'label' => 'entries_form.slug',
-	            	'required' => true
+	            	'required' => false
 	            ])
 	            ->add('tags', TextType::class, [
 	            	'label' => 'entries_form.tags',
