@@ -128,6 +128,7 @@ crud:
   go_back: 'Ir atrás'
   copy: 'Copiar'
   created_at: 'Creado el'
+  select: 'Seleccionar'
 
 # dashboard
 dashboard:
@@ -267,12 +268,12 @@ media_detail:
   removed_media_error: 'Error removing media <strong>%name%</strong>: %error%'
 
 media_common:
-  open_gallery: 'Open gallery'
+  open_gallery: 'Abrir galería'
   original: 'Original'
-  large: 'Large'
-  medium: 'Medium'
-  small: 'Small'
-  select_image_quality: 'Select image quality'
+  large: 'Grande'
+  medium: 'Mediana'
+  small: 'Pequeña'
+  select_image_quality: 'Eliga la calidad de la imagen'
 
 # pages
 users_list:
@@ -395,6 +396,7 @@ entries_form:
   categories: 'Categorías'
   isEnabled: 'Habilitado'
   options: 'Opciones de la entrada'
+  defaultImage: 'Imagen por defecto'
   create_success_form: 'La entrada se ha creado correctamente.'
   create_error_form: 'Error al crear al entrada: %error%'
   update_success_form: 'La entrada se ha actualizado correctamente.'

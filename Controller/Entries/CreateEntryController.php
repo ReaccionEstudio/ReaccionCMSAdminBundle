@@ -69,7 +69,8 @@ class CreateEntryController extends Controller
         return $this->render("@ReaccionCMSAdminBundle/entries/form.html.twig",
             [
                 'form' => $form->createView(),
-                'mode' => 'create'
+                'mode' => 'create',
+                'entry' => null
             ]
         );
     }

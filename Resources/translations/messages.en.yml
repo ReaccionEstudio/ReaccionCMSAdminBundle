@@ -135,6 +135,7 @@ crud:
   go_back: 'Go back'
   copy: 'Copy'
   created_at: 'Created at'
+  select: 'Select'
 
 # dashboard
 dashboard:
@@ -402,6 +403,7 @@ entries_form:
   categories: 'Categories'
   isEnabled: 'Is enabled'
   options: 'Entry options'
+  defaultImage: 'Default image'
   create_success_form: 'Entry has been created correctly.'
   create_error_form: 'Error creating entry: %error%'
   update_success_form: 'Entry has been updated correctly.'

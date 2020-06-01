@@ -53,7 +53,8 @@ class UpdateEntryController extends Controller
             [
                 'form' => $form->createView(),
                 'mode' => 'edit',
-                'entryName' => $form['name']->getData()
+                'entryName' => $form['name']->getData(),
+                'entry' => $entry
             ]
         );
     }
