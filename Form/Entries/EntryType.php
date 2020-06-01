@@ -5,6 +5,7 @@ namespace ReaccionEstudio\ReaccionCMSAdminBundle\Form\Entries;
 use ReaccionEstudio\ReaccionCMSBundle\Entity\Media;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -66,10 +67,10 @@ class EntryType extends AbstractType
                 'data' => 'es',
                 'required' => true
             ])
-            ->add('defaultImage', EntityType::class, [
+            ->add('defaultImageFile', FileType::class, [
                 'label' => 'entries_form.defaultImage',
-                'class' => Media::class,
-                'required' => false
+                'required' => false,
+                'mapped' => false
             ])
         ;
     }

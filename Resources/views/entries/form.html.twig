@@ -106,28 +106,15 @@
         			</div>
         			<div class="card-body">
 		        		<div class="form-group text-center">
-
-							<div id="default_image_preview" {% if entry.defaultImage is not defined or entry.defaultImage is empty %}class="d-none"{% endif %}>
-
-								{% if entry.defaultImage is defined and entry.defaultImage is not empty %}
-									<img src="{{ asset('uploads/' ~ entry.defaultImage.path) }}" class="mb-2" />
-								{% else %}
-								<img src="" class="mb-2" />
-								{% endif %}
-								<button data-action="remove-default-image" type="button" class="btn btn-danger btn-block mb-2">
-									<i class="fe fe-trash mr-2"></i>{{ 'crud.remove' | trans }}
-								</button>
+							{% if entry.defaultImage is defined and entry.defaultImage is not empty %}
+							<div id="default_image_preview">
+								<img src="{{ asset('uploads/' ~ entry.defaultImage.path) }}" class="mb-2" />
 							</div>
-
-							<!-- open gallery button -->
-							<div id="open_gallery_button" data-form-name="entry" class="m-0">
-								<button type="button" data-event="open-media-gallery" class="btn btn-dark btn-block">
-									<i class="fe fe-upload mr-2"></i>{{ 'media_common.open_gallery' | trans }}
-								</button>
-							</div>
-							<!-- end open gallery button -->
-
-				        	{{ form_widget(form.defaultImage) }}
+							<a href="?removeDefaultImage=1" data-detele-confirm="true" type="button" class="btn btn-danger btn-block mb-2">
+								<i class="fe fe-trash mr-2"></i>{{ 'crud.remove' | trans }}
+							</a>
+							{% endif %}
+							{{ form_widget(form.defaultImageFile) }}
 		        		</div>
 	        		</div>
         		</div>

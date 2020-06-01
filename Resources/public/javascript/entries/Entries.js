@@ -7,7 +7,6 @@
 
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import ReaccionCMSUploadAdapter from '../ckeditor/imageUpload/ReaccionCMSUploadAdapter.js';
-import MediaGalleryFormComponent from '../components/media/MediaGalleryFormComponent';
 
 /**
  * ReaccionCMSUploadAdapter plugin
@@ -31,7 +30,6 @@ class Entries {
         this._setEditorContentOnFormSubmit();
         this._toggleFormCategories();
         this._handleLanguageChangeEvent();
-        this._defaultImageEvents();
     }
 
     /**
@@ -53,42 +51,6 @@ class Entries {
             .catch(error => {
                 console.error(error);
             });
-    }
-
-    _defaultImageEvents() {
-        let mediaGalleryFormComponent = new MediaGalleryFormComponent();
-
-        $('[data-event="open-media-gallery"]').on("click", function () {
-            console.log('click!')
-            // Show media gallery modal box
-            mediaGalleryFormComponent.showMediaGallery('image');
-        });
-
-        this._selectedDefaultImageEvent();
-        this._removeDefaultImage();
-    }
-
-    _removeDefaultImage() {
-        $('[data-action="remove-default-image"]').on('click', function(e)
-        {
-            $('div#default_image_preview img').attr('src', '');
-            $('div#default_image_preview').addClass('d-none');
-            $('select#entry_defaultImage').val('');
-        });
-    }
-
-    _selectedDefaultImageEvent() {
-        document.addEventListener('selectedItemFromMediaGallery', function (e) {
-            let id = e.detail.image.id;
-            let path = e.detail.image.path;
-
-            let imageUrl = appUrl + '/uploads/' + path;
-
-            $('div#default_image_preview img').attr('src', imageUrl);
-            $('div#default_image_preview').removeClass('d-none');
-
-            $('select#entry_defaultImage').val(id);
-        });
     }
 
     /**

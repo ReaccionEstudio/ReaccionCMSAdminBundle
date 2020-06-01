@@ -136,6 +136,8 @@ crud:
   copy: 'Copy'
   created_at: 'Created at'
   select: 'Select'
+  record_was_deleted_ok: 'Record has been removed correctly'
+  record_was_deleted_ko: 'An error has occurred removing your record: %error%'
 
 # dashboard
 dashboard:

@@ -129,6 +129,8 @@ crud:
   copy: 'Copiar'
   created_at: 'Creado el'
   select: 'Seleccionar'
+  record_was_deleted_ok: 'El registro se ha eliminado correctamente'
+  record_was_deleted_ko: 'Ha ocurrido un error al eliminar el registro'
 
 # dashboard
 dashboard:

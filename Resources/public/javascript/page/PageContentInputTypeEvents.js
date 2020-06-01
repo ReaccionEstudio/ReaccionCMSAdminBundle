@@ -27,10 +27,10 @@ class PageContentInputTypeEvents
 		{
 			// Get current type input value
 			let typeInput = $("select#page_content_type").val();
-			typeInput = (typeInput == "img") ? "image" : typeInput;
+			typeInput = (typeInput === "img") ? "image" : typeInput;
 
 			// Show media gallery modal box
-			_self.mediaGalleryFormComponent.showMediaGallery(typeInput);
+			_self.mediaGalleryFormComponent.show(typeInput);
 		});
 
 		

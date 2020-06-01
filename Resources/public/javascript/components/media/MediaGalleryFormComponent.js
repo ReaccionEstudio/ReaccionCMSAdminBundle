@@ -1,13 +1,8 @@
-/**
- * Media gallery form component class
- *
- * @author    Alberto Vian - alberto@reaccionestudio.com
- * @website reaccionestudio.com
- */
-
 import MediaImagePreviewComponent from './MediaImagePreviewComponent.js';
 import MediaVideoPreviewComponent from './MediaVideoPreviewComponent.js';
 import PageContentInputTypeEvents from '../../page/PageContentInputTypeEvents.js';
+import ShowGallery from "./events/ShowGallery";
+import ItemSelection from "./events/ItemSelection";
 
 class MediaGalleryFormComponent {
     /**
@@ -33,12 +28,15 @@ class MediaGalleryFormComponent {
      */
     events() {
         this._navigateThroughtMediaGalleryEvent();
-        this._selectMediaItemFromGalleryEvent();
 
-        let pageContentInputTypeEvents = new PageContentInputTypeEvents(this);
-        pageContentInputTypeEvents.events();
+        let itemSelectionEvent = new ItemSelection()
+        itemSelectionEvent.execute()
+
+        let pageContentInputTypeEvents = new PageContentInputTypeEvents(this)
+        pageContentInputTypeEvents.events()
+
+        this.showGallery = new ShowGallery()
     }
-
 
     /**
      * Get form selector value defined as 'data-form-name' attribute in the 'Open gallery form button'
@@ -54,22 +52,10 @@ class MediaGalleryFormComponent {
     }
 
     /**
-     * Show media gallery
-     *
-     * @param String    mediaType    Media type ['image', 'video']
+     * @param mediaType
      */
-    showMediaGallery(mediaType) {
-        var mediaListRoute = Routing.generate('reaccion_cms_admin_media_index');
-        mediaListRoute = mediaListRoute + '?modal=1';
-
-        if (mediaType) {
-            mediaListRoute += '&type=' + mediaType;
-        }
-
-        $("div#modal").modal("show");
-        $("div#modal div.modal-body div.dimmer-content").load(mediaListRoute, function (result) {
-            $("div#modal div.modal-body .dimmer").removeClass("active");
-        });
+    show(mediaType) {
+        this.showGallery.execute(mediaType)
     }
 
     /**
@@ -81,43 +67,6 @@ class MediaGalleryFormComponent {
 
             $("div#modal div.modal-body .dimmer").addClass("active");
             $("div#modal div.modal-body").load($(this).attr("href"));
-        });
-    }
-
-    /**
-     * Select media item from gallery
-     */
-    _selectMediaItemFromGalleryEvent() {
-        $("body").on("click", "div#modal div.card a[data-media-id]", function (e) {
-            e.preventDefault();
-
-            let mediaId = $(this).attr("data-media-id");
-
-            // Get image details
-            let detailMediaRoute = Routing.generate('reaccion_cms_admin_media_detail', {'media': mediaId});
-
-            $.get(detailMediaRoute + '?json=1', function (result) {
-                this.selectedMedia = result;
-
-                console.log(this.selectedMedia);
-
-                // create and dispatch event
-                let mediaKey = this.selectedMedia['type'];
-
-                // event data
-                let detail = {"reset": true};
-                detail[mediaKey] = this.selectedMedia;
-
-                var event = new CustomEvent(
-                    'selectedItemFromMediaGallery',
-                    {
-                        'detail': detail
-                    }
-                );
-
-                document.dispatchEvent(event);
-            });
-
         });
     }
 }

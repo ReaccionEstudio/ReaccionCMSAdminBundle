@@ -44,6 +44,17 @@ class CreateEntryController extends Controller
             $em = $this->getDoctrine()->getManager();
 
             try {
+                if($defaultImage = $form['defaultImageFile']->getData()){
+                    // upload process
+                    $mediaUploadService = $this->get("reaccion_cms_admin.media_upload");
+                    $mediaUploadService->upload($defaultImage);
+                    $media = $mediaUploadService->getMedia();
+
+                    if($media) {
+                        $entry->setDefaultImage($media);
+                    }
+                }
+
                 // generate resume
                 $this->get("reaccion_cms_admin.entry")->generateResume($entry);
 

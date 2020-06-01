@@ -56,6 +56,8 @@
 		 */
 		private $file;
 
+		private $media;
+
 		/**
 		 * Constructor
 		 */
@@ -66,6 +68,7 @@
 			$this->resizeImageService = $resizeImageService;
 			$this->uploadPath = $uploadPath;
 			$this->allowedMimeTypes = $allowedMimeTypes;
+			$this->media = null;
 			$this->createUploadFolder();
 		}
 
@@ -182,6 +185,8 @@
 
 				$this->em->persist($media);
 				$this->em->flush();
+
+				$this->media = $media;
 			}	
 			catch(\Exception $e)
 			{
@@ -231,4 +236,12 @@
 
 	        return '';
 	    }
+
+        /**
+         * @return mixed
+         */
+        public function getMedia() : ?Media
+        {
+            return $this->media;
+        }
 	}
