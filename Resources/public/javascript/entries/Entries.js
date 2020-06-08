@@ -4,9 +4,8 @@
  * @author    Alberto Vian - alberto@reaccionestudio.com
  * @website reaccionestudio.com
  */
-
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import ReaccionCMSUploadPlugin from '../ckeditor/imageUpload/ReaccionCMSUploadPlugin.js';
+import {ENTRY_EDITOR_CONFIG} from './EntryEditorConfig'
 import EntryCategoryEvents from './EntryCategoryEvents'
 
 /**
@@ -29,22 +28,14 @@ class Entries {
     /**
      * Initialize CKeditor
      *
-     * @param    String        editorId    Textarea id attribute for CKeditor
-     * @return    void        [type]
+     * @param    string      editorId    Textarea id attribute for CKeditor
+     * @return   void        [type]
      */
     _initEditor(editorId) {
         ClassicEditor
-            .create(
-                document.querySelector(editorId), {
-                    extraPlugins: [ReaccionCMSUploadPlugin]
-                }
-            )
-            .then(editor => {
-                this.editor = editor;
-            })
-            .catch(error => {
-                console.error(error);
-            });
+            .create(document.querySelector(editorId), ENTRY_EDITOR_CONFIG)
+            .then(editor => { this.editor = editor; })
+            .catch(error => { console.error(error); });
 
         ClassicEditor.builtinPlugins.map( plugin => console.log(plugin.pluginName) );
     }
@@ -55,7 +46,6 @@ class Entries {
     _setEditorContentOnFormSubmit() {
         document.querySelector('#submit').addEventListener('click', () => {
             let ckeditorContent = this.editor.getData();
-            console.log(ckeditorContent);
             $("textarea#entry_content").val(ckeditorContent);
 
             return true;
