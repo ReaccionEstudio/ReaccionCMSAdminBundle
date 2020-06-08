@@ -7,6 +7,7 @@
 
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import ReaccionCMSUploadAdapter from '../ckeditor/imageUpload/ReaccionCMSUploadAdapter.js';
+import EntryCategoryEvents from './EntryCategoryEvents'
 
 /**
  * ReaccionCMSUploadAdapter plugin
@@ -28,8 +29,9 @@ class Entries {
         this.editor = null;
         this._initEditor("textarea#entry_content");
         this._setEditorContentOnFormSubmit();
-        this._toggleFormCategories();
-        this._handleLanguageChangeEvent();
+
+        let entryCategoryEvents = new EntryCategoryEvents()
+        entryCategoryEvents.events()
     }
 
     /**
@@ -64,42 +66,6 @@ class Entries {
 
             return true;
         });
-    }
-
-    /**
-     * Handle language change event:
-     *
-     *     - Show only the categories for selected language
-     */
-    _handleLanguageChangeEvent() {
-        let _self = this;
-
-        $("select#entry_language").on("change", function (e) {
-            e.preventDefault();
-
-            // unselect all languages
-            $('div#entry_categories input[data-language]').prop('checked', false);
-
-            _self._toggleFormCategories();
-        });
-    }
-
-    /**
-     * Show only the categories for selected language
-     *
-     * @param String  Language  Selected language value
-     */
-    _toggleFormCategories(language) {
-        if (typeof language == "undefined") {
-            language = $("#entry_language").val();
-        }
-
-        if (language) {
-            $('div#entry_categories input[data-language]').parent().addClass("d-none");
-            $('div#entry_categories input[data-language="' + language + '"]').parent().removeClass("d-none");
-        } else {
-            $('div#entry_categories input[data-language]').parent().addClass("d-none");
-        }
     }
 }
 

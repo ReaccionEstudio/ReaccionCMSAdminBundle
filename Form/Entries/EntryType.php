@@ -44,7 +44,7 @@ class EntryType extends AbstractType
             ->add('categories', EntityType::class, [
                 'class' => 'ReaccionEstudio\ReaccionCMSBundle\Entity\EntryCategory',
                 'choice_attr' => function ($choiceValue, $key, $value) {
-                    return ['data-language' => $choiceValue->getLanguage()];
+                    return ['data-language' => $choiceValue->getLanguage() ?? 'null'];
                 },
                 'choice_label' => 'name',
                 'expanded' => true,
@@ -63,9 +63,19 @@ class EntryType extends AbstractType
                 'attr' => ($options['mode'] == "create") ? ['checked' => 'checked'] : [],
                 'required' => false
             ])
-            ->add('language', HiddenType::class, [
-                'data' => 'es',
-                'required' => true
+            ->add('language', ChoiceType::class, [
+                'label' => 'users_form.language',
+                'choices' => Languages::LANGUAGES,
+                'choice_label' => function($choiceValue, $key, $value)
+                {
+                    return 'languages.' . $value;
+                },
+                'choice_value' => function($value)
+                {
+                    return $value;
+                },
+                'required' => false,
+                'attr' => ['class' => 'selectize']
             ])
             ->add('defaultImageFile', FileType::class, [
                 'label' => 'entries_form.defaultImage',
