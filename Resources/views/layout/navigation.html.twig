@@ -67,11 +67,11 @@
                 <a href="{{ url('reaccion_cms_admin_index') }}" class="nav-link {{isActive('index')}}"><i class="fe fe-home"></i>&nbsp;&nbsp;{{ 'home.title' | trans }}</a>
               </li>
 
-              <li class="nav-item dropdown">
-                <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-file-text "></i>&nbsp;&nbsp;Actividades</a>
+              <li class="nav-item">
+                <a href="javascript:void(0)" class="nav-link {{isActive('page', true)}}" data-toggle="dropdown"><i class="fe fe-file"></i>&nbsp;&nbsp;{{ 'pages.title' | trans }}</a>
                 <div class="dropdown-menu dropdown-menu-arrow">
-                  <a href="{{ url('reaccion_cms_admin_activities_list') }}" class="dropdown-item ">Listado de actividades</a>
-                  <a href="{{ url('reaccion_cms_admin_activities_create') }}" class="dropdown-item ">Crear actividad</a>
+                  <a href="{{ url('reaccion_cms_admin_pages_index') }}" class="dropdown-item {{isActive('pages_index')}}">{{ 'pages.list' | trans }}</a>
+                  <a href="{{ url('reaccion_cms_admin_pages_create') }}" class="dropdown-item {{isActive('pages_create')}}">{{ 'pages.create' | trans }}</a>
                 </div>
               </li>
 
@@ -94,7 +94,15 @@
                 <a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-users "></i>&nbsp;&nbsp;{{ 'users.title' | trans }}</a>
                 <div class="dropdown-menu dropdown-menu-arrow">
                   <a href="{{ url('reaccion_cms_admin_users_index') }}" class="dropdown-item ">{{ 'users.list' | trans }}</a>
-                  <a href="{{ url('reaccion_cms_admin_users_create') }}" class="dropdown-item ">{{ 'users.add' | trans }}</a>
+                  <a href="#" class="dropdown-item ">{{ 'users.add' | trans }}</a>
+                </div>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a href="#" class="nav-link {{isActive('appearance', true)}}" data-toggle="dropdown"><i class="fe fe-feather"></i>&nbsp;&nbsp;{{ 'appearance.title' | trans }}</a>
+                <div class="dropdown-menu dropdown-menu-arrow">
+                  <a href="{{ url('reaccion_cms_admin_appearance_menu') }}" class="dropdown-item {{isActive('preferences_menu')}}">{{ 'appearance.website_menu' | trans }}</a>
+                  <a href="{{ url('reaccion_cms_admin_appearance_themes') }}" class="dropdown-item {{isActive('themes')}}">{{ 'appearance.themes' | trans }}</a>
                 </div>
               </li>
 
