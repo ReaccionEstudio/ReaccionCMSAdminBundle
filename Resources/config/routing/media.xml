@@ -13,7 +13,7 @@
         <default key="_controller">reaccion_cms.create_media.controller:index</default>
     </route>
 
-    <route id="reaccion_cms_admin_media_detail_by_path" path="/media/path" methods="GET">
+    <route id="reaccion_cms_admin_media_detail_by_path" path="/media/path" methods="GET POST">
         <default key="_controller">reaccion_cms.media_detail.controller:findByPath</default>
         <option key="expose">true</option>
     </route>
