@@ -40,6 +40,7 @@
 			<call method="setContainer">
 				<argument type="service" id="Psr\Container\ContainerInterface" />
 			</call>
+			<argument type="service" id="parameter_bag" />
 		</service>
     	
     	<service id="reaccion_cms.create_entries_category.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EntriesCategories\CreateEntriesCategoryController" public="true">
