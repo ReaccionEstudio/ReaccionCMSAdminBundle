@@ -8,6 +8,7 @@ use ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
 use ReaccionEstudio\ReaccionCMSBundle\Entity\Menu;
 use ReaccionEstudio\ReaccionCMSBundle\Entity\MenuContent;
 use ReaccionEstudio\ReaccionCMSAdminBundle\Form\Menu\MenuContentType;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class MenuContentDetailController extends AbstractController
 {

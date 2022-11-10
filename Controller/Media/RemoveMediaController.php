@@ -5,6 +5,7 @@ namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media;
 use ReaccionEstudio\ReaccionCMSBundle\Entity\Media;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class RemoveMediaController extends AbstractController
 {

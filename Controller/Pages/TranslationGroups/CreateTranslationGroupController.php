@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use ReaccionEstudio\ReaccionCMSBundle\Entity\PageTranslationGroup;
 use ReaccionEstudio\ReaccionCMSAdminBundle\Form\Pages\PageTranslationGroupType;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class CreateTranslationGroupController extends AbstractController
 {

@@ -6,6 +6,7 @@ use ReaccionEstudio\ReaccionCMSBundle\Core\Router\Loader\FileLoader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class RemovePageController extends AbstractController
 {

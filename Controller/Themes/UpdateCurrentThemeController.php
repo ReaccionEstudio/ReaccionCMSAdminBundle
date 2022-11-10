@@ -3,6 +3,7 @@
 namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Themes;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class UpdateCurrentThemeController extends AbstractController
 {
