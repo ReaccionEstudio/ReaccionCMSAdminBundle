@@ -6,7 +6,11 @@
 
     <services>
 
-    	<service id="reaccion_cms.dashboard.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\IndexController" public="true"></service>
+    	<service id="reaccion_cms.dashboard.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\IndexController" public="true">
+            <call method="setContainer">
+                <argument type="service" id="Psr\Container\ContainerInterface" />
+            </call>
+        </service>
 
     </services>
 
