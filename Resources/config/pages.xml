@@ -18,6 +18,7 @@
             <call method="setContainer">
                 <argument type="service" id="Psr\Container\ContainerInterface" />
             </call>
+            <argument type="service" id="parameter_bag" />
         </service>
 
     	<service id="reaccion_cms.page_detail.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\PageDetailController" public="true">

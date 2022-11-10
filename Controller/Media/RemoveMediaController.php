@@ -4,16 +4,22 @@ namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media;
 
 use ReaccionEstudio\ReaccionCMSBundle\Entity\Media;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 class RemoveMediaController extends AbstractController
 {
     private $translator;
+    /**
+     * @var ParameterBagInterface
+     */
+    private $parameterBag;
 
-    public function __construct(TranslatorInterface $translator)
+    public function __construct(TranslatorInterface $translator, ParameterBagInterface $parameterBag)
     {
         $this->translator = $translator;
+        $this->parameterBag = $parameterBag;
     }
 
     public function index(Media $media)
@@ -37,7 +43,7 @@ class RemoveMediaController extends AbstractController
             foreach ($paths as $filePath) {
                 if (empty($filePath)) continue;
 
-                $filePath = $this->getParameter("reaccion_cms_admin.upload_dir") . $filePath;
+                $filePath = $this->parameterBag->get("reaccion_cms_admin.upload_dir") . $filePath;
 
                 if (!file_exists($filePath)) continue;
 

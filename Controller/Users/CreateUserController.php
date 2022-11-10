@@ -2,6 +2,7 @@
 
 namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Users;
 
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\Request;
 use ReaccionEstudio\ReaccionCMSBundle\Entity\User;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -11,10 +12,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class CreateUserController extends AbstractController
 {
     private $translator;
+    /**
+     * @var ParameterBagInterface
+     */
+    private $parameterBag;
 
-    public function __construct(TranslatorInterface $translator)
+    public function __construct(TranslatorInterface $translator, ParameterBagInterface $parameterBag)
     {
         $this->translator = $translator;
+        $this->parameterBag = $parameterBag;
     }
 
     public function index(Request $request)
@@ -23,7 +29,7 @@ class CreateUserController extends AbstractController
         $em = $this->getDoctrine()->getManager();
 
         // form parameters
-        $userRoles = $this->getParameter("reaccion_cms_admin.roles");
+        $userRoles = $this->parameterBag->get("reaccion_cms_admin.roles");
 
         // form
         $form = $this->createForm(UserType::class, $user, ['roles' => $userRoles]);

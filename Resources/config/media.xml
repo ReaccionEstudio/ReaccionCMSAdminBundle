@@ -10,6 +10,7 @@
             <call method="setContainer">
                 <argument type="service" id="Psr\Container\ContainerInterface" />
             </call>
+            <argument type="service" id="parameter_bag" />
         </service>
         
         <service id="reaccion_cms.create_media.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media\CreateMediaController" public="true">
@@ -36,6 +37,7 @@
                 <argument type="service" id="Psr\Container\ContainerInterface" />
             </call>
             <argument type="service" id="translator" />
+            <argument type="service" id="parameter_bag" />
         </service>
 
     </services>

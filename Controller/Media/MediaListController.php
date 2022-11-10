@@ -3,11 +3,22 @@
 namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\Request;
 use ReaccionEstudio\ReaccionCMSBundle\Entity\Media;
 
 class MediaListController extends AbstractController
 {
+    /**
+     * @var ParameterBagInterface
+     */
+    private $parameterBag;
+
+    public function __construct(ParameterBagInterface $parameterBag)
+    {
+        $this->parameterBag = $parameterBag;
+    }
+
     public function index(Request $request)
     {
         $queryFilters = [];
@@ -27,7 +38,7 @@ class MediaListController extends AbstractController
         $media = $paginator->paginate(
             $media,
             $request->query->getInt('page', 1),
-            $this->getParameter("pagination_page_limit")
+            $this->parameterBag->get("pagination_page_limit")
         );
 
         $template = "@ReaccionCMSAdminBundle/media/list.html.twig";

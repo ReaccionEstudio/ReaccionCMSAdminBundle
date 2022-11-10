@@ -18,6 +18,7 @@
 			<call method="setContainer">
 				<argument type="service" id="Psr\Container\ContainerInterface" />
 			</call>
+			<argument type="service" id="parameter_bag" />
 		</service>
 
     	<service id="reaccion_cms.remove_entry.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Entries\RemoveEntryController" public="true">

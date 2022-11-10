@@ -55,6 +55,7 @@
 			<call method="setContainer">
 				<argument type="service" id="Psr\Container\ContainerInterface" />
 			</call>
+			<argument type="service" id="parameter_bag" />
 		</service>
     	
     	<service id="reaccion_cms.update_email_template.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EmailTemplates\UpdateEmailTemplateController" public="true">

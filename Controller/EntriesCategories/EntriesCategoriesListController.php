@@ -2,12 +2,23 @@
 
 namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EntriesCategories;
 
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\Request;
 use ReaccionEstudio\ReaccionCMSBundle\Entity\EntryCategory;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class EntriesCategoriesListController extends AbstractController
 {
+    /**
+     * @var ParameterBagInterface
+     */
+    private $parameterBag;
+
+    public function __construct(ParameterBagInterface $parameterBag)
+    {
+        $this->parameterBag = $parameterBag;
+    }
+
     public function index(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
@@ -21,7 +32,7 @@ class EntriesCategoriesListController extends AbstractController
         $categories = $paginator->paginate(
             $categories,
             $request->query->getInt('page', 1),
-            $this->getParameter("pagination_page_limit")
+            $this->parameterBag->get("pagination_page_limit")
         );
 
         return $this->render("@ReaccionCMSAdminBundle/entries/categories/list.html.twig",
