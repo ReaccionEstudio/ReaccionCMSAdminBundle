@@ -2,7 +2,6 @@
 
 namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration;
 
-use phpDocumentor\Reflection\DocBlock\Tags\Param;
 use Symfony\Component\HttpFoundation\Request;
 use ReaccionEstudio\ReaccionCMSBundle\Entity\Configuration;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,7 +19,7 @@ class ConfigurationListController extends AbstractController
         $this->parameterBag = $parameterBag;
     }
 
-    public function index(Request $request)
+    public function __invoke(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $config = $em->getRepository(Configuration::class)->findBy(
