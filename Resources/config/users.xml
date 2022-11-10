@@ -10,6 +10,7 @@
 			<call method="setContainer">
 				<argument type="service" id="Psr\Container\ContainerInterface" />
 			</call>
+			<argument type="service" id="parameter_bag" />
 		</service>
 
     	<service id="reaccion_cms.create_user.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Users\CreateUserController" public="true">
