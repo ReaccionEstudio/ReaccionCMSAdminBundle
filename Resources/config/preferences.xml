@@ -8,37 +8,65 @@
 
     	<!-- preferences -->
     	<service id="reaccion_cms.configuration_list.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\ConfigurationListController" public="true">
+			<call method="setContainer">
+				<argument type="service" id="Psr\Container\ContainerInterface" />
+			</call>
         </service>
 
     	<service id="reaccion_cms.create_configuration.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\CreateConfigurationController" public="true">
+			<call method="setContainer">
+				<argument type="service" id="Psr\Container\ContainerInterface" />
+			</call>
     		<argument type="service" id="translator" />
         </service>
 
     	<service id="reaccion_cms.update_configuration.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\UpdateConfigurationController" public="true">
+			<call method="setContainer">
+				<argument type="service" id="Psr\Container\ContainerInterface" />
+			</call>
     		<argument type="service" id="translator" />
         </service>
 
     	<service id="reaccion_cms.remove_configuration.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\RemoveConfigurationController" public="true">
-    		<argument type="service" id="translator" />
+			<call method="setContainer">
+				<argument type="service" id="Psr\Container\ContainerInterface" />
+			</call>
+			<argument type="service" id="translator" />
         </service>
 
         <!-- preferences - mailer -->
     	<service id="reaccion_cms.mailer_configuration.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\Mailer\MailerConfigController" public="true">
-    		<argument type="service" id="translator" />
+			<call method="setContainer">
+				<argument type="service" id="Psr\Container\ContainerInterface" />
+			</call>
+			<argument type="service" id="translator" />
         </service>
 
     	<service id="reaccion_cms.mailer_configuration_send_test_email.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration\Mailer\SendTestEmailController" public="true">
-    		<argument type="service" id="translator" />
+			<call method="setContainer">
+				<argument type="service" id="Psr\Container\ContainerInterface" />
+			</call>
+			<argument type="service" id="translator" />
         </service>
 
         <!-- preferences - email templates -->
-    	<service id="reaccion_cms.list_email_template.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EmailTemplates\EmailTemplateController" public="true"></service>
+    	<service id="reaccion_cms.list_email_template.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EmailTemplates\EmailTemplateController" public="true">
+			<call method="setContainer">
+				<argument type="service" id="Psr\Container\ContainerInterface" />
+			</call>
+		</service>
     	
     	<service id="reaccion_cms.update_email_template.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EmailTemplates\UpdateEmailTemplateController" public="true">
+			<call method="setContainer">
+				<argument type="service" id="Psr\Container\ContainerInterface" />
+			</call>
     		<argument type="service" id="translator" />
     	</service>
 
     	<service id="reaccion_cms.remove_email_template.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EmailTemplates\RemoveEmailTemplateController" public="true">
+			<call method="setContainer">
+				<argument type="service" id="Psr\Container\ContainerInterface" />
+			</call>
     		<argument type="service" id="translator" />
     	</service>
 

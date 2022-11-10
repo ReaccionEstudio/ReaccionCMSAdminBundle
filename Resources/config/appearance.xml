@@ -7,43 +7,79 @@
     <services>
 
     	<!-- appearance - menu -->
-    	<service id="reaccion_cms.menu_list.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuListController" public="true"></service>
+    	<service id="reaccion_cms.menu_list.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuListController" public="true">
+			<call method="setContainer">
+				<argument type="service" id="Psr\Container\ContainerInterface" />
+			</call>
+		</service>
 
     	<service id="reaccion_cms.create_menu.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuCreateController" public="true">
-    		<argument type="service" id="translator" />
+			<call method="setContainer">
+				<argument type="service" id="Psr\Container\ContainerInterface" />
+			</call>
+			<argument type="service" id="translator" />
     	</service>
 
     	<service id="reaccion_cms.menu_detail.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuDetailController" public="true">
-    		<argument type="service" id="translator" />
-    	</service>
+			<call method="setContainer">
+				<argument type="service" id="Psr\Container\ContainerInterface" />
+			</call>
+			<argument type="service" id="translator" />
+		</service>
 
     	<service id="reaccion_cms.remove_menu.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\RemoveMenuController" public="true">
     		<argument type="service" id="translator" />
+			<call method="setContainer">
+				<argument type="service" id="Psr\Container\ContainerInterface" />
+			</call>
     	</service>
 
     	<!-- appearance - menu content -->
     	<service id="reaccion_cms.list_menu_content.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuContentListController" public="true">
+			<call method="setContainer">
+				<argument type="service" id="Psr\Container\ContainerInterface" />
+			</call>
     	</service>
 
     	<service id="reaccion_cms.create_menu_content.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuContentCreateController" public="true">
-    		<argument type="service" id="translator" />
+			<call method="setContainer">
+				<argument type="service" id="Psr\Container\ContainerInterface" />
+			</call>
+			<argument type="service" id="translator" />
     	</service>
 
     	<service id="reaccion_cms.menu_content_detail.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\MenuContentDetailController" public="true">
-    		<argument type="service" id="translator" />
+			<call method="setContainer">
+				<argument type="service" id="Psr\Container\ContainerInterface" />
+			</call>
+			<argument type="service" id="translator" />
     	</service>
 
     	<service id="reaccion_cms.remove_menu_content.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\RemoveMenuContentController" public="true">
-    		<argument type="service" id="translator" />
+			<call method="setContainer">
+				<argument type="service" id="Psr\Container\ContainerInterface" />
+			</call>
+			<argument type="service" id="translator" />
     	</service>
 
-    	<service id="reaccion_cms.update_menu_content_position.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\UpdateMenuContentPositionController" public="true"></service>
+    	<service id="reaccion_cms.update_menu_content_position.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu\UpdateMenuContentPositionController" public="true">
+			<call method="setContainer">
+				<argument type="service" id="Psr\Container\ContainerInterface" />
+			</call>
+		</service>
 
     	<!-- appearance - themes -->
-    	<service id="reaccion_cms.appearance_themes.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Themes\ThemesListController" public="true"></service>
+    	<service id="reaccion_cms.appearance_themes.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Themes\ThemesListController" public="true">
+			<call method="setContainer">
+				<argument type="service" id="Psr\Container\ContainerInterface" />
+			</call>
+		</service>
 
     	<service id="reaccion_cms.update_current_theme.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Themes\UpdateCurrentThemeController" public="true">
-    		<argument type="service" id="translator" />
+			<call method="setContainer">
+				<argument type="service" id="Psr\Container\ContainerInterface" />
+			</call>
+			<argument type="service" id="translator" />
     	</service>
 
     </services>

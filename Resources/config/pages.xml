@@ -8,42 +8,73 @@
 
         <!-- pages -->
     	<service id="reaccion_cms.create_page.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\CreatePageController" public="true">
-    		<argument type="service" id="translator" />
+            <call method="setContainer">
+                <argument type="service" id="Psr\Container\ContainerInterface" />
+            </call>
+            <argument type="service" id="translator" />
         </service>
 
-    	<service id="reaccion_cms.list_pages.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\PageListController" public="true"></service>
+    	<service id="reaccion_cms.list_pages.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\PageListController" public="true">
+            <call method="setContainer">
+                <argument type="service" id="Psr\Container\ContainerInterface" />
+            </call>
+        </service>
 
     	<service id="reaccion_cms.page_detail.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\PageDetailController" public="true">
+            <call method="setContainer">
+                <argument type="service" id="Psr\Container\ContainerInterface" />
+            </call>
             <argument type="service" id="translator" />
         </service>
 
     	<service id="reaccion_cms.remove_page.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\RemovePageController" public="true">
-    		<argument type="service" id="translator" />
+            <call method="setContainer">
+                <argument type="service" id="Psr\Container\ContainerInterface" />
+            </call>
+            <argument type="service" id="translator" />
     	</service>
 
         <!-- pages content -->
         <service id="reaccion_cms.create_page_content.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\Content\CreatePageContentController" public="true">
+            <call method="setContainer">
+                <argument type="service" id="Psr\Container\ContainerInterface" />
+            </call>
             <argument type="service" id="translator" />
         </service>
         
         <service id="reaccion_cms.page_content_detail.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\Content\PageContentDetailController" public="true">
+            <call method="setContainer">
+                <argument type="service" id="Psr\Container\ContainerInterface" />
+            </call>
             <argument type="service" id="translator" />
         </service>
         
         <service id="reaccion_cms.remove_page_content.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\Content\RemovePageContentController" public="true">
+            <call method="setContainer">
+                <argument type="service" id="Psr\Container\ContainerInterface" />
+            </call>
             <argument type="service" id="translator" />
         </service>
 
         <!-- pages translation groups -->
         <service id="reaccion_cms.create_page_translation_group.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\TranslationGroups\CreateTranslationGroupController" public="true">
+            <call method="setContainer">
+                <argument type="service" id="Psr\Container\ContainerInterface" />
+            </call>
             <argument type="service" id="translator" />
         </service>
 
         <service id="reaccion_cms.page_translation_group_detail.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\TranslationGroups\PageTranslationGroupDetailController" public="true">
+            <call method="setContainer">
+                <argument type="service" id="Psr\Container\ContainerInterface" />
+            </call>
             <argument type="service" id="translator" />
         </service>
 
         <service id="reaccion_cms.remove_page_translation_group.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\TranslationGroups\RemovePageTranslationGroupController" public="true">
+            <call method="setContainer">
+                <argument type="service" id="Psr\Container\ContainerInterface" />
+            </call>
             <argument type="service" id="translator" />
         </service>
 

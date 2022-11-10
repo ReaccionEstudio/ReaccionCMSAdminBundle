@@ -6,14 +6,24 @@
 
     <services>
 
-    	<service id="reaccion_cms.list_users.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Users\UsersListController" public="true"></service>
+    	<service id="reaccion_cms.list_users.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Users\UsersListController" public="true">
+			<call method="setContainer">
+				<argument type="service" id="Psr\Container\ContainerInterface" />
+			</call>
+		</service>
 
     	<service id="reaccion_cms.create_user.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Users\CreateUserController" public="true">
+			<call method="setContainer">
+				<argument type="service" id="Psr\Container\ContainerInterface" />
+			</call>
     		<argument type="service" id="translator" />
         </service>
 
     	<service id="reaccion_cms.update_user.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Users\UserEditController" public="true">
-    		<argument type="service" id="translator" />
+			<call method="setContainer">
+				<argument type="service" id="Psr\Container\ContainerInterface" />
+			</call>
+			<argument type="service" id="translator" />
         </service>
 
     </services>

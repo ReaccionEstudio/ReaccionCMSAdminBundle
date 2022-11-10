@@ -6,19 +6,35 @@
 
     <services>
 
-        <service id="reaccion_cms.media_list.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media\MediaListController" public="true"></service>
+        <service id="reaccion_cms.media_list.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media\MediaListController" public="true">
+            <call method="setContainer">
+                <argument type="service" id="Psr\Container\ContainerInterface" />
+            </call>
+        </service>
         
         <service id="reaccion_cms.create_media.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media\CreateMediaController" public="true">
+            <call method="setContainer">
+                <argument type="service" id="Psr\Container\ContainerInterface" />
+            </call>
             <argument type="service" id="translator" />
         </service>
         
         <service id="reaccion_cms.media_detail.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media\MediaDetailController" public="true">
+            <call method="setContainer">
+                <argument type="service" id="Psr\Container\ContainerInterface" />
+            </call>
         </service>
         
         <service id="reaccion_cms.media_image_upload.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media\MediaImageUploadController" public="true">
+            <call method="setContainer">
+                <argument type="service" id="Psr\Container\ContainerInterface" />
+            </call>
         </service>
         
         <service id="reaccion_cms.remove_media.controller" class="ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media\RemoveMediaController" public="true">
+            <call method="setContainer">
+                <argument type="service" id="Psr\Container\ContainerInterface" />
+            </call>
             <argument type="service" id="translator" />
         </service>
 
