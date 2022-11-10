@@ -3,16 +3,15 @@
 namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages;
 
 use ReaccionEstudio\ReaccionCMSBundle\Core\Router\Loader\FileLoader;
-use Symfony\Component\Form\Form;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Translation\TranslatorInterface;
 use ReaccionEstudio\ReaccionCMSBundle\Entity\Page;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use ReaccionEstudio\ReaccionCMSAdminBundle\Form\Pages\PageType;
 use ReaccionEstudio\ReaccionCMSAdminBundle\Form\Pages\SeoPageType;
 use ReaccionEstudio\ReaccionCMSBundle\Services\Themes\ThemeConfigService;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
-class PageDetailController extends Controller
+class PageDetailController extends AbstractController
 {
     /**
      * @var TranslatorInterface

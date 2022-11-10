@@ -1,55 +1,51 @@
 <?php
 
-	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration;
+namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration;
 
-	use Symfony\Component\HttpFoundation\Request;
-	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-	use Symfony\Component\Translation\TranslatorInterface;
-	use ReaccionEstudio\ReaccionCMSBundle\Entity\Configuration;
-	use ReaccionEstudio\ReaccionCMSAdminBundle\Form\Configuration\ConfigType;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use ReaccionEstudio\ReaccionCMSBundle\Entity\Configuration;
+use ReaccionEstudio\ReaccionCMSAdminBundle\Form\Configuration\ConfigType;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
-	class CreateConfigurationController extends Controller
-	{
-		private $translator;
-		
-		public function __construct(TranslatorInterface $translator)
-		{
-			$this->translator = $translator;	
-		}
+class CreateConfigurationController extends AbstractController
+{
+    private $translator;
 
-		public function index(Request $request)
-		{
-			$config = new Configuration();
-			$em = $this->getDoctrine()->getManager();
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
 
-			// form
-			$form = $this->createForm(ConfigType::class, $config);
-			$form->handleRequest($request);
+    public function index(Request $request)
+    {
+        $config = new Configuration();
+        $em = $this->getDoctrine()->getManager();
 
-			if ($form->isSubmitted() && $form->isValid()) 
-			{
-				try
-				{
-					// save
-					$em->persist($config);
-					$em->flush();
+        // form
+        $form = $this->createForm(ConfigType::class, $config);
+        $form->handleRequest($request);
 
-					$this->addFlash('success', $this->translator->trans('config_form.success_form') );
+        if ($form->isSubmitted() && $form->isValid()) {
+            try {
+                // save
+                $em->persist($config);
+                $em->flush();
 
-					return $this->redirectToRoute('reaccion_cms_admin_preferences_configuration');
-				}
-				catch(\Exception $e)
-				{
-					$this->addFlash('error', $this->translator->trans('config_form.error_form', array('%error%' => $e->getMessage())));
-				}
-			}
+                $this->addFlash('success', $this->translator->trans('config_form.success_form'));
 
-			return $this->render("@ReaccionCMSAdminBundle/configuration/form.html.twig",
-				[
-					'form' => $form->createView(),
-					'config' => $config,
-					'mode' => 'create'
-				]
-			);
-		}
-	}
+                return $this->redirectToRoute('reaccion_cms_admin_preferences_configuration');
+            } catch (\Exception $e) {
+                $this->addFlash('error', $this->translator->trans('config_form.error_form', array('%error%' => $e->getMessage())));
+            }
+        }
+
+        return $this->render("@ReaccionCMSAdminBundle/configuration/form.html.twig",
+            [
+                'form' => $form->createView(),
+                'config' => $config,
+                'mode' => 'create'
+            ]
+        );
+    }
+}

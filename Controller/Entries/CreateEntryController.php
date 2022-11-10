@@ -3,16 +3,16 @@
 namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Entries;
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use ReaccionEstudio\ReaccionCMSBundle\Entity\Entry;
+use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use ReaccionEstudio\ReaccionCMSAdminBundle\Form\Entries\EntryType;
-use Symfony\Component\Translation\TranslatorInterface;
 
 /**
  * Class CreateEntryController
  * @package ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Entries
  */
-class CreateEntryController extends Controller
+class CreateEntryController extends AbstractController
 {
     /**
      * @var TranslatorInterface

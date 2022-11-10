@@ -1,59 +1,55 @@
 <?php
 
-	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EntriesCategories;
+namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\EntriesCategories;
 
-	use Symfony\Component\HttpFoundation\Request;
-	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-	use Symfony\Component\Translation\TranslatorInterface;
-	use ReaccionEstudio\ReaccionCMSBundle\Entity\EntryCategory;
-	use ReaccionEstudio\ReaccionCMSAdminBundle\Form\EntriesCategories\EntryCategoryType;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use ReaccionEstudio\ReaccionCMSBundle\Entity\EntryCategory;
+use ReaccionEstudio\ReaccionCMSAdminBundle\Form\EntriesCategories\EntryCategoryType;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
-	class UpdateEntriesCategoryController extends Controller
-	{
-		private $translator;
-		
-		public function __construct(TranslatorInterface $translator)
-		{
-			$this->translator = $translator;	
-		}
+class UpdateEntriesCategoryController extends AbstractController
+{
+    private $translator;
 
-		public function index(EntryCategory $category, Request $request)
-		{
-			$em = $this->getDoctrine()->getManager();
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
 
-			// form
-			$form = $this->createForm(EntryCategoryType::class, $category, ['mode' => 'edit']);
-			$form->handleRequest($request);
+    public function index(EntryCategory $category, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
 
-			if ($form->isSubmitted() && $form->isValid()) 
-			{
-				try
-				{
-					// generate slug
-					$category->setSlug($category->getName());
-					
-					// save
-					$em->persist($category);
-					$em->flush();
+        // form
+        $form = $this->createForm(EntryCategoryType::class, $category, ['mode' => 'edit']);
+        $form->handleRequest($request);
 
-					// success message
-					$successMessage = $this->translator->trans('entries_categories_form.update_success_form');
-					$this->addFlash('success', $successMessage);
+        if ($form->isSubmitted() && $form->isValid()) {
+            try {
+                // generate slug
+                $category->setSlug($category->getName());
 
-					return $this->redirectToRoute('reaccion_cms_admin_entries_categories_list');
-				}
-				catch(\Exception $e)
-				{
-					$this->addFlash('error', $this->translator->trans('entries_categories_form.update_error_form', array('%error%' => $e->getMessage())));
-				}
-			}
+                // save
+                $em->persist($category);
+                $em->flush();
 
-			return $this->render("@ReaccionCMSAdminBundle/entries/categories/form.html.twig",
-				[
-					'form' => $form->createView(),
-					'mode' => 'edit',
-					'categoryName' => $form['name']->getData()
-				]
-			);
-		}
-	}
+                // success message
+                $successMessage = $this->translator->trans('entries_categories_form.update_success_form');
+                $this->addFlash('success', $successMessage);
+
+                return $this->redirectToRoute('reaccion_cms_admin_entries_categories_list');
+            } catch (\Exception $e) {
+                $this->addFlash('error', $this->translator->trans('entries_categories_form.update_error_form', array('%error%' => $e->getMessage())));
+            }
+        }
+
+        return $this->render("@ReaccionCMSAdminBundle/entries/categories/form.html.twig",
+            [
+                'form' => $form->createView(),
+                'mode' => 'edit',
+                'categoryName' => $form['name']->getData()
+            ]
+        );
+    }
+}

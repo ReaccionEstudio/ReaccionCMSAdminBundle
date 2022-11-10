@@ -1,60 +1,55 @@
 <?php
 
-	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\TranslationGroups;
+namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Pages\TranslationGroups;
 
-	use Symfony\Component\HttpFoundation\Request;
-	use Symfony\Component\Translation\TranslatorInterface;
-	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-	use ReaccionEstudio\ReaccionCMSBundle\Entity\PageTranslationGroup;
-	use ReaccionEstudio\ReaccionCMSAdminBundle\Form\Pages\PageTranslationGroupType;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use ReaccionEstudio\ReaccionCMSBundle\Entity\PageTranslationGroup;
+use ReaccionEstudio\ReaccionCMSAdminBundle\Form\Pages\PageTranslationGroupType;
 
-	class CreateTranslationGroupController extends Controller
-	{
-		private $translator;
-		
-		public function __construct(TranslatorInterface $translator)
-		{
-			$this->translator = $translator;	
-		}
+class CreateTranslationGroupController extends AbstractController
+{
+    private $translator;
 
-		public function index(Request $request)
-		{
-			$pageTranslationGroup = new PageTranslationGroup();
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
 
-			// form
-			$form = $this->createForm(PageTranslationGroupType::class, $pageTranslationGroup);
-			$form->handleRequest($request);
+    public function index(Request $request)
+    {
+        $pageTranslationGroup = new PageTranslationGroup();
 
-			if ($form->isSubmitted() && $form->isValid()) 
-			{
-				try
-				{
-					// save
-					$em = $this->getDoctrine()->getManager();
-					$em->persist($pageTranslationGroup);
-					$em->flush();
+        // form
+        $form = $this->createForm(PageTranslationGroupType::class, $pageTranslationGroup);
+        $form->handleRequest($request);
 
-					$this->addFlash('success', $this->translator->trans('page_translation_group_form.create_success_message') );
-					return $this->redirectToRoute('reaccion_cms_admin_pages_index');
-				}
-				catch(\Exception $e)
-				{
-					$errMssg =  $this->translator->trans(
-									"page_translation_group_form.create_error_message", 
-									array(
-										'%name%' => $form['name']->getData(),
-										'%error%' => $e->getMessage()
-									) 
-								);
-					$this->addFlash('error', $errMssg);
-				}
-			}
+        if ($form->isSubmitted() && $form->isValid()) {
+            try {
+                // save
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($pageTranslationGroup);
+                $em->flush();
 
-			return $this->render("@ReaccionCMSAdminBundle/pages/translation_groups/form.html.twig",
-				[
-					'form' => $form->createView(),
-					'mode' => 'create'
-				]
-			);
-		}
-	}
+                $this->addFlash('success', $this->translator->trans('page_translation_group_form.create_success_message'));
+                return $this->redirectToRoute('reaccion_cms_admin_pages_index');
+            } catch (\Exception $e) {
+                $errMssg = $this->translator->trans(
+                    "page_translation_group_form.create_error_message",
+                    array(
+                        '%name%' => $form['name']->getData(),
+                        '%error%' => $e->getMessage()
+                    )
+                );
+                $this->addFlash('error', $errMssg);
+            }
+        }
+
+        return $this->render("@ReaccionCMSAdminBundle/pages/translation_groups/form.html.twig",
+            [
+                'form' => $form->createView(),
+                'mode' => 'create'
+            ]
+        );
+    }
+}

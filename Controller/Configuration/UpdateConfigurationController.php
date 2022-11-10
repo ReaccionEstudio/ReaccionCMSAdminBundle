@@ -1,93 +1,84 @@
 <?php
 
-	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration;
+namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration;
 
-	use Symfony\Component\HttpFoundation\Request;
-	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-	use Symfony\Component\Translation\TranslatorInterface;
-	use ReaccionEstudio\ReaccionCMSBundle\Entity\Configuration;
-	use ReaccionEstudio\ReaccionCMSAdminBundle\Form\Configuration\ConfigType;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use ReaccionEstudio\ReaccionCMSBundle\Entity\Configuration;
+use ReaccionEstudio\ReaccionCMSAdminBundle\Form\Configuration\ConfigType;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
-	class UpdateConfigurationController extends Controller
-	{
-		private $translator;
-		
-		public function __construct(TranslatorInterface $translator)
-		{
-			$this->translator = $translator;	
-		}
+class UpdateConfigurationController extends AbstractController
+{
+    private $translator;
 
-		public function index(Configuration $config, Request $request)
-		{
-			$em = $this->getDoctrine()->getManager();
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
 
-			// form
-			$form = $this->createForm(ConfigType::class, $config, ['config' => $config]);
-			$form->handleRequest($request);
+    public function index(Configuration $config, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
 
-			if ($form->isSubmitted() && $form->isValid()) 
-			{
-				$configType = $config->getType();
-				$configValue = $config->getValue();
+        // form
+        $form = $this->createForm(ConfigType::class, $config, ['config' => $config]);
+        $form->handleRequest($request);
 
-				if(isset($form['image']))
-				{
-					$file = $form['image']->getData();
-					$filePath = "";
+        if ($form->isSubmitted() && $form->isValid()) {
+            $configType = $config->getType();
+            $configValue = $config->getValue();
 
-					if($file !== null)
-					{
-						$filePath = $this->get("reaccion_cms_admin.media_upload")->upload($file, false, false);
-					}
-					
-					if(strlen($filePath))
-					{
-						$relativePath = explode("uploads/", $filePath);
-						$relativePath = isset($relativePath[1]) ? $relativePath[1] : '';
+            if (isset($form['image'])) {
+                $file = $form['image']->getData();
+                $filePath = "";
 
-						$config->setValue($relativePath);
-					}
-				}
+                if ($file !== null) {
+                    $filePath = $this->get("reaccion_cms_admin.media_upload")->upload($file, false, false);
+                }
 
-				if($configType == "serialized")
-				{
-					$serializedData = unserialize($configValue);
-					$serializedDataKeys = array_keys($serializedData);
-					$arrayFormValues = [];
+                if (strlen($filePath)) {
+                    $relativePath = explode("uploads/", $filePath);
+                    $relativePath = isset($relativePath[1]) ? $relativePath[1] : '';
 
-					foreach($serializedDataKeys as $key)
-					{
-						if( ! isset($form[$key])) continue;
-						$arrayFormValues[$key] = $form[$key]->getData();
-					}
+                    $config->setValue($relativePath);
+                }
+            }
 
-					$serializedFormValue = serialize($arrayFormValues);
-					$config->setValue($serializedFormValue);
-				}
+            if ($configType == "serialized") {
+                $serializedData = unserialize($configValue);
+                $serializedDataKeys = array_keys($serializedData);
+                $arrayFormValues = [];
 
-				try
-				{
-					// save
-					$em->persist($config);
-					$em->flush();
+                foreach ($serializedDataKeys as $key) {
+                    if (!isset($form[$key])) continue;
+                    $arrayFormValues[$key] = $form[$key]->getData();
+                }
 
-					// flash message
-					$this->addFlash('success', $this->translator->trans('config_form.update_success_form') );
+                $serializedFormValue = serialize($arrayFormValues);
+                $config->setValue($serializedFormValue);
+            }
 
-					return $this->redirectToRoute('reaccion_cms_admin_preferences_configuration');
-				}
-				catch(\Exception $e)
-				{
-					$this->addFlash('error', $this->translator->trans('config_form.update_error_form', array('%error%' => $e->getMessage())));
-				}
-			}
+            try {
+                // save
+                $em->persist($config);
+                $em->flush();
 
-			return $this->render("@ReaccionCMSAdminBundle/configuration/form.html.twig",
-				[
-					'form' => $form->createView(),
-					'config' => $config,
-					'mode' => 'edit'
-				]
-			);
-		}
-	}
+                // flash message
+                $this->addFlash('success', $this->translator->trans('config_form.update_success_form'));
+
+                return $this->redirectToRoute('reaccion_cms_admin_preferences_configuration');
+            } catch (\Exception $e) {
+                $this->addFlash('error', $this->translator->trans('config_form.update_error_form', array('%error%' => $e->getMessage())));
+            }
+        }
+
+        return $this->render("@ReaccionCMSAdminBundle/configuration/form.html.twig",
+            [
+                'form' => $form->createView(),
+                'config' => $config,
+                'mode' => 'edit'
+            ]
+        );
+    }
+}

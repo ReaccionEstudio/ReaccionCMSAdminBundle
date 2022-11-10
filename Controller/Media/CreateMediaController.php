@@ -1,55 +1,51 @@
 <?php
 
-	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media;
+namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Media;
 
-	use Symfony\Component\HttpFoundation\Request;
-	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-	use Symfony\Component\Translation\TranslatorInterface;
-	use ReaccionEstudio\ReaccionCMSAdminBundle\Form\Media\MediaType;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use ReaccionEstudio\ReaccionCMSAdminBundle\Form\Media\MediaType;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
-	class CreateMediaController extends Controller
-	{
-		private $translator;
-		
-		public function __construct(TranslatorInterface $translator)
-		{
-			$this->translator = $translator;	
-		}
+class CreateMediaController extends AbstractController
+{
+    private $translator;
 
-		public function index(Request $request)
-		{
-			// form
-			$form = $this->createForm(MediaType::class);
-			$form->handleRequest($request);
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
 
-			if ($form->isSubmitted() && $form->isValid()) 
-			{
-				$file = $form['attachment']->getData();
+    public function index(Request $request)
+    {
+        // form
+        $form = $this->createForm(MediaType::class);
+        $form->handleRequest($request);
 
-				try
-				{
-					$originalFilename = $file->getClientOriginalName();
+        if ($form->isSubmitted() && $form->isValid()) {
+            $file = $form['attachment']->getData();
 
-					// upload process
-					$mediaUploadService = $this->get("reaccion_cms_admin.media_upload");
-					$mediaUploadService->upload($file);
+            try {
+                $originalFilename = $file->getClientOriginalName();
 
-					// success message
-					$successMessage = $this->translator->trans('media_create.media_upload_success', array('%filename%' => $originalFilename) );
-					$this->addFlash('success', $successMessage);
+                // upload process
+                $mediaUploadService = $this->get("reaccion_cms_admin.media_upload");
+                $mediaUploadService->upload($file);
 
-					return $this->redirectToRoute('reaccion_cms_admin_media_index');
-				}
-				catch(\Exception $e)
-				{
-					$this->addFlash('error', $e->getMessage());
-				}
-			}
-			
-			return $this->render("@ReaccionCMSAdminBundle/media/form.html.twig",
-				[
-					'form' => $form->createView()
-				]
-			);
-		}
-	}
+                // success message
+                $successMessage = $this->translator->trans('media_create.media_upload_success', array('%filename%' => $originalFilename));
+                $this->addFlash('success', $successMessage);
+
+                return $this->redirectToRoute('reaccion_cms_admin_media_index');
+            } catch (\Exception $e) {
+                $this->addFlash('error', $e->getMessage());
+            }
+        }
+
+        return $this->render("@ReaccionCMSAdminBundle/media/form.html.twig",
+            [
+                'form' => $form->createView()
+            ]
+        );
+    }
+}

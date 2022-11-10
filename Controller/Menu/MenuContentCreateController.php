@@ -1,93 +1,83 @@
 <?php
 
-	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu;
+namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu;
 
-	use Symfony\Component\HttpFoundation\Request;
-	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-	use Symfony\Component\Translation\TranslatorInterface;
-	use ReaccionEstudio\ReaccionCMSBundle\Entity\Menu;
-	use ReaccionEstudio\ReaccionCMSBundle\Entity\MenuContent;
-	use ReaccionEstudio\ReaccionCMSAdminBundle\Form\Menu\MenuContentType;
-	use ReaccionEstudio\ReaccionCMSAdminBundle\Services\Menu\MenuService;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use ReaccionEstudio\ReaccionCMSBundle\Entity\Menu;
+use ReaccionEstudio\ReaccionCMSBundle\Entity\MenuContent;
+use ReaccionEstudio\ReaccionCMSAdminBundle\Form\Menu\MenuContentType;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
-	class MenuContentCreateController extends Controller
-	{
-		private $translator;
-		
-		public function __construct(TranslatorInterface $translator)
-		{
-			$this->translator = $translator;	
-		}
-		
-		public function index(Menu $menu, Int $parent = 0, Request $request)
-		{
-			$menuContent = new MenuContent();
+class MenuContentCreateController extends AbstractController
+{
+    private $translator;
 
-			// form
-			$form = $this->createForm(MenuContentType::class, $menuContent);
-			$form->handleRequest($request);
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
 
-			if ($form->isSubmitted() && $form->isValid()) 
-			{
-				$em = $this->getDoctrine()->getManager();
+    public function index(Menu $menu, int $parent = 0, Request $request)
+    {
+        $menuContent = new MenuContent();
 
-				try
-				{
-					// set Value
-					if(($form['type']->getData() == "url") )
-					{
-						$menuValue = $form['urlValue']->getData();
-					}
-					else if($form['type']->getData() == "page")
-					{
-						$page = $form['pageValue']->getData();
-						$menuValue = $page->getId();
-					}
+        // form
+        $form = $this->createForm(MenuContentType::class, $menuContent);
+        $form->handleRequest($request);
 
-					$menuContent->setValue($menuValue);
-					$menuContent->setMenu($menu);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
 
-					// set next position
-					$nextPosition = $this->get("reaccion_cms_admin.menu_content")->getNextItemPosition($parent);
-					$menuContent->setPosition($nextPosition);
+            try {
+                // set Value
+                if (($form['type']->getData() == "url")) {
+                    $menuValue = $form['urlValue']->getData();
+                } else if ($form['type']->getData() == "page") {
+                    $page = $form['pageValue']->getData();
+                    $menuValue = $page->getId();
+                }
 
-					if($parent)
-					{
-						$parentMenuContent = $em->getRepository(MenuContent::class)->findOneBy(['id' => $parent]);
-						
-						if($parentMenuContent) 
-						{
-							$menuContent->setParent($parentMenuContent);
-						}
-					}
+                $menuContent->setValue($menuValue);
+                $menuContent->setMenu($menu);
 
-					// save
-					$em->persist($menuContent);
-					$em->flush();
+                // set next position
+                $nextPosition = $this->get("reaccion_cms_admin.menu_content")->getNextItemPosition($parent);
+                $menuContent->setPosition($nextPosition);
 
-					// flash message
-					$this->addFlash('success', $this->translator->trans('menu_form.create_success_message') );
+                if ($parent) {
+                    $parentMenuContent = $em->getRepository(MenuContent::class)->findOneBy(['id' => $parent]);
 
-					return $this->redirectToRoute('reaccion_cms_admin_appearance_menu_content', ['menu' => $menu->getId() ]);
-				}
-				catch(\Exception $e)
-				{
-					$errMssg =  $this->translator->trans(
-									"menu_form.create_error_message", 
-									array(
-										'%name%' => $form['name']->getData(),
-										'%error%' => $e->getMessage()
-									) 
-								);
-					$this->addFlash('error', $errMssg);
-				}
-			}
+                    if ($parentMenuContent) {
+                        $menuContent->setParent($parentMenuContent);
+                    }
+                }
 
-			return $this->render("@ReaccionCMSAdminBundle/menu/content/form.html.twig",
-				[
-					'form' => $form->createView(),
-					'menu' => $menu
-				]
-			);
-		}
-	}
+                // save
+                $em->persist($menuContent);
+                $em->flush();
+
+                // flash message
+                $this->addFlash('success', $this->translator->trans('menu_form.create_success_message'));
+
+                return $this->redirectToRoute('reaccion_cms_admin_appearance_menu_content', ['menu' => $menu->getId()]);
+            } catch (\Exception $e) {
+                $errMssg = $this->translator->trans(
+                    "menu_form.create_error_message",
+                    array(
+                        '%name%' => $form['name']->getData(),
+                        '%error%' => $e->getMessage()
+                    )
+                );
+                $this->addFlash('error', $errMssg);
+            }
+        }
+
+        return $this->render("@ReaccionCMSAdminBundle/menu/content/form.html.twig",
+            [
+                'form' => $form->createView(),
+                'menu' => $menu
+            ]
+        );
+    }
+}

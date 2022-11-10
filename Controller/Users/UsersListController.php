@@ -1,33 +1,33 @@
 <?php
 
-	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Users;
+namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Users;
 
-	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-	use Symfony\Component\HttpFoundation\Request;
-	use ReaccionEstudio\ReaccionCMSBundle\Entity\User;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use ReaccionEstudio\ReaccionCMSBundle\Entity\User;
 
-	class UsersListController extends Controller
-	{
-		public function index(Request $request)
-		{
-			$em = $this->getDoctrine()->getManager();
-			$users = $em->getRepository(User::class)->findBy(
-						array(),
-						array('id' => 'DESC')
-					 );
+class UsersListController extends AbstractController
+{
+    public function index(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $users = $em->getRepository(User::class)->findBy(
+            array(),
+            array('id' => 'DESC')
+        );
 
-			// pagination
-			$paginator = $this->get('knp_paginator');
-		    $users = $paginator->paginate(
-		        $users,
-		        $request->query->getInt('page', 1),
-		        $this->getParameter("pagination_page_limit")
-		    );
+        // pagination
+        $paginator = $this->get('knp_paginator');
+        $users = $paginator->paginate(
+            $users,
+            $request->query->getInt('page', 1),
+            $this->getParameter("pagination_page_limit")
+        );
 
-			return $this->render("@ReaccionCMSAdminBundle/users/list.html.twig",
-				[
-					'users' => $users
-				]
-			);
-		}
-	}
+        return $this->render("@ReaccionCMSAdminBundle/users/list.html.twig",
+            [
+                'users' => $users
+            ]
+        );
+    }
+}

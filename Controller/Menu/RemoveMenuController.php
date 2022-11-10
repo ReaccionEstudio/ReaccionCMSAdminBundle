@@ -1,47 +1,43 @@
 <?php
 
-	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu;
+namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Menu;
 
-	use Symfony\Component\HttpFoundation\Request;
-	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-	use Symfony\Component\Translation\TranslatorInterface;
-	use ReaccionEstudio\ReaccionCMSBundle\Entity\Menu;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use ReaccionEstudio\ReaccionCMSBundle\Entity\Menu;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
-	class RemoveMenuController extends Controller
-	{
-		private $translator;
-		
-		public function __construct(TranslatorInterface $translator)
-		{
-			$this->translator = $translator;	
-		}
+class RemoveMenuController extends AbstractController
+{
+    private $translator;
 
-		public function index(Menu $menu, Request $request)
-		{
-			$em = $this->getDoctrine()->getManager();
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
 
-			if(empty($menu))
-			{
-				throw new NotFoundHttpException("Menu not found");
-			}
+    public function index(Menu $menu, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
 
-			$menuName = $menu->getName();
+        if (empty($menu)) {
+            throw new NotFoundHttpException("Menu not found");
+        }
 
-			try
-			{
-				// remove
-				$em->remove($menu);
-				$em->flush();
+        $menuName = $menu->getName();
 
-				// flash message
-				$this->addFlash('success', $this->translator->trans('menu_form.remove_success_message', array('%name%' => $menuName)) );
-			}
-			catch(\Exception $e)
-			{
-				$errorMssg = $this->translator->trans('menu_form.remove_error_message', array('%name%' => $menuName, '%error%' => $e->getMessage()));
-				$this->addFlash('error', $errorMssg);
-			}
+        try {
+            // remove
+            $em->remove($menu);
+            $em->flush();
 
-			return 	$this->redirectToRoute('reaccion_cms_admin_appearance_menu');
-		}
-	}
+            // flash message
+            $this->addFlash('success', $this->translator->trans('menu_form.remove_success_message', array('%name%' => $menuName)));
+        } catch (\Exception $e) {
+            $errorMssg = $this->translator->trans('menu_form.remove_error_message', array('%name%' => $menuName, '%error%' => $e->getMessage()));
+            $this->addFlash('error', $errorMssg);
+        }
+
+        return $this->redirectToRoute('reaccion_cms_admin_appearance_menu');
+    }
+}

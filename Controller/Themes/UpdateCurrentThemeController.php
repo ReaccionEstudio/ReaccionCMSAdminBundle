@@ -1,30 +1,28 @@
 <?php
 
-	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Themes;
+namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Themes;
 
-	use Symfony\Component\HttpFoundation\Request;
-	use Symfony\Component\Translation\TranslatorInterface;
-	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-	class UpdateCurrentThemeController extends Controller
-	{
-		private $translator;
-		
-		public function __construct(TranslatorInterface $translator)
-		{
-			$this->translator = $translator;	
-		}
+class UpdateCurrentThemeController extends AbstractController
+{
+    private $translator;
 
-		public function index(String $themeFolderName)
-		{
-			$result = $this->get("reaccion_cms_admin.theme")->updateCurrentTheme($themeFolderName);
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
 
-			// flash message
-			$flashName = ($result) ? "success" : "error";
-			$translationKey = 'themes.update_theme_' . $flashName . '_message';
-			$message = $this->translator->trans($translationKey);
-			$this->addFlash($flashName, $message);
+    public function index(string $themeFolderName)
+    {
+        $result = $this->get("reaccion_cms_admin.theme")->updateCurrentTheme($themeFolderName);
 
-			return $this->redirectToRoute('reaccion_cms_admin_appearance_themes');
-		}
-	}
+        // flash message
+        $flashName = ($result) ? "success" : "error";
+        $translationKey = 'themes.update_theme_' . $flashName . '_message';
+        $message = $this->translator->trans($translationKey);
+        $this->addFlash($flashName, $message);
+
+        return $this->redirectToRoute('reaccion_cms_admin_appearance_themes');
+    }
+}

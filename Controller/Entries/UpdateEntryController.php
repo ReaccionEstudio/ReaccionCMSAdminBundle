@@ -2,14 +2,13 @@
 
 namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Entries;
 
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use ReaccionEstudio\ReaccionCMSBundle\Entity\Entry;
+use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use ReaccionEstudio\ReaccionCMSAdminBundle\Form\Entries\EntryType;
-use Symfony\Component\Translation\TranslatorInterface;
 
-class UpdateEntryController extends Controller
+class UpdateEntryController extends AbstractController
 {
     private $translator;
 
@@ -22,15 +21,15 @@ class UpdateEntryController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        if($request->query->get('removeDefaultImage') === '1'){
+        if ($request->query->get('removeDefaultImage') === '1') {
             $entry->setDefaultImage(null);
-            try{
+            try {
                 $em->persist($entry);
                 $em->flush();
 
                 $mssg = $this->translator->trans('crud.record_was_deleted_ok');
                 $this->addFlash('success', $mssg);
-            }catch (\Exception $e){
+            } catch (\Exception $e) {
                 $mssg = $this->translator->trans('crud.record_was_deleted_ko', array('%error%' => $e->getMessage()));
                 $this->addFlash('success', $mssg);
             }
@@ -43,13 +42,13 @@ class UpdateEntryController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            if($defaultImage = $form['defaultImageFile']->getData()){
+            if ($defaultImage = $form['defaultImageFile']->getData()) {
                 // upload process
                 $mediaUploadService = $this->get("reaccion_cms_admin.media_upload");
                 $mediaUploadService->upload($defaultImage);
                 $media = $mediaUploadService->getMedia();
 
-                if($media) {
+                if ($media) {
                     $entry->setDefaultImage($media);
                 }
             }
@@ -59,7 +58,7 @@ class UpdateEntryController extends Controller
                 $this->get("reaccion_cms_admin.entry")->generateResume($entry);
 
                 // generate slug
-                if(empty($entry->getSlug())) {
+                if (empty($entry->getSlug())) {
                     $entry->setSlug($entry->getName());
                 }
 

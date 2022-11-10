@@ -1,20 +1,20 @@
 <?php
 
-	namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Themes;
+namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Themes;
 
-	use Symfony\Component\HttpFoundation\Request;
-	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-	class ThemesListController extends Controller
-	{
-		public function index(Request $request)
-		{
-			$themes = $this->get("reaccion_cms_admin.theme")->listInstalledThemes();
+class ThemesListController extends AbstractController
+{
+    public function index(Request $request)
+    {
+        $themes = $this->get("reaccion_cms_admin.theme")->listInstalledThemes();
 
-			return $this->render("@ReaccionCMSAdminBundle/themes/list.html.twig",
-				[
-					'themes' => $themes
-				]
-			);
-		}
-	}
+        return $this->render("@ReaccionCMSAdminBundle/themes/list.html.twig",
+            [
+                'themes' => $themes
+            ]
+        );
+    }
+}
