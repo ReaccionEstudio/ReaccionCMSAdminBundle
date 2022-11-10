@@ -8,11 +8,16 @@
     "authors": [
     ],
     "require": {
-        "reaccionestudio/reaccion-cms-bundle": "^0.1.2-alpha"
+        "reaccionestudio/reaccion-cms-bundle": "^v2.x-dev"
     },
     "autoload": {
         "psr-4": {
             "ReaccionEstudio\\ReaccionCMSAdminBundle\\": ""
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "symfony/flex": true
         }
     }
 }
