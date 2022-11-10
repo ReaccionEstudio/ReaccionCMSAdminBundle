@@ -19,7 +19,7 @@ class ConfigurationListController extends AbstractController
         $this->parameterBag = $parameterBag;
     }
 
-    public function __invoke(Request $request)
+    public function index(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $config = $em->getRepository(Configuration::class)->findBy(
