@@ -2,6 +2,7 @@
 
 namespace ReaccionEstudio\ReaccionCMSAdminBundle\Controller\Configuration;
 
+use phpDocumentor\Reflection\DocBlock\Tags\Param;
 use Symfony\Component\HttpFoundation\Request;
 use ReaccionEstudio\ReaccionCMSBundle\Entity\Configuration;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -9,7 +10,17 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 class ConfigurationListController extends AbstractController
 {
-    public function index(Request $request, ParameterBagInterface $parameterBag)
+    /**
+     * @var ParameterBagInterface
+     */
+    private $parameterBag;
+
+    public function __construct(ParameterBagInterface $parameterBag)
+    {
+        $this->parameterBag = $parameterBag;
+    }
+
+    public function index(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $config = $em->getRepository(Configuration::class)->findBy(
@@ -22,7 +33,7 @@ class ConfigurationListController extends AbstractController
         $config = $paginator->paginate(
             $config,
             $request->query->getInt('page', 1),
-            $parameterBag->get("pagination_page_limit")
+            $this->parameterBag->get("pagination_page_limit")
         );
 
         return $this->render("@ReaccionCMSAdminBundle/configuration/list.html.twig",
