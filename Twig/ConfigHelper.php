@@ -55,6 +55,10 @@ class ConfigHelper extends \Twig_Extension
     {
         $logoPath = $this->getConfigValue("admin_logo");
 
+        if(preg_match('/http/', $logoPath)){
+            return $logoPath;
+        }
+
         if($logoPath == "images/reaccion_cms_logo.jpg")
         {
             return 'build/' . $logoPath;
