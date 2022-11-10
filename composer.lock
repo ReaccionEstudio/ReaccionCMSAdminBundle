@@ -2725,12 +2725,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ReaccionEstudio/ReaccionCMSBundle.git",
-                "reference": "30f294b72f81e6bf524b945e4fa61df6976104a3"
+                "reference": "b24501e1457b5cff99eb5f91014d22bcbffb27ce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ReaccionEstudio/ReaccionCMSBundle/zipball/30f294b72f81e6bf524b945e4fa61df6976104a3",
-                "reference": "30f294b72f81e6bf524b945e4fa61df6976104a3",
+                "url": "https://api.github.com/repos/ReaccionEstudio/ReaccionCMSBundle/zipball/b24501e1457b5cff99eb5f91014d22bcbffb27ce",
+                "reference": "b24501e1457b5cff99eb5f91014d22bcbffb27ce",
                 "shasum": ""
             },
             "require": {
@@ -2807,7 +2807,7 @@
                 "issues": "https://github.com/ReaccionEstudio/ReaccionCMSBundle/issues",
                 "source": "https://github.com/ReaccionEstudio/ReaccionCMSBundle/tree/v2"
             },
-            "time": "2022-11-10T18:05:31+00:00"
+            "time": "2022-11-10T18:53:51+00:00"
         },
         {
             "name": "sensio/framework-extra-bundle",
